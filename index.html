@@ -1,57 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính giá cước</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h2>Home Page</h2>
-        </div>
-        <div class="content">
-            <p>Công cụ tính giá cước thuê dịch vụ</p>
-            <br>
-            <div id="totalCost">Tổng cước phí ước tính: 0¥</div>
-            <br>
+        <!-- Header -->
+        <header class="header">
+            <h1>Tính giá cước</h1>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Công cụ tính giá cước -->
+            <section class="block">
+                <h2>Công cụ tính giá cước thuê dịch vụ</h2>
+                <p>Tối đa 4 người (bao gồm trẻ em)</p>
+                <div class="result">
+                    <span id="totalCost">Tổng cước phí ước tính: <strong>0¥</strong></span>
+                </div>
+            </section>
 
-            <p>Địa điểm cắm trại</p>
-            <select id="camping">
-                <option value="" selected disabled>Chọn điểm đến</option>
-                <option value="fuji">Quanh chân núi Phú Sĩ</option>
-                <option value="saitama">Saitama</option>
-            </select>
-            <div id="campingChoice"></div>
-            <div id="campingChoiceCostSTR"></div>
-            <br>
+            <!-- Xe và địa điểm -->
+            <section class="block">
+                <h2>Xe và địa điểm</h2>
+                <div class="form-group">
+                    <label for="camping"><h3>Địa điểm cắm trại</h3></label>
+                    <select id="camping">
+                        <option value="" selected disabled>Chọn điểm đến</option>
+                        <option value="fuji">Quanh chân núi Phú Sĩ</option>
+                        <option value="saitama">Saitama</option>
+                    </select>
+                    <div id="campingChoice"></div>
+                    <div id="campingChoiceCostSTR"></div>
+                </div>
 
-            <p>Vị trí xuất phát(ước tính)</p>
-            <select id="location">
-                <option value="" selected disabled>Chọn địa điểm xuất phát</option>
-                <option value="tokyo">Tokyo</option>
-                <option value="saitama">Saitama</option>
-                <option value="kanagawa">Kanagawa</option>
-            </select>
-            <div id="distance"></div>
-            <div id="cost"></div>
-            <br>
+                <div class="form-group">
+                    <label for="location"><h3>Vị trí xuất phát (ước tính)</h3></label>
+                    <select id="location">
+                        <option value="" selected disabled>Chọn địa điểm xuất phát</option>
+                        <option value="tokyo">Tokyo</option>
+                        <option value="saitama">Saitama</option>
+                        <option value="kanagawa">Kanagawa</option>
+                    </select>
+                    <div id="distance"></div>
+                    <div id="cost"></div>
+                </div>
 
-            <p>Dùng cao tốc?</p>
-            <select id="highway">
-                <option value="" selected disabled>Chọn option cao tốc</option>
-                <option value="yes1">Có (một chiều)</option>
-                <option value="yes2">Có (hai chiều)</option>
-                <option value="no">Không</option>
-            </select>
-            <div id="highwayChoice"></div>
-            <div id="highwayChoiceCostSTR"></div>
-            <br>
+                <div class="form-group">
+                    <label for="highway"><h3>Dùng cao tốc?</h3></label>
+                    <select id="highway">
+                        <option value="" selected disabled>Chọn đi cao tốc</option>
+                        <option value="yes1">Có (một chiều)</option>
+                        <option value="yes2">Có (hai chiều)</option>
+                        <option value="no">Không</option>
+                    </select>
+                    <div id="highwayChoice"></div>
+                    <div id="highwayChoiceCostSTR"></div>
+                </div>
+            </section>
 
-
-
-        </div>
+            <!-- Vật dụng -->
+            <section class="block">
+                <h2>Vật dụng</h2>
+                <div class="checkbox-container">
+                    <label><input type="checkbox" id="tent" name="equipment" value="tent"> Lều size 4 người x1 (miễn phí)</label>
+                    <label><input type="checkbox" id="table" name="equipment" value="table"> Bàn x1 + ghế x4 (5000¥)</label>
+                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp củi x1 + bó củi x1 (5000¥)</label>
+                    <label><input type="checkbox" id="bepgas" name="equipment" value="bepgas"> Bếp gas x1 + bình gas x1 (5000¥)</label>
+                    <label><input type="checkbox" id="projector" name="equipment" value="projector"> Máy chiếu (5000¥)</label>
+                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera X-T5 + Lens XF35mm f1.4 (miễn phí)</label>
+                </div>
+                <div id="equipmentChoice"></div>
+                <div id="equipmentCostSTR"></div>
+            </section>
+        </main>
     </div>
-</body>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

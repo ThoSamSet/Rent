@@ -1,6 +1,8 @@
 var distanceCost = 0;
 var highwayCost = 0;
 var campingChoiceCost = 0;
+var equipmentCost = 0;
+var distanceCostPerKm = 25;
 
 document.getElementById('location').addEventListener('change', function() {
     updateDistance();
@@ -61,6 +63,49 @@ document.getElementById('highway').addEventListener('change', function() {
     updateTotalCost();
 });
 
+document.querySelectorAll('input[name="equipment"]').forEach(function(elem) {
+    elem.addEventListener('change', function() {
+        var equipmentChoice = [];
+        equipmentCost = 0
+        var equipmentStr = [];
+        document.querySelectorAll('input[name="equipment"]:checked').forEach(function(checkedElem) {
+            // equipmentChoice.push(checkedElem.value);
+            switch (checkedElem.value) {
+                case 'tent':
+                    equipmentStr.push('Lều');
+                    equipmentCost += 0;
+                    break;
+                case 'table':
+                    equipmentStr.push('Bàn ghế');
+                    equipmentCost += 5000;
+                    break;
+                case 'bep':
+                    equipmentStr.push('Bếp củi');
+                    equipmentCost += 5000;
+                    break;
+                case 'bepgas':
+                    equipmentStr.push('Bếp gas');
+                    equipmentCost += 5000;
+                    break;
+                case 'projector':
+                    equipmentStr.push('Máy chiếu');
+                    equipmentCost += 5000;
+                    break;
+                case 'camera':
+                    equipmentStr.push('Máy ảnh');
+                    equipmentCost += 0;
+                    break;
+                default:
+                    equipmentStr.push('');
+                    equipmentCost += 0;
+            }
+        });
+        document.getElementById('equipmentChoice').innerText = 'Đang chọn: ' + equipmentStr.join(', ');
+        document.getElementById('equipmentCostSTR').innerText = '+' + equipmentCost + '¥';
+        updateTotalCost();
+    });
+});
+
 
 function updateDistance() {
     var location = document.getElementById('location').value;
@@ -107,13 +152,13 @@ function updateDistance() {
         distance = 0;
     }
 
-    distanceCost = distance * 25;
+    distanceCost = distance * distanceCostPerKm;
     document.getElementById('distance').innerText = 'Đang chọn: ' + locationName + ', Khoảng cách ước tính: ' + distance + 'Km';
     document.getElementById('cost').innerText ='+' + distanceCost + '¥';
     updateTotalCost();
 }
 
 function updateTotalCost() {
-    var totalCost = distanceCost + highwayCost + campingChoiceCost;
-    document.getElementById('totalCost').innerText = 'Tổng cước phí ước tính: ' + totalCost + '¥';
+    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost;
+    document.getElementById('totalCost').innerHTML = 'Tổng cước phí: <strong>' + totalCost + '¥</strong>';
 }

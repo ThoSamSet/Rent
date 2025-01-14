@@ -10,14 +10,44 @@
             <h2>Home Page</h2>
         </div>
         <div class="content">
-            <p>Công cụ tính giá thuê dịch vụ</p>
+            <p>Công cụ tính giá cước thuê dịch vụ</p>
+            <br>
+            <div id="totalCost">Tổng cước phí ước tính: 0¥</div>
+            <br>
+
+            <p>Địa điểm cắm trại</p>
+            <select id="camping">
+                <option value="" selected disabled>Chọn điểm đến</option>
+                <option value="fuji">Quanh chân núi Phú Sĩ</option>
+                <option value="saitama">Saitama</option>
+            </select>
+            <div id="campingChoice"></div>
+            <div id="campingChoiceCostSTR"></div>
+            <br>
+
             <p>Vị trí xuất phát(ước tính)</p>
             <select id="location">
+                <option value="" selected disabled>Chọn địa điểm xuất phát</option>
                 <option value="tokyo">Tokyo</option>
                 <option value="saitama">Saitama</option>
                 <option value="kanagawa">Kanagawa</option>
             </select>
             <div id="distance"></div>
+            <div id="cost"></div>
+            <br>
+
+            <p>Dùng cao tốc?</p>
+            <select id="highway">
+                <option value="" selected disabled>Chọn option cao tốc</option>
+                <option value="yes1">Có (một chiều)</option>
+                <option value="yes2">Có (hai chiều)</option>
+                <option value="no">Không</option>
+            </select>
+            <div id="highwayChoice"></div>
+            <div id="highwayChoiceCostSTR"></div>
+            <br>
+
+
 
         </div>
     </div>

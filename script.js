@@ -1,3 +1,5 @@
+var lastUpdatedDate = '2025/01/15';
+
 var distanceCost = 0;
 var highwayCost = 0;
 var campingChoiceCost = 0;
@@ -7,6 +9,8 @@ var distanceCostPerKm = 25;
 
 var COST_RAV4 = 10000;
 var COST_SIENTA = 15000;
+
+document.getElementById('lastUpdatedDate').innerText = 'Cập nhật lần cuối: ' + lastUpdatedDate;
 
 document.getElementById('location').addEventListener('change', function() {
     updateDistance();

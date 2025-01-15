@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tính giá cước</title>
+    <title>Homepage - CAMP Nhà Thỏ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>Tính giá cước</h1>
+            <h1>Homepage - CAMP Nhà Thỏ</h1>
+            <h5>Cập nhật lần cuối: 2025/01/15</h5>
         </header>
         
         <!-- Main Content -->
@@ -25,9 +26,24 @@
                 </div>
             </section>
 
-            <!-- Xe và địa điểm -->
+            <!-- Xe -->
             <section class="block">
-                <h2>Xe và địa điểm</h2>
+                <h2>Chọn loại xe muốn thuê</h2>
+                <div class="form-group">
+                    <label for="car"><h3>Loại xe</h3></label>
+                    <select id="car">
+                        <option value="" selected disabled>Chọn loại xe</option>
+                        <option value="RAV4" selected disabled>RAV4 Hibrid (đang bảo dưỡng)</option>
+                        <option value="sienta">Sienta (Times rental car)</option>
+                    </select>
+                    <div id="carChoice"></div>
+                    <div id="carChoiceCostSTR"></div>
+                </div>
+            </section>
+
+            <!-- Thông tin hành trình -->
+            <section class="block">
+                <h2>Thông tin hành trình</h2>
                 <div class="form-group">
                     <label for="camping"><h3>Địa điểm cắm trại</h3></label>
                     <select id="camping">

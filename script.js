@@ -2,10 +2,35 @@ var distanceCost = 0;
 var highwayCost = 0;
 var campingChoiceCost = 0;
 var equipmentCost = 0;
+var carCost = 0;
 var distanceCostPerKm = 25;
+
+var COST_RAV4 = 10000;
+var COST_SIENTA = 15000;
 
 document.getElementById('location').addEventListener('change', function() {
     updateDistance();
+});
+
+document.getElementById('car').addEventListener('change', function() {
+    var carChoice;
+    
+    switch (this.value) {
+        case 'RAV4':
+            carChoice = 'RAV4 Hibrid (đang bảo dưỡng)';
+            carCost = COST_RAV4;
+            break;
+        case 'sienta':
+            carChoice = 'Sienta (Times rental car)';
+            carCost = COST_SIENTA;
+            break;
+        default:
+            carChoice = '';
+            carCost = 0;
+    }
+    document.getElementById('carChoice').innerText = 'Đang chọn: ' + carChoice;
+    document.getElementById('carChoiceCostSTR').innerText = '+' + carCost + '¥';
+    updateTotalCost();
 });
 
 
@@ -153,12 +178,12 @@ function updateDistance() {
     }
 
     distanceCost = distance * distanceCostPerKm;
-    document.getElementById('distance').innerText = 'Đang chọn: ' + locationName + ', Khoảng cách ước tính: ' + distance + 'Km';
+    document.getElementById('distance').innerText = 'Đang chọn: ' + locationName + ', Khoảng cách hỗ trợ tối đa: ' + distance + 'Km';
     document.getElementById('cost').innerText ='+' + distanceCost + '¥';
     updateTotalCost();
 }
 
 function updateTotalCost() {
-    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost;
+    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost;
     document.getElementById('totalCost').innerHTML = 'Tổng cước phí: <strong>' + totalCost + '¥</strong>';
 }

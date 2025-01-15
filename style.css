@@ -80,6 +80,11 @@ select, input[type="checkbox"] {
     color: #35424a;
 }
 
+.required {
+    color: red;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 10px;

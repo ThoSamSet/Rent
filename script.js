@@ -17,7 +17,7 @@ document.getElementById('car').addEventListener('change', function() {
     
     switch (this.value) {
         case 'RAV4':
-            carChoice = 'RAV4 Hibrid (đang bảo dưỡng)';
+            carChoice = 'RAV4 Adventure (đang bảo dưỡng)';
             carCost = COST_RAV4;
             break;
         case 'sienta':

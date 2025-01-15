@@ -56,6 +56,12 @@ select, input[type="checkbox"] {
     border-radius: 4px;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
 .checkbox-container {
     display: flex;
     flex-direction: column; /* Sắp xếp các checkbox theo cột */
@@ -83,6 +89,10 @@ select, input[type="checkbox"] {
 .required {
     color: red;
     font-weight: bold;
+}
+
+.disabled-option {
+    color: gray;
 }
 
 @media (max-width: 768px) {

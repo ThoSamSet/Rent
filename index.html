@@ -33,7 +33,7 @@
                     <label for="car"><h3>Loại xe</h3></label>
                     <select id="car">
                         <option value="" selected disabled>Chọn loại xe</option>
-                        <option value="RAV4" disabled>RAV4 Adventure (đang bảo dưỡng)</option>
+                        <option value="RAV4" disabled>RAV4 Adventure &lt;đang bảo dưỡng&gt;</option>
                         <option value="sienta">Sienta (Times rental car)</option>
                     </select>
                     <div id="carChoice"></div>
@@ -84,12 +84,12 @@
             <section class="block">
                 <h2>Chọn vật dụng muốn mượn</h2>
                 <div class="checkbox-container">
-                    <label><input type="checkbox" id="tent" name="equipment" value="tent"> Lều size 4 người x1 (miễn phí)</label>
-                    <label><input type="checkbox" id="table" name="equipment" value="table"> Bàn x1 + ghế x4 (5000¥)</label>
-                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp củi x1 + bó củi x1 (5000¥)</label>
-                    <label><input type="checkbox" id="bepgas" name="equipment" value="bepgas"> Bếp gas x1 + bình gas x1 (5000¥)</label>
-                    <label><input type="checkbox" id="projector" name="equipment" value="projector"> Máy chiếu x1 (5000¥)</label>
-                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera X-T5 x1 + Lens XF35mm f1.4 x1 (miễn phí)</label>
+                    <label class="disabled-option"><input type="checkbox" id="projector" name="equipment" value="projector" disabled> Máy chiếu x1 (5000¥) &lt;Tạm dừng dịch vụ&gt;</T></label>
+                    <hr>
+                    <label><input type="checkbox" id="tent" name="equipment" value="tent"> Lều size 4 người x1 (5000¥)</label>
+                    <label><input type="checkbox" id="table" name="equipment" value="table"> Bàn x1 + ghế x4 (miễn phí)</label>
+                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp nướng (miễn phí)</label>
+                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera X-T5 + Lens XF35mm f1.4 (5000¥)</label>
                 </div>
                 <div id="equipmentChoice"></div>
                 <div id="equipmentCostSTR"></div>

@@ -5,6 +5,7 @@ var highwayCost = 0;
 var campingChoiceCost = 0;
 var equipmentCost = 0;
 var carCost = 0;
+var rentalTimeCost = 0;
 var distanceCostPerKm = 25;
 
 var COST_RAV4 = 10000;
@@ -34,6 +35,31 @@ document.getElementById('car').addEventListener('change', function() {
     }
     document.getElementById('carChoice').innerText = 'Đang chọn: ' + carChoice;
     document.getElementById('carChoiceCostSTR').innerText = '+' + carCost + '¥';
+    updateTotalCost();
+});
+
+document.getElementById('rentalTime').addEventListener('change', function() {
+    var rentalTimeChoice;
+    
+    switch (this.value) {
+        case 'day7':
+            rentalTimeChoice = 'Thứ 7';
+            rentalTimeCost = 0;
+            break;
+        case 'day8':
+            rentalTimeChoice = 'Chủ nhật';
+            rentalTimeCost = 1000;
+            break;
+        case 'overnight':
+            rentalTimeChoice = 'Ở lại qua đêm';
+            rentalTimeCost = 5000;
+            break;
+        default:
+            rentalTimeChoice = '';
+            rentalTimeCost = 0;
+    }
+    document.getElementById('rentalTimeChoice').innerText = 'Đang chọn: ' + rentalTimeChoice;
+    document.getElementById('rentalTimeChoiceCostSTR').innerText = '+' + rentalTimeCost + '¥';
     updateTotalCost();
 });
 
@@ -188,6 +214,6 @@ function updateDistance() {
 }
 
 function updateTotalCost() {
-    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost;
+    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost + rentalTimeCost;
     document.getElementById('totalCost').innerHTML = 'Tổng cước phí: <strong>' + totalCost + '¥</strong>';
 }

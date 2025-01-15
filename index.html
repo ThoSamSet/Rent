@@ -45,6 +45,18 @@
             <section class="block">
                 <h2>Thông tin hành trình <span class="required">*</span></h2>
                 <div class="form-group">
+                    <label for="rentalTime"><h3>Thời gian thuê</h3></label>
+                    <select id="rentalTime">
+                        <option value="" selected disabled>Chọn thời gian thuê</option>
+                        <option value="overnight" disabled>Qua đêm (Tạm dừng dịch vụ)</option>
+                        <option value="day7">Trong ngày (xuất phát thứ 7)</option>
+                        <option value="day8">Trong ngày (xuất phát chủ nhật)</option>
+                    </select>
+                    <div id="rentalTimeChoice"></div>
+                    <div id="rentalTimeChoiceCostSTR"></div>
+                </div>
+                
+                <div class="form-group">
                     <label for="camping"><h3>Địa điểm cắm trại</h3></label>
                     <select id="camping">
                         <option value="" selected disabled>Chọn điểm đến</option>

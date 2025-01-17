@@ -221,62 +221,34 @@ function updateDistance() {
     document.getElementById('distance').innerText = `Đang chọn: ${locationName}, Khoảng cách hỗ trợ tối đa: ${distance}Km`;
     document.getElementById('cost').innerText = `+${distanceCost}¥`;
     updateTotalCost();
-}
+};
 
 function updateTotalCost() {
     var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost + rentalTimeCost;
     document.getElementById('totalCost').innerHTML = 'Tổng cước phí: <strong>' + totalCost + '¥</strong>';
-}
+};
 
 // Update equipment costs in HTML
+const TEXT_FREE = '(Miễn phí)';
 
-if (COST_EQUIPMENT_TENT <= 0) {
-    document.getElementById('tentCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('tentCost').innerText = '+' + COST_EQUIPMENT_TENT + '¥';
+function ReplaceText(_text) {
+    return '(+' + _text + '¥)';
 }
 
-if (COST_EQUIPMENT_TABLE <= 0) {
-    document.getElementById('tableCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('tableCost').innerText = '+' + COST_EQUIPMENT_TABLE + '¥';
-}
-
-if (COST_EQUIPMENT_BEP <= 0) {
-    document.getElementById('bepCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('bepCost').innerText = '+' + COST_EQUIPMENT_BEP + '¥';
+function updateCost(elementId, cost) {
+    const element = document.getElementById(elementId);
+    if (!element) return; // Đảm bảo phần tử tồn tại
+    element.innerText = cost > 0 ? ReplaceText(cost) : TEXT_FREE;
 }
 
-if (COST_EQUIPMENT_BEPGAS <= 0) {
-    document.getElementById('bepgasCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('bepgasCost').innerText = '+' + COST_EQUIPMENT_BEPGAS + '¥';
-}
+// Cập nhật chi phí cho từng thiết bị
+updateCost('tentCost', COST_EQUIPMENT_TENT);
+updateCost('tableCost', COST_EQUIPMENT_TABLE);
+updateCost('bepCost', COST_EQUIPMENT_BEP);
+updateCost('bepgasCost', COST_EQUIPMENT_BEPGAS);
+updateCost('projectorCost', COST_EQUIPMENT_PROJECTOR);
+updateCost('cameraCost', COST_EQUIPMENT_CAMERA);
+updateCost('switchCost', COST_EQUIPMENT_SWITCH);
 
-if (COST_EQUIPMENT_PROJECTOR <= 0) {
-    document.getElementById('projectorCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('projectorCost').innerText = '+' + COST_EQUIPMENT_PROJECTOR + '¥';
-}
-
-if (COST_EQUIPMENT_CAMERA <= 0) {
-    document.getElementById('cameraCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('cameraCost').innerText = '+' + COST_EQUIPMENT_CAMERA + '¥';
-}
-
-if (COST_EQUIPMENT_SWITCH <= 0) {
-    document.getElementById('switchCost').innerText = 'Miễn phí';
-}
-else {
-    document.getElementById('switchCost').innerText = '+' + COST_EQUIPMENT_SWITCH + '¥';
-}
 
 

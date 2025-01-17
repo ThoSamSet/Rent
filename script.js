@@ -11,6 +11,35 @@ var distanceCostPerKm = 25;
 var COST_RAV4 = 10000;
 var COST_SIENTA = 15000;
 
+var COST_DAY7 = 0;
+var COST_DAY8 = 1000;
+var COST_OVERNIGHT = 5000;
+
+var COST_FUJI = 7000;
+var COST_SAITAMA = 5000;
+
+var COST_HIGHTWAY_ONEWAY = 5000;
+var COST_HIGHTWAY_ROUNDTRIP = 10000;
+
+const distanceTable = {
+    fuji: {
+        tokyo: 300,
+        saitama: 350,
+        kanagawa: 250
+    },
+    saitama: {
+        tokyo: 250,
+        saitama: 150,
+        kanagawa: 350
+    }
+};
+
+const locationNames = {
+    tokyo: 'Tokyo',
+    saitama: 'Saitama',
+    kanagawa: 'Kanagawa'
+};
+
 document.getElementById('lastUpdatedDate').innerText = 'Cập nhật lần cuối: ' + lastUpdatedDate;
 
 document.getElementById('location').addEventListener('change', function() {
@@ -22,7 +51,7 @@ document.getElementById('car').addEventListener('change', function() {
     
     switch (this.value) {
         case 'RAV4':
-            carChoice = 'RAV4 Adventure (đang bảo dưỡng)';
+            carChoice = 'RAV4 Adventure <đang bảo dưỡng>';
             carCost = COST_RAV4;
             break;
         case 'sienta':
@@ -44,15 +73,15 @@ document.getElementById('rentalTime').addEventListener('change', function() {
     switch (this.value) {
         case 'day7':
             rentalTimeChoice = 'Thứ 7';
-            rentalTimeCost = 0;
+            rentalTimeCost = COST_DAY7;
             break;
         case 'day8':
             rentalTimeChoice = 'Chủ nhật';
-            rentalTimeCost = 1000;
+            rentalTimeCost = COST_DAY8;
             break;
         case 'overnight':
             rentalTimeChoice = 'Ở lại qua đêm';
-            rentalTimeCost = 5000;
+            rentalTimeCost = COST_OVERNIGHT;
             break;
         default:
             rentalTimeChoice = '';
@@ -70,11 +99,11 @@ document.getElementById('camping').addEventListener('change', function() {
     switch (this.value) {
         case 'fuji':
             campingChoice = 'Quanh chân núi Phú Sĩ';
-            campingChoiceCost = 10000;
+            campingChoiceCost = COST_FUJI;
             break;
         case 'saitama':
             campingChoice = 'Bãi Camping tỉnh Saitama';
-            campingChoiceCost = 9000;
+            campingChoiceCost = COST_SAITAMA;
             break;
         default:
             campingChoice = '';
@@ -95,13 +124,13 @@ document.getElementById('highway').addEventListener('change', function() {
     switch (this.value) {
         case 'yes1':
             choice = 'Có (một chiều)';
-            costStr = '+5000¥';
-            highwayCost = 5000;
+            costStr = '+' + COST_HIGHTWAY_ONEWAY + '¥';
+            highwayCost = COST_HIGHTWAY_ONEWAY;
             break;
         case 'yes2':
             choice = 'Có (hai chiều)';
-            costStr = '+10000¥';
-            highwayCost = 10000;
+            costStr = '+' + COST_HIGHTWAY_ROUNDTRIP + '¥';
+            highwayCost = COST_HIGHTWAY_ROUNDTRIP;
             break;
         case 'no':
             choice = 'Không';
@@ -170,50 +199,21 @@ function updateDistance() {
     var location = document.getElementById('location').value;
     var camping = document.getElementById('camping').value;
     var distance;
-    
     var locationName = 'Chưa chọn';
 
-    if (camping === 'fuji') {
-        switch (location) {
-            case 'tokyo':
-                distance = 300;
-                locationName = 'Tokyo';
-                break;
-            case 'saitama':
-                distance = 350;
-                locationName = 'Saitama';
-                break;
-            case 'kanagawa':
-                distance = 250;
-                locationName = 'Kanagawa';
-                break;
-            default:
-                distance = 0;
-        }
-    } else if (camping === 'saitama') {
-        switch (location) {
-            case 'tokyo':
-                distance = 250;
-                locationName = 'Tokyo';
-                break;
-            case 'saitama':
-                distance = 150;
-                locationName = 'Saitama';
-                break;
-            case 'kanagawa':
-                distance = 350;
-                locationName = 'Kanagawa';
-                break;
-            default:
-                distance = 0;
-        }
-    } else {
-        distance = 0;
+    
+
+    // Kiểm tra và tra cứu trong bảng
+    if (distanceTable[camping] && distanceTable[camping][location] !== undefined) {
+        distance = distanceTable[camping][location];
+        distanceCost = distance * distanceCostPerKm;
+        locationName = locationNames[location] || 'Chưa chọn';
     }
 
-    distanceCost = distance * distanceCostPerKm;
-    document.getElementById('distance').innerText = 'Đang chọn: ' + locationName + ', Khoảng cách hỗ trợ tối đa: ' + distance + 'Km';
-    document.getElementById('cost').innerText ='+' + distanceCost + '¥';
+    distanceCost = distanceCost || 0;
+
+    document.getElementById('distance').innerText = `Đang chọn: ${locationName}, Khoảng cách hỗ trợ tối đa: ${distance}Km`;
+    document.getElementById('cost').innerText = `+${distanceCost}¥`;
     updateTotalCost();
 }
 

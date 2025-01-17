@@ -69,7 +69,11 @@ span {
     display: inline;
 }
 
-
+#totalCost {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0f1011;
+}
 
 
 .checkbox-container {

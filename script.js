@@ -150,6 +150,10 @@ document.querySelectorAll('input[name="equipment"]').forEach(function(elem) {
                     equipmentStr.push('Máy ảnh');
                     equipmentCost += 0;
                     break;
+                case 'switch':
+                    equipmentStr.push('Switch');
+                    equipmentCost += 0;
+                    break;
                 default:
                     equipmentStr.push('');
                     equipmentCost += 0;

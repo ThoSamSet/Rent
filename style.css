@@ -62,6 +62,16 @@ hr {
     margin: 20px 0;
 }
 
+span {
+    color: #8d8d8d;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+
+
+
 .checkbox-container {
     display: flex;
     flex-direction: column; /* Sắp xếp các checkbox theo cột */
@@ -71,7 +81,7 @@ hr {
 .checkbox-container label {
     display: flex;
     align-items: center; /* Căn giữa checkbox và văn bản theo chiều dọc */
-    gap: 8px; /* Khoảng cách giữa checkbox và văn bản */
+    /* gap: 8px;  */
 }
 
 .checkbox-container input[type="checkbox"] {

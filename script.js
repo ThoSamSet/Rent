@@ -21,6 +21,14 @@ var COST_SAITAMA = 5000;
 var COST_HIGHTWAY_ONEWAY = 5000;
 var COST_HIGHTWAY_ROUNDTRIP = 10000;
 
+var COST_EQUIPMENT_TENT = 0;
+var COST_EQUIPMENT_TABLE = 5000;
+var COST_EQUIPMENT_BEP = 5000;
+var COST_EQUIPMENT_BEPGAS = 5000;
+var COST_EQUIPMENT_PROJECTOR = 5000;
+var COST_EQUIPMENT_CAMERA = 0;
+var COST_EQUIPMENT_SWITCH = 0;
+
 const distanceTable = {
     fuji: {
         tokyo: 300,
@@ -157,31 +165,31 @@ document.querySelectorAll('input[name="equipment"]').forEach(function(elem) {
             switch (checkedElem.value) {
                 case 'tent':
                     equipmentStr.push('Lều');
-                    equipmentCost += 0;
+                    equipmentCost += COST_EQUIPMENT_TENT;
                     break;
                 case 'table':
                     equipmentStr.push('Bàn ghế');
-                    equipmentCost += 5000;
+                    equipmentCost += COST_EQUIPMENT_TABLE;
                     break;
                 case 'bep':
                     equipmentStr.push('Bếp củi');
-                    equipmentCost += 5000;
+                    equipmentCost += COST_EQUIPMENT_BEP;
                     break;
                 case 'bepgas':
                     equipmentStr.push('Bếp gas');
-                    equipmentCost += 5000;
+                    equipmentCost += COST_EQUIPMENT_BEPGAS;
                     break;
                 case 'projector':
                     equipmentStr.push('Máy chiếu');
-                    equipmentCost += 5000;
+                    equipmentCost += COST_EQUIPMENT_PROJECTOR;
                     break;
                 case 'camera':
                     equipmentStr.push('Máy ảnh');
-                    equipmentCost += 0;
+                    equipmentCost += COST_EQUIPMENT_CAMERA;
                     break;
                 case 'switch':
                     equipmentStr.push('Switch');
-                    equipmentCost += 0;
+                    equipmentCost += COST_EQUIPMENT_SWITCH;
                     break;
                 default:
                     equipmentStr.push('');
@@ -201,8 +209,6 @@ function updateDistance() {
     var distance;
     var locationName = 'Chưa chọn';
 
-    
-
     // Kiểm tra và tra cứu trong bảng
     if (distanceTable[camping] && distanceTable[camping][location] !== undefined) {
         distance = distanceTable[camping][location];
@@ -221,3 +227,56 @@ function updateTotalCost() {
     var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost + rentalTimeCost;
     document.getElementById('totalCost').innerHTML = 'Tổng cước phí: <strong>' + totalCost + '¥</strong>';
 }
+
+// Update equipment costs in HTML
+
+if (COST_EQUIPMENT_TENT <= 0) {
+    document.getElementById('tentCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('tentCost').innerText = '+' + COST_EQUIPMENT_TENT + '¥';
+}
+
+if (COST_EQUIPMENT_TABLE <= 0) {
+    document.getElementById('tableCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('tableCost').innerText = '+' + COST_EQUIPMENT_TABLE + '¥';
+}
+
+if (COST_EQUIPMENT_BEP <= 0) {
+    document.getElementById('bepCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('bepCost').innerText = '+' + COST_EQUIPMENT_BEP + '¥';
+}
+
+if (COST_EQUIPMENT_BEPGAS <= 0) {
+    document.getElementById('bepgasCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('bepgasCost').innerText = '+' + COST_EQUIPMENT_BEPGAS + '¥';
+}
+
+if (COST_EQUIPMENT_PROJECTOR <= 0) {
+    document.getElementById('projectorCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('projectorCost').innerText = '+' + COST_EQUIPMENT_PROJECTOR + '¥';
+}
+
+if (COST_EQUIPMENT_CAMERA <= 0) {
+    document.getElementById('cameraCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('cameraCost').innerText = '+' + COST_EQUIPMENT_CAMERA + '¥';
+}
+
+if (COST_EQUIPMENT_SWITCH <= 0) {
+    document.getElementById('switchCost').innerText = 'Miễn phí';
+}
+else {
+    document.getElementById('switchCost').innerText = '+' + COST_EQUIPMENT_SWITCH + '¥';
+}
+
+

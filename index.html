@@ -11,7 +11,7 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>CAMP Nhà Thỏ<br>Công cụ tính giá cước</h1>
+            <h1>CAMP Nhà Thỏ<br>Công cụ tham khảo giá cước</h1>
             <h5 id="lastUpdatedDate"></h5>
         </header>
         
@@ -20,10 +20,12 @@
             <!-- Công cụ tính giá cước -->
             <section class="block">
                 <h2>Công cụ tính giá cước thuê dịch vụ</h2>
-                <p>Hỗ trợ tối đa nhóm 4 người (đã bao gồm trẻ em)</p>
+                <p>・Thông tin xe và địa điểm là bắt buộc</p>
+                <p>・Hỗ trợ tối đa nhóm 4 người (đã bao gồm trẻ em)</p>
+                <br>
                 <a href="Notes.html"> Chi tiết xin vui lòng tham khảo những lưu ý khi sử dụng dịch vụ tại đây</a>
                 <div class="result">
-                    <span id="totalCost">Tổng cước phí ước tính: <strong>0¥</strong></span>
+                    <span id="totalCost"><br>Tổng cước phí ước tính: <strong>0¥</strong></span>
                 </div>
             </section>
 
@@ -34,8 +36,8 @@
                     <label for="car"><h3>Bạn muốn dùng loại xe nào?</h3></label>
                     <select id="car">
                         <option value="" selected disabled>Chọn loại xe</option>
-                        <option value="RAV4" disabled>RAV4 Adventure &lt;đang bảo dưỡng&gt;</option>
-                        <option value="sienta">Sienta (Times rental car)</option>
+                        <option value="RAV4">EV SUV</option>
+                        <option value="sienta" disabled>Sienta (Times) &lt;Tạm dừng dịch vụ&gt;</option>
                     </select>
                     <div id="carChoice"></div>
                     <div id="carChoiceCostSTR"></div>
@@ -46,9 +48,9 @@
             <section class="block">
                 <h2>Thông tin hành trình <span class="required">*</span></h2>
                 <div class="form-group">
-                    <label for="rentalTime"><h3>Bạn hãy chọn thời gian thuê</h3></label>
+                    <label for="rentalTime"><h3>Bạn hãy chọn thời gian</h3></label>
                     <select id="rentalTime">
-                        <option value="" selected disabled>Chọn thời gian thuê</option>
+                        <option value="" selected disabled>Chọn thời gian</option>
                         <option value="overnight" disabled>Qua đêm &lt;Tạm dừng dịch vụ&gt;</option>
                         <option value="day7">Trong ngày (xuất phát thứ 7)</option>
                         <option value="day8">Trong ngày (xuất phát chủ nhật)</option>
@@ -58,11 +60,11 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="camping"><h3>Bạn muốn cắm trại ở khu vực nào?</h3></label>
+                    <label for="camping"><h3>Bạn muốn đi chơi ở khu vực nào?</h3></label>
                     <select id="camping">
                         <option value="" selected disabled>Chọn điểm đến</option>
                         <option value="fuji">Quanh chân núi Phú Sĩ</option>
-                        <option value="saitama">Saitama</option>
+                        <option value="saitama" disabled>Saitama</option>
                     </select>
                     <div id="campingChoice"></div>
                     <div id="campingChoiceCostSTR"></div>
@@ -80,7 +82,7 @@
                     <div id="cost"></div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="highway"><h3>Bạn có muốn dùng cao tốc không?</h3></label>
                     <select id="highway">
                         <option value="" selected disabled>Chọn đi cao tốc</option>
@@ -90,18 +92,19 @@
                     </select>
                     <div id="highwayChoice"></div>
                     <div id="highwayChoiceCostSTR"></div>
-                </div>
+                </div> -->
             </section>
 
             <!-- Vật dụng -->
             <section class="block">
                 <h2>Chọn vật dụng bạn muốn mượn</h2>
                 <div class="checkbox-container">
-                    <label><input type="checkbox" id="tent" name="equipment" value="tent"> Lều size 4 người x1 <span id="tentCost"></span></label>
+                    
+                    <label><input type="checkbox" id="tarp" name="equipment" value="tarp"> Lều tarp size 4 người x1 <span id="tarpCost"></span></label>
                     <label><input type="checkbox" id="table" name="equipment" value="table"> Bàn x1 + ghế x4 <span id="tableCost"></span></label>
-                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp củi x1 + bó củi x1 <span id="bepCost"></span></label>
-                    <label><input type="checkbox" id="bepgas" name="equipment" value="bepgas"> Bếp gas x1 + bình gas x1 <span id="bepgasCost"></span></label>
-                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera X-T5 x1 <br> + Lens XF35mm f1.4 x1 <span id="cameraCost"></span></label>
+                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp củi x1 + x1 bó củi<span id="bepCost"></span></label>
+                    <label><input type="checkbox" id="bepgas" name="equipment" value="bepgas"> Bếp gas x1 + x1 bình gas<span id="bepgasCost"></span></label>
+                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera Fujifilm X-T5 x1 <br> + Lens XF35mm f1.4 x1 <span id="cameraCost"></span></label>
                     <label><input type="checkbox" id="switch" name="equipment" value="switch"> Nintendo Switch x1 <span id="switchCost"></span></label>
                     
                 </div>
@@ -111,6 +114,7 @@
                     <hr>
                     <h3>Các vật dụng đang tạm dừng cung cấp dịch vụ:</h3>
                     <label class="disabled-option"><input type="checkbox" id="projector" name="equipment" value="projector" disabled> Máy chiếu x1 <span id="projectorCost"></span></label>
+                    <label class="disabled-option"><input type="checkbox" id="tent" name="equipment" value="tent" disabled> Lều tent size 4 người x1 <span id="tentCost"></span></label>
                 </div>
                 
                     

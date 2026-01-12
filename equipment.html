@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dụng cụ - CAMP Nhà Thỏ</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <style>
+        .equipment-hero {
+            margin-top: 60px;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .hero-wrapper {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 21px;
+            color: #86868b;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .hero-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .equipment-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .content-section {
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 0;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .category-content {
+            padding: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-icon {
+            font-size: 32px;
+        }
+
+        .category-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .category-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-items li {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .category-items li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0071e3;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .category-items li strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .principles-section {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 60px 50px;
+            border-radius: 30px;
+            margin: 80px 0;
+            border: 1px solid #e5e5e7;
+        }
+
+        .principles-section h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #1d1d1f;
+            text-align: center;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .principle-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .principle-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .what-to-bring {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 80px 0;
+            align-items: center;
+        }
+
+        .what-to-bring-content {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid #e5e5e7;
+        }
+
+        .what-to-bring h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1d1d1f;
+        }
+
+        .what-to-bring-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .what-to-bring-list li {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .what-to-bring-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0071e3;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .what-to-bring-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .what-to-bring-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            color: white;
+            padding: 60px 50px;
+            border-radius: 30px;
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .highlight-box p {
+            font-size: 22px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .highlight-box strong {
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .hero-wrapper,
+            .what-to-bring {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .category-grid,
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .principles-section {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .category-content,
+            .what-to-bring-content,
+            .highlight-box {
+                padding: 30px 20px;
+            }
+
+            .category-items li,
+            .principle-text,
+            .what-to-bring-list li {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="equipment-hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>Dụng cụ camping tại Camp Nhà Thỏ</h1>
+                <p>
+                    Camp Nhà Thỏ chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
+                    giúp bạn không phải mua sắm hay mang vác cồng kềnh.
+                </p>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="images/equipment-hero.jpg" alt="Dụng cụ camping">
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Content -->
+    <section class="section">
+        <div class="equipment-content">
+            <!-- Categories Section -->
+            <div class="content-section">
+                <h2 class="section-title">Danh mục dụng cụ hiện có</h2>
+                
+                <div class="category-grid">
+                    <!-- Lều & che chắn -->
+                    <div class="category-card">
+                        <img src="images/equipment-tent.jpg" alt="Lều & che chắn" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">⛺</div>
+                                <div class="category-name">Lều & che chắn</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Lều <strong>2 room</strong> (2 phòng: ngủ & sinh hoạt)</li>
+                                <li>Tarp che nắng mưa</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ngủ nghỉ -->
+                    <div class="category-card">
+                        <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">🛏️</div>
+                                <div class="category-name">Ngủ nghỉ</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Túi ngủ</li>
+                                <li>Đệm cách nhiệt</li>
+                                <li>Chăn theo mùa</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sinh hoạt -->
+                    <div class="category-card">
+                        <img src="images/equipment-table.jpg" alt="Sinh hoạt" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">🪑</div>
+                                <div class="category-name">Sinh hoạt</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Bàn camping</li>
+                                <li>Ghế xếp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Nấu ăn -->
+                    <div class="category-card">
+                        <img src="images/equipment-cooking.jpg" alt="Nấu ăn" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">🔥</div>
+                                <div class="category-name">Nấu ăn</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Bếp gas</li>
+                                <li>Bếp củi</li>
+                                <li>Bộ đồ nấu ăn (nồi, chảo, dao, thớt, bát đũa…)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ánh sáng, điện & sưởi ấm -->
+                    <div class="category-card">
+                        <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">💡</div>
+                                <div class="category-name">Ánh sáng, điện & sưởi ấm</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Đèn trang trí</li>
+                                <li><strong>Bình điện dung tích lớn</strong> (sạc thiết bị, thắp sáng, máy chiếu…)</li>
+                                <li><strong>Lò sưởi dầu</strong> (dùng mùa lạnh)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Giải trí & trải nghiệm -->
+                    <div class="category-card">
+                        <img src="images/equipment-entertainment.jpg" alt="Giải trí & trải nghiệm" class="category-image">
+                        <div class="category-content">
+                            <div class="category-header">
+                                <div class="category-icon">🎮</div>
+                                <div class="category-name">Giải trí & trải nghiệm</div>
+                            </div>
+                            <ul class="category-items">
+                                <li>Máy ảnh <strong>Fujifilm X-T5</strong> (chụp kỷ niệm)</li>
+                                <li><strong>Nintendo Switch</strong></li>
+                                <li><strong>Máy chiếu Full HD</strong> (xem phim, chill buổi tối)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Principles Section -->
+            <div class="principles-section">
+                <h2>Nguyên tắc sử dụng</h2>
+                <div class="principles-grid">
+                    <div class="principle-item">
+                        <div class="principle-icon">✔️</div>
+                        <div class="principle-text">Dụng cụ được vệ sinh sạch sẽ sau mỗi chuyến</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">✔️</div>
+                        <div class="principle-text">Kiểm tra kỹ trước khi bàn giao</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">✔️</div>
+                        <div class="principle-text">Hướng dẫn sử dụng chi tiết tại điểm camping</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">✔️</div>
+                        <div class="principle-text">An toàn – dễ dùng cho người mới</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What to Bring Section -->
+            <div class="what-to-bring">
+                <div class="what-to-bring-content">
+                    <h3>Bạn cần mang theo gì?</h3>
+                    <p style="font-size: 19px; color: #1d1d1f; margin-bottom: 25px;">
+                        Bạn chỉ cần chuẩn bị:
+                    </p>
+                    <ul class="what-to-bring-list">
+                        <li>Quần áo cá nhân</li>
+                        <li>Đồ ăn / thức uống yêu thích</li>
+                        <li>Tinh thần thư giãn 😌</li>
+                    </ul>
+                    <p style="font-size: 19px; color: #1d1d1f; margin-top: 25px; font-weight: 500;">
+                        Mọi thứ còn lại, Camp Nhà Thỏ đã lo sẵn.
+                    </p>
+                </div>
+                <div class="what-to-bring-image">
+                    <img src="images/equipment-bring.jpg" alt="Bạn cần mang theo gì">
+                </div>
+            </div>
+
+            <!-- Highlight Box -->
+            <div class="highlight-box">
+                <p>
+                    📩 Nếu bạn muốn sử dụng thêm thiết bị giải trí<br>
+                    (máy chiếu, Switch, chụp ảnh…),<br>
+                    hãy báo trước để mình chuẩn bị tốt nhất cho chuyến đi nhé!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta">
+        <div class="container">
+            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="section-text">Liên hệ chúng mình để biết thêm chi tiết</p>
+            <a href="contact.html" class="btn-primary btn-large">Liên hệ ngay</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

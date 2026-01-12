@@ -75,6 +75,25 @@ span {
     color: #0f1011;
 }
 
+.sticky-total-cost {
+    position: sticky;
+    top: 0;
+    background: #35424a;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+}
+
+.sticky-total-cost strong {
+    font-size: 1.3em;
+    color: #fff;
+}
+
 
 .checkbox-container {
     display: flex;

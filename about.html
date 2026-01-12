@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về CAMP Nhà Thỏ - CAMP Nhà Thỏ</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <style>
+        .about-hero {
+            margin-top: 60px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .hero-wrapper {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 21px;
+            color: #86868b;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .hero-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .content-section {
+            margin-bottom: 100px;
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-with-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .section-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-text-content h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-text-content p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+        }
+
+        .section-text-content strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f5f5f7;
+            border-radius: 15px;
+        }
+
+        .service-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .service-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .target-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f5f5f7;
+            border-radius: 15px;
+        }
+
+        .target-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .target-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            text-align: center;
+            border: 1px solid #e5e5e7;
+        }
+
+        .highlight-card p {
+            font-size: 22px;
+            line-height: 1.7;
+            color: #1d1d1f;
+            margin: 0;
+        }
+
+        .highlight-card strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .values-section {
+            background: #f5f5f7;
+            padding: 80px 20px;
+            border-radius: 30px;
+            margin: 80px 0;
+        }
+
+        .values-title {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-card .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .value-card .text {
+            font-size: 19px;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .final-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+            border-radius: 25px;
+            margin: 80px 0;
+        }
+
+        .final-message p {
+            font-size: 24px;
+            line-height: 1.7;
+            color: #1d1d1f;
+            margin: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-message strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        @media (max-width: 968px) {
+            .hero-wrapper,
+            .section-with-image {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .section-text-content h2 {
+                font-size: 28px;
+            }
+
+            .service-grid,
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-card {
+                padding: 30px 20px;
+            }
+
+            .highlight-card p {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>Về Camp Nhà Thỏ</h1>
+                <p>
+                    Mình tạo ra Camp Nhà Thỏ vì muốn mọi người có thể dễ dàng trải nghiệm cắm trại mà không cần phải đầu tư quá nhiều dụng cụ hay chuẩn bị phức tạp.
+                </p>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="images/about-hero.jpg" alt="Camp Nhà Thỏ">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="section">
+        <div class="about-content">
+            <!-- First Section -->
+            <div class="content-section">
+                <div class="section-with-image">
+                    <div class="section-image">
+                        <img src="images/about-1.jpg" alt="Chia sẻ đồ camping">
+                    </div>
+                    <div class="section-text-content">
+                        <h2>Không phải cho thuê, mà là chia sẻ</h2>
+                        <p>
+                            Camp Nhà Thỏ không hoạt động như dịch vụ cho thuê thông thường. Mình làm theo mô hình <strong>chia sẻ đồ camping</strong> và hỗ trợ trọn gói cho chuyến đi của bạn.
+                        </p>
+                        <p>
+                            Mình sẽ trực tiếp đưa đón, chuẩn bị đồ và hỗ trợ setup. Bạn chỉ cần tận hưởng, còn lại cứ để mình lo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="content-section">
+                <div class="section-text-content">
+                    <h2>Dịch vụ của Camp Nhà Thỏ</h2>
+                    <p>Mình sẽ hỗ trợ bạn từ A đến Z:</p>
+                </div>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <div class="service-icon">⛺</div>
+                        <div class="service-text">Chia sẻ đầy đủ đồ camping cần thiết</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🚗</div>
+                        <div class="service-text">Đưa đón theo lịch hẹn</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🏕️</div>
+                        <div class="service-text">Hỗ trợ setup lều và khu vực sinh hoạt</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">📍</div>
+                        <div class="service-text">Tư vấn địa điểm phù hợp</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">📸</div>
+                        <div class="service-text">Hỗ trợ chụp ảnh kỷ niệm (nếu bạn cần)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlight Card -->
+            <div class="highlight-card">
+                <p>
+                    Bạn và nhóm của bạn sẽ <strong>đi riêng, không ghép khách</strong> với bất kỳ ai khác.<br>
+                    Lịch trình linh hoạt, không gò bó, đi theo nhịp của bạn.
+                </p>
+            </div>
+
+            <!-- Target Audience Section -->
+            <div class="content-section">
+                <div class="section-with-image">
+                    <div class="section-text-content">
+                        <h2>Camp Nhà Thỏ dành cho ai?</h2>
+                        <p>Nếu bạn thuộc một trong những trường hợp này, Camp Nhà Thỏ sẽ phù hợp với bạn:</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="images/about-2.jpg" alt="Người dùng Camp Nhà Thỏ">
+                    </div>
+                </div>
+                <div class="target-grid">
+                    <div class="target-item">
+                        <div class="target-icon">🌿</div>
+                        <div class="target-text">Người muốn thử camping lần đầu</div>
+                    </div>
+                    <div class="target-item">
+                        <div class="target-icon">👥</div>
+                        <div class="target-text">Nhóm bạn nhỏ, couple, gia đình</div>
+                    </div>
+                    <div class="target-item">
+                        <div class="target-icon">⏰</div>
+                        <div class="target-text">Người bận rộn, không có nhiều thời gian chuẩn bị</div>
+                    </div>
+                    <div class="target-item">
+                        <div class="target-icon">🌲</div>
+                        <div class="target-text">Người thích thiên nhiên nhưng thiếu dụng cụ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Values Section -->
+            <div class="values-section">
+                <h2 class="values-title">Giá trị Camp Nhà Thỏ hướng tới</h2>
+                <p style="text-align: center; font-size: 19px; color: #86868b; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Mình mong muốn tạo ra những chuyến đi:
+                </p>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="icon">✨</div>
+                        <div class="text">Thoải mái</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">🤝</div>
+                        <div class="text">Gần gũi</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">😌</div>
+                        <div class="text">Không áp lực</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">🌅</div>
+                        <div class="text">Đúng tinh thần "đi để nghỉ ngơi"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Message -->
+            <div class="final-message">
+                <p>
+                    Camp Nhà Thỏ không chỉ là dịch vụ,<br>
+                    mà là <strong>người bạn đồng hành</strong> trong mỗi chuyến đi của bạn.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta">
+        <div class="container">
+            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="section-text">Liên hệ chúng mình để biết thêm chi tiết</p>
+            <a href="contact.html" class="btn-primary btn-large">Liên hệ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

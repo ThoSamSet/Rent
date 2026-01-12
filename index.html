@@ -3,125 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage - CAMP Nhà Thỏ</title>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>CAMP Nhà Thỏ - Share đồ Camping</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1>CAMP Nhà Thỏ<br>Công cụ tham khảo giá cước</h1>
-            <h5 id="lastUpdatedDate"></h5>
-        </header>
-        
-        <!-- Main Content -->
-        <main class="content">
-            <!-- Công cụ tính giá cước -->
-            <section class="block">
-                <h2>Công cụ tính giá cước thuê dịch vụ</h2>
-                <p>・Thông tin xe và địa điểm là bắt buộc</p>
-                <p>・Hỗ trợ tối đa nhóm 4 người (đã bao gồm trẻ em)</p>
-                <br>
-                <a href="Notes.html"> Chi tiết xin vui lòng tham khảo những lưu ý khi sử dụng dịch vụ tại đây</a>
-                <div class="result">
-                    <span id="totalCost"><br>Tổng cước phí ước tính: <strong>0¥</strong></span>
-                </div>
-            </section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="nav-links">
+                <a href="#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="#gallery">Hình ảnh</a>
+                <a href="contact.html">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
 
-            <!-- Xe -->
-            <section class="block">
-                <h2>Thông tin xe <span class="required">*</span></h2>
-                <div class="form-group">
-                    <label for="car"><h3>Bạn muốn dùng loại xe nào?</h3></label>
-                    <select id="car">
-                        <option value="" selected disabled>Chọn loại xe</option>
-                        <option value="RAV4">EV SUV</option>
-                        <option value="sienta" disabled>Sienta (Times) &lt;Tạm dừng dịch vụ&gt;</option>
-                    </select>
-                    <div id="carChoice"></div>
-                    <div id="carChoiceCostSTR"></div>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Share đồ Camping</h1>
+            <p class="hero-subtitle">Cùng đi - Cùng chill</p>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero-camping.jpg" alt="Camping scene" id="heroImg">
+        </div>
+    </section>
 
-            <!-- Thông tin hành trình -->
-            <section class="block">
-                <h2>Thông tin hành trình <span class="required">*</span></h2>
-                <div class="form-group">
-                    <label for="rentalTime"><h3>Bạn hãy chọn thời gian</h3></label>
-                    <select id="rentalTime">
-                        <option value="" selected disabled>Chọn thời gian</option>
-                        <option value="overnight" disabled>Qua đêm &lt;Tạm dừng dịch vụ&gt;</option>
-                        <option value="day7">Trong ngày (xuất phát thứ 7)</option>
-                        <option value="day8">Trong ngày (xuất phát chủ nhật)</option>
-                    </select>
-                    <div id="rentalTimeChoice"></div>
-                    <div id="rentalTimeChoiceCostSTR"></div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Camp Nhà Thỏ</h2>
+            <p class="section-text" style="font-size: 24px; font-weight: 500; margin-bottom: 30px;">
+                Share đồ camping cho chuyến đi của bạn
+            </p>
+            <p class="section-text" style="font-size: 19px; margin-bottom: 40px;">
+                Camp Nhà Thỏ không phải dịch vụ cho thuê thông thường.<br>
+                Đây là nơi <strong>chia sẻ đồ camping</strong> dành cho những ai yêu thiên nhiên, muốn cắm trại nhưng chưa có đủ dụng cụ.
+            </p>
+            <p class="section-text" style="font-size: 19px; margin-bottom: 60px;">
+                Mình trực tiếp <strong>đưa đón, chuẩn bị đồ và hỗ trợ setup</strong> cho chuyến đi của bạn.<br>
+                Bạn chỉ cần tận hưởng, còn lại cứ để Camp Nhà Thỏ lo.
+            </p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Đi riêng – không ghép khách</h3>
+                    <p>Chuyến đi riêng tư, thoải mái theo nhịp của bạn</p>
                 </div>
-                
-                <div class="form-group">
-                    <label for="camping"><h3>Bạn muốn đi chơi ở khu vực nào?</h3></label>
-                    <select id="camping">
-                        <option value="" selected disabled>Chọn điểm đến</option>
-                        <option value="fuji">Quanh chân núi Phú Sĩ</option>
-                        <option value="saitama" disabled>Saitama</option>
-                    </select>
-                    <div id="campingChoice"></div>
-                    <div id="campingChoiceCostSTR"></div>
+                <div class="feature">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Có xe đưa đón</h3>
+                    <p>Mình trực tiếp đưa đón bạn đến điểm camping</p>
                 </div>
+                <div class="feature">
+                    <div class="feature-icon">⛺</div>
+                    <h3>Có lều, đồ camping sẵn</h3>
+                    <p>Chuẩn bị đầy đủ dụng cụ cho bạn</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📸</div>
+                    <h3>Hỗ trợ chụp ảnh kỷ niệm</h3>
+                    <p>Lưu giữ những khoảnh khắc đẹp của bạn</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Tự do ăn chơi, chill theo cách của bạn</h3>
+                    <p>Trải nghiệm camping theo phong cách riêng</p>
+                </div>
+            </div>
+            <p class="section-text" style="font-size: 19px; margin-top: 60px; font-style: italic; color: #86868b;">
+                Camp Nhà Thỏ mong muốn mang đến <strong>những chuyến đi thoải mái và chân thật</strong> –<br>
+                để bạn tận hưởng thiên nhiên theo nhịp của riêng mình.
+            </p>
+            <p class="section-text" style="font-size: 21px; margin-top: 40px; font-weight: 500; color: #1d1d1f;">
+                Share đồ – Đi riêng – Trải nghiệm
+            </p>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="about.html" class="btn-primary" style="display: inline-block;">Về CAMP Nhà Thỏ</a>
+            </div>
+        </div>
+    </section>
 
-                <div class="form-group">
-                    <label for="location"><h3>Vị trí xuất phát của bạn (ước tính)</h3></label>
-                    <select id="location">
-                        <option value="" selected disabled>Chọn địa điểm xuất phát</option>
-                        <option value="tokyo">Tokyo</option>
-                        <option value="saitama">Saitama</option>
-                        <option value="kanagawa">Kanagawa</option>
-                    </select>
-                    <div id="distance"></div>
-                    <div id="cost"></div>
+    <!-- Equipment Section -->
+    <section id="equipment" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Dụng cụ Camping</h2>
+            <p class="section-text">
+                Camp Nhà Thỏ chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
+                giúp bạn không phải mua sắm hay mang vác cồng kềnh.
+            </p>
+            <div class="equipment-preview">
+                <div class="equipment-preview-grid">
+                    <div class="equipment-preview-item">
+                        <div class="equipment-preview-image">
+                            <img src="images/equipment-tent.jpg" alt="Lều & che chắn">
+                        </div>
+                        <div class="equipment-icon">⛺</div>
+                        <h3>Lều & che chắn</h3>
+                        <p>Lều 2 room, tarp che nắng mưa</p>
+                    </div>
+                    <div class="equipment-preview-item">
+                        <div class="equipment-preview-image">
+                            <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ">
+                        </div>
+                        <div class="equipment-icon">🛏️</div>
+                        <h3>Ngủ nghỉ</h3>
+                        <p>Túi ngủ, đệm, chăn theo mùa</p>
+                    </div>
+                    <div class="equipment-preview-item">
+                        <div class="equipment-preview-image">
+                            <img src="images/equipment-cooking.jpg" alt="Nấu ăn">
+                        </div>
+                        <div class="equipment-icon">🔥</div>
+                        <h3>Nấu ăn</h3>
+                        <p>Bếp gas, bếp củi, bộ đồ nấu ăn</p>
+                    </div>
+                    <div class="equipment-preview-item">
+                        <div class="equipment-preview-image">
+                            <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm">
+                        </div>
+                        <div class="equipment-icon">💡</div>
+                        <h3>Ánh sáng, điện & sưởi ấm</h3>
+                        <p>Đèn trang trí, bình điện lớn, lò sưởi dầu</p>
+                    </div>
+                    <div class="equipment-preview-item">
+                        <div class="equipment-preview-image">
+                            <img src="images/equipment-entertainment.jpg" alt="Giải trí">
+                        </div>
+                        <div class="equipment-icon">🎮</div>
+                        <h3>Giải trí</h3>
+                        <p>Máy ảnh, Nintendo Switch, máy chiếu</p>
+                    </div>
                 </div>
-
-                <!-- <div class="form-group">
-                    <label for="highway"><h3>Bạn có muốn dùng cao tốc không?</h3></label>
-                    <select id="highway">
-                        <option value="" selected disabled>Chọn đi cao tốc</option>
-                        <option value="yes1">Có (một chiều)</option>
-                        <option value="yes2">Có (hai chiều)</option>
-                        <option value="no">Không</option>
-                    </select>
-                    <div id="highwayChoice"></div>
-                    <div id="highwayChoiceCostSTR"></div>
-                </div> -->
-            </section>
-
-            <!-- Vật dụng -->
-            <section class="block">
-                <h2>Chọn vật dụng bạn muốn mượn</h2>
-                <div class="checkbox-container">
-                    
-                    <label><input type="checkbox" id="tarp" name="equipment" value="tarp"> Lều tarp size 4 người x1 <span id="tarpCost"></span></label>
-                    <label><input type="checkbox" id="table" name="equipment" value="table"> Bàn x1 + ghế x4 <span id="tableCost"></span></label>
-                    <label><input type="checkbox" id="bep" name="equipment" value="bep"> Bếp củi x1 + x1 bó củi<span id="bepCost"></span></label>
-                    <label><input type="checkbox" id="bepgas" name="equipment" value="bepgas"> Bếp gas x1 + x1 bình gas<span id="bepgasCost"></span></label>
-                    <label><input type="checkbox" id="camera" name="equipment" value="camera"> Camera Fujifilm X-T5 x1 <br> + Lens XF35mm f1.4 x1 <span id="cameraCost"></span></label>
-                    <label><input type="checkbox" id="switch" name="equipment" value="switch"> Nintendo Switch x1 <span id="switchCost"></span></label>
-                    
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="equipment.html" class="btn-primary">Xem chi tiết dụng cụ</a>
                 </div>
-                <div id="equipmentChoice"></div>
-                <div id="equipmentCostSTR"></div>
-                <div class="checkbox-container">
-                    <hr>
-                    <h3>Các vật dụng đang tạm dừng cung cấp dịch vụ:</h3>
-                    <label class="disabled-option"><input type="checkbox" id="projector" name="equipment" value="projector" disabled> Máy chiếu x1 <span id="projectorCost"></span></label>
-                    <label class="disabled-option"><input type="checkbox" id="tent" name="equipment" value="tent" disabled> Lều tent size 4 người x1 <span id="tentCost"></span></label>
-                </div>
-                
-                    
-            </section>
-        </main>
-    </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Hình Ảnh Camping</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/camping-1.jpg" alt="Camping photo 1" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camping-2.jpg" alt="Camping photo 2" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camping-3.jpg" alt="Camping photo 3" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camping-4.jpg" alt="Camping photo 4" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camping-5.jpg" alt="Camping photo 5" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camping-6.jpg" alt="Camping photo 6" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta">
+        <div class="container">
+            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="section-text">Liên hệ chúng mình để biết thêm chi tiết</p>
+            <a href="contact.html" class="btn-primary btn-large">Liên hệ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

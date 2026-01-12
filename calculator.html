@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ tính giá - CAMP Nhà Thỏ</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>CAMP Nhà Thỏ<br>Công cụ tham khảo giá</h1>
+            <h5 id="lastUpdatedDate"></h5>
+        </header>
+        
+        <!-- Sticky Total Cost Bar -->
+        <div class="sticky-total-cost" id="stickyTotalCost">
+            <span>Tổng cước phí ước tính: <strong>0¥</strong></span>
+        </div>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Công cụ tính giá cước -->
+            <section class="block">
+                <h2>Công cụ tính giá cước thuê dịch vụ</h2>
+                <p>・Thông tin địa điểm là bắt buộc</p>
+                <p>・Hỗ trợ tối đa nhóm 3 người (đã bao gồm trẻ em)</p>
+                <p>・Đã bao gồm tiền xe</p>
+                <br>
+                <a href="Notes.html"> Chi tiết xin vui lòng tham khảo những lưu ý khi sử dụng dịch vụ tại đây</a>
+                <div class="result">
+                    <span id="totalCost"><br>Tổng cước phí ước tính: <strong>0¥</strong></span>
+                </div>
+            </section>
+
+            <!-- Vật dụng -->
+            <section class="block">
+                <h2>Chọn set vật dụng bạn muốn mượn</h2>
+                <div class="form-group">
+                    <label for="equipmentSet"><h3>Bạn muốn chọn set vật dụng nào?</h3></label>
+                    <select id="equipmentSet">
+                        <option value="" selected>Không chọn set</option>
+                    </select>
+                    <div id="equipmentSetChoice"></div>
+                    <div id="equipmentSetCostSTR"></div>
+                </div>
+            </section>
+
+            <!-- Thông tin hành trình -->
+            <section class="block">
+                <h2>Thông tin hành trình <span class="required">*</span></h2>
+                <div class="form-group">
+                    <label for="rentalTime"><h3>Bạn hãy chọn thời gian</h3></label>
+                    <select id="rentalTime">
+                        <option value="" selected disabled>Chọn thời gian</option>
+                        <option value="overnight">Xuất phát thứ 7 (qua đêm)</option>
+                        <option value="day7" disabled>Trong ngày (xuất phát thứ 7) &lt;Tạm dừng dịch vụ&gt;</option>
+                        <option value="day8" disabled>Trong ngày (xuất phát chủ nhật) &lt;Tạm dừng dịch vụ&gt;</option>
+                    </select>
+                    <div id="rentalTimeChoice"></div>
+                    <div id="rentalTimeChoiceCostSTR"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="camping"><h3>Bạn muốn đi chơi ở khu vực nào?</h3></label>
+                    <select id="camping">
+                        <option value="" selected disabled>Chọn điểm đến</option>
+                        <option value="fuji">Quanh chân núi Phú Sĩ</option>
+                        <option value="saitama" disabled>Saitama</option>
+                    </select>
+                    <div id="campingChoice"></div>
+                    <div id="campingChoiceCostSTR"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location"><h3>Vị trí xuất phát của bạn (ước tính)</h3></label>
+                    <select id="location">
+                        <option value="" selected disabled>Chọn địa điểm xuất phát</option>
+                        <option value="tokyo">Tokyo</option>
+                        <option value="saitama">Saitama</option>
+                        <option value="kanagawa">Kanagawa</option>
+                    </select>
+                    <div id="distance"></div>
+                    <div id="cost"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - CAMP Nhà Thỏ</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <style>
+        .contact-hero {
+            margin-top: 60px;
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .contact-hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .contact-hero p {
+            font-size: 21px;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        .contact-channel {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .contact-channel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .channel-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .channel-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .channel-name {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+
+        .channel-description {
+            font-size: 17px;
+            color: #86868b;
+            margin-bottom: 25px;
+        }
+
+        .channel-button {
+            display: inline-block;
+            background: #0071e3;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .channel-button:hover {
+            background: #0077ed;
+        }
+
+        .back-link {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .back-link a {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 17px;
+            transition: opacity 0.3s;
+        }
+
+        .back-link a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 40px;
+            }
+
+            .contact-hero p {
+                font-size: 19px;
+            }
+
+            .contact-channels {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <h1>Liên hệ</h1>
+        <p>Theo dõi và kết nối với CAMP Nhà Thỏ qua các kênh dưới đây</p>
+    </section>
+
+    <!-- Contact Channels -->
+    <section class="section">
+        <div class="contact-channels">
+            <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="contact-channel">
+                <div class="channel-icon">
+                    <svg viewBox="0 0 24 24" fill="#000000">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                </div>
+                <div class="channel-name">TikTok</div>
+                <div class="channel-description">Xem các video camping và cập nhật mới nhất</div>
+                <div class="channel-button">Theo dõi TikTok</div>
+            </a>
+
+            <a href="https://www.facebook.com/share/15VaMf4oUvn/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="contact-channel">
+                <div class="channel-icon">
+                    <svg viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <div class="channel-name">Facebook</div>
+                <div class="channel-description">Kết nối và tương tác với cộng đồng camping</div>
+                <div class="channel-button">Theo dõi Facebook</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a href="index.html">← Quay lại trang chủ</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

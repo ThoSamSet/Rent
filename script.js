@@ -1,18 +1,16 @@
-var lastUpdatedDate = '2025/03/15';
+var lastUpdatedDate = '2026/01/03';
 
 var distanceCost = 0;
 var highwayCost = 0;
 var campingChoiceCost = 0;
-var equipmentCost = 0;
-var carCost = 0;
+var equipmentSetCost = 0;
 var rentalTimeCost = 0;
+
+// Phí xe
+var COST_CAR = 18000; // Giá cố định cho xe EV SUV
 
 // Phí cước theo km
 var distanceCostPerKm = 50;
-
-// Phí xe
-var COST_TESLA = 18000;
-var COST_SIENTA = 15000;
 
 // Phí theo ngày
 var COST_DAY7 = 0;
@@ -27,15 +25,29 @@ var COST_SAITAMA = 0;
 var COST_HIGHTWAY_ONEWAY = 5000;
 var COST_HIGHTWAY_ROUNDTRIP = 10000;
 
-// Phí thiết bị
-var COST_EQUIPMENT_TENT = 2000;
-var COST_EQUIPMENT_TARP = 2000;
-var COST_EQUIPMENT_TABLE = 2000;
-var COST_EQUIPMENT_BEP = 1000;
-var COST_EQUIPMENT_BEPGAS = 1000;
-var COST_EQUIPMENT_PROJECTOR = 5000;
-var COST_EQUIPMENT_CAMERA = 0;
-var COST_EQUIPMENT_SWITCH = 5000;
+// Phí set vật dụng
+var EQUIPMENT_SETS = {
+    'basic': {
+        name: 'Set cơ bản',
+        description: 'Lều tarp + Bàn ghế',
+        cost: 4000
+    },
+    'full': {
+        name: 'Set đầy đủ',
+        description: 'Lều tarp + Bàn ghế + Bếp củi',
+        cost: 5000
+    },
+    'entertainment': {
+        name: 'Set giải trí',
+        description: 'Camera + Nintendo Switch',
+        cost: 5000
+    },
+    'premium': {
+        name: 'Set cao cấp',
+        description: 'Lều tarp + Bàn ghế + Bếp gas + Camera + Nintendo Switch',
+        cost: 9000
+    }
+};
 
 // Bảng giá cước theo địa điểm
 const distanceTable = {
@@ -64,27 +76,6 @@ document.getElementById('location').addEventListener('change', function() {
     updateDistance();
 });
 
-document.getElementById('car').addEventListener('change', function() {
-    var carChoice;
-    
-    switch (this.value) {
-        case 'RAV4':
-            carChoice = 'EV SUV';
-            carCost = COST_TESLA;
-            break;
-        case 'sienta':
-            carChoice = 'Sienta (Times) <Tạm dừng dịch vụ>';
-            carCost = COST_SIENTA;
-            break;
-        default:
-            carChoice = '';
-            carCost = 0;
-    }
-    document.getElementById('carChoice').innerText = 'Đang chọn: ' + carChoice;
-    document.getElementById('carChoiceCostSTR').innerText = '+' + carCost + '¥';
-    updateTotalCost();
-});
-
 document.getElementById('rentalTime').addEventListener('change', function() {
     var rentalTimeChoice;
     
@@ -98,7 +89,7 @@ document.getElementById('rentalTime').addEventListener('change', function() {
             rentalTimeCost = COST_DAY8;
             break;
         case 'overnight':
-            rentalTimeChoice = 'Ở lại qua đêm';
+            rentalTimeChoice = 'Thứ 7';
             rentalTimeCost = COST_OVERNIGHT;
             break;
         default:
@@ -135,85 +126,29 @@ document.getElementById('camping').addEventListener('change', function() {
 
 
 
-// document.getElementById('highway').addEventListener('change', function() {
-//     var choice;
-//     var costStr;
-    
-//     switch (this.value) {
-//         case 'yes1':
-//             choice = 'Có (một chiều)';
-//             costStr = '+' + COST_HIGHTWAY_ONEWAY + '¥';
-//             highwayCost = COST_HIGHTWAY_ONEWAY;
-//             break;
-//         case 'yes2':
-//             choice = 'Có (hai chiều)';
-//             costStr = '+' + COST_HIGHTWAY_ROUNDTRIP + '¥';
-//             highwayCost = COST_HIGHTWAY_ROUNDTRIP;
-//             break;
-//         case 'no':
-//             choice = 'Không';
-//             costStr = 'Không phát sinh phí';
-//             highwayCost = 0;
-//             break;
-//         default:
-//             choice = '';
-//             costStr = 'Không phát sinh phí';
-//             highwayCost = 0;
-//     }
-//     document.getElementById('highwayChoice').innerText = 'Đang chọn: ' +  choice;
-//     document.getElementById('highwayChoiceCostSTR').innerText =costStr;
-//     updateTotalCost();
-// });
+// Populate equipment sets dropdown
+var equipmentSetSelect = document.getElementById('equipmentSet');
+for (var key in EQUIPMENT_SETS) {
+    var option = document.createElement('option');
+    option.value = key;
+    option.textContent = EQUIPMENT_SETS[key].name + ' - ' + EQUIPMENT_SETS[key].description + ' (+' + EQUIPMENT_SETS[key].cost + '¥)';
+    equipmentSetSelect.appendChild(option);
+}
 
-document.querySelectorAll('input[name="equipment"]').forEach(function(elem) {
-    elem.addEventListener('change', function() {
-        var equipmentChoice = [];
-        equipmentCost = 0
-        var equipmentStr = [];
-        document.querySelectorAll('input[name="equipment"]:checked').forEach(function(checkedElem) {
-            // equipmentChoice.push(checkedElem.value);
-            switch (checkedElem.value) {
-                case 'tent':
-                    equipmentStr.push('Lều tent');
-                    equipmentCost += COST_EQUIPMENT_TENT;
-                    break;
-                case 'tarp':
-                    equipmentStr.push('Lều tarp');
-                    equipmentCost += COST_EQUIPMENT_TARP;
-                    break;
-                case 'table':
-                    equipmentStr.push('Bàn ghế');
-                    equipmentCost += COST_EQUIPMENT_TABLE;
-                    break;
-                case 'bep':
-                    equipmentStr.push('Bếp củi');
-                    equipmentCost += COST_EQUIPMENT_BEP;
-                    break;
-                case 'bepgas':
-                    equipmentStr.push('Bếp gas');
-                    equipmentCost += COST_EQUIPMENT_BEPGAS;
-                    break;
-                case 'projector':
-                    equipmentStr.push('Máy chiếu');
-                    equipmentCost += COST_EQUIPMENT_PROJECTOR;
-                    break;
-                case 'camera':
-                    equipmentStr.push('Máy ảnh');
-                    equipmentCost += COST_EQUIPMENT_CAMERA;
-                    break;
-                case 'switch':
-                    equipmentStr.push('Switch');
-                    equipmentCost += COST_EQUIPMENT_SWITCH;
-                    break;
-                default:
-                    equipmentStr.push('');
-                    equipmentCost += 0;
-            }
-        });
-        document.getElementById('equipmentChoice').innerText = 'Đang chọn: ' + equipmentStr.join(', ');
-        document.getElementById('equipmentCostSTR').innerText = '+' + equipmentCost + '¥';
-        updateTotalCost();
-    });
+document.getElementById('equipmentSet').addEventListener('change', function() {
+    var selectedSet = this.value;
+    
+    if (selectedSet && EQUIPMENT_SETS[selectedSet]) {
+        var set = EQUIPMENT_SETS[selectedSet];
+        equipmentSetCost = set.cost;
+        document.getElementById('equipmentSetChoice').innerText = 'Đang chọn: ' + set.name + ' - ' + set.description;
+        document.getElementById('equipmentSetCostSTR').innerText = '+' + equipmentSetCost + '¥';
+    } else {
+        equipmentSetCost = 0;
+        document.getElementById('equipmentSetChoice').innerText = '';
+        document.getElementById('equipmentSetCostSTR').innerText = '';
+    }
+    updateTotalCost();
 });
 
 
@@ -226,11 +161,11 @@ function updateDistance() {
     // Kiểm tra và tra cứu trong bảng
     if (distanceTable[camping] && distanceTable[camping][location] !== undefined) {
         distance = distanceTable[camping][location];
-        distanceCost = distance * distanceCostPerKm;
+        distanceCost = COST_CAR + (distance * distanceCostPerKm); // Bao gồm giá xe
         locationName = locationNames[location] || 'Chưa chọn';
+    } else {
+        distanceCost = 0;
     }
-
-    distanceCost = distanceCost || 0;
 
     document.getElementById('distance').innerText = `Đang chọn: ${locationName}, Khoảng cách hỗ trợ tối đa: ${distance}Km`;
     document.getElementById('cost').innerText = `+${distanceCost}¥`;
@@ -238,32 +173,15 @@ function updateDistance() {
 };
 
 function updateTotalCost() {
-    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentCost + carCost + rentalTimeCost;
-    document.getElementById('totalCost').innerHTML = 'Tổng cước phí ước tính: <strong>' + totalCost + '¥</strong>';
-};
-
-// Update equipment costs in HTML
-const TEXT_FREE = '(Miễn phí)';
-
-function ReplaceText(_text) {
-    return '(+' + _text + '¥)';
+    var totalCost = distanceCost + highwayCost + campingChoiceCost + equipmentSetCost + rentalTimeCost;
+    var costHTML = 'Tổng cước phí ước tính: <strong>' + totalCost + '¥</strong>';
+    document.getElementById('totalCost').innerHTML = '<br>' + costHTML;
+    document.getElementById('stickyTotalCost').innerHTML = '<span>' + costHTML + '</span>';
 }
 
-function updateCost(elementId, cost) {
-    const element = document.getElementById(elementId);
-    if (!element) return; // Đảm bảo phần tử tồn tại
-    element.innerText = cost > 0 ? ReplaceText(cost) : TEXT_FREE;
-}
+// Khởi tạo giá trị ban đầu khi trang load
+updateTotalCost();
 
-// Cập nhật chi phí cho từng thiết bị
-updateCost('tentCost', COST_EQUIPMENT_TENT);
-updateCost('tarpCost', COST_EQUIPMENT_TARP);
-updateCost('tableCost', COST_EQUIPMENT_TABLE);
-updateCost('bepCost', COST_EQUIPMENT_BEP);
-updateCost('bepgasCost', COST_EQUIPMENT_BEPGAS);
-updateCost('projectorCost', COST_EQUIPMENT_PROJECTOR);
-updateCost('cameraCost', COST_EQUIPMENT_CAMERA);
-updateCost('switchCost', COST_EQUIPMENT_SWITCH);
 
 
 

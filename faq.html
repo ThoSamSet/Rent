@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu hỏi thường gặp - CAMP Nhà Thỏ</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <style>
+        .faq-hero {
+            margin-top: 60px;
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .faq-hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .faq-hero p {
+            font-size: 21px;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .faq-question {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+            line-height: 1.4;
+        }
+
+        .faq-answer {
+            font-size: 17px;
+            color: #1d1d1f;
+            line-height: 1.8;
+        }
+
+        .faq-answer p {
+            margin-bottom: 15px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .faq-answer ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+
+        .faq-answer hr {
+            border: none;
+            border-top: 1px solid #e5e5e7;
+            margin: 25px 0;
+        }
+
+        .faq-emoji {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .back-link {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .back-link a {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 17px;
+            transition: opacity 0.3s;
+        }
+
+        .back-link a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 40px;
+            }
+
+            .faq-hero p {
+                font-size: 19px;
+            }
+
+            .faq-container {
+                padding: 40px 20px;
+            }
+
+            .faq-item {
+                padding: 30px 20px;
+            }
+
+            .faq-question {
+                font-size: 20px;
+            }
+
+            .faq-answer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html" class="contact-link">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <h1>Câu hỏi thường gặp</h1>
+        <p>Tìm câu trả lời cho những thắc mắc phổ biến về Camp Nhà Thỏ</p>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="section">
+        <div class="faq-container">
+            <!-- Question 1 -->
+            <div class="faq-item">
+                <div class="faq-question">1. Camp Nhà Thỏ là dịch vụ cho thuê hay tour ghép?</div>
+                <div class="faq-answer">
+                    <p>Camp Nhà Thỏ <strong>không phải tour ghép</strong> và cũng không đơn thuần là cho thuê.</p>
+                    <p>Mô hình chính là <strong>chia sẻ đồ camping</strong> + hỗ trợ đưa đón & setup cho chuyến đi của bạn.</p>
+                    <p>Bạn và nhóm của bạn <strong>đi riêng</strong>, không ghép với khách khác.</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="faq-item">
+                <div class="faq-question">2. Tôi đi một mình hoặc nhóm nhỏ có được không?</div>
+                <div class="faq-answer">
+                    <p>Hoàn toàn được.</p>
+                    <p>Camp Nhà Thỏ phù hợp cho:</p>
+                    <ul>
+                        <li>Đi một mình</li>
+                        <li>Couple</li>
+                        <li>Nhóm bạn nhỏ</li>
+                        <li>Gia đình ít người</li>
+                    </ul>
+                    <p>Lịch trình linh hoạt theo nhu cầu của bạn.</p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-item">
+                <div class="faq-question">3. Tôi chưa từng đi camping, có phù hợp không?</div>
+                <div class="faq-answer">
+                    <p>Rất phù hợp.</p>
+                    <p>Mình sẽ:</p>
+                    <ul>
+                        <li>✔️ Chuẩn bị đầy đủ đồ</li>
+                        <li>✔️ Hướng dẫn setup lều</li>
+                        <li>✔️ Chỉ cách sử dụng bếp, đèn, thiết bị</li>
+                    </ul>
+                    <p>Bạn không cần kinh nghiệm trước.</p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="faq-item">
+                <div class="faq-question">4. Dịch vụ bao gồm những gì?</div>
+                <div class="faq-answer">
+                    <p>Gói cơ bản gồm:</p>
+                    <ul>
+                        <li>Đưa đón</li>
+                        <li>Lều 2 room</li>
+                        <li>Túi ngủ, đệm, chăn</li>
+                        <li>Bếp gas / bếp củi</li>
+                        <li>Đồ nấu ăn</li>
+                        <li>Đèn, bình điện</li>
+                        <li>Lò sưởi</li>
+                    </ul>
+                    <p>Ngoài ra có thể sử dụng thêm:</p>
+                    <ul>
+                        <li>Máy chiếu Full HD</li>
+                        <li>Nintendo Switch</li>
+                        <li>Máy ảnh Fujifilm X-T5</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="faq-item">
+                <div class="faq-question">5. Tôi cần tự chuẩn bị những gì?</div>
+                <div class="faq-answer">
+                    <p>Bạn chỉ cần mang:</p>
+                    <ul>
+                        <li>Quần áo cá nhân</li>
+                        <li>Đồ ăn & thức uống</li>
+                        <li>Đồ dùng cá nhân cần thiết</li>
+                    </ul>
+                    <p>Mọi đồ camping đã có sẵn.</p>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="faq-item">
+                <div class="faq-question">6. Thời gian đi trong bao lâu?</div>
+                <div class="faq-answer">
+                    <p>Tuỳ lịch hẹn:</p>
+                    <ul>
+                        <li>1 đêm 2 ngày</li>
+                        <li>Đi trong ngày</li>
+                        <li>Hoặc theo yêu cầu riêng</li>
+                    </ul>
+                    <p>Mình sẽ tư vấn lịch phù hợp nhất.</p>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="faq-item">
+                <div class="faq-question">7. Thời tiết xấu có đi được không?</div>
+                <div class="faq-answer">
+                    <p>Nếu mưa nhỏ vẫn có thể đi.</p>
+                    <p>Nếu thời tiết xấu, gió mạnh, mình sẽ:</p>
+                    <ul>
+                        <li>✔️ Tư vấn đổi lịch</li>
+                        <li>✔️ Hoàn tiền / dời lịch theo thoả thuận</li>
+                    </ul>
+                    <p>An toàn luôn đặt lên hàng đầu.</p>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="faq-item">
+                <div class="faq-question">8. Có quy định về sử dụng đồ không?</div>
+                <div class="faq-answer">
+                    <p>Có một số nguyên tắc:</p>
+                    <ul>
+                        <li>Sử dụng cẩn thận</li>
+                        <li>Không làm hư hỏng</li>
+                        <li>Báo ngay nếu có sự cố</li>
+                    </ul>
+                    <p>Mục đích là để đồ luôn sạch & bền cho mọi chuyến sau.</p>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="faq-item">
+                <div class="faq-question">9. Tôi có thể yêu cầu setup đặc biệt không?</div>
+                <div class="faq-answer">
+                    <p>Có thể.</p>
+                    <p>Ví dụ:</p>
+                    <ul>
+                        <li><span class="faq-emoji">🎂</span> Sinh nhật</li>
+                        <li><span class="faq-emoji">💍</span> Cầu hôn</li>
+                        <li><span class="faq-emoji">🎬</span> Xem phim ngoài trời</li>
+                    </ul>
+                    <p>Chỉ cần báo trước để mình chuẩn bị.</p>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="faq-item">
+                <div class="faq-question">10. Cách đặt lịch như thế nào?</div>
+                <div class="faq-answer">
+                    <p>Bạn có thể:</p>
+                    <ul>
+                        <li><span class="faq-emoji">📩</span> Nhắn tin fanpage Facebook / Tiktok</li>
+                    </ul>
+                    <p>Mình sẽ phản hồi sớm nhất.</p>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="faq-item">
+                <div class="faq-question">11. Có cần cọc tiền trước không?</div>
+                <div class="faq-answer">
+                    <p>Không cần cọc tiền.</p>
+                    <p>Chỉ cần cung cấp link Facebook hoặc trang cá nhân của toàn bộ thành viên.</p>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="faq-item">
+                <div class="faq-question">12. Thời gian thanh toán?</div>
+                <div class="faq-answer">
+                    <p>Thanh toán trước khi khởi hành bằng tiền mặt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta">
+        <div class="container">
+            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="section-text">Nếu bạn còn thắc mắc nào khác, đừng ngại liên hệ Camp Nhà Thỏ nhé 🐰</p>
+            <a href="contact.html" class="btn-primary btn-large">Liên hệ</a>
+        </div>
+    </section>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a href="index.html">← Quay lại trang chủ</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Burger menu toggle
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (burgerMenu && navLinks) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

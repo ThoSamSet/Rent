@@ -11,11 +11,17 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
-            <div class="nav-links">
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
                 <a href="#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="#gallery">Hình ảnh</a>
-                <a href="contact.html">Liên hệ</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html" class="contact-link">Liên hệ</a>
             </div>
         </div>
     </nav>
@@ -46,7 +52,8 @@
                 Mình trực tiếp <strong>đưa đón, chuẩn bị đồ và hỗ trợ setup</strong> cho chuyến đi của bạn.<br>
                 Bạn chỉ cần tận hưởng, còn lại cứ để Camp Nhà Thỏ lo.
             </p>
-            <div class="features">
+            <!-- Features Grid (Desktop) -->
+            <div class="features features-grid">
                 <div class="feature">
                     <div class="feature-icon">🌿</div>
                     <h3>Đi riêng – không ghép khách</h3>
@@ -73,6 +80,52 @@
                     <p>Trải nghiệm camping theo phong cách riêng</p>
                 </div>
             </div>
+            
+            <!-- Features Slider (Mobile) -->
+            <div class="slider-container features-slider">
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="featuresSlider">
+                        <div class="slider-item">
+                            <div class="feature">
+                                <div class="feature-icon">🌿</div>
+                                <h3>Đi riêng – không ghép khách</h3>
+                                <p>Chuyến đi riêng tư, thoải mái theo nhịp của bạn</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="feature">
+                                <div class="feature-icon">🚗</div>
+                                <h3>Có xe đưa đón</h3>
+                                <p>Mình trực tiếp đưa đón bạn đến điểm camping</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="feature">
+                                <div class="feature-icon">⛺</div>
+                                <h3>Có lều, đồ camping sẵn</h3>
+                                <p>Chuẩn bị đầy đủ dụng cụ cho bạn</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="feature">
+                                <div class="feature-icon">📸</div>
+                                <h3>Hỗ trợ chụp ảnh kỷ niệm</h3>
+                                <p>Lưu giữ những khoảnh khắc đẹp của bạn</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="feature">
+                                <div class="feature-icon">🔥</div>
+                                <h3>Tự do ăn chơi, chill theo cách của bạn</h3>
+                                <p>Trải nghiệm camping theo phong cách riêng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-arrow prev" id="featuresPrev">‹</button>
+                <button class="slider-arrow next" id="featuresNext">›</button>
+                <div class="slider-nav" id="featuresDots"></div>
+            </div>
             <p class="section-text" style="font-size: 19px; margin-top: 60px; font-style: italic; color: #86868b;">
                 Camp Nhà Thỏ mong muốn mang đến <strong>những chuyến đi thoải mái và chân thật</strong> –<br>
                 để bạn tận hưởng thiên nhiên theo nhịp của riêng mình.
@@ -95,7 +148,8 @@
                 giúp bạn không phải mua sắm hay mang vác cồng kềnh.
             </p>
             <div class="equipment-preview">
-                <div class="equipment-preview-grid">
+                <!-- Equipment Grid (Desktop) -->
+                <div class="equipment-preview-grid equipment-preview-grid-slider">
                     <div class="equipment-preview-item">
                         <div class="equipment-preview-image">
                             <img src="images/equipment-tent.jpg" alt="Lều & che chắn">
@@ -137,6 +191,68 @@
                         <p>Máy ảnh, Nintendo Switch, máy chiếu</p>
                     </div>
                 </div>
+                
+                <!-- Equipment Slider (Mobile) -->
+                <div class="slider-container equipment-preview-slider">
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="equipmentSlider">
+                            <div class="slider-item">
+                                <div class="equipment-preview-item">
+                                    <div class="equipment-preview-image">
+                                        <img src="images/equipment-tent.jpg" alt="Lều & che chắn">
+                                    </div>
+                                    <div class="equipment-icon">⛺</div>
+                                    <h3>Lều & che chắn</h3>
+                                    <p>Lều 2 room, tarp che nắng mưa</p>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="equipment-preview-item">
+                                    <div class="equipment-preview-image">
+                                        <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ">
+                                    </div>
+                                    <div class="equipment-icon">🛏️</div>
+                                    <h3>Ngủ nghỉ</h3>
+                                    <p>Túi ngủ, đệm, chăn theo mùa</p>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="equipment-preview-item">
+                                    <div class="equipment-preview-image">
+                                        <img src="images/equipment-cooking.jpg" alt="Nấu ăn">
+                                    </div>
+                                    <div class="equipment-icon">🔥</div>
+                                    <h3>Nấu ăn</h3>
+                                    <p>Bếp gas, bếp củi, bộ đồ nấu ăn</p>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="equipment-preview-item">
+                                    <div class="equipment-preview-image">
+                                        <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm">
+                                    </div>
+                                    <div class="equipment-icon">💡</div>
+                                    <h3>Ánh sáng, điện & sưởi ấm</h3>
+                                    <p>Đèn trang trí, bình điện lớn, lò sưởi dầu</p>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="equipment-preview-item">
+                                    <div class="equipment-preview-image">
+                                        <img src="images/equipment-entertainment.jpg" alt="Giải trí">
+                                    </div>
+                                    <div class="equipment-icon">🎮</div>
+                                    <h3>Giải trí</h3>
+                                    <p>Máy ảnh, Nintendo Switch, máy chiếu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-arrow prev" id="equipmentPrev">‹</button>
+                    <button class="slider-arrow next" id="equipmentNext">›</button>
+                    <div class="slider-nav" id="equipmentDots"></div>
+                </div>
+                
                 <div style="text-align: center; margin-top: 50px;">
                     <a href="equipment.html" class="btn-primary">Xem chi tiết dụng cụ</a>
                 </div>
@@ -147,7 +263,7 @@
     <!-- Gallery Section -->
     <section id="gallery" class="section">
         <div class="container">
-            <h2 class="section-title">Hình Ảnh Camping</h2>
+            <h2 class="section-title">Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="images/camping-1.jpg" alt="Camping photo 1" class="gallery-img">
@@ -171,6 +287,50 @@
         </div>
     </section>
 
+    <!-- FAQ Preview Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Câu hỏi thường gặp</h2>
+            <p class="section-text">Một số câu hỏi phổ biến về Camp Nhà Thỏ</p>
+            
+            <div class="faq-preview-container">
+                <div class="faq-preview-item">
+                    <div class="faq-preview-question">
+                        <span class="faq-preview-icon">❓</span>
+                        <h3>Camp Nhà Thỏ là dịch vụ cho thuê hay tour ghép?</h3>
+                    </div>
+                    <div class="faq-preview-answer">
+                        <p>Camp Nhà Thỏ <strong>không phải tour ghép</strong> và cũng không đơn thuần là cho thuê. Mô hình chính là <strong>chia sẻ đồ camping</strong> + hỗ trợ đưa đón & setup. Bạn và nhóm của bạn <strong>đi riêng</strong>, không ghép với khách khác.</p>
+                    </div>
+                </div>
+
+                <div class="faq-preview-item">
+                    <div class="faq-preview-question">
+                        <span class="faq-preview-icon">❓</span>
+                        <h3>Tôi chưa từng đi camping, có phù hợp không?</h3>
+                    </div>
+                    <div class="faq-preview-answer">
+                        <p>Rất phù hợp. Mình sẽ chuẩn bị đầy đủ đồ, hướng dẫn setup lều và chỉ cách sử dụng bếp, đèn, thiết bị. Bạn không cần kinh nghiệm trước.</p>
+                    </div>
+                </div>
+
+                <div class="faq-preview-item">
+                    <div class="faq-preview-question">
+                        <span class="faq-preview-icon">❓</span>
+                        <h3>Có cần cọc tiền trước không?</h3>
+                    </div>
+                    <div class="faq-preview-answer">
+                        <p>Không cần cọc tiền. Chỉ cần cung cấp link Facebook hoặc trang cá nhân của toàn bộ thành viên. Thanh toán trước khi khởi hành bằng tiền mặt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="faq.html" class="btn-primary btn-large">Xem tất cả câu hỏi</a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="section section-cta">
         <div class="container">
@@ -186,5 +346,131 @@
             <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Burger menu toggle
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (burgerMenu && navLinks) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        // Slider functionality
+        function initSlider(sliderId, prevId, nextId, dotsId) {
+            const sliderTrack = document.getElementById(sliderId);
+            const prevBtn = document.getElementById(prevId);
+            const nextBtn = document.getElementById(nextId);
+            const dotsContainer = document.getElementById(dotsId);
+            
+            if (!sliderTrack || !prevBtn || !nextBtn || !dotsContainer) return;
+            
+            const sliderWrapper = sliderTrack.parentElement;
+            const items = sliderTrack.querySelectorAll('.slider-item');
+            let currentIndex = 0;
+            
+            // Create dots
+            items.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            function updateSlider() {
+                sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Update arrow states
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === items.length - 1;
+            }
+            
+            function goToSlide(index) {
+                currentIndex = Math.max(0, Math.min(index, items.length - 1));
+                updateSlider();
+            }
+            
+            function nextSlide() {
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            }
+            
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            }
+            
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Touch swipe support
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            
+            sliderWrapper.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            
+            sliderWrapper.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+            });
+            
+            sliderWrapper.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const diff = startX - currentX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+            });
+            
+            // Initialize
+            updateSlider();
+        }
+        
+        // Initialize sliders
+        initSlider('featuresSlider', 'featuresPrev', 'featuresNext', 'featuresDots');
+        initSlider('equipmentSlider', 'equipmentPrev', 'equipmentNext', 'equipmentDots');
+    </script>
 </body>
 </html>

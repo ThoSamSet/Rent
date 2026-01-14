@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://campnhatho.work.gd/sitemap.xml
+
+# Disallow calculator and notes pages (if not needed for SEO)
+Disallow: /calculator.html
+Disallow: /Notes.html

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vị trí Camping Phú Sĩ - Fumotoppara & Koan | CAMP Nhà Thỏ</title>
+    <meta name="description" content="Bãi camping đẹp tại Phú Sĩ: Fumotoppara và Koan. View núi Phú Sĩ tuyệt đẹp, không gian rộng rãi. Camp Nhà Thỏ hỗ trợ đưa đón đến các bãi camping này.">
+    <meta name="keywords" content="bãi camping Phú Sĩ, Fumotoppara camping, Koan camping, địa điểm camping Phú Sĩ, view núi Phú Sĩ, camping cảnh đẹp Nhật Bản">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://campnhatho.github.io/Rent/locations.html">
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHNWG2P2DH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BHNWG2P2DH');
+    </script>
+    
+    <!-- Structured Data for Places -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": "Bãi Camping Phú Sĩ - Fumotoppara & Koan",
+      "description": "Các bãi camping đẹp tại Phú Sĩ với view núi Phú Sĩ tuyệt đẹp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Fujinomiya",
+        "addressRegion": "Shizuoka",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.3994331",
+        "longitude": "138.5648368"
+      }
+    }
+    </script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .locations-hero {
+            margin-top: 60px;
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .locations-hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .locations-hero p {
+            font-size: 21px;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .locations-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .map-container {
+            margin: 60px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            height: 600px;
+            background: #f5f5f7;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+        }
+
+        .location-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .location-detail {
+            background: white;
+            padding: 0;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .location-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .location-detail-content {
+            padding: 40px;
+        }
+
+        .location-detail h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .location-detail-icon {
+            font-size: 32px;
+        }
+
+        .location-detail p {
+            font-size: 17px;
+            color: #1d1d1f;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .location-detail strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .location-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .location-features li {
+            font-size: 17px;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .location-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0071e3;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .back-link {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .back-link a {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 17px;
+            transition: opacity 0.3s;
+        }
+
+        .back-link a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .locations-hero h1 {
+                font-size: 40px;
+            }
+
+            .locations-hero p {
+                font-size: 19px;
+            }
+
+            .map-container {
+                height: 400px;
+                margin: 40px 0;
+            }
+
+            .location-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .location-detail-content {
+                padding: 30px 20px;
+            }
+
+            .location-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+                <a href="index.html#locations">Vị trí</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html" class="contact-link">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="locations-hero">
+        <h1>Vị trí Camping</h1>
+        <p><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực <span class="no-break">Phú Sĩ</span></p>
+    </section>
+
+    <!-- Locations Content -->
+    <section class="section">
+        <div class="locations-content">
+            <!-- Map Section -->
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <!-- Location Details -->
+            <div class="location-info">
+                <!-- Fumotoppara -->
+                <div class="location-detail">
+                    <div class="location-image">
+                        <img src="images/location-fumotoppara.jpg" alt="Bãi camping Fumotoppara Phú Sĩ - View núi Phú Sĩ tuyệt đẹp, bãi cỏ rộng rãi">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏔️</span>
+                            Bãi Fumotoppara
+                        </h3>
+                        <p>
+                            Bãi camping với <strong>view núi <span class="no-break">Phú Sĩ</span> tuyệt đẹp</strong>, không gian rộng rãi và yên tĩnh. 
+                            Địa điểm lý tưởng để tận hưởng thiên nhiên và ngắm cảnh hoàng hôn, bình minh.
+                        </p>
+                        <ul class="location-features">
+                            <li>View núi <span class="no-break">Phú Sĩ</span> tuyệt đẹp</li>
+                            <li>Bãi cỏ rộng rãi, thoáng đãng</li>
+                            <li>Phù hợp cho nhóm nhỏ và gia đình</li>
+                            <li>Tiện lợi cho chụp ảnh và ngắm cảnh</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kounan View Phú Sĩ -->
+                <div class="location-detail">
+                    <div class="location-image">
+                        <img src="images/location-koan.jpg" alt="Bãi camping Koan Phú Sĩ - View tờ 1000 yên, một trong những địa điểm camping đẹp nhất">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">⛰️</span>
+                            Bãi Koan (浩庵キャンプ場)
+                        </h3>
+                        <p>
+                            Địa điểm camping với view tờ 1000 yên nổi tiếng.<br>
+                            Được xem là một trong những địa điểm camping đẹp nhất ở <span class="no-break">Phú Sĩ</span>.
+                        </p>
+                        <ul class="location-features">
+                            <li>Tầm nhìn có hồ và núi</li>
+                            <li>Không gian thoáng đãng</li>
+                            <li>Môi trường trong lành</li>
+                            <li>Phù hợp cho cặp đôi và nhóm nhỏ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%); border-radius: 20px;">
+                <p style="font-size: 19px; color: #1d1d1f; margin-bottom: 20px;">
+                    <span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping này.<br>
+                    Ngoài ra, chúng mình cũng hỗ trợ đưa đón đến các bãi camping khác trong khu vực.<br>
+                    Bạn chỉ cần chọn địa điểm, mình sẽ lo phần còn lại.
+                </p>
+                <div class="social-buttons">
+                    <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
+                        <span class="social-btn-icon">🎵</span>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://www.facebook.com/share/15VaMf4oUvn/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-facebook">
+                        <span class="social-btn-icon">📘</span>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a href="index.html">← Quay lại trang chủ</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Burger menu toggle
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (burgerMenu && navLinks) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize map
+        const map = L.map('map').setView([35.436, 138.57], 11);
+
+        // Add grayscale tile layer (CartoDB Positron - light and minimal)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Apply additional grayscale filter for more monochrome effect
+        const mapElement = document.getElementById('map');
+        mapElement.style.filter = 'grayscale(100%) contrast(1.1)';
+        
+        // Location coordinates (exact from Google Maps)
+        const locations = [
+            {
+                name: 'Bãi Fumotoppara',
+                lat: 35.3994331,
+                lng: 138.5648368,
+                icon: '🏔️',
+                description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp'
+            },
+            {
+                name: 'Bãi Koan (Kounan)',
+                lat: 35.473183,
+                lng: 138.574764,
+                icon: '⛰️',
+                description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
+            }
+        ];
+
+        // Add markers
+        locations.forEach(location => {
+            const customIcon = L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="font-size: 32px; text-align: center;">${location.icon}</div>`,
+                iconSize: [40, 40],
+                iconAnchor: [20, 40],
+                popupAnchor: [0, -40]
+            });
+
+            const marker = L.marker([location.lat, location.lng], { icon: customIcon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="text-align: center; padding: 10px;">
+                        <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">${location.name}</h3>
+                        <p style="margin: 0; font-size: 14px; color: #666;">${location.description}</p>
+                    </div>
+                `);
+        });
+
+        // Style for custom markers
+        const style = document.createElement('style');
+        style.textContent = `
+            .custom-marker {
+                background: transparent;
+                border: none;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

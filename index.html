@@ -3,8 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMP Nhà Thỏ - Share đồ Camping</title>
+    <title>CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ | Chụp hình chill cảnh đẹp Nhật Bản</title>
+    <meta name="description" content="Camp Nhà Thỏ - Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm. Trải nghiệm camping chill với view núi Phú Sĩ tuyệt đẹp.">
+    <meta name="keywords" content="cho thuê đồ camping, share đồ cắm trại, camping Phú Sĩ, chụp hình Phú Sĩ, chill cảnh đẹp Nhật Bản, bãi camping Phú Sĩ, Fumotoppara, Koan camping">
+    <meta name="author" content="Camp Nhà Thỏ">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://campnhatho.github.io/Rent/">
+    <meta property="og:title" content="CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
+    <meta property="og:description" content="Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm với view núi Phú Sĩ tuyệt đẹp.">
+    <meta property="og:image" content="https://campnhatho.github.io/Rent/images/hero-camping.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://campnhatho.github.io/Rent/">
+    <meta property="twitter:title" content="CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
+    <meta property="twitter:description" content="Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm.">
+    <meta property="twitter:image" content="https://campnhatho.github.io/Rent/images/hero-camping.jpg">
+    
+    <link rel="canonical" href="https://campnhatho.github.io/Rent/">
     <link rel="stylesheet" type="text/css" href="homepage.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHNWG2P2DH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BHNWG2P2DH');
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Camp Nhà Thỏ",
+      "description": "Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ, Nhật Bản. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm.",
+      "url": "https://campnhatho.github.io/Rent/",
+      "image": "https://campnhatho.github.io/Rent/images/hero-camping.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Shizuoka",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.3994331",
+        "longitude": "138.5648368"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Phú Sĩ"
+      },
+      "serviceType": ["Cho thuê đồ camping", "Share đồ cắm trại", "Chụp hình kỷ niệm", "Tour camping"],
+      "priceRange": "$$"
+    }
+    </script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .map-preview-container {
+            margin: 50px auto 0;
+            max-width: 1000px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            background: #f5f5f7;
+        }
+
+        #mapPreview {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .map-preview-container {
+                height: 400px;
+                margin: 40px auto 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -20,6 +103,7 @@
                 <a href="#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="#gallery">Hình ảnh</a>
+                <a href="#locations">Vị trí</a>
                 <a href="faq.html">FAQ</a>
                 <a href="contact.html" class="contact-link">Liên hệ</a>
             </div>
@@ -33,24 +117,24 @@
             <p class="hero-subtitle">Cùng đi - Cùng chill</p>
         </div>
         <div class="hero-image">
-            <img src="images/hero-camping.jpg" alt="Camping scene" id="heroImg">
+            <img src="images/hero-camping.jpg" alt="Camping Phú Sĩ - Share đồ cắm trại, chụp hình chill cảnh đẹp Nhật Bản" id="heroImg">
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Camp Nhà Thỏ</h2>
+            <h2 class="section-title"><span class="no-break">Camp Nhà Thỏ</span></h2>
             <p class="section-text" style="font-size: 24px; font-weight: 500; margin-bottom: 30px;">
                 Share đồ camping cho chuyến đi của bạn
             </p>
             <p class="section-text" style="font-size: 19px; margin-bottom: 40px;">
-                Camp Nhà Thỏ không phải dịch vụ cho thuê thông thường.<br>
+                <span class="no-break">Camp Nhà Thỏ</span> không phải dịch vụ cho thuê thông thường.<br>
                 Đây là nơi <strong>chia sẻ đồ camping</strong> dành cho những ai yêu thiên nhiên, muốn cắm trại nhưng chưa có đủ dụng cụ.
             </p>
             <p class="section-text" style="font-size: 19px; margin-bottom: 60px;">
                 Mình trực tiếp <strong>đưa đón, chuẩn bị đồ và hỗ trợ setup</strong> cho chuyến đi của bạn.<br>
-                Bạn chỉ cần tận hưởng, còn lại cứ để Camp Nhà Thỏ lo.
+                Bạn chỉ cần tận hưởng, còn lại cứ để <span class="no-break">Camp Nhà Thỏ</span> lo.
             </p>
             <!-- Features Grid (Desktop) -->
             <div class="features features-grid">
@@ -127,7 +211,7 @@
                 <div class="slider-nav" id="featuresDots"></div>
             </div>
             <p class="section-text" style="font-size: 19px; margin-top: 60px; font-style: italic; color: #86868b;">
-                Camp Nhà Thỏ mong muốn mang đến <strong>những chuyến đi thoải mái và chân thật</strong> –<br>
+                <span class="no-break">Camp Nhà Thỏ</span> mong muốn mang đến <strong>những chuyến đi thoải mái và chân thật</strong> –<br>
                 để bạn tận hưởng thiên nhiên theo nhịp của riêng mình.
             </p>
             <p class="section-text" style="font-size: 21px; margin-top: 40px; font-weight: 500; color: #1d1d1f;">
@@ -144,7 +228,7 @@
         <div class="container">
             <h2 class="section-title">Dụng cụ Camping</h2>
             <p class="section-text">
-                Camp Nhà Thỏ chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
+                <span class="no-break">Camp Nhà Thỏ</span> chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
                 giúp bạn không phải mua sắm hay mang vác cồng kềnh.
             </p>
             <div class="equipment-preview">
@@ -188,7 +272,7 @@
                         </div>
                         <div class="equipment-icon">🎮</div>
                         <h3>Giải trí</h3>
-                        <p>Máy ảnh, Nintendo Switch, máy chiếu</p>
+                        <p>Máy ảnh, <span class="no-break">Nintendo Switch</span>, máy chiếu</p>
                     </div>
                 </div>
                 
@@ -243,7 +327,7 @@
                                     </div>
                                     <div class="equipment-icon">🎮</div>
                                     <h3>Giải trí</h3>
-                                    <p>Máy ảnh, Nintendo Switch, máy chiếu</p>
+                                    <p>Máy ảnh, <span class="no-break">Nintendo Switch</span>, máy chiếu</p>
                                 </div>
                             </div>
                         </div>
@@ -266,23 +350,39 @@
             <h2 class="section-title">Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/camping-1.jpg" alt="Camping photo 1" class="gallery-img">
+                    <img src="images/camping-1.jpg" alt="Camping Phú Sĩ - View núi Phú Sĩ tuyệt đẹp" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/camping-2.jpg" alt="Camping photo 2" class="gallery-img">
+                    <img src="images/camping-2.jpg" alt="Chụp hình camping Phú Sĩ - Chill cảnh đẹp Nhật Bản" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/camping-3.jpg" alt="Camping photo 3" class="gallery-img">
+                    <img src="images/camping-3.jpg" alt="Bãi camping Phú Sĩ - Share đồ cắm trại" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/camping-4.jpg" alt="Camping photo 4" class="gallery-img">
+                    <img src="images/camping-4.jpg" alt="Camping view núi Phú Sĩ - Cho thuê đồ camping" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/camping-5.jpg" alt="Camping photo 5" class="gallery-img">
+                    <img src="images/camping-5.jpg" alt="Chụp hình kỷ niệm camping Phú Sĩ" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/camping-6.jpg" alt="Camping photo 6" class="gallery-img">
+                    <img src="images/camping-6.jpg" alt="Camping chill cảnh đẹp tại Phú Sĩ Nhật Bản" class="gallery-img">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Preview Section -->
+    <section id="locations" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Vị trí camping</h2>
+            <p class="section-text"><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực <span class="no-break">Phú Sĩ</span></p>
+            
+            <div class="map-preview-container">
+                <div id="mapPreview"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="locations.html" class="btn-primary btn-large">Xem chi tiết vị trí</a>
             </div>
         </div>
     </section>
@@ -291,16 +391,16 @@
     <section class="section section-dark">
         <div class="container">
             <h2 class="section-title">Câu hỏi thường gặp</h2>
-            <p class="section-text">Một số câu hỏi phổ biến về Camp Nhà Thỏ</p>
+            <p class="section-text">Một số câu hỏi phổ biến về <span class="no-break">Camp Nhà Thỏ</span></p>
             
             <div class="faq-preview-container">
                 <div class="faq-preview-item">
                     <div class="faq-preview-question">
                         <span class="faq-preview-icon">❓</span>
-                        <h3>Camp Nhà Thỏ là dịch vụ cho thuê hay tour ghép?</h3>
+                        <h3><span class="no-break">Camp Nhà Thỏ</span> là dịch vụ cho thuê hay tour ghép?</h3>
                     </div>
                     <div class="faq-preview-answer">
-                        <p>Camp Nhà Thỏ <strong>không phải tour ghép</strong> và cũng không đơn thuần là cho thuê. Mô hình chính là <strong>chia sẻ đồ camping</strong> + hỗ trợ đưa đón & setup. Bạn và nhóm của bạn <strong>đi riêng</strong>, không ghép với khách khác.</p>
+                        <p><span class="no-break">Camp Nhà Thỏ</span> <strong>không phải tour ghép</strong> và cũng không đơn thuần là cho thuê. Mô hình chính là <strong>chia sẻ đồ camping</strong> + hỗ trợ đưa đón & setup. Bạn và nhóm của bạn <strong>đi riêng</strong>, không ghép với khách khác.</p>
                     </div>
                 </div>
 
@@ -335,8 +435,17 @@
     <section class="section section-cta">
         <div class="container">
             <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
-            <p class="section-text">Liên hệ chúng mình để biết thêm chi tiết</p>
-            <a href="contact.html" class="btn-primary btn-large">Liên hệ</a>
+            <p class="section-text">Kết nối với chúng mình qua TikTok hoặc Facebook</p>
+            <div class="social-buttons">
+                <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
+                    <span class="social-btn-icon">🎵</span>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://www.facebook.com/share/15VaMf4oUvn/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-facebook">
+                    <span class="social-btn-icon">📘</span>
+                    <span>Facebook</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -471,6 +580,66 @@
         // Initialize sliders
         initSlider('featuresSlider', 'featuresPrev', 'featuresNext', 'featuresDots');
         initSlider('equipmentSlider', 'equipmentPrev', 'equipmentNext', 'equipmentDots');
+        });
+    </script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map preview after Leaflet is loaded
+        window.addEventListener('load', function() {
+            if (typeof L !== 'undefined') {
+            const mapPreviewElement = document.getElementById('mapPreview');
+            if (mapPreviewElement) {
+                const mapPreview = L.map('mapPreview').setView([35.436, 138.57], 11);
+
+                // Add grayscale tile layer
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 19,
+                }).addTo(mapPreview);
+
+                // Location coordinates (exact from Google Maps)
+                const locations = [
+                    {
+                        name: 'Bãi Fumotoppara',
+                        lat: 35.3994331,
+                        lng: 138.5648368,
+                        icon: '🏔️',
+                        description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp'
+                    },
+                    {
+                        name: 'Bãi Koan (浩庵キャンプ場)',
+                        lat: 35.473183,
+                        lng: 138.574764,
+                        icon: '⛰️',
+                        description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
+                    }
+                ];
+
+                // Add markers
+                locations.forEach(location => {
+                    const customIcon = L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="font-size: 32px; text-align: center;">${location.icon}</div>`,
+                        iconSize: [40, 40],
+                        iconAnchor: [20, 40],
+                        popupAnchor: [0, -40]
+                    });
+
+                    L.marker([location.lat, location.lng], { icon: customIcon })
+                        .addTo(mapPreview)
+                        .bindPopup(`
+                            <div style="text-align: center; padding: 10px;">
+                                <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">${location.name}</h3>
+                                <p style="margin: 0; font-size: 14px; color: #666;">${location.description}</p>
+                            </div>
+                        `);
+                });
+            }
+        }
+        });
     </script>
 </body>
 </html>

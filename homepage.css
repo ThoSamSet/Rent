@@ -13,6 +13,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Prevent word breaking for proper nouns and compound words */
+.no-break {
+    white-space: nowrap;
+}
+
+/* Better word breaking for Vietnamese text */
+.section-text,
+.faq-answer,
+.location-detail p,
+.service-text,
+.target-text {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -506,6 +521,48 @@ body {
     display: block;
 }
 
+/* Locations Preview Section */
+.locations-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+
+.location-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.location-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.location-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1d1d1f;
+}
+
+.location-card p {
+    font-size: 17px;
+    color: #86868b;
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* FAQ Preview Section */
 .faq-preview-container {
     max-width: 900px;
@@ -572,6 +629,70 @@ body {
     padding: 16px 32px;
     font-size: 19px;
     border-radius: 25px;
+}
+
+/* Social Contact Buttons */
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.social-btn-tiktok {
+    background: #000000;
+    color: white;
+}
+
+.social-btn-tiktok:hover {
+    background: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn-facebook {
+    background: #1877F2;
+    color: white;
+}
+
+.social-btn-facebook:hover {
+    background: #166FE5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 89, 152, 0.3);
+}
+
+.social-btn-icon {
+    font-size: 20px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .social-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .social-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
 }
 
 /* Footer */
@@ -692,6 +813,15 @@ body {
 
     .faq-preview-icon {
         font-size: 20px;
+    }
+
+    .locations-preview {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .location-card {
+        padding: 30px 20px;
     }
 }
 

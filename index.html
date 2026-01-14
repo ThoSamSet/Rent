@@ -545,42 +545,59 @@
             nextBtn.addEventListener('click', nextSlide);
             
             // Touch swipe support
-            let startX = 0;
-            let currentX = 0;
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
             let isDragging = false;
             
             sliderWrapper.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
                 isDragging = true;
-            });
+            }, { passive: true });
             
             sliderWrapper.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
-                currentX = e.touches[0].clientX;
-            });
+                touchEndX = e.touches[0].clientX;
+                touchEndY = e.touches[0].clientY;
+            }, { passive: true });
             
-            sliderWrapper.addEventListener('touchend', () => {
+            sliderWrapper.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
                 isDragging = false;
                 
-                const diff = startX - currentX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
+                const diffX = touchStartX - touchEndX;
+                const diffY = Math.abs(touchStartY - touchEndY);
+                
+                // Only trigger swipe if horizontal movement is greater than vertical
+                if (Math.abs(diffX) > diffY && Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        // Swipe left - next
                         nextSlide();
                     } else {
+                        // Swipe right - prev
                         prevSlide();
                     }
                 }
-            });
+            }, { passive: true });
             
             // Initialize
             updateSlider();
         }
         
-        // Initialize sliders
-        initSlider('featuresSlider', 'featuresPrev', 'featuresNext', 'featuresDots');
-        initSlider('equipmentSlider', 'equipmentPrev', 'equipmentNext', 'equipmentDots');
-        });
+        // Initialize sliders when DOM is ready
+        function initializeSliders() {
+            initSlider('featuresSlider', 'featuresPrev', 'featuresNext', 'featuresDots');
+            initSlider('equipmentSlider', 'equipmentPrev', 'equipmentNext', 'equipmentDots');
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeSliders);
+        } else {
+            // DOM already loaded
+            initializeSliders();
+        }
     </script>
 
     <!-- Leaflet JS -->

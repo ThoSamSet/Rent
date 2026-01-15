@@ -27,6 +27,14 @@
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
+
+    <!-- Pricing Page -->
+    <url>
+        <loc>https://campnhatho.work.gd/pricing.html</loc>
+        <lastmod>2026-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
     
     <!-- Locations Page -->
     <url>

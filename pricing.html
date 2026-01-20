@@ -22,7 +22,7 @@
     </script>
     <style>
         .pricing-hero {
-            margin-top: 60px;
+            margin-top: 104px;
             min-height: 40vh;
             display: flex;
             flex-direction: column;
@@ -72,6 +72,9 @@
     </style>
 </head>
 <body>
+    <div class="announcement-bar">
+        <a href="#schedule">Plan hạt dẻ 🌰 đang mở đăng ký — Xem lịch trình</a>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -104,41 +107,7 @@
     <section class="section">
         <div class="container">
             <div class="plan-detail-section">
-                <div class="section-with-image">
-                    <div class="section-image">
-                        <img src="images/camping-1.jpg" alt="Plan hạt bí - tự do chọn ngày và bãi camp">
-                    </div>
-                    <div class="section-text-content">
-                        <h2>Plan hạt bí 🎃</h2>
-                        <p class="plan-detail-price">Từ 2m4990y</p>
-                        <p>Lựa chọn linh hoạt cho nhóm muốn tự chủ lịch trình và địa điểm.</p>
-                        <ul class="plan-detail-list">
-                            <li>Khách tự do chọn ngày và bãi camp</li>
-                            <li>Phù hợp nhóm muốn trải nghiệm theo ý mình</li>
-                            <li>Chủ động hơn khi cần đổi lịch</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="plan-detail-section">
-                <div class="section-with-image">
-                    <div class="section-text-content">
-                        <h2>Plan hạt dẻ 🌰</h2>
-                        <p class="plan-detail-price">Từ 1m4990y</p>
-                        <p>Tiện lợi và nhanh gọn với lịch trình, bãi camp đã được sắp sẵn.</p>
-                        <ul class="plan-detail-list">
-                            <li><span class="no-break">Camp Nhà Thỏ</span> lên lịch và bãi camp sẵn</li>
-                            <li>Phù hợp nhóm muốn đi nhanh, không cần chọn nhiều</li>
-                            <li>Dễ đặt lịch khi bận rộn</li>
-                        </ul>
-                    </div>
-                    <div class="section-image">
-                        <img src="images/camping-2.jpg" alt="Plan hạt dẻ - lịch và bãi camp đã được sắp sẵn">
-                    </div>
-                </div>
-            </div>
-            <div class="plan-detail-section">
-                <h2 class="section-title">Lịch trình</h2>
+                <h2 class="section-title" id="schedule">Lịch trình</h2>
                 <p class="section-text">Kiểm tra lịch trình Camping mới nhất tại <span class="no-break">Camp Nhà Thỏ</span>.</p>
                 <div class="schedule-month">
                     <h3 class="schedule-month-title">Tháng 1/2026</h3>
@@ -367,6 +336,41 @@
                     </div>
                 </div>
             </div>
+            <div class="plan-detail-section">
+                <div class="section-with-image">
+                    <div class="section-image">
+                        <img src="images/camping-1.jpg" alt="Plan hạt bí - tự do chọn ngày và bãi camp">
+                    </div>
+                    <div class="section-text-content">
+                        <h2>Plan hạt bí 🎃</h2>
+                        <p class="plan-detail-price">Từ 2m4990y</p>
+                        <p>Lựa chọn linh hoạt cho nhóm muốn tự chủ lịch trình và địa điểm.</p>
+                        <ul class="plan-detail-list">
+                            <li>Khách tự do chọn ngày và bãi camp</li>
+                            <li>Phù hợp nhóm muốn trải nghiệm theo ý mình</li>
+                            <li>Chủ động hơn khi cần đổi lịch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-detail-section">
+                <div class="section-with-image">
+                    <div class="section-text-content">
+                        <h2>Plan hạt dẻ 🌰</h2>
+                        <p class="plan-detail-price">Từ 1m4990y</p>
+                        <p>Tiện lợi và nhanh gọn với lịch trình, bãi camp đã được sắp sẵn.</p>
+                        <p class="plan-detail-note">*Plan hạt dẻ chưa bao gồm phí đồ ăn. Hiện tại option đồ ăn đang tạm dừng dịch vụ nên bạn vui lòng tự mang theo đồ ăn. Liên hệ để biết thêm chi tiết.</p>
+                        <ul class="plan-detail-list">
+                            <li><span class="no-break">Camp Nhà Thỏ</span> lên lịch và bãi camp sẵn</li>
+                            <li>Phù hợp nhóm muốn đi nhanh, không cần chọn nhiều</li>
+                            <li>Dễ đặt lịch khi bận rộn</li>
+                        </ul>
+                    </div>
+                    <div class="section-image">
+                        <img src="images/camping-2.jpg" alt="Plan hạt dẻ - lịch và bãi camp đã được sắp sẵn">
+                    </div>
+                </div>
+            </div>
             <div class="pricing-table-wrapper">
                 <table class="pricing-table">
                     <thead>
@@ -435,7 +439,6 @@
             <div class="pricing-note-box">
                 Hai plan có dịch vụ giống nhau (bao gồm phí xe đưa đón, đồ camping, setup).<br>
                 Nếu bạn có nhu cầu thêm option đồ ăn, vui lòng tham khảo các option đồ ăn phía dưới.<br>
-                *Hiện tại option đồ ăn đang tạm dừng dịch vụ.<br>
                 *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
                 Liên hệ chúng mình để được tư vấn chi tiết.
             </div>
@@ -446,8 +449,7 @@
     <section class="section section-dark">
         <div class="container">
             <h2 class="section-title">Bạn muốn thêm option đồ ăn?</h2>
-            <p class="section-text">Tham khảo chi tiết option đồ ăn tại trang bên dưới.<br>
-                *Hiện tại option đồ ăn đang tạm dừng dịch vụ.</p>
+            <p class="section-text">Tham khảo chi tiết option đồ ăn tại trang bên dưới</p>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="equipment.html#food-plan" class="btn-primary btn-large">Xem option đồ ăn</a>
             </div>

@@ -37,7 +37,7 @@ body {
 /* Navigation */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 44px;
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.8);
@@ -61,6 +61,37 @@ body {
     font-size: 20px;
     font-weight: 600;
     color: #1d1d1f;
+}
+
+.announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: #1d1d1f;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    padding: 0 16px;
+}
+
+.announcement-bar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.announcement-bar a:hover {
+    text-decoration: underline;
+}
+
+#schedule {
+    scroll-margin-top: 160px;
 }
 
 .nav-links {
@@ -140,7 +171,7 @@ body {
 
 /* Hero Section */
 .hero {
-    margin-top: 60px;
+    margin-top: 104px;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -922,6 +953,13 @@ body {
     font-weight: 600;
     color: #0071e3;
     margin-bottom: 12px;
+}
+
+.section-text-content .plan-detail-note {
+    font-size: 14px;
+    color: #86868b;
+    margin-bottom: 18px;
+    line-height: 1.6;
 }
 
 @media (max-width: 900px) {

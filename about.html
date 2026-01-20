@@ -362,6 +362,7 @@
         </div>
     </nav>
 
+    <main>
     <!-- Hero Section -->
     <section class="about-hero">
         <div class="hero-wrapper">
@@ -372,7 +373,7 @@
                 </p>
             </div>
             <div class="hero-image-wrapper">
-                <img src="images/about-hero.jpg" alt="Camp Nhà Thỏ">
+                <img src="images/about-hero.jpg" alt="Camp Nhà Thỏ" loading="eager" decoding="async" fetchpriority="high">
             </div>
         </div>
     </section>
@@ -384,7 +385,7 @@
             <div class="content-section">
                 <div class="section-with-image">
                     <div class="section-image">
-                        <img src="images/about-1.jpg" alt="Chia sẻ đồ camping">
+                        <img src="images/about-1.jpg" alt="Chia sẻ đồ camping" loading="lazy" decoding="async">
                     </div>
                     <div class="section-text-content">
                         <h2>Không phải cho thuê, mà là chia sẻ</h2>
@@ -464,8 +465,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="slider-arrow prev" id="servicePrev">‹</button>
-                    <button class="slider-arrow next" id="serviceNext">›</button>
+                    <button class="slider-arrow prev" id="servicePrev" aria-label="Xem dịch vụ trước">‹</button>
+                    <button class="slider-arrow next" id="serviceNext" aria-label="Xem dịch vụ tiếp theo">›</button>
                     <div class="slider-nav" id="serviceDots"></div>
                 </div>
             </div>
@@ -486,7 +487,7 @@
                         <p>Nếu bạn thuộc một trong những trường hợp này, Camp Nhà Thỏ sẽ phù hợp với bạn:</p>
                     </div>
                     <div class="section-image">
-                        <img src="images/about-2.jpg" alt="Người dùng Camp Nhà Thỏ">
+                        <img src="images/about-2.jpg" alt="Người dùng Camp Nhà Thỏ" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="target-grid">
@@ -571,6 +572,7 @@
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">

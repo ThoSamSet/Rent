@@ -24,19 +24,19 @@
 
 ### 1. Xác minh Google Search Console
 1. Truy cập [Google Search Console](https://search.google.com/search-console)
-2. Thêm property mới: `https://campnhatho.work.gd`
+2. Thêm property mới: `https://campnhatho.com`
 3. Chọn phương thức xác minh: **HTML tag**
 4. Google sẽ tự động tìm thấy verification code đã được thêm vào trang
 5. Click "Verify"
 
 ### 2. Submit Sitemap
 1. Sau khi xác minh thành công, vào **Sitemaps** trong menu bên trái
-2. Nhập URL sitemap: `https://campnhatho.work.gd/sitemap.xml`
+2. Nhập URL sitemap: `https://campnhatho.com/sitemap.xml`
 3. Click **Submit**
 
 ### 3. Request Indexing (Tùy chọn)
 1. Vào **URL Inspection** tool
-2. Nhập URL từng trang: `https://campnhatho.work.gd/`
+2. Nhập URL từng trang: `https://campnhatho.com/`
 3. Click **Request Indexing** cho từng trang chính
 
 ### 4. Kiểm tra và theo dõi
@@ -70,7 +70,7 @@
 - Kết quả tìm kiếm có thể xuất hiện sau **2-4 tuần**
 
 ## 📝 Lưu ý
-- Website hiện tại: `https://campnhatho.work.gd`
+- Website hiện tại: `https://campnhatho.com`
 - Đảm bảo trang web đã được deploy và hoạt động
 - Kiểm tra xem tất cả các link đều hoạt động
 - Đảm bảo trang web responsive trên mobile

@@ -728,7 +728,7 @@ body {
 
 .pricing-table th,
 .pricing-table td {
-    padding: 22px 20px;
+    padding: 24px;
     text-align: center;
     border-bottom: 1px solid #e5e5e7;
     vertical-align: middle;
@@ -739,6 +739,11 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: #1d1d1f;
+}
+
+.pricing-table thead th:first-child,
+.pricing-table tbody th.pricing-people {
+    text-align: left;
 }
 
 .pricing-table tbody tr:last-child td {
@@ -767,6 +772,18 @@ body {
 
 .pricing-table .pricing-prices {
     margin-bottom: 10px;
+}
+
+.pricing-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1d1d1f;
+    text-align: center;
+    margin: 18px 0 18px;
+}
+
+.pricing-table-secondary {
+    margin-top: 40px;
 }
 
 .schedule-table-wrapper {

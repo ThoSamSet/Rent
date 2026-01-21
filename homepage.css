@@ -717,6 +717,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .pricing-table {
@@ -793,6 +794,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .schedule-table {
@@ -989,11 +991,53 @@ body {
 @media (max-width: 768px) {
     .pricing-table th,
     .pricing-table td {
-        padding: 18px 16px;
+        padding: 14px 12px;
     }
 
     .pricing-table {
-        min-width: 620px;
+        min-width: 520px;
+    }
+
+    .pricing-subtitle {
+        font-size: 20px;
+        margin: 16px 0;
+    }
+
+    .price-old {
+        font-size: 14px;
+    }
+
+    .price-new {
+        font-size: 24px;
+    }
+
+    .pricing-table .pricing-people {
+        font-size: 17px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 12px 10px;
+        height: 96px;
+    }
+
+    .schedule-table {
+        min-width: 720px;
+    }
+
+    .schedule-date {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .schedule-status {
+        font-size: 12px;
+    }
+
+    .schedule-location,
+    .schedule-plan,
+    .schedule-duration {
+        font-size: 11px;
     }
 }
 

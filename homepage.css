@@ -520,6 +520,14 @@ body {
     color: #0071e3;
 }
 
+.blog-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 24px auto;
+    border-radius: 16px;
+}
+
 .equipment-preview-item {
     text-align: center;
     padding: 0;

@@ -60,4 +60,20 @@
         <priority>0.7</priority>
     </url>
     
+    <!-- Blog Page -->
+    <url>
+        <loc>https://campnhatho.com/blog/</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Post -->
+    <url>
+        <loc>https://campnhatho.com/blog/campingsakura2026/</loc>
+        <lastmod>2026-01-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
 </urlset>

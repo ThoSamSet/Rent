@@ -58,9 +58,19 @@ body {
 }
 
 .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 20px;
     font-weight: 600;
     color: #1d1d1f;
+}
+
+.nav-logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
 }
 
 .announcement-bar {

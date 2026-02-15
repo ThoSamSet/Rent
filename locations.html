@@ -204,12 +204,12 @@
 </head>
 <body>
     <div class="announcement-bar">
-        <a href="pricing.html" class="announcement-secondary">Đang giảm giá Valentine — Xem chi tiết</a>
+        <a href="pricing.html" class="announcement-secondary">Xem lịch trình gần nhất</a>
     </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">CAMP Nhà Thỏ</a>
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LOGO.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img">CAMP Nhà Thỏ</a>
             <div class="burger-menu" id="burgerMenu">
                 <span></span>
                 <span></span>
@@ -233,7 +233,7 @@
     <!-- Hero Section -->
     <section class="locations-hero">
         <h1>Vị trí Camping</h1>
-        <p><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực <span class="no-break">Phú Sĩ</span></p>
+        <p><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực Kanto, Nhật Bản</p>
     </section>
 
     <!-- Locations Content -->
@@ -288,6 +288,48 @@
                             <li>Không gian thoáng đãng</li>
                             <li>Môi trường trong lành</li>
                             <li>Phù hợp cho cặp đôi và nhóm nhỏ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tanoue Camping Ground -->
+                <div class="location-detail">
+                    <div class="location-image">
+                        <img src="images/location-tanoue.jpg" alt="Tanoue Camping Ground 田の上キャンプ場" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Tanoue Camping Ground (田の上キャンプ場)
+                        </h3>
+                        <p>
+                            Bãi camping với không gian thiên nhiên yên tĩnh.
+                        </p>
+                        <ul class="location-features">
+                            <li>Không gian rộng rãi</li>
+                            <li>Gần bãi biển</li>
+                            <li>Gần Hitachi Kaihin Park</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recamp Ashikaga -->
+                <div class="location-detail">
+                    <div class="location-image">
+                        <img src="images/location-recamp-ashikaga.jpg" alt="Recamp Ashikaga RECAMP足利" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Recamp Ashikaga (RECAMP足利)
+                        </h3>
+                        <p>
+                            Bãi camping tại Ashikaga, Tochigi.
+                        </p>
+                        <ul class="location-features">
+                            <li>Không gian thoáng đãng</li>
+                            <li>Môi trường trong lành</li>
+                            <li>Phù hợp cho nhóm và gia đình</li>
                         </ul>
                     </div>
                 </div>
@@ -392,6 +434,20 @@
                 lng: 138.574764,
                 icon: '⛰️',
                 description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
+            },
+            {
+                name: 'Tanoue Camping Ground (田の上キャンプ場)',
+                lat: 36.392397,
+                lng: 140.611984,
+                icon: '🏕️',
+                description: 'Không gian rộng rãi, gần bãi biển, gần Hitachi Kaihin Park'
+            },
+            {
+                name: 'Recamp Ashikaga (RECAMP足利)',
+                lat: 36.4251696,
+                lng: 139.4287645,
+                icon: '🏕️',
+                description: 'Bãi camping tại Ashikaga, Tochigi'
             }
         ];
 
@@ -414,6 +470,10 @@
                     </div>
                 `);
         });
+
+        // Fit map to show all markers
+        const bounds = L.latLngBounds(locations.map(l => [l.lat, l.lng]));
+        map.fitBounds(bounds.pad(0.1));
 
         // Style for custom markers
         const style = document.createElement('style');

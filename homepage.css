@@ -775,15 +775,21 @@ body {
 }
 
 .price-old {
-    font-size: 18px;
-    color: #86868b;
-    text-decoration: line-through;
+    font-size: 32px;
+    font-weight: 600;
+    color: #0071e3;
 }
 
 .price-new {
     font-size: 32px;
     font-weight: 600;
     color: #0071e3;
+}
+
+.price-contact {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1d1d1f;
 }
 
 .pricing-note {
@@ -1094,7 +1100,7 @@ body {
     }
 
     .price-old {
-        font-size: 14px;
+        font-size: 24px;
     }
 
     .price-new {
@@ -1450,6 +1456,7 @@ body {
         padding: 30px 20px;
     }
 
+    .price-old,
     .price-new {
         font-size: 28px;
     }

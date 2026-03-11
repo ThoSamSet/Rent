@@ -23,13 +23,13 @@
     <style>
         .contact-hero {
             margin-top: 104px;
-            min-height: 40vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 80px 20px 40px;
             background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
         }
 
@@ -117,6 +117,11 @@
             background: #0077ed;
         }
 
+        .contact-hero-image {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
         @media (max-width: 768px) {
             .contact-hero h1 {
                 font-size: 40px;
@@ -167,6 +172,13 @@
         <p>Theo dõi và kết nối với CAMP Nhà Thỏ qua các kênh dưới đây</p>
     </section>
 
+    <!-- Hero Image (separate like index) -->
+    <section>
+        <div class="hero-image contact-hero-image">
+            <img src="images/hero-contact-campnhatho.jpg" alt="Liên hệ CAMP Nhà Thỏ - camping Phú Sĩ" loading="lazy" decoding="async">
+        </div>
+    </section>
+
     <!-- Contact Channels -->
     <section class="section">
         <div class="contact-channels">
@@ -192,6 +204,7 @@
                 <div class="channel-button">Theo dõi Facebook</div>
             </a>
         </div>
+        <p class="section-text" style="text-align: center; margin-top: 30px;">Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.</p>
     </section>
 
     <!-- Footer -->

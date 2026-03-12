@@ -306,6 +306,13 @@
           "@type": "Answer",
           "text": "Bạn nên liên hệ càng sớm càng tốt để giữ được bãi đẹp, chủ động lịch trình, tránh tình trạng hết chỗ. Đặc biệt vào mùa cao điểm, việc đặt sớm là rất cần thiết."
         }
+      }, {
+        "@type": "Question",
+        "name": "Khách có được sử dụng hình ảnh của Camp Nhà Thỏ để đăng lên mạng xã hội không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có. Khách được phép sử dụng hình ảnh chụp trong quá trình sử dụng dịch vụ của Camp Nhà Thỏ để đăng lên mạng xã hội. Tuy nhiên, vui lòng che mặt, biển số xe và các thông tin nhạy cảm như lịch trình di chuyển, vị trí chính xác hoặc thông tin cá nhân của người khác để đảm bảo quyền riêng tư và an toàn cho tất cả mọi người."
+        }
       }]
     }
     </script>
@@ -335,6 +342,23 @@
             color: #86868b;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .faq-hero-image {
+            margin-top: 32px;
+            width: 100%;
+            max-width: 720px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+            aspect-ratio: 16 / 9;
+        }
+
+        .faq-hero-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
         }
 
         .faq-container {
@@ -414,6 +438,13 @@
                 font-size: 19px;
             }
 
+            .faq-hero-image {
+                margin-top: 24px;
+                max-width: 100%;
+                border-radius: 20px;
+                aspect-ratio: 16 / 9;
+            }
+
             .faq-container {
                 padding: 40px 20px;
             }
@@ -464,6 +495,14 @@
     <section class="faq-hero">
         <h1>Câu hỏi thường gặp</h1>
         <p>Tìm câu trả lời cho những thắc mắc phổ biến về Camp Nhà Thỏ</p>
+        <div class="faq-hero-image">
+            <img src="images/faq-hero.jpg"
+                 alt="Không gian camping ban đêm của Camp Nhà Thỏ với lều, ánh đèn ấm và núi Phú Sĩ phía xa"
+                 width="1200"
+                 height="675"
+                 loading="lazy"
+                 decoding="async">
+        </div>
     </section>
 
     <!-- FAQ Content -->
@@ -983,6 +1022,15 @@
                     </ul>
                     <p>Đặc biệt vào mùa cao điểm,<br>
                         việc đặt sớm là rất cần thiết.</p>
+                </div>
+            </div>
+
+            <!-- Question 40 -->
+            <div class="faq-item">
+                <div class="faq-question">41. Khách có được sử dụng hình ảnh của Camp Nhà Thỏ để đăng lên mạng xã hội không?</div>
+                <div class="faq-answer">
+                    <p>Có. Khách được phép sử dụng hình ảnh chụp trong quá trình sử dụng dịch vụ của Camp Nhà Thỏ để đăng lên mạng xã hội.</p>
+                    <p>Tuy nhiên, vui lòng che mặt, biển số xe và các thông tin nhạy cảm như lịch trình di chuyển, vị trí chính xác hoặc thông tin cá nhân của người khác để đảm bảo quyền riêng tư và an toàn cho tất cả mọi người.</p>
                 </div>
             </div>
 

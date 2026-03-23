@@ -231,6 +231,75 @@
             color: #1d1d1f;
         }
 
+        .comparison-section {
+            margin: 60px 0 80px;
+        }
+
+        .comparison-section h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .comparison-section .section-intro {
+            font-size: 18px;
+            color: #86868b;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .comparison-table-wrap {
+            border: 1px solid #e5e5e7;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 18px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f2;
+            vertical-align: top;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .comparison-table thead th {
+            background: #f5f5f7;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .feature-col {
+            width: 22%;
+            font-weight: 600;
+            background: #fafafa;
+        }
+
+        .comparison-table .with-service {
+            color: #1b5e20;
+        }
+
+        .comparison-table .without-service {
+            color: #9a3412;
+        }
+
         .values-section {
             background: #f5f5f7;
             padding: 80px 20px;
@@ -339,6 +408,14 @@
         @media (max-width: 640px) {
             .values-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .comparison-section h2 {
+                font-size: 28px;
+            }
+
+            .comparison-table-wrap {
+                overflow-x: auto;
             }
 
             .highlight-card {
@@ -484,6 +561,57 @@
                     <button class="slider-arrow prev" id="servicePrev" aria-label="Xem dịch vụ trước">‹</button>
                     <button class="slider-arrow next" id="serviceNext" aria-label="Xem dịch vụ tiếp theo">›</button>
                     <div class="slider-nav" id="serviceDots"></div>
+                </div>
+            </div>
+
+            <!-- Comparison Section -->
+            <div class="comparison-section">
+                <h2>So sánh nhanh khi dùng Camp Nhà Thỏ</h2>
+                <p class="section-intro">
+                    Cùng một chuyến camping, mức độ thoải mái và tiết kiệm thời gian sẽ rất khác nhau khi bạn có người đồng hành hỗ trợ đúng việc.
+                </p>
+                <div class="comparison-table-wrap">
+                    <table class="comparison-table" aria-label="Bảng so sánh lợi ích sử dụng Camp Nhà Thỏ">
+                        <thead>
+                            <tr>
+                                <th>Hạng mục</th>
+                                <th>✅ Dùng Camp Nhà Thỏ</th>
+                                <th>❌ Tự chuẩn bị</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="feature-col">Lều</td>
+                                <td class="with-service">Có sẵn lều phù hợp nhóm, được tư vấn theo thời tiết và nhu cầu.</td>
+                                <td class="without-service">Tự tìm mua hoặc thuê lẻ, dễ chọn nhầm size/chất liệu, tốn công thử.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Đồ đạc</td>
+                                <td class="with-service">Có bộ đồ camping đồng bộ, gọn gàng, đủ món cần thiết.</td>
+                                <td class="without-service">Phải tự lên checklist, gom từng món, dễ thiếu hoặc mang dư cồng kềnh.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Đặt bãi</td>
+                                <td class="with-service">Được gợi ý bãi phù hợp, hỗ trợ đặt chỗ nhanh và rõ thông tin.</td>
+                                <td class="without-service">Tự tra cứu nhiều nơi, dễ gặp bãi không phù hợp hoặc hết chỗ.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Xe</td>
+                                <td class="with-service">Có hỗ trợ đưa đón theo lịch hẹn, tiện di chuyển cả người và đồ.</td>
+                                <td class="without-service">Tự xoay xe, tự sắp xếp hành lý cồng kềnh, phát sinh mệt từ lúc bắt đầu.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Hỗ trợ setup</td>
+                                <td class="with-service">Được hỗ trợ dựng lều và bố trí khu sinh hoạt nhanh, đỡ mất sức.</td>
+                                <td class="without-service">Tự mày mò setup, tốn thời gian và dễ sai kỹ thuật khi mới đi.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Đưa đón + tham quan du lịch</td>
+                                <td class="with-service">Kết hợp linh hoạt giữa camping và tham quan, lịch trình nhẹ nhàng hơn.</td>
+                                <td class="without-service">Tự chia lịch, tự canh đường đi, dễ bị gấp gáp hoặc bỏ lỡ điểm đẹp.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

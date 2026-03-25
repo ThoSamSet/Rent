@@ -967,6 +967,17 @@ body {
     color: #86868b;
 }
 
+.schedule-table td.is-outside-month {
+    /* Chỉ giữ khung ô, không hiển thị nội dung */
+    background: #fff;
+}
+
+.schedule-table td.is-outside-month .schedule-date,
+.schedule-table td.is-outside-month .schedule-status,
+.schedule-table td.is-outside-month .schedule-plan {
+    visibility: hidden;
+}
+
 .schedule-table td.is-active {
     background: #f0f6ff;
 }

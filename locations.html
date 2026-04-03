@@ -84,12 +84,12 @@
         .locations-hero p {
             font-size: 21px;
             color: #86868b;
-            max-width: 600px;
+            max-width: var(--text-narrow-max-width);
             margin: 0 auto;
         }
 
         .locations-content {
-            max-width: 1200px;
+            max-width: var(--page-hero-max-width);
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -111,12 +111,24 @@
 
         .location-info {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 60px;
+            /* Desktop: 3 thẻ mỗi hàng */
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            justify-items: stretch;
+            gap: 14px;
+            max-width: var(--page-hero-max-width);
+            margin: 60px auto 0;
         }
 
         .location-detail {
+            width: 100%;
+            max-width: 100%;
+            justify-self: stretch;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 0;
             background: white;
             padding: 0;
             border-radius: 20px;
@@ -125,8 +137,9 @@
         }
 
         .location-image {
+            flex-shrink: 0;
             width: 100%;
-            height: 250px;
+            aspect-ratio: 4 / 3;
             overflow: hidden;
         }
 
@@ -138,21 +151,25 @@
         }
 
         .location-detail-content {
-            padding: 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 32px;
+            min-height: 0;
         }
 
         .location-detail h3 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             color: #1d1d1f;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .location-detail-icon {
-            font-size: 32px;
+            font-size: 28px;
         }
 
         .location-detail p {
@@ -174,12 +191,16 @@
         }
 
         .location-map-link {
+            /* Trong flex column, mặc định con bị stretch full ngang — chỉ bao vừa chữ */
+            align-self: flex-start;
+            width: fit-content;
+            max-width: 100%;
             display: inline-block;
-            margin-bottom: 15px;
-            padding: 6px 14px;
+            margin-bottom: 12px;
+            padding: 5px 12px;
             border-radius: 999px;
             border: 1px solid #d2d2d7;
-            font-size: 13px;
+            font-size: 12px;
             color: #555;
             text-decoration: none;
             background: #f9f9fb;
@@ -215,6 +236,13 @@
             font-size: 18px;
         }
 
+        @media (max-width: 1024px) {
+            .location-info {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                max-width: var(--card-grid-max-width);
+            }
+        }
+
         @media (max-width: 768px) {
             .locations-hero h1 {
                 font-size: 40px;
@@ -231,6 +259,7 @@
 
             .location-info {
                 grid-template-columns: 1fr;
+                max-width: none;
                 gap: 30px;
             }
 
@@ -238,9 +267,6 @@
                 padding: 30px 20px;
             }
 
-            .location-image {
-                height: 200px;
-            }
         }
     </style>
 </head>
@@ -261,6 +287,7 @@
                 <a href="index.html">Trang chủ</a>
                 <a href="index.html#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
                 <a href="index.html#gallery">Hình ảnh</a>
                 <a href="index.html#locations">Vị trí</a>

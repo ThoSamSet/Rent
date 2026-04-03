@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option thêm — Đồ ăn, xem phim, di chuyển | CAMP Nhà Thỏ</title>
+    <meta name="description" content="Các option kèm chuyến camping tại Camp Nhà Thỏ: đồ ăn, xem phim, di chuyển qua cao tốc. Giá tham khảo và trạng thái dịch vụ.">
+    <meta name="keywords" content="option camping, đồ ăn camping, xem phim camping, cao tốc, Camp Nhà Thỏ">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="6Jb7Q150HqA8yTBqcR8_sUdWY2mwKTpTIoPTJhN8iVY">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9B%BA%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="canonical" href="https://campnhatho.com/options.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://campnhatho.com/options.html">
+    <meta property="og:title" content="Option thêm — Đồ ăn, xem phim, di chuyển | CAMP Nhà Thỏ">
+    <meta property="og:description" content="Các option kèm chuyến camping: đồ ăn, xem phim, di chuyển qua cao tốc. Giá và trạng thái dịch vụ.">
+    <meta property="og:image" content="https://campnhatho.com/images/camping-1.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://campnhatho.com/options.html">
+    <meta property="twitter:title" content="Option thêm | CAMP Nhà Thỏ">
+    <meta property="twitter:description" content="Đồ ăn, xem phim, di chuyển cao tốc — giá và trạng thái dịch vụ.">
+    <meta property="twitter:image" content="https://campnhatho.com/images/camping-1.jpg">
+
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <link rel="stylesheet" href="motion.css">
+    <script src="motion.js" defer></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22W1X4CVZK');
+    </script>
+    <style>
+        .options-hero {
+            margin-top: 104px;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .hero-wrapper {
+            max-width: var(--page-hero-max-width);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+        }
+
+        .hero-content p {
+            font-size: 21px;
+            color: #86868b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hero-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4 / 3;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .option-block {
+            max-width: var(--card-grid-max-width);
+            margin: 0 auto 48px;
+        }
+
+        .option-block h2 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .option-status {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            padding: 4px 12px;
+            border-radius: 980px;
+            margin-bottom: 16px;
+        }
+
+        .option-status--paused {
+            background: #fff3e0;
+            color: #b45309;
+        }
+
+        .option-status--open {
+            background: #e8f5e9;
+            color: #1b5e20;
+        }
+
+        .option-price-lead {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 16px 0 8px;
+        }
+
+        .option-detail-link {
+            display: inline-block;
+            margin-top: 18px;
+            font-weight: 500;
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        .option-detail-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 19px;
+            }
+        }
+
+        /* Food option: 4 cards in one row (desktop) */
+        #food-option {
+            max-width: var(--card-grid-max-width);
+        }
+
+        #food-option .food-plan-grid {
+            max-width: var(--card-grid-max-width);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            justify-items: stretch;
+            gap: 14px;
+        }
+
+        #food-option .food-plan-card {
+            justify-self: stretch;
+            min-width: 0;
+        }
+
+        #food-option .food-plan-content {
+            padding: 22px 22px 26px;
+        }
+
+        #food-option .food-plan-title {
+            font-size: 22px;
+        }
+
+        #food-option .food-plan-price {
+            font-size: 20px;
+        }
+
+        #food-option .food-plan-list li {
+            font-size: 16px;
+        }
+
+        @media (max-width: 1100px) {
+            #food-option .food-plan-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            #food-option .food-plan-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        <a href="pricing.html" class="announcement-secondary">Xem lịch trình gần nhất</a>
+    </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LOGO.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img">CAMP Nhà Thỏ</a>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Trang chủ</a>
+                <a href="index.html#about">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
+                <a href="pricing.html">Chi phí</a>
+                <a href="index.html#gallery">Hình ảnh</a>
+                <a href="locations.html">Vị trí</a>
+                <a href="faq.html">FAQ</a>
+                <a href="blog/">Blog</a>
+                <a href="contact.html" class="contact-link">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+    <section class="options-hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>Option thêm</h1>
+                <p>Đồ ăn, xem phim và lộ trình qua cao tốc.</p>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="images/options-hero.jpg" alt="Option thêm tại Camp Nhà Thỏ" loading="eager" decoding="async" fetchpriority="high">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="option-block" id="food-option">
+                <h2>Option đồ ăn</h2>
+                <span class="option-status option-status--paused">Tạm dừng dịch vụ</span>
+                <p class="section-text" style="text-align: left; max-width: none;">Camp Nhà Thỏ cung cấp các option đồ ăn cho bữa tối và điểm tâm sáng.</p>
+                <div class="food-plan-grid">
+                    <div class="food-plan-card food-plan-card-image">
+                        <div class="food-plan-image">
+                            <img src="images/food-hotpot.jpg" alt="Lẩu camping - bữa chính buổi tối" loading="lazy" decoding="async">
+                        </div>
+                        <div class="food-plan-content">
+                            <div class="food-plan-title">Lẩu <br>(bữa chính buổi tối)</div>
+                            <div class="food-plan-price">1m5990y</div>
+                            <ul class="food-plan-list">
+                                <li>Thịt (bò, heo)</li>
+                                <li>Rau, nấm</li>
+                                <li>Mì và nước lẩu vị tự chọn</li>
+                                <li>(lẩu Thái, lẩu Trung, lẩu Nhật)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="food-plan-card food-plan-card-image">
+                        <div class="food-plan-image">
+                            <img src="images/food-bbq.jpg" alt="BBQ camping - bữa chính buổi tối" loading="lazy" decoding="async">
+                        </div>
+                        <div class="food-plan-content">
+                            <div class="food-plan-title">BBQ <br>(bữa chính buổi tối)</div>
+                            <div class="food-plan-price">1m5990y</div>
+                            <ul class="food-plan-list">
+                                <li>Thịt (bò, heo, xúc xích)</li>
+                                <li>Rau củ nướng</li>
+                                <li>Sốt ướp và chấm</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="food-plan-card food-plan-card-image">
+                        <div class="food-plan-image">
+                            <img src="images/food-drink.jpg" alt="Option đồ uống có cồn tự pha chế" loading="lazy" decoding="async">
+                        </div>
+                        <div class="food-plan-content">
+                            <div class="food-plan-title">Option đồ uống cồn <br>(Dành cho bữa tối)</div>
+                            <div class="food-plan-price">9990y</div>
+                            <ul class="food-plan-list">
+                                <li>Cocktail, Rượu tự pha chế</li>
+                                <li>Các loại đồ uống có cồn thông dụng</li>
+                                <li>Dùng kèm bữa tối</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="food-plan-card food-plan-card-image">
+                        <div class="food-plan-image">
+                            <img src="images/food-breakfast.jpg" alt="Điểm tâm buổi sáng - bánh mì nướng" loading="lazy" decoding="async">
+                        </div>
+                        <div class="food-plan-content">
+                            <div class="food-plan-title">Điểm tâm buổi sáng</div>
+                            <p class="food-plan-note" style="margin: -4px 0 12px;">*Free khi bạn chọn đặt option đồ ăn tối</p>
+                            <div class="food-plan-price">Free</div>
+                            <ul class="food-plan-list">
+                                <li>Bánh mì nướng</li>
+                                <li>Bơ hoặc mứt</li>
+                                <li>Cafe hoặc trà</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-block" id="movie-option">
+                <h2>Option xem phim</h2>
+                <span class="option-status option-status--paused">Tạm dừng dịch vụ</span>
+                <p class="section-text" style="text-align: left; max-width: none;">Thư giãn buổi tối với máy chiếu Full HD và nội dung theo lựa chọn.</p>
+                <div class="food-plan-grid">
+                    <div class="food-plan-card">
+                        <div class="food-plan-title">Plan YouTube</div>
+                        <div class="food-plan-price">3990y</div>
+                        <ul class="food-plan-list">
+                            <li>Máy chiếu Full HD</li>
+                            <li>Chỉ xem YouTube (kèm Premium free)</li>
+                        </ul>
+                    </div>
+                    <div class="food-plan-card">
+                        <div class="food-plan-title">Plan Cinema</div>
+                        <div class="food-plan-price">9990y</div>
+                        <ul class="food-plan-list">
+                            <li>Máy chiếu Full HD</li>
+                            <li>Xem YouTube (kèm Premium free)</li>
+                            <li>1 bộ phim tự chọn (bạn vui lòng liên hệ tên phim để tụi mình chuẩn bị)</li>
+                            <li>Hạt khô, Coca-Cola</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-block" id="travel-option">
+                <h2>Option di chuyển (cao tốc)</h2>
+                <span class="option-status option-status--open">Đang nhận đặt</span>
+                <p class="section-text" style="text-align: left; max-width: none;">Khi bạn muốn rút ngắn thời gian di chuyển, có thể chọn thêm gói đi cao tốc.</p>
+                <div class="food-plan-grid">
+                    <div class="food-plan-card">
+                        <div class="food-plan-title">Option di chuyển (cao tốc)</div>
+                        <div class="food-plan-price">7000y / chuyến</div>
+                        <ul class="food-plan-list">
+                            <li>Ưu tiên lộ trình đi cao tốc để tiết kiệm thời gian</li>
+                            <li>Áp dụng theo từng chuyến</li>
+                            <li>Vui lòng báo trước để sắp xếp ETC và lộ trình</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="food-plan-note" style="text-align: left; margin-top: 12px;">*Giá có thể được xác nhận lại khi tư vấn tùy điểm đón và hành trình.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section section-cta">
+        <div class="container">
+            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="section-text">
+                Kết nối với chúng mình qua TikTok hoặc Facebook.<br>
+                Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.
+            </p>
+            <div class="social-buttons">
+                <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
+                    <span class="social-btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </span>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://www.facebook.com/share/15VaMf4oUvn/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-facebook">
+                    <span class="social-btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </span>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (burgerMenu && navLinks) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

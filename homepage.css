@@ -13,6 +13,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Unified card layout limits (grids + single card max width across pages) */
+:root {
+    --card-grid-max-width: 900px;
+    --card-item-max-width: 480px;
+    --content-wide-max-width: 1000px;
+    --page-hero-max-width: 1200px;
+    --text-narrow-max-width: 640px;
+}
+
+/* Default: images keep intrinsic aspect ratio */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Prevent word breaking for proper nouns and compound words */
 .no-break {
     white-space: nowrap;
@@ -29,7 +44,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -48,7 +63,7 @@ body {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -201,7 +216,7 @@ body {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: var(--card-grid-max-width);
     margin-bottom: 60px;
 }
 
@@ -239,7 +254,7 @@ body {
 
 .hero-image {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin-top: 40px;
     border-radius: 20px;
     overflow: hidden;
@@ -250,7 +265,6 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
 }
 
 /* Section Styles */
@@ -275,7 +289,7 @@ body {
     font-size: 21px;
     text-align: center;
     color: #86868b;
-    max-width: 700px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto 60px;
     line-height: 1.5;
 }
@@ -285,7 +299,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin: 0 auto;
 }
 
@@ -296,7 +310,7 @@ body {
 /* Slider Container */
 .slider-container {
     position: relative;
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin: 0 auto;
 }
 
@@ -412,11 +426,14 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    max-width: 1000px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
 }
 
 .equipment-card {
+    width: 100%;
+    max-width: min(100%, var(--card-item-max-width));
+    justify-self: center;
     background: white;
     padding: 40px 30px;
     border-radius: 20px;
@@ -451,31 +468,18 @@ body {
 
 /* Equipment Preview */
 .equipment-preview {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .equipment-preview-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    /* Always 5 columns on one row; minmax(0,1fr) lets cards shrink to fit */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 14px;
     margin-top: 50px;
-}
-
-/* Responsive for smaller desktop screens */
-@media (max-width: 1400px) {
-    .equipment-preview-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 25px;
-    }
-}
-
-/* Tablet breakpoint */
-@media (max-width: 1024px) {
-    .equipment-preview-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 20px;
-    }
 }
 
 .equipment-preview-slider {
@@ -485,12 +489,16 @@ body {
 .blog-preview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+    justify-items: center;
     gap: 30px;
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
 }
 
 .blog-preview-card {
+    width: 100%;
+    max-width: min(100%, var(--card-item-max-width));
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -498,7 +506,10 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
 }
 
 .blog-preview-card:hover {
@@ -506,15 +517,26 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
+.blog-preview-image {
+    flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
 .blog-preview-image img {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
 
 .blog-preview-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 24px 24px 28px;
+    min-height: 0;
 }
 
 .blog-preview-title {
@@ -536,17 +558,28 @@ body {
     font-size: 14px;
     font-weight: 600;
     color: #0071e3;
+    margin-top: auto;
 }
 
 .blog-content img {
+    width: 100%;
     max-width: 100%;
     height: auto;
     display: block;
     margin: 24px auto;
     border-radius: 16px;
+    object-fit: contain;
 }
 
 .equipment-preview-item {
+    width: 100%;
+    max-width: min(100%, var(--card-item-max-width));
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
     text-align: center;
     padding: 0;
     background: white;
@@ -562,8 +595,9 @@ body {
 }
 
 .equipment-preview-image {
+    flex-shrink: 0;
     width: 100%;
-    height: 180px;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     position: relative;
 }
@@ -581,23 +615,26 @@ body {
 }
 
 .equipment-icon {
+    flex-shrink: 0;
     font-size: 40px;
-    margin: 20px 0 15px;
+    margin: 16px 0 12px;
 }
 
 .equipment-preview-item h3 {
+    flex-shrink: 0;
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #1d1d1f;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
 .equipment-preview-item p {
+    flex: 1;
     font-size: 16px;
     color: #86868b;
     line-height: 1.5;
-    padding: 0 20px 25px;
+    padding: 0 16px 20px;
     margin: 0;
 }
 
@@ -606,7 +643,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    max-width: 1200px;
+    max-width: var(--page-hero-max-width);
     margin: 0 auto;
 }
 
@@ -641,12 +678,20 @@ body {
 .locations-preview {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    justify-items: center;
     gap: 30px;
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 50px auto 0;
 }
 
 .location-card {
+    width: 100%;
+    max-width: min(100%, var(--card-item-max-width));
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
     background: white;
     padding: 40px;
     border-radius: 20px;
@@ -673,6 +718,7 @@ body {
 }
 
 .location-card p {
+    flex: 1;
     font-size: 17px;
     color: #86868b;
     line-height: 1.6;
@@ -681,7 +727,7 @@ body {
 
 /* FAQ Preview Section */
 .faq-preview-container {
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
 }
 
@@ -740,7 +786,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
 }
 
@@ -799,7 +845,7 @@ body {
 }
 
 .pricing-table-wrapper {
-    max-width: 1000px;
+    max-width: var(--content-wide-max-width);
     margin: 0 auto;
     background: white;
     border-radius: 20px;
@@ -876,7 +922,7 @@ body {
 }
 
 .schedule-table-wrapper {
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
     background: white;
     border-radius: 20px;
@@ -1153,12 +1199,20 @@ body {
 .food-plan-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+    justify-items: center;
     gap: 30px;
-    max-width: 900px;
+    max-width: var(--card-grid-max-width);
     margin: 0 auto;
 }
 
 .food-plan-card {
+    width: 100%;
+    max-width: min(100%, var(--card-item-max-width));
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
     background: white;
     padding: 35px 30px;
     border-radius: 20px;
@@ -1166,14 +1220,15 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.food-plan-card-image {
+.food-plan-card.food-plan-card-image {
     padding: 0;
     overflow: hidden;
 }
 
 .food-plan-image {
+    flex-shrink: 0;
     width: 100%;
-    height: 200px;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
 }
 
@@ -1185,7 +1240,15 @@ body {
 }
 
 .food-plan-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 25px 30px 30px;
+    min-height: 0;
+}
+
+.food-plan-card:not(.food-plan-card-image) > .food-plan-list {
+    flex: 1;
 }
 
 .food-plan-card:hover {
@@ -1475,6 +1538,10 @@ body {
 
     .food-plan-card {
         padding: 28px 20px;
+    }
+
+    .food-plan-card.food-plan-card-image {
+        padding: 0;
     }
 
     .locations-preview {

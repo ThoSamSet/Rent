@@ -49,7 +49,7 @@
         }
 
         .hero-wrapper {
-            max-width: 1200px;
+            max-width: var(--page-hero-max-width);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
@@ -76,18 +76,20 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4 / 3;
         }
 
         .hero-image-wrapper img {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
+            object-fit: cover;
         }
 
         .equipment-content {
-            max-width: 1200px;
+            max-width: var(--page-hero-max-width);
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .content-section {
@@ -105,12 +107,24 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
+            /* 6 thẻ: 3 cột × 2 hàng */
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            justify-items: stretch;
+            gap: 14px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
         }
 
         .category-card {
+            width: 100%;
+            max-width: min(100%, var(--card-item-max-width));
+            justify-self: stretch;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 0;
             background: white;
             padding: 0;
             border-radius: 20px;
@@ -125,45 +139,52 @@
         }
 
         .category-image {
+            flex-shrink: 0;
             width: 100%;
-            height: 200px;
+            aspect-ratio: 4 / 3;
             object-fit: cover;
             display: block;
         }
 
         .category-content {
-            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            min-height: 0;
         }
 
         .category-header {
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .category-icon {
-            font-size: 32px;
+            font-size: 26px;
         }
 
         .category-name {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 600;
             color: #1d1d1f;
         }
 
         .category-items {
+            flex: 1;
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
         .category-items li {
-            font-size: 17px;
-            line-height: 1.8;
+            font-size: 15px;
+            line-height: 1.65;
             color: #1d1d1f;
-            margin-bottom: 10px;
-            padding-left: 25px;
+            margin-bottom: 6px;
+            padding-left: 20px;
             position: relative;
         }
 
@@ -201,16 +222,19 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            align-items: stretch;
         }
 
         .principle-item {
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            padding: 20px;
+            padding: 18px 20px;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            min-height: 0;
         }
 
         .principle-icon {
@@ -312,7 +336,10 @@
                 font-size: 40px;
             }
 
-            .category-grid,
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .principles-grid {
                 grid-template-columns: 1fr;
             }
@@ -327,6 +354,10 @@
         }
 
         @media (max-width: 640px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
             .category-content,
             .what-to-bring-content,
             .highlight-box {
@@ -358,6 +389,7 @@
                 <a href="index.html">Trang chủ</a>
                 <a href="index.html#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
                 <a href="index.html#gallery">Hình ảnh</a>
                 <a href="locations.html">Vị trí</a>
@@ -541,106 +573,6 @@
                 </p>
             </div>
             
-            <!-- Food Plan Section -->
-            <div class="content-section" id="food-plan">
-                <h2 class="section-title">Option đồ ăn</h2>
-                <p class="section-text">Camp Nhà Thỏ cung cấp các option đồ ăn cho bữa tối và điểm tâm sáng,<br>
-                    Giúp bạn chọn lựa món ăn phù hợp và tiện lợi nhất cho chuyến đi của mình.</p>
-                <div class="food-plan-grid">
-                    <div class="food-plan-card food-plan-card-image">
-                        <div class="food-plan-image">
-                            <img src="images/food-hotpot.jpg" alt="Lẩu camping - bữa chính buổi tối" loading="lazy" decoding="async">
-                        </div>
-                        <div class="food-plan-content">
-                            <div class="food-plan-title">Lẩu <br>(bữa chính buổi tối)</div>
-                            <div class="food-plan-price">1m5990y</div>
-                            <ul class="food-plan-list">
-                                <li>Thịt (bò, heo)</li>
-                                <li>Rau, nấm</li>
-                                <li>Mì và nước lẩu vị tự chọn</li>
-                                <li>(lẩu Thái, lẩu Trung, lẩu Nhật)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="food-plan-card food-plan-card-image">
-                        <div class="food-plan-image">
-                            <img src="images/food-bbq.jpg" alt="BBQ camping - bữa chính buổi tối" loading="lazy" decoding="async">
-                        </div>
-                        <div class="food-plan-content">
-                            <div class="food-plan-title">BBQ <br>(bữa chính buổi tối)</div>
-                            <div class="food-plan-price">1m5990y</div>
-                            <ul class="food-plan-list">
-                                <li>Thịt (bò, heo, xúc xích)</li>
-                                <li>Rau củ nướng</li>
-                                <li>Sốt ướp và chấm</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="food-plan-card food-plan-card-image">
-                        <div class="food-plan-image">
-                            <img src="images/food-drink.jpg" alt="Option đồ uống có cồn tự pha chế" loading="lazy" decoding="async">
-                        </div>
-                        <div class="food-plan-content">
-                            <div class="food-plan-title">Option đồ uống cồn <br>(Dành cho bữa tối)</div>
-                            <div class="food-plan-price">9990y</div>
-                            <ul class="food-plan-list">
-                                <li>Cocktail, Rượu tự pha chế</li>
-                                <li>Các loại đồ uống có cồn thông dụng</li>
-                                <li>Dùng kèm bữa tối</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="food-plan-card food-plan-card-image">
-                        <div class="food-plan-image">
-                            <img src="images/food-breakfast.jpg" alt="Điểm tâm buổi sáng - bánh mì nướng" loading="lazy" decoding="async">
-                        </div>
-                        <div class="food-plan-content">
-                            <div class="food-plan-title">Điểm tâm buổi sáng</div>
-                            <div class="food-plan-price">Free</div>
-                            <ul class="food-plan-list">
-                                <li>Bánh mì nướng</li>
-                                <li>Bơ hoặc mứt</li>
-                                <li>Cafe hoặc trà</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <p class="food-plan-note" style="text-align: center; margin-top: 20px;">
-                    *Option đồ ăn sáng chỉ free khi bạn chọn đặt option đồ ăn tối.
-                </p>
-                <p class="food-plan-note" style="text-align: center; margin-top: 10px;">
-                    *Hiện tại option đồ ăn đang tạm dừng dịch vụ.
-                </p>
-            </div>
-
-            <!-- Movie Option Section -->
-            <div class="content-section" id="movie-option">
-                <h2 class="section-title">Option xem phim</h2>
-                <p class="section-text">Thư giãn buổi tối với máy chiếu Full HD và nội dung theo lựa chọn.</p>
-                <div class="food-plan-grid">
-                    <div class="food-plan-card">
-                        <div class="food-plan-title">Plan YouTube</div>
-                        <div class="food-plan-price">3990y</div>
-                        <ul class="food-plan-list">
-                            <li>Máy chiếu Full HD</li>
-                        <li>Chỉ xem YouTube (kèm Premium free)</li>
-                        </ul>
-                    </div>
-                    <div class="food-plan-card">
-                        <div class="food-plan-title">Plan Cinema</div>
-                        <div class="food-plan-price">9990y</div>
-                        <ul class="food-plan-list">
-                            <li>Máy chiếu Full HD</li>
-                        <li>Xem YouTube (kèm Premium free)</li>
-                        <li>1 bộ phim tự chọn (bạn vui lòng liên hệ tên phim để tụi mình chuẩn bị)</li>
-                            <li>Hạt khô, Coca-Cola</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="food-plan-note" style="text-align: center; margin-top: 20px;">
-                    *Hiện tại option xem phim đang tạm dừng dịch vụ vì lý do thời tiết.
-                </p>
-            </div>
         </div>
     </section>
 

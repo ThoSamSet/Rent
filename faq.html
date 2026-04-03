@@ -199,6 +199,13 @@
         }
       }, {
         "@type": "Question",
+        "name": "Di chuyển bằng đường thường hay cao tốc?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Thông thường, chi phí di chuyển trong các gói dịch vụ chưa bao gồm phí cao tốc. Nếu khách có nhu cầu sử dụng cao tốc để tiết kiệm thời gian, chi phí này sẽ được tính như một option riêng. Vui lòng tham khảo thêm chi tiết tại trang Option."
+        }
+      }, {
+        "@type": "Question",
         "name": "Có quy định về hành lý mang theo không?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -336,7 +343,7 @@
     <style>
         .faq-hero {
             margin-top: 104px;
-            min-height: 40vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -357,14 +364,14 @@
         .faq-hero p {
             font-size: 21px;
             color: #86868b;
-            max-width: 600px;
+            max-width: var(--text-narrow-max-width);
             margin: 0 auto;
         }
 
         .faq-hero-image {
             margin-top: 32px;
             width: 100%;
-            max-width: 720px;
+            max-width: var(--card-grid-max-width);
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
@@ -379,7 +386,7 @@
         }
 
         .faq-container {
-            max-width: 900px;
+            max-width: var(--card-grid-max-width);
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -497,6 +504,7 @@
                 <a href="index.html">Trang chủ</a>
                 <a href="index.html#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
                 <a href="index.html#gallery">Hình ảnh</a>
                 <a href="locations.html">Vị trí</a>
@@ -803,9 +811,19 @@
                 </div>
             </div>
 
+            <!-- Question 22b — cao tốc -->
+            <div class="faq-item">
+                <div class="faq-question">23. Di chuyển bằng đường thường hay cao tốc?</div>
+                <div class="faq-answer">
+                    <p>Thông thường, chi phí di chuyển trong các gói dịch vụ <strong>chưa bao gồm phí cao tốc</strong>.</p>
+                    <p>Nếu khách có nhu cầu sử dụng cao tốc để tiết kiệm thời gian, chi phí này sẽ được tính như một <strong>option riêng</strong>.</p>
+                    <p>Vui lòng tham khảo thêm chi tiết tại <a href="options.html">trang Option</a>.</p>
+                </div>
+            </div>
+
             <!-- Question 22 -->
             <div class="faq-item">
-                <div class="faq-question">23. Có quy định về hành lý mang theo không?</div>
+                <div class="faq-question">24. Có quy định về hành lý mang theo không?</div>
                 <div class="faq-answer">
                     <p>Có.</p>
                     <p>Để đảm bảo không gian thoải mái, Camp Nhà Thỏ quy định:</p>
@@ -827,7 +845,7 @@
 
             <!-- Question 23 -->
             <div class="faq-item">
-                <div class="faq-question">24. Nếu tôi không đặt option đồ ăn thì có được sử dụng bếp và dụng cụ nấu ăn không?</div>
+                <div class="faq-question">25. Nếu tôi không đặt option đồ ăn thì có được sử dụng bếp và dụng cụ nấu ăn không?</div>
                 <div class="faq-answer">
                     <p>Có.</p>
                     <p>Option đồ ăn <strong>chỉ bao gồm nguyên liệu</strong>.</p>
@@ -838,7 +856,7 @@
 
             <!-- Question 24 -->
             <div class="faq-item">
-                <div class="faq-question">25. Tôi không chọn option đồ ăn, trên đường đi có thể ghé siêu thị mua đồ không?</div>
+                <div class="faq-question">26. Tôi không chọn option đồ ăn, trên đường đi có thể ghé siêu thị mua đồ không?</div>
                 <div class="faq-answer">
                     <p>Được.</p>
                     <p>Camp Nhà Thỏ luôn <strong>hỗ trợ dừng siêu thị</strong> để bạn mua đồ theo nhu cầu.</p>
@@ -847,7 +865,7 @@
 
             <!-- Question 25 -->
             <div class="faq-item">
-                <div class="faq-question">26. Tôi chưa từng đi camping, có phù hợp không?</div>
+                <div class="faq-question">27. Tôi chưa từng đi camping, có phù hợp không?</div>
                 <div class="faq-answer">
                     <p>Rất phù hợp.</p>
                     <p>Tụi mình sẽ:</p>
@@ -862,7 +880,7 @@
 
             <!-- Question 26 -->
             <div class="faq-item">
-                <div class="faq-question">27. Dịch vụ bao gồm những gì?</div>
+                <div class="faq-question">28. Dịch vụ bao gồm những gì?</div>
                 <div class="faq-answer">
                     <p>Gói cơ bản gồm:</p>
                     <ul>
@@ -880,7 +898,7 @@
 
             <!-- Question 27 -->
             <div class="faq-item">
-                <div class="faq-question">28. Tôi cần tự chuẩn bị những gì?</div>
+                <div class="faq-question">29. Tôi cần tự chuẩn bị những gì?</div>
                 <div class="faq-answer">
                     <p>Bạn chỉ cần mang:</p>
                     <ul>
@@ -894,7 +912,7 @@
 
             <!-- Question 28 -->
             <div class="faq-item">
-                <div class="faq-question">29. Thời gian đi trong bao lâu?</div>
+                <div class="faq-question">30. Thời gian đi trong bao lâu?</div>
                 <div class="faq-answer">
                     <p>Tuỳ lịch hẹn:</p>
                     <ul>
@@ -907,7 +925,7 @@
 
             <!-- Question 29 -->
             <div class="faq-item">
-                <div class="faq-question">30. Thời tiết xấu có đi được không?</div>
+                <div class="faq-question">31. Thời tiết xấu có đi được không?</div>
                 <div class="faq-answer">
                     <p>Nếu mưa nhỏ vẫn có thể đi.</p>
                     <p>Nếu thời tiết xấu, tụi mình sẽ:</p>
@@ -921,7 +939,7 @@
 
             <!-- Question 30 -->
             <div class="faq-item">
-                <div class="faq-question">31. Có đưa đi tham quan, chụp ảnh quanh khu vực camp không?</div>
+                <div class="faq-question">32. Có đưa đi tham quan, chụp ảnh quanh khu vực camp không?</div>
                 <div class="faq-answer">
                     <p>Tuỳ thời gian và thời tiết,</p>
                     <p>tụi mình có thể dẫn bạn đi tham quan gần đó.</p>
@@ -930,7 +948,7 @@
 
             <!-- Question 31 -->
             <div class="faq-item">
-                <div class="faq-question">32. Có quy định về sử dụng đồ không?</div>
+                <div class="faq-question">33. Có quy định về sử dụng đồ không?</div>
                 <div class="faq-answer">
                     <p>Có:</p>
                     <ul>
@@ -943,7 +961,7 @@
 
             <!-- Question 32 -->
             <div class="faq-item">
-                <div class="faq-question">33. Có hỗ trợ setup đặc biệt không?</div>
+                <div class="faq-question">34. Có hỗ trợ setup đặc biệt không?</div>
                 <div class="faq-answer">
                     <p>Hiện tại <strong>chưa hỗ trợ setup đặc biệt</strong>,</p>
                     <p>nhưng bạn có thể liên hệ để được tư vấn thêm.</p>
@@ -952,7 +970,7 @@
 
             <!-- Question 33 -->
             <div class="faq-item">
-                <div class="faq-question">34. Cách đặt lịch như thế nào?</div>
+                <div class="faq-question">35. Cách đặt lịch như thế nào?</div>
                 <div class="faq-answer">
                     <p>Bạn có thể:</p>
                     <ul>
@@ -963,7 +981,7 @@
 
             <!-- Question 34 -->
             <div class="faq-item">
-                <div class="faq-question">35. Có cần đặt cọc không?</div>
+                <div class="faq-question">36. Có cần đặt cọc không?</div>
                 <div class="faq-answer">
                     <p>Không cần đặt cọc.</p>
                     <p>Chỉ cần cung cấp link Facebook cá nhân của các thành viên.</p>
@@ -972,7 +990,7 @@
 
             <!-- Question 35 -->
             <div class="faq-item">
-                <div class="faq-question">36. Thời gian thanh toán?</div>
+                <div class="faq-question">37. Thời gian thanh toán?</div>
                 <div class="faq-answer">
                     <p>Thanh toán <strong>bằng tiền mặt trước khi khởi hành</strong>.</p>
                 </div>
@@ -980,7 +998,7 @@
 
             <!-- Question 36 -->
             <div class="faq-item">
-                <div class="faq-question">37. Camp Nhà Thỏ có nhận ghép xe hoặc ghép chuyến không?</div>
+                <div class="faq-question">38. Camp Nhà Thỏ có nhận ghép xe hoặc ghép chuyến không?</div>
                 <div class="faq-answer">
                     <p>Hiện tại, Camp Nhà Thỏ <strong>chưa hỗ trợ ghép xe hoặc nối chuyến</strong><br>
                         (ví dụ: bạn tự đi xe riêng rồi tập trung tại bãi camp).</p>
@@ -995,7 +1013,7 @@
 
             <!-- Question 37 -->
             <div class="faq-item">
-                <div class="faq-question">38. Nếu lỡ làm bẩn hoặc hỏng đồ thì sao?</div>
+                <div class="faq-question">39. Nếu lỡ làm bẩn hoặc hỏng đồ thì sao?</div>
                 <div class="faq-answer">
                     <p>Trong trường hợp xảy ra sự cố,<br>
                         bạn vui lòng <strong>liên hệ với tụi mình sớm nhất</strong> để kiểm tra tình trạng.</p>
@@ -1010,7 +1028,7 @@
 
             <!-- Question 38 -->
             <div class="faq-item">
-                <div class="faq-question">39. Camp Nhà Thỏ có nhận camping ngoài khu vực núi Phú Sĩ không?</div>
+                <div class="faq-question">40. Camp Nhà Thỏ có nhận camping ngoài khu vực núi Phú Sĩ không?</div>
                 <div class="faq-answer">
                     <p>Hoàn toàn có thể.</p>
                     <p>Hiện tại, tụi mình hỗ trợ camping tại:</p>
@@ -1029,7 +1047,7 @@
 
             <!-- Question 39 -->
             <div class="faq-item">
-                <div class="faq-question">40. Tôi cần đặt lịch trước bao lâu?</div>
+                <div class="faq-question">41. Tôi cần đặt lịch trước bao lâu?</div>
                 <div class="faq-answer">
                     <p>Bạn nên <strong>liên hệ càng sớm càng tốt</strong> để:</p>
                     <ul>
@@ -1044,7 +1062,7 @@
 
             <!-- Question 40 -->
             <div class="faq-item">
-                <div class="faq-question">41. Khách có được sử dụng hình ảnh của Camp Nhà Thỏ để đăng lên mạng xã hội không?</div>
+                <div class="faq-question">42. Khách có được sử dụng hình ảnh của Camp Nhà Thỏ để đăng lên mạng xã hội không?</div>
                 <div class="faq-answer">
                     <p>Có. Khách được phép sử dụng hình ảnh chụp trong quá trình sử dụng dịch vụ của Camp Nhà Thỏ để đăng lên mạng xã hội.</p>
                     <p>Tuy nhiên, vui lòng che mặt, biển số xe và các thông tin nhạy cảm như lịch trình di chuyển, vị trí chính xác hoặc thông tin cá nhân của người khác để đảm bảo quyền riêng tư và an toàn cho tất cả mọi người.</p>

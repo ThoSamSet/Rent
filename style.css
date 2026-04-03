@@ -14,6 +14,15 @@ body {
     padding-top: 44px;
 }
 
+/* Align with homepage.css layout tokens (calculator / Notes, etc.) */
+:root {
+    --card-grid-max-width: 900px;
+    --card-item-max-width: 480px;
+    --content-wide-max-width: 1000px;
+    --page-hero-max-width: 1200px;
+    --text-narrow-max-width: 640px;
+}
+
 .announcement-bar {
     position: fixed;
     top: 0;
@@ -42,7 +51,7 @@ body {
 }
 
 .container {
-    max-width: 960px;
+    max-width: var(--card-grid-max-width);
     margin: 20px auto;
     padding: 20px;
     background: #fff;

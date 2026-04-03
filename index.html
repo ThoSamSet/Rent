@@ -71,7 +71,7 @@
     <style>
         .map-preview-container {
             margin: 60px auto 0;
-            max-width: 1200px;
+            max-width: var(--page-hero-max-width);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -109,6 +109,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="#about">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
                 <a href="#gallery">Hình ảnh</a>
                 <a href="#locations">Vị trí</a>
@@ -400,8 +401,7 @@
             <h2 class="section-title">Chi phí</h2>
             <p class="section-text">Hiện có 2 plan: Plan hạt bí 🎃 và Plan hạt dẻ 🌰 (dịch vụ giống nhau).<br>
                 *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
-                Nếu bạn có nhu cầu thêm option đồ ăn, xem phim <br> 
-                vui lòng tham khảo <a href="equipment.html#food-plan">tại đây</a>.
+                Option thêm (đồ ăn, xem phim, cao tốc): xem <a href="options.html">trang Option</a>.
             </p>
             <div class="pricing-table-wrapper">
                 <h3 class="pricing-subtitle">Plan hạt bí 🎃</h3>
@@ -483,79 +483,14 @@
         </div>
     </section>
 
-    <!-- Food Plan Section -->
+    <!-- Options hub -->
     <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Option đồ ăn</h2>
-            <p class="section-text">Camp Nhà Thỏ cung cấp các option đồ ăn cho bữa tối và điểm tâm sáng,<br>
-                Giúp bạn chọn lựa món ăn phù hợp và tiện lợi nhất cho chuyến đi của mình.<br> <a href="equipment.html#food-plan">Xem chi tiết option đồ ăn</a>.</p>
-            <div class="food-plan-grid">
-                <div class="food-plan-card food-plan-card-image">
-                    <div class="food-plan-image">
-                        <img src="images/food-hotpot.jpg" alt="Bữa chính buổi tối - lẩu hoặc BBQ" loading="lazy" decoding="async">
-                    </div>
-                    <div class="food-plan-content">
-                        <div class="food-plan-title">Bữa chính buổi tối</div>
-                    <div class="food-plan-price">1m5990y</div>
-                        <ul class="food-plan-list">
-                            <li>Lẩu hoặc BBQ, đồ ăn kèm</li>
-                            <li>Option đồ uống có cồn: đồ uống tự pha chế</li>
-                        <li>Giá option: 9990y</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="food-plan-card food-plan-card-image">
-                    <div class="food-plan-image">
-                        <img src="images/food-breakfast.jpg" alt="Điểm tâm buổi sáng - bánh mì nướng" loading="lazy" decoding="async">
-                    </div>
-                    <div class="food-plan-content">
-                        <div class="food-plan-title">Điểm tâm buổi sáng</div>
-                        <div class="food-plan-price">Free</div>
-                        <ul class="food-plan-list">
-                            <li>Đồ ăn sáng</li>
-                            <li>Cafe hoặc trà</li>
-                        </ul>
-                    </div>
-                </div>
+            <h2 class="section-title">Option thêm</h2>
+            <p class="section-text">Đồ ăn, xem phim ngoài trời và lộ trình qua cao tốc</p>
+            <div style="text-align: center; margin-top: 32px;">
+                <a href="options.html" class="btn-primary btn-large">Xem trang Option</a>
             </div>
-            <p class="food-plan-note" style="text-align: center; margin-top: 20px;">
-                *Option đồ ăn sáng chỉ free khi bạn chọn đặt option đồ ăn tối.
-            </p>
-            <p class="food-plan-note" style="text-align: center; margin-top: 10px;">
-                *Hiện tại option đồ ăn đang tạm dừng dịch vụ.
-            </p>
-        </div>
-    </section>
-
-    <!-- Movie Option Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Option xem phim</h2>
-            <p class="section-text">Thư giãn buổi tối với máy chiếu Full HD và nội dung theo lựa chọn.<br>
-                <a href="equipment.html#movie-option">Xem chi tiết option xem phim</a></p>
-            <div class="food-plan-grid">
-                <div class="food-plan-card">
-                    <div class="food-plan-title">Plan YouTube</div>
-                    <div class="food-plan-price">3990y</div>
-                    <ul class="food-plan-list">
-                        <li>Máy chiếu Full HD</li>
-                        <li>Chỉ xem YouTube (kèm Premium free)</li>
-                    </ul>
-                </div>
-                <div class="food-plan-card">
-                    <div class="food-plan-title">Plan Cinema</div>
-                    <div class="food-plan-price">9990y</div>
-                    <ul class="food-plan-list">
-                        <li>Máy chiếu Full HD</li>
-                        <li>Xem YouTube (kèm Premium free)</li>
-                        <li>1 bộ phim tự chọn (bạn vui lòng liên hệ tên phim để tụi mình chuẩn bị)</li>
-                        <li>Hạt khô, Coca-Cola</li>
-                    </ul>
-                </div>
-            </div>
-            <p class="food-plan-note" style="text-align: center; margin-top: 20px;">
-                *Hiện tại option xem phim đang tạm dừng dịch vụ vì lý do thời tiết.
-            </p>
         </div>
     </section>
 

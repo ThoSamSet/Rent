@@ -27,6 +27,8 @@
     
     <link rel="canonical" href="https://campnhatho.com/">
     <link rel="stylesheet" type="text/css" href="homepage.css">
+    <link rel="stylesheet" href="motion.css">
+    <script src="motion.js" defer></script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -68,19 +70,19 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         .map-preview-container {
-            margin: 50px auto 0;
-            max-width: 1000px;
+            margin: 60px auto 0;
+            max-width: 1200px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            height: 500px;
+            height: 600px;
             background: #f5f5f7;
         }
 
         #mapPreview {
             width: 100%;
             height: 100%;
-            filter: grayscale(100%) contrast(1.1);
+            filter: grayscale(100%);
         }
 
         @media (max-width: 768px) {
@@ -842,7 +844,10 @@
                     maxZoom: 19,
                 }).addTo(mapPreview);
 
-                // Location coordinates (exact from Google Maps)
+                // Apply additional grayscale filter for more monochrome effect (same as locations.html)
+                mapPreviewElement.style.filter = 'grayscale(100%) contrast(1.1)';
+
+                // Location coordinates (exact from Google Maps) — keep in sync with locations.html
                 const locations = [
                     {
                         name: 'Fumotoppara Camping Ground',
@@ -878,6 +883,13 @@
                         lng: 138.7025481,
                         icon: '🏕️',
                         description: 'Fujiminooka Auto Camping Ground – bãi camping với không gian rộng và view núi Phú Sĩ'
+                    },
+                    {
+                        name: 'Aone Camping Ground (青根キャンプ場)',
+                        lat: 35.5477275,
+                        lng: 139.1360741,
+                        icon: '🏕️',
+                        description: 'Bãi camping gần Tokyo, gần suối có thể chơi nước mùa hè'
                     },
                     {
                         name: 'Nagatoro Auto Campground',
@@ -925,6 +937,16 @@
                 // Fit map to show all markers
                 const bounds = L.latLngBounds(locations.map(l => [l.lat, l.lng]));
                 mapPreview.fitBounds(bounds.pad(0.1));
+
+                // Style for custom markers (same as locations.html)
+                const mapMarkerStyle = document.createElement('style');
+                mapMarkerStyle.textContent = `
+            .custom-marker {
+                background: transparent;
+                border: none;
+            }
+        `;
+                document.head.appendChild(mapMarkerStyle);
             }
         }
         });

@@ -77,6 +77,26 @@
             font-size: 17px;
         }
 
+        .pricing-option-disclaimer-section {
+            margin-top: 8px;
+            margin-bottom: 36px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .pricing-option-disclaimer-section .section-title {
+            margin-bottom: 14px;
+        }
+
+        .pricing-option-disclaimer-text {
+            max-width: var(--text-narrow-max-width);
+            margin: 0 auto;
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.65;
+            color: #86868b;
+        }
+
         @media (max-width: 768px) {
             .pricing-hero h1 {
                 font-size: 40px;
@@ -120,7 +140,7 @@
     <!-- Hero Section -->
     <section class="pricing-hero">
         <h1>Chi phí</h1>
-        <p>Hiện có 2 plan: Plan hạt bí 🎃 và Plan hạt dẻ 🌰.</p>
+        <p>Hiện có 3 plan: Plan hạt dẻ 🌰, Plan hạt bí 🎃 và Plan hạt nho 🍇.</p>
     </section>
 
     <!-- Pricing Section -->
@@ -129,16 +149,17 @@
             <div class="plan-detail-section">
                 <div class="section-with-image">
                     <div class="section-image">
-                        <img src="images/camping-1.jpg" alt="Plan hạt bí - tự do chọn ngày và bãi camp" loading="lazy" decoding="async">
+                        <img src="images/plan-de.jpg" alt="Hạt Dẻ — tự chọn ngày và bãi, full đồ camping, tự lái xe" loading="lazy" decoding="async">
                     </div>
                     <div class="section-text-content">
-                        <h2>Plan hạt bí 🎃</h2>
-                        <p class="plan-detail-price">Từ 3m4990y</p>
-                        <p>Lựa chọn linh hoạt cho nhóm muốn tự chủ lịch trình và địa điểm.</p>
+                        <h2>🌰 Hạt Dẻ</h2>
+                        <p class="plan-detail-price">Từ 2m5</p>
+                        <p>Tự do chọn ngày, chọn bãi và trải nghiệm full đồ camping như Hạt Bí.</p>
+                        <p>Phù hợp cho nhóm có xe riêng, muốn chủ động hành trình.</p>
                         <ul class="plan-detail-list">
-                            <li>Khách tự do chọn ngày và bãi camp</li>
-                            <li>Phù hợp nhóm muốn trải nghiệm theo ý mình</li>
-                            <li>Chủ động hơn khi cần đổi lịch</li>
+                            <li>Full đồ camping (lều / shelter)</li>
+                            <li>Setup sẵn tại bãi</li>
+                            <li>Không bao gồm đưa đón</li>
                         </ul>
                     </div>
                 </div>
@@ -146,69 +167,94 @@
             <div class="plan-detail-section">
                 <div class="section-with-image">
                     <div class="section-text-content">
-                        <h2>Plan hạt dẻ 🌰</h2>
-                        <p class="plan-detail-price">Từ 2m9990y</p>
-                        <p>Tiện lợi và nhanh gọn với lịch trình, bãi camp đã được sắp sẵn.</p>
-                        <p class="plan-detail-note">*Plan hạt dẻ chưa bao gồm phí đồ ăn. Option đồ ăn, xem phim, cao tốc — xem <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.</p>
+                        <h2>🎃 Hạt Bí <span class="plan-tagline">(phổ biến nhất)</span></h2>
+                        <p class="plan-detail-price">Từ 3m5</p>
+                        <p>Trải nghiệm camping trọn vẹn — chỉ cần chọn ngày, mọi thứ đã có <span class="no-break">Camp Nhà Thỏ</span> lo.</p>
                         <ul class="plan-detail-list">
-                            <li><span class="no-break">Camp Nhà Thỏ</span> lên lịch và bãi camp sẵn</li>
-                            <li>Phù hợp nhóm muốn đi nhanh, không cần chọn nhiều</li>
-                            <li>Dễ đặt lịch khi bận rộn</li>
+                            <li>Đưa đón tận nơi</li>
+                            <li>Full đồ camping (lều / shelter)</li>
+                            <li>Setup &amp; hỗ trợ xuyên suốt</li>
                         </ul>
                     </div>
                     <div class="section-image">
-                        <img src="images/camping-2.jpg" alt="Plan hạt dẻ - lịch và bãi camp đã được sắp sẵn" loading="lazy" decoding="async">
+                        <img src="images/plan-bi.jpg" alt="Hạt Bí — đưa đón, lều / shelter, setup trọn gói" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
+            <div class="plan-detail-section">
+                <div class="section-with-image">
+                    <div class="section-image">
+                        <img src="images/plan-nho.jpg" alt="Hạt Nho — bungalow, không lo mưa, đưa đón" loading="lazy" decoding="async">
+                    </div>
+                    <div class="section-text-content">
+                        <h2>🍇 Hạt Nho <span class="plan-new-badge">Mới</span></h2>
+                        <p class="plan-detail-price">Từ 4m5</p>
+                        <p>Camping thoải mái hơn với bungalow — vẫn chill, nhưng không lo thời tiết.</p>
+                        <ul class="plan-detail-list">
+                            <li>Đưa đón tận nơi</li>
+                            <li>Nghỉ bungalow (không dùng lều)</li>
+                            <li>Không gian camping setup bên ngoài</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-option-disclaimer-section" role="region" aria-labelledby="pricing-option-disclaimer-title">
+                <h2 class="section-title" id="pricing-option-disclaimer-title">So sánh nhanh</h2>
+                <p class="pricing-option-disclaimer-text">Chưa bao gồm đồ ăn &amp; các option mở rộng (xem phim, cao tốc…). Xem thêm tại <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.</p>
+            </div>
+
             <div class="pricing-table-wrapper" style="margin-top: 10px; margin-bottom: 40px;">
-                <h3 class="pricing-subtitle">So sánh nhanh 2 plan</h3>
+                <h3 class="pricing-subtitle">Bảng so sánh plan</h3>
                 <table class="pricing-table">
                     <thead>
                         <tr>
                             <th scope="col">Nội dung</th>
                             <th scope="col">Plan hạt dẻ 🌰</th>
                             <th scope="col">Plan hạt bí 🎃</th>
+                            <th scope="col">Plan hạt nho 🍇<br><span class="plan-new-badge">Mới</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row" class="pricing-people">Tự do chọn ngày</th>
-                            <td></td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">Tự do chọn bãi</th>
-                            <td></td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
                             <th scope="row" class="pricing-people">Đưa đón</th>
+                            <td></td>
                             <td>✓</td>
                             <td>✓</td>
                         </tr>
                         <tr>
-                            <th scope="row" class="pricing-people">Đặt bãi</th>
+                            <th scope="row" class="pricing-people">Loại lều</th>
+                            <td>shelter/tarp</td>
+                            <td>shelter/tarp</td>
+                            <td>bungalow/tarp</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="pricing-people">Tự do chọn ngày/bãi</th>
+                            <td>✓</td>
                             <td>✓</td>
                             <td>✓</td>
                         </tr>
                         <tr>
-                            <th scope="row" class="pricing-people">Dựng lều</th>
+                            <th scope="row" class="pricing-people">Hỗ trợ đặt bãi</th>
                             <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">Thu dọn đồ đạc</th>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">Camera</th>
                             <td>✓</td>
                             <td>✓</td>
                         </tr>
                         <tr>
                             <th scope="row" class="pricing-people">Đồ đạc chuẩn pro camper</th>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="pricing-people">Hỗ trợ Setup/Thu dọn đồ đạc</th>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="pricing-people">Đồ tiêu hao (củi, than BBQ, dầu sưởi, camera, v.v.)</th>
+                            <td>✓</td>
                             <td>✓</td>
                             <td>✓</td>
                         </tr>
@@ -731,12 +777,14 @@
                 </div>
             </div>
             <div class="pricing-table-wrapper">
-                <h3 class="pricing-subtitle">Plan hạt bí 🎃</h3>
+                <h3 class="pricing-subtitle">Bảng giá dịch vụ</h3>
                 <table class="pricing-table">
                     <thead>
                         <tr>
                             <th scope="col">Số người</th>
-                            <th scope="col">Chi phí</th>
+                            <th scope="col">Plan hạt dẻ 🌰</th>
+                            <th scope="col">Plan hạt bí 🎃</th>
+                            <th scope="col">Plan hạt nho 🍇<br><span class="plan-new-badge">Mới</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -747,12 +795,32 @@
                                     <span class="price-contact">Liên hệ để được tư vấn</span>
                                 </div>
                             </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-contact">Liên hệ để được tư vấn</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-contact">Liên hệ để được tư vấn</span>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row" class="pricing-people">3 người</th>
                             <td>
                                 <div class="pricing-prices">
-                                    <span class="price-old">4m4990y</span>
+                                    <span class="price-old">3m5~</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-old">4m5~</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-old">5m5~</span>
                                 </div>
                             </td>
                         </tr>
@@ -760,7 +828,17 @@
                             <th scope="row" class="pricing-people">2 người</th>
                             <td>
                                 <div class="pricing-prices">
-                                    <span class="price-old">3m9990y</span>
+                                    <span class="price-old">3m~</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-old">4m~</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pricing-prices">
+                                    <span class="price-old">5m~</span>
                                 </div>
                             </td>
                         </tr>
@@ -768,36 +846,17 @@
                             <th scope="row" class="pricing-people">1 người</th>
                             <td>
                                 <div class="pricing-prices">
-                                    <span class="price-old">3m4990y</span>
+                                    <span class="price-old">2m5~</span>
                                 </div>
                             </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="pricing-table-wrapper pricing-table-secondary">
-                <h3 class="pricing-subtitle">Plan hạt dẻ 🌰</h3>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Hình thức</th>
-                            <th scope="col">Chi phí</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="pricing-people">Đi 2 ngày 1 đêm</th>
                             <td>
                                 <div class="pricing-prices">
-                                    <span class="price-old">3m4990y</span>
+                                    <span class="price-old">3m5~</span>
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">Đi trong ngày</th>
                             <td>
                                 <div class="pricing-prices">
-                                    <span class="price-old">2m9990y</span>
+                                    <span class="price-old">4m5~</span>
                                 </div>
                             </td>
                         </tr>
@@ -806,8 +865,7 @@
             </div>
 
             <div class="pricing-note-box">
-                Hai plan có dịch vụ giống nhau (bao gồm phí xe đưa đón, đồ camping, setup).<br>
-                Option thêm (đồ ăn, máy chiếu ngoài trời, di chuyển cao tốc): <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.<br>
+                Option thêm (đồ ăn, máy chiếu ngoài trời, di chuyển cao tốc): tham khảo thêm tại <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.<br>
                 *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
                 Liên hệ chúng mình để được tư vấn chi tiết.
             </div>

@@ -858,7 +858,7 @@ img {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    min-width: 680px;
+    min-width: 920px;
 }
 
 .pricing-table th,
@@ -915,6 +915,36 @@ img {
     color: #1d1d1f;
     text-align: center;
     margin: 18px 0 18px;
+}
+
+.plan-new-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #0071e3;
+    padding: 4px 9px;
+    border-radius: 6px;
+    vertical-align: middle;
+    margin-left: 6px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.section-text-content h2 .plan-new-badge {
+    margin-left: 8px;
+}
+
+.pricing-table thead th .plan-new-badge {
+    margin-left: 0;
+    margin-top: 6px;
+    display: inline-block;
+}
+
+.pricing-note-box .plan-new-badge {
+    margin-left: 4px;
 }
 
 .pricing-table-secondary {
@@ -1105,6 +1135,17 @@ img {
     display: block;
 }
 
+/* Trang chi phí: ảnh 3 plan — khung cố định 3:2, ảnh crop đều */
+.plan-detail-section .section-with-image .section-image {
+    aspect-ratio: 3 / 2;
+}
+
+.plan-detail-section .section-with-image .section-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .section-text-content h2 {
     font-size: 36px;
     font-weight: 600;
@@ -1112,6 +1153,13 @@ img {
     color: #1d1d1f;
     letter-spacing: -0.02em;
     line-height: 1.2;
+}
+
+.section-text-content h2 .plan-tagline {
+    font-size: 0.55em;
+    font-weight: 500;
+    color: #86868b;
+    letter-spacing: 0;
 }
 
 .section-text-content p {
@@ -1149,7 +1197,7 @@ img {
     }
 
     .pricing-table {
-        min-width: 520px;
+        min-width: 720px;
     }
 
     .pricing-subtitle {

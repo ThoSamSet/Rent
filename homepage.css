@@ -917,6 +917,12 @@ img {
     margin: 18px 0 18px;
 }
 
+.pricing-subtitle-note {
+    color: #86868b;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
 .plan-new-badge {
     display: inline-block;
     font-size: 11px;

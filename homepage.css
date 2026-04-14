@@ -79,11 +79,14 @@ img {
     font-size: 20px;
     font-weight: 600;
     color: #1d1d1f;
+    min-width: 0;
+    flex-shrink: 1;
 }
 
 .nav-logo-img {
     height: 36px;
     width: auto;
+    max-width: min(320px, calc(100vw - 120px));
     object-fit: contain;
     vertical-align: middle;
 }
@@ -813,23 +816,43 @@ img {
 
 .pricing-prices {
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 4px;
     margin-bottom: 15px;
     flex-wrap: wrap;
 }
 
 .price-old {
-    font-size: 32px;
-    font-weight: 600;
-    color: #0071e3;
+    font-size: 20px;
+    font-weight: 500;
+    color: #86868b;
+    text-decoration: line-through;
 }
 
 .price-new {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 40px;
+    font-weight: 700;
     color: #0071e3;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.plan-detail-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.plan-detail-price-block .price-old {
+    font-size: 15px;
+}
+
+.plan-detail-price-block .price-new {
+    font-size: 24px;
 }
 
 .price-contact {
@@ -921,6 +944,16 @@ img {
     color: #86868b;
     font-weight: 400;
     font-size: 0.9em;
+}
+
+.pricing-promo-footnote {
+    max-width: var(--content-wide-max-width);
+    margin: 16px auto 0;
+    padding: 0 4px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #86868b;
 }
 
 .plan-new-badge {
@@ -1182,6 +1215,10 @@ img {
     margin-bottom: 12px;
 }
 
+.section-text-content .plan-detail-price-block {
+    margin-bottom: 12px;
+}
+
 .section-text-content .plan-detail-note {
     font-size: 14px;
     color: #86868b;
@@ -1212,11 +1249,15 @@ img {
     }
 
     .price-old {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .price-new {
-        font-size: 24px;
+        font-size: 30px;
+    }
+
+    .plan-detail-price-block .price-new {
+        font-size: 21px;
     }
 
     .pricing-table .pricing-people {
@@ -1585,7 +1626,10 @@ img {
         padding: 30px 20px;
     }
 
-    .price-old,
+    .price-old {
+        font-size: 15px;
+    }
+
     .price-new {
         font-size: 28px;
     }

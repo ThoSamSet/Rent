@@ -932,6 +932,22 @@ img {
     margin-bottom: 10px;
 }
 
+/* Stronger selectors so table sale styling wins over cached/global .price-* rules */
+.pricing-table .pricing-prices .price-old {
+    font-size: 20px;
+    font-weight: 500;
+    color: #86868b;
+    text-decoration: line-through;
+}
+
+.pricing-table .pricing-prices .price-new {
+    font-size: 40px;
+    font-weight: 700;
+    color: #0071e3;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
 .pricing-subtitle {
     font-size: 22px;
     font-weight: 600;
@@ -946,6 +962,14 @@ img {
     font-size: 0.9em;
 }
 
+.pricing-promo-footnote-outer {
+    max-width: var(--content-wide-max-width);
+    margin: 16px auto 0;
+    padding: 0 4px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 .pricing-promo-footnote {
     max-width: var(--content-wide-max-width);
     margin: 16px auto 0;
@@ -954,6 +978,13 @@ img {
     font-size: 15px;
     line-height: 1.5;
     color: #86868b;
+}
+
+.pricing-promo-footnote-outer .pricing-promo-footnote {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
 }
 
 .plan-new-badge {
@@ -1248,11 +1279,11 @@ img {
         margin: 16px 0;
     }
 
-    .price-old {
+    .pricing-table .pricing-prices .price-old {
         font-size: 16px;
     }
 
-    .price-new {
+    .pricing-table .pricing-prices .price-new {
         font-size: 30px;
     }
 
@@ -1626,11 +1657,11 @@ img {
         padding: 30px 20px;
     }
 
-    .price-old {
+    .pricing-table .pricing-prices .price-old {
         font-size: 15px;
     }
 
-    .price-new {
+    .pricing-table .pricing-prices .price-new {
         font-size: 28px;
     }
 

@@ -824,14 +824,7 @@ img {
     flex-wrap: wrap;
 }
 
-.price-old {
-    font-size: 20px;
-    font-weight: 500;
-    color: #86868b;
-    text-decoration: line-through;
-}
-
-.price-new {
+.pricing-price-value {
     font-size: 40px;
     font-weight: 700;
     color: #0071e3;
@@ -847,12 +840,12 @@ img {
     margin-bottom: 12px;
 }
 
-.plan-detail-price-block .price-old {
-    font-size: 15px;
-}
-
-.plan-detail-price-block .price-new {
+.plan-detail-price-value {
     font-size: 24px;
+    font-weight: 700;
+    color: #0071e3;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .price-contact {
@@ -932,15 +925,7 @@ img {
     margin-bottom: 10px;
 }
 
-/* Stronger selectors so table sale styling wins over cached/global .price-* rules */
-.pricing-table .pricing-prices .price-old {
-    font-size: 20px;
-    font-weight: 500;
-    color: #86868b;
-    text-decoration: line-through;
-}
-
-.pricing-table .pricing-prices .price-new {
+.pricing-table .pricing-prices .pricing-price-value {
     font-size: 40px;
     font-weight: 700;
     color: #0071e3;
@@ -960,31 +945,6 @@ img {
     color: #86868b;
     font-weight: 400;
     font-size: 0.9em;
-}
-
-.pricing-promo-footnote-outer {
-    max-width: var(--content-wide-max-width);
-    margin: 16px auto 0;
-    padding: 0 4px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.pricing-promo-footnote {
-    max-width: var(--content-wide-max-width);
-    margin: 16px auto 0;
-    padding: 0 4px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #86868b;
-}
-
-.pricing-promo-footnote-outer .pricing-promo-footnote {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: none;
 }
 
 .plan-new-badge {
@@ -1279,15 +1239,11 @@ img {
         margin: 16px 0;
     }
 
-    .pricing-table .pricing-prices .price-old {
-        font-size: 16px;
-    }
-
-    .pricing-table .pricing-prices .price-new {
+    .pricing-table .pricing-prices .pricing-price-value {
         font-size: 30px;
     }
 
-    .plan-detail-price-block .price-new {
+    .plan-detail-price-value {
         font-size: 21px;
     }
 
@@ -1657,11 +1613,7 @@ img {
         padding: 30px 20px;
     }
 
-    .pricing-table .pricing-prices .price-old {
-        font-size: 15px;
-    }
-
-    .pricing-table .pricing-prices .price-new {
+    .pricing-table .pricing-prices .pricing-price-value {
         font-size: 28px;
     }
 

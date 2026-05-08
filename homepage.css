@@ -926,7 +926,7 @@ img {
 }
 
 .pricing-table .pricing-prices .pricing-price-value {
-    font-size: 40px;
+    font-size: 22px;
     font-weight: 700;
     color: #0071e3;
     letter-spacing: -0.02em;
@@ -1240,7 +1240,7 @@ img {
     }
 
     .pricing-table .pricing-prices .pricing-price-value {
-        font-size: 30px;
+        font-size: 19px;
     }
 
     .plan-detail-price-value {
@@ -1614,7 +1614,7 @@ img {
     }
 
     .pricing-table .pricing-prices .pricing-price-value {
-        font-size: 28px;
+        font-size: 18px;
     }
 
     .food-plan-card {

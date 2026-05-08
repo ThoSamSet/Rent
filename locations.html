@@ -236,6 +236,122 @@
             font-size: 18px;
         }
 
+        .location-filter-wrap {
+            max-width: var(--page-hero-max-width);
+            margin: 48px auto 0;
+            padding: 0 4px;
+        }
+
+        .location-filter-wrap h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 0 0 14px;
+            letter-spacing: -0.02em;
+        }
+
+        #location-filter-status {
+            font-size: 15px;
+            color: #86868b;
+            margin: 0 0 16px;
+            min-height: 1.4em;
+        }
+
+        .location-filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-tag-btn {
+            font: inherit;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid #d2d2d7;
+            font-size: 14px;
+            color: #1d1d1f;
+            background: #fff;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .filter-tag-btn:hover {
+            background: #f9f9fb;
+            border-color: #86868b;
+        }
+
+        .filter-tag-btn:focus-visible {
+            outline: 2px solid #0071e3;
+            outline-offset: 2px;
+        }
+
+        .filter-tag-btn.is-active {
+            background: #e5f1ff;
+            border-color: #0071e3;
+            color: #0071e3;
+            font-weight: 500;
+        }
+
+        .filter-tag-btn.filter-clear {
+            border-style: dashed;
+            color: #555;
+        }
+
+        .location-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0 0 14px;
+        }
+
+        .location-tag-chip {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #424245;
+            background: #f5f5f7;
+            border: 1px solid #e8e8ed;
+            line-height: 1.3;
+        }
+
+        .location-detail.location-hidden {
+            display: none;
+        }
+
+        .location-empty-state {
+            display: none;
+            text-align: center;
+            padding: 44px 28px;
+            margin: 20px auto 0;
+            max-width: var(--card-grid-max-width);
+            background: #f5f5f7;
+            border-radius: 16px;
+            border: 1px solid #e8e8ed;
+            color: #1d1d1f;
+        }
+
+        .location-empty-state.is-visible {
+            display: block;
+        }
+
+        .location-empty-state-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin: 0 0 12px;
+            letter-spacing: -0.015em;
+        }
+
+        .location-empty-state-hint {
+            font-size: 17px;
+            color: #86868b;
+            margin: 0;
+            line-height: 1.6;
+            max-width: 36em;
+            margin-inline: auto;
+        }
+
         @media (max-width: 1024px) {
             .location-info {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -312,10 +428,26 @@
                 <div id="map"></div>
             </div>
 
+            <div class="location-filter-wrap">
+                <h2 id="location-filter-heading">Lọc theo</h2>
+                <p id="location-filter-status" aria-live="polite">Hiển thị 15 / 15 bãi</p>
+                <div class="location-filter-buttons" role="group" aria-labelledby="location-filter-heading">
+                    <button type="button" class="filter-tag-btn filter-clear is-active" data-filter-action="clear" aria-pressed="true">Tất cả</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="view-phu-si" aria-pressed="false">View Phú Sĩ</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="gan-ho" aria-pressed="false">Gần hồ</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="gan-suoi-song" aria-pressed="false">Gần suối / sông</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="gan-bien" aria-pressed="false">Gần biển</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="gan-tokyo" aria-pressed="false">Gần Tokyo</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="mua-xuan" aria-pressed="false">Mùa xuân</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="mua-he" aria-pressed="false">Mùa hè</button>
+                    <button type="button" class="filter-tag-btn" data-filter-tag="mua-thu" aria-pressed="false">Mùa thu</button>
+                </div>
+            </div>
+
             <!-- Location Details -->
-            <div class="location-info">
+            <div class="location-info" id="location-info-grid">
                 <!-- Fumotoppara -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="fumotoppara" data-tags="view-phu-si mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-fumotoppara.jpg" alt="Fumotoppara Camping Ground - View núi Phú Sĩ tuyệt đẹp, bãi cỏ rộng rãi" loading="lazy" decoding="async">
                     </div>
@@ -325,6 +457,12 @@
                             Fumotoppara Camping Ground
                         </h3>
                         <p class="location-subtitle">Fumotoppara</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Fumotoppara+Campground/@35.3994331,138.5622619,17z/data=!4m15!1m5!3m4!2zMzXCsDIzJzU4LjAiTiAxMzjCsDMzJzUzLjQiRQ!8m2!3d35.3994331!4d138.5648368!3m8!1s0x601bddbee949882d:0x282e057b888710f!5m2!4m1!1i2!8m2!3d35.3994199!4d138.5614149!16s%2Fg%2F1wz52srz?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Bãi camping với <strong>view núi <span class="no-break">Phú Sĩ</span> tuyệt đẹp</strong>, không gian rộng rãi và yên tĩnh. 
@@ -340,7 +478,7 @@
                 </div>
 
                 <!-- Koan View Phú Sĩ -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="koan" data-tags="view-phu-si gan-ho mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-koan.jpg" alt="Koan Camping Ground Phú Sĩ - View tờ 1000 yên, một trong những địa điểm camping đẹp nhất" loading="lazy" decoding="async">
                     </div>
@@ -350,6 +488,13 @@
                             Koan Camping Ground
                         </h3>
                         <p class="location-subtitle">浩庵キャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Gần hồ</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Koan+Camping+Ground/@35.4737088,138.5765894,16.06z/data=!4m15!1m5!3m4!2zMzXCsDI4JzIzLjUiTiAxMzjCsDM0JzI5LjIiRQ!8m2!3d35.473183!4d138.574764!3m8!1s0x601be615f5b7e6b9:0x777d79ff931f3ee3!5m2!4m1!1i2!8m2!3d35.473183!4d138.574764!16s%2Fg%2F119vp5061?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Địa điểm camping với view tờ 1000 yên nổi tiếng.<br>
@@ -365,7 +510,7 @@
                 </div>
 
                 <!-- 朝霧Camp Base そらいろ -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="asagiri-sorairo" data-tags="view-phu-si mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-asagiri-sorairo.jpg" alt="朝霧Camp Base そらいろ - Bãi camping gần Fumotoppara với view Phú Sĩ" loading="lazy" decoding="async">
                     </div>
@@ -375,6 +520,12 @@
                             Asagiri Camp Base Sorairo
                         </h3>
                         <p class="location-subtitle">朝霧Camp Base そらいろ</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/%E6%9C%9D%E9%9C%A7Camp+Base+%E3%81%9D%E3%82%89%E3%81%84%E3%82%8D/@35.3925194,138.5599088,15.74z/data=!4m12!1m5!3m4!2zMzXCsDIzJzM2LjUiTiAxMzjCsDMzJzUzLjUiRQ!8m2!3d35.3934589!4d138.5648634!3m5!1s0x601bddc3620f9471:0x6b261f12497aa1ee!8m2!3d35.3934589!4d138.5648634!16s%2Fg%2F11t_r64wmn?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Bãi camping 朝霧Camp Base そらいろ nằm gần khu vực Fumotoppara,<br>
@@ -389,7 +540,7 @@
                 </div>
 
                 <!-- Fujisan Wild Adventure -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="fujisan-wild" data-tags="view-phu-si mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-fujisan-wild-adventure.jpg" alt="Fujisan Wild Adventure - Khu camping và hoạt động ngoài trời gần núi Phú Sĩ" loading="lazy" decoding="async">
                     </div>
@@ -399,6 +550,12 @@
                             Fujisan Wild Adventure
                         </h3>
                         <p class="location-subtitle">富士山ワイルドアドベンチャー</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Fujisan+Wild+Adventure/@35.3302986,138.6143224,17z/data=!3m1!4b1!4m9!3m8!1s0x601bdb1ad33feedb:0xb6a32ab837014576!5m2!4m1!1i2!8m2!3d35.3302986!4d138.6168973!16s%2Fg%2F11f7r2s0c2?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Fujisan Wild Adventure là khu vực camping và trải nghiệm ngoài trời nằm gần chân núi <span class="no-break">Phú Sĩ</span>,<br>
@@ -413,7 +570,7 @@
                 </div>
 
                 <!-- Fujiminooka Auto Camping Ground -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="fujiminooka" data-tags="view-phu-si mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-fujiminooka.jpg" alt="Fujiminooka Auto Camping Ground - Bãi camping với không gian rộng và view núi Phú Sĩ" loading="lazy" decoding="async">
                     </div>
@@ -423,23 +580,58 @@
                             Fujiminooka Auto Camping Ground
                         </h3>
                         <p class="location-subtitle">富士見の丘オートキャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Fujiminooka+Auto+Camping+Ground/@35.2179438,138.6999732,17z/data=!3m1!4b1!4m9!3m8!1s0x601bd5749e08b1d1:0xe680720c4d3b36b0!5m2!4m1!1i2!8m2!3d35.2179438!4d138.7025481!16s%2Fg%2F11qpswg4_h?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Fujiminooka Auto Camping Ground là bãi camping với không gian rộng rãi,<br>
                             có thể nhìn về khu vực núi <span class="no-break">Phú Sĩ</span> và phù hợp cho cả nhóm bạn lẫn gia đình.
                         </p>
                         <ul class="location-features">
-                            <li>Không gian rộng, dễ bố trí nhiều lều</li>
+                            <li>Dễ bố trí nhiều lều</li>
                             <li>Khu vực gần núi <span class="no-break">Phú Sĩ</span></li>
                             <li>Phù hợp cho nhóm bạn và gia đình</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Aone Camping Ground -->
-                <div class="location-detail">
+                <!-- Lake Tanuki / Tanukiko Camp Ground -->
+                <div class="location-detail" data-site-id="tanukiko" data-tags="gan-ho view-phu-si mua-he mua-thu">
                     <div class="location-image">
-                        <img src="images/location-aone.jpg" alt="Aone Camping Ground 青根キャンプ場 - Bãi camping gần Tokyo, gần suối có thể chơi nước" loading="lazy" decoding="async">
+                        <img src="images/location-tanukiko.jpg" alt="田貫湖キャンプ場 Lake Tanuki – bãi camping ven hồ gần núi Phú Sĩ" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Lake Tanuki Camp Ground
+                        </h3>
+                        <p class="location-subtitle">田貫湖キャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần hồ</span>
+                            <span class="location-tag-chip">View Phú Sĩ</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/%E7%94%B0%E8%B2%AB%E6%B9%96%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%A0%B4/@35.3419124,138.5589793,17z/data=!4m9!3m8!1s0x601bc352cee2b731:0x59891a3a0578c4b9!5m2!4m1!1i2!8m2!3d35.3419124!4d138.5615542!16s%2Fg%2F119tgvpdj?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Bãi camping ven hồ Tanuki (<span lang="ja">田貫湖</span>), khu vực chân núi <span class="no-break">Phú Sĩ</span> — không gian hồ nước dễ chịu, thường được yêu thích vào <strong>mùa hè</strong> và khi lá đổi màu <strong>mùa thu</strong>.
+                        </p>
+                        <ul class="location-features">
+                            <li>Gần hồ, không khí mát và trong lành</li>
+                            <li>Có góc ngắm núi <span class="no-break">Phú Sĩ</span> đặc trưng vùng hồ</li>
+                            <li>Phù hợp nghỉ cuối tuần, nhóm nhỏ và gia đình</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aone Camping Ground -->
+                <div class="location-detail" data-site-id="aone" data-tags="gan-suoi-song gan-tokyo mua-he">
+                    <div class="location-image">
+                        <img src="images/location-aone.jpg" alt="Aone Camping Ground 青根キャンプ場 - Bãi camping gần Tokyo, gần suối" loading="lazy" decoding="async">
                     </div>
                     <div class="location-detail-content">
                         <h3>
@@ -447,10 +639,15 @@
                             Aone Camping Ground
                         </h3>
                         <p class="location-subtitle">青根キャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần suối / sông</span>
+                            <span class="location-tag-chip">Gần Tokyo</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Aone+Camping+Ground/@35.5477275,139.1334992,757m/data=!3m2!1e3!4b1!4m9!3m8!1s0x60191173cd9b29a5:0x85bf5a24c8d72634!5m2!4m1!1i2!8m2!3d35.5477275!4d139.1360741!16s%2Fg%2F119v9_tw6?entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Aone Camping Ground là bãi camping gần Tokyo, phù hợp cho chuyến đi ngắn cuối tuần.<br>
-                            Khu vực gần suối, có thể chơi nước vào mùa hè.
+                            Khu vực gần suối, không khí mát mẻ vào mùa hè.
                         </p>
                         <ul class="location-features">
                             <li>Gần Tokyo, tiện di chuyển</li>
@@ -461,7 +658,7 @@
                 </div>
 
                 <!-- Nagatoro Auto Campground -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="nagatoro" data-tags="gan-suoi-song mua-he mua-xuan">
                     <div class="location-image">
                         <img src="images/location-nagatoro-auto-campground.jpg" alt="Nagatoro Auto Campground 長瀞オートキャンプ場" loading="lazy" decoding="async">
                     </div>
@@ -471,6 +668,11 @@
                             Nagatoro Auto Campground
                         </h3>
                         <p class="location-subtitle">長瀞オートキャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần suối / sông</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Nagatoro+auto+campground/@36.0393107,139.0539701,12.06z/data=!4m9!3m8!1s0x601ec67066ae0a91:0xa13a869ba05b507!5m2!4m1!1i2!8m2!3d36.105016!4d139.114251!16s%2Fg%2F1tr17ngq?authuser=1&entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Nagatoro Auto Campground là bãi camping ven sông tại Saitama,<br>
@@ -485,7 +687,7 @@
                 </div>
 
                 <!-- Tanoue Camping Ground -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="tanoue" data-tags="gan-bien mua-he mua-xuan">
                     <div class="location-image">
                         <img src="images/location-tanoue.jpg" alt="Tanoue Camping Ground 田の上キャンプ場" loading="lazy" decoding="async">
                     </div>
@@ -495,20 +697,165 @@
                             Tanoue Camping Ground
                         </h3>
                         <p class="location-subtitle">田の上キャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần biển</span>
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Tanoue+Camping+Ground/@36.392397,140.6094091,17z/data=!3m1!4b1!4m6!3m5!1s0x60222df41df36d75:0xc0232f844cc039e!8m2!3d36.392397!4d140.611984!16s%2Fg%2F1tg794bs?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Bãi camping với không gian thiên nhiên yên tĩnh.
                         </p>
                         <ul class="location-features">
-                            <li>Không gian rộng rãi</li>
+                            <li>Không gian thoáng đãng</li>
                             <li>Gần bãi biển</li>
                             <li>Gần Hitachi Kaihin Park</li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- The CLIFF CAMP&BBQ -->
+                <div class="location-detail" data-site-id="cliff-camp-bbq" data-tags="gan-bien gan-tokyo mua-he mua-thu">
+                    <div class="location-image">
+                        <img src="images/location-TheCLIFFCAMP&amp;BBQ.jpg" alt="The CLIFF CAMP&BBQ - bãi camp gần biển, dễ đi từ Tokyo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            The CLIFF CAMP&amp;BBQ
+                        </h3>
+                        <p class="location-subtitle">The CLIFF CAMP&amp;BBQ</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần biển</span>
+                            <span class="location-tag-chip">Gần Tokyo</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/The+CLIFF+CAMP%26BBQ/@35.1920614,139.6096231,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIClpqm_tgE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAPNQkAGKUgkoThvMUSjoE7o64ps6l-m481KsQPAO1Sm1lXzeOSlgH0zVt9stwnuDyYLHeFq8nI4Fr7KuNdwLWBZW4fa2EHWHBxsR-ogDsm4sitPFC0YcV1jSycbqMn0PCF670hfflbIB5A%3Dw114-h86-k-no!7i4032!8i3024!4m10!3m9!1s0x60183debc53082d7:0x4499dadab523d5c8!5m2!4m1!1i2!8m2!3d35.1920506!4d139.60963!10e5!16s%2Fg%2F11ttb8fxk3!18m1!1e1?entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Bãi camp kết hợp BBQ sát biển, phù hợp cho chuyến đi ngắn cuối tuần và tiện di chuyển từ khu vực Tokyo.
+                        </p>
+                        <ul class="location-features">
+                            <li>Không khí biển thoáng đãng</li>
+                            <li>Tiện đi từ Tokyo và vùng Kanto</li>
+                            <li>Phù hợp đi nhóm bạn hoặc gia đình</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Camp Koganezaki -->
+                <div class="location-detail" data-site-id="camp-koganezaki" data-tags="gan-bien mua-he mua-thu">
+                    <div class="location-image">
+                        <img src="images/location-koganezaki.jpg" alt="Camp Koganezaki キャンプ黄金崎 - bãi camp gần biển" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Camp Koganezaki
+                        </h3>
+                        <p class="location-subtitle">キャンプ黄金崎</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần biển</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/Camp+Koganezaki/@34.9466166,138.5255964,10z/data=!4m9!3m8!1s0x6019f4293f70defb:0xaf9f883e41036632!5m2!4m1!1i2!8m2!3d34.842715!4d138.76564!16s%2Fg%2F1tdm8crn!18m1!1e1?entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Bãi camp sát biển Koganezaki với khung cảnh thoáng đãng, phù hợp chuyến đi thư giãn vào mùa hè và mùa thu.
+                        </p>
+                        <ul class="location-features">
+                            <li>Vị trí gần biển, không khí mát</li>
+                            <li>Phù hợp camping ngắm hoàng hôn</li>
+                            <li>Thích hợp cho nhóm nhỏ và gia đình</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Beach camp ugusu -->
+                <div class="location-detail" data-site-id="beach-camp-ugusu" data-tags="gan-bien mua-he mua-thu">
+                    <div class="location-image">
+                        <img src="images/location-ugusu.jpg" alt="Beach camp ugusu 宇久須キャンプ場 - bãi camp gần biển" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Beach camp ugusu
+                        </h3>
+                        <p class="location-subtitle">宇久須キャンプ場</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần biển</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/Beach+camp+ugusu/@34.8136603,138.7049237,10.48z/data=!4m9!3m8!1s0x6019f43cf9f549cb:0xbcee15e90f170c4!5m2!4m1!1i2!8m2!3d34.8545339!4d138.7765388!16s%2Fg%2F119vqbj1v!18m1!1e1?entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Bãi camp ven biển Ugusu phù hợp cho các chuyến đi mùa hè, mùa thu với không gian thoáng và thư giãn.
+                        </p>
+                        <ul class="location-features">
+                            <li>Vị trí gần biển, dễ chill cuối tuần</li>
+                            <li>Phù hợp đi nhóm nhỏ và gia đình</li>
+                            <li>Thích hợp camping ngắm cảnh biển</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Snow Peak AKAGI Campfield -->
+                <div class="location-detail" data-site-id="snowpeak-akagi" data-tags="gan-ho mua-he mua-thu">
+                    <div class="location-image">
+                        <img src="images/location-akagi.jpg" alt="Snow Peak AKAGI Campfield スノーピーク赤城キャンプフィールド" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            Snow Peak AKAGI Campfield
+                        </h3>
+                        <p class="location-subtitle">スノーピーク赤城キャンプフィールド</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Gần hồ</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%94%E3%83%BC%E3%82%AF%E8%B5%A4%E5%9F%8E%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89/@36.5559831,139.1673773,17z/data=!3m1!4b1!4m6!3m5!1s0x601e5900711d6bc7:0xffc5550dcf3126c2!8m2!3d36.5559831!4d139.1699522!16s%2Fg%2F11n4vpm6f9?entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Khu campfield của Snow Peak tại Akagi với không gian rộng và cảnh quan thiên nhiên phù hợp cho mùa hè, mùa thu.
+                        </p>
+                        <ul class="location-features">
+                            <li>Không khí thoáng mát, dễ chịu</li>
+                            <li>Phù hợp cắm trại gia đình hoặc nhóm nhỏ</li>
+                            <li>Điểm nghỉ cuối tuần được ưa chuộng</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KANUMA Campfield & Spa -->
+                <div class="location-detail" data-site-id="kanuma-campfield-spa" data-tags="mua-he mua-thu">
+                    <div class="location-image">
+                        <img src="images/location-kanuma.jpg" alt="KANUMA Campfield & Spa スノーピーク鹿沼キャンプフィールド＆スパ" loading="lazy" decoding="async">
+                    </div>
+                    <div class="location-detail-content">
+                        <h3>
+                            <span class="location-detail-icon">🏕️</span>
+                            KANUMA Campfield &amp; Spa
+                        </h3>
+                        <p class="location-subtitle">スノーピーク鹿沼キャンプフィールド＆スパ</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
+                        <a href="https://www.google.com/maps/place/%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%94%E3%83%BC%E3%82%AF%E9%B9%BF%E6%B2%BC%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%EF%BC%86%E3%82%B9%E3%83%91/@36.5409307,139.6771918,17z/data=!4m9!3m8!1s0x601f13001a181c27:0x41180113a5b8a4ba!5m2!4m1!1i2!8m2!3d36.5405447!4d139.6797904!16s%2Fg%2F11vm9nybw8?entry=ttu&amp;g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
+                        <p>
+                            Campfield kết hợp spa tại Kanuma, phù hợp trải nghiệm nghỉ dưỡng và camping vào mùa hè, mùa thu.
+                        </p>
+                        <ul class="location-features">
+                            <li>Khu cắm trại kết hợp tiện ích spa</li>
+                            <li>Phù hợp chuyến nghỉ ngơi cuối tuần</li>
+                            <li>Thích hợp nhóm bạn và gia đình</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <!-- Recamp Ashikaga -->
-                <div class="location-detail">
+                <div class="location-detail" data-site-id="recamp-ashikaga" data-tags="mua-xuan mua-he mua-thu">
                     <div class="location-image">
                         <img src="images/location-recamp-ashikaga.jpg" alt="Recamp Ashikaga RECAMP足利" loading="lazy" decoding="async">
                     </div>
@@ -518,6 +865,11 @@
                             Recamp Ashikaga
                         </h3>
                         <p class="location-subtitle">RECAMP足利</p>
+                        <div class="location-tags" aria-label="Đặc điểm nổi bật">
+                            <span class="location-tag-chip">Mùa xuân</span>
+                            <span class="location-tag-chip">Mùa hè</span>
+                            <span class="location-tag-chip">Mùa thu</span>
+                        </div>
                         <a href="https://www.google.com/maps/place/Recamp+Ashikaga/@36.4251696,139.4261896,17z/data=!3m1!4b1!4m9!3m8!1s0x601f1ea07d47988f:0x71770a52f337cc07!5m2!4m1!1i2!8m2!3d36.4251696!4d139.4287645!16s%2Fg%2F119x446l9?entry=ttu&g_ep=EgoyMDI2MDMwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="location-map-link">Xem trên Google Maps</a>
                         <p>
                             Bãi camping tại Ashikaga, Tochigi.
@@ -529,6 +881,11 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div id="location-empty-state" class="location-empty-state" role="status" aria-live="polite" aria-hidden="true">
+                <p class="location-empty-state-title">Không có bãi camping nào khớp toàn bộ tag bạn đã chọn.</p>
+                <p class="location-empty-state-hint">Thử bỏ bớt tag hoặc chọn <strong>Tất cả</strong> để xem lại danh sách đầy đủ.</p>
             </div>
 
             <div style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%); border-radius: 20px;">
@@ -621,6 +978,7 @@
         // Location coordinates (exact from Google Maps)
         const locations = [
             {
+                id: 'fumotoppara',
                 name: 'Fumotoppara Camping Ground',
                 lat: 35.3994331,
                 lng: 138.5648368,
@@ -628,6 +986,7 @@
                 description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp'
             },
             {
+                id: 'koan',
                 name: 'Koan Camping Ground',
                 lat: 35.473183,
                 lng: 138.574764,
@@ -635,6 +994,7 @@
                 description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
             },
             {
+                id: 'asagiri-sorairo',
                 name: '朝霧Camp Base そらいろ',
                 lat: 35.3934589,
                 lng: 138.5648634,
@@ -642,6 +1002,7 @@
                 description: 'Bãi camping 朝霧 Camp Base そらいろ gần khu vực Fumotoppara'
             },
             {
+                id: 'fujisan-wild',
                 name: 'Fujisan Wild Adventure',
                 lat: 35.3302986,
                 lng: 138.6168973,
@@ -649,6 +1010,7 @@
                 description: 'Fujisan Wild Adventure – khu camping và hoạt động ngoài trời gần núi Phú Sĩ'
             },
             {
+                id: 'fujiminooka',
                 name: 'Fujiminooka Auto Camping Ground',
                 lat: 35.2179438,
                 lng: 138.7025481,
@@ -656,13 +1018,23 @@
                 description: 'Fujiminooka Auto Camping Ground – bãi camping với không gian rộng và view núi Phú Sĩ'
             },
             {
+                id: 'tanukiko',
+                name: '田貫湖キャンプ場 · Lake Tanuki Camp Ground',
+                lat: 35.3419124,
+                lng: 138.5615542,
+                icon: '🏕️',
+                description: 'Bãi camping ven hồ Tanuki, chân núi Phú Sĩ — view hồ và núi'
+            },
+            {
+                id: 'aone',
                 name: 'Aone Camping Ground (青根キャンプ場)',
                 lat: 35.5477275,
                 lng: 139.1360741,
                 icon: '🏕️',
-                description: 'Bãi camping gần Tokyo, gần suối có thể chơi nước mùa hè'
+                description: 'Bãi camping gần Tokyo, gần suối với không khí mát mẻ mùa hè'
             },
             {
+                id: 'nagatoro',
                 name: 'Nagatoro Auto Campground',
                 lat: 36.105016,
                 lng: 139.114251,
@@ -670,13 +1042,55 @@
                 description: 'Nagatoro Auto Campground – bãi camping ven sông tại Saitama'
             },
             {
+                id: 'tanoue',
                 name: 'Tanoue Camping Ground (田の上キャンプ場)',
                 lat: 36.392397,
                 lng: 140.611984,
                 icon: '🏕️',
-                description: 'Không gian rộng rãi, gần bãi biển, gần Hitachi Kaihin Park'
+                description: 'Gần bãi biển, gần Hitachi Kaihin Park'
             },
             {
+                id: 'cliff-camp-bbq',
+                name: 'The CLIFF CAMP&BBQ',
+                lat: 35.1920506,
+                lng: 139.60963,
+                icon: '🏕️',
+                description: 'Bãi camp gần biển, tiện di chuyển từ Tokyo'
+            },
+            {
+                id: 'camp-koganezaki',
+                name: 'Camp Koganezaki (キャンプ黄金崎)',
+                lat: 34.842715,
+                lng: 138.76564,
+                icon: '🏕️',
+                description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu'
+            },
+            {
+                id: 'beach-camp-ugusu',
+                name: 'Beach camp ugusu (宇久須キャンプ場)',
+                lat: 34.8545339,
+                lng: 138.7765388,
+                icon: '🏕️',
+                description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu'
+            },
+            {
+                id: 'snowpeak-akagi',
+                name: 'Snow Peak AKAGI Campfield (スノーピーク赤城キャンプフィールド)',
+                lat: 36.5559831,
+                lng: 139.1699522,
+                icon: '🏕️',
+                description: 'Campfield gần hồ, phù hợp đi mùa hè và mùa thu'
+            },
+            {
+                id: 'kanuma-campfield-spa',
+                name: 'KANUMA Campfield & Spa (スノーピーク鹿沼キャンプフィールド＆スパ)',
+                lat: 36.5405447,
+                lng: 139.6797904,
+                icon: '🏕️',
+                description: 'Campfield & spa, phù hợp đi mùa hè và mùa thu'
+            },
+            {
+                id: 'recamp-ashikaga',
                 name: 'Recamp Ashikaga (RECAMP足利)',
                 lat: 36.4251696,
                 lng: 139.4287645,
@@ -685,7 +1099,8 @@
             }
         ];
 
-        // Add markers
+        const markersBySiteId = {};
+
         locations.forEach(location => {
             const customIcon = L.divIcon({
                 className: 'custom-marker',
@@ -703,11 +1118,58 @@
                         <p style="margin: 0; font-size: 14px; color: #666;">${location.description}</p>
                     </div>
                 `);
+            markersBySiteId[location.id] = marker;
         });
 
-        // Fit map to show all markers
-        const bounds = L.latLngBounds(locations.map(l => [l.lat, l.lng]));
-        map.fitBounds(bounds.pad(0.1));
+        function fitMapToLocationIds(visibleIds) {
+            if (!visibleIds.length) {
+                map.setView([35.436, 138.57], 8);
+                return;
+            }
+            if (visibleIds.length === 1) {
+                const loc = locations.find(function (l) {
+                    return l.id === visibleIds[0];
+                });
+                if (loc) map.setView([loc.lat, loc.lng], 11);
+                return;
+            }
+            const pts = visibleIds.map(function (id) {
+                const loc = locations.find(function (l) {
+                    return l.id === id;
+                });
+                return loc ? [loc.lat, loc.lng] : null;
+            }).filter(Boolean);
+            map.fitBounds(L.latLngBounds(pts).pad(0.15));
+        }
+
+        function syncMapToCards(cards, showAll) {
+            const visibleIds = [];
+            cards.forEach(function (card) {
+                if (!card.classList.contains('location-hidden')) {
+                    const sid = card.getAttribute('data-site-id');
+                    if (sid) visibleIds.push(sid);
+                }
+            });
+
+            locations.forEach(function (loc) {
+                const marker = markersBySiteId[loc.id];
+                if (!marker) return;
+                if (visibleIds.indexOf(loc.id) !== -1) {
+                    if (!map.hasLayer(marker)) marker.addTo(map);
+                } else {
+                    map.removeLayer(marker);
+                }
+            });
+
+            if (showAll) {
+                map.fitBounds(L.latLngBounds(locations.map(function (l) {
+                    return [l.lat, l.lng];
+                })).pad(0.1));
+                return;
+            }
+
+            fitMapToLocationIds(visibleIds);
+        }
 
         // Style for custom markers
         const style = document.createElement('style');
@@ -718,6 +1180,96 @@
             }
         `;
         document.head.appendChild(style);
+
+        (function initLocationFilters() {
+            var grid = document.getElementById('location-info-grid');
+            var statusEl = document.getElementById('location-filter-status');
+            var emptyEl = document.getElementById('location-empty-state');
+            var wrap = document.querySelector('.location-filter-wrap');
+            if (!grid || !statusEl || !wrap) return;
+
+            var cards = grid.querySelectorAll('.location-detail');
+            var total = cards.length;
+            var selectedTags = {};
+
+            function getCardTagSet(card) {
+                var raw = (card.getAttribute('data-tags') || '').trim();
+                if (!raw) return [];
+                return raw.split(/\s+/).filter(Boolean);
+            }
+
+            function applyFilter() {
+                var activeList = Object.keys(selectedTags).filter(function (k) {
+                    return selectedTags[k];
+                });
+                var showAll = activeList.length === 0;
+                var visible = 0;
+
+                cards.forEach(function (card) {
+                    var tags = getCardTagSet(card);
+                    var match =
+                        showAll ||
+                        activeList.every(function (t) {
+                            return tags.indexOf(t) !== -1;
+                        });
+                    if (match) {
+                        card.classList.remove('location-hidden');
+                        visible++;
+                    } else {
+                        card.classList.add('location-hidden');
+                    }
+                });
+
+                statusEl.textContent =
+                    visible === total && showAll ? 'Hiển thị ' + total + ' / ' + total + ' bãi' :
+                    'Hiển thị ' + visible + ' / ' + total + ' bãi';
+
+                if (emptyEl) {
+                    var noResults = !showAll && visible === 0;
+                    emptyEl.classList.toggle('is-visible', noResults);
+                    emptyEl.setAttribute('aria-hidden', noResults ? 'false' : 'true');
+                }
+
+                wrap.querySelectorAll('.filter-tag-btn[data-filter-tag]').forEach(function (btn) {
+                    var tag = btn.getAttribute('data-filter-tag');
+                    var on = !!selectedTags[tag];
+                    btn.classList.toggle('is-active', on);
+                    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+
+                var clearBtn = wrap.querySelector('.filter-tag-btn[data-filter-action="clear"]');
+                if (clearBtn) {
+                    var allOn = showAll;
+                    clearBtn.classList.toggle('is-active', allOn);
+                    clearBtn.setAttribute('aria-pressed', allOn ? 'true' : 'false');
+                }
+
+                syncMapToCards(cards, showAll);
+            }
+
+            wrap.addEventListener('click', function (e) {
+                var btn = e.target.closest('.filter-tag-btn');
+                if (!btn || !wrap.contains(btn)) return;
+
+                if (btn.getAttribute('data-filter-action') === 'clear') {
+                    selectedTags = {};
+                    applyFilter();
+                    return;
+                }
+
+                var tag = btn.getAttribute('data-filter-tag');
+                if (!tag) return;
+
+                if (selectedTags[tag]) {
+                    delete selectedTags[tag];
+                } else {
+                    selectedTags[tag] = true;
+                }
+                applyFilter();
+            });
+
+            applyFilter();
+        })();
     </script>
 </body>
 </html>

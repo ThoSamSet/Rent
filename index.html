@@ -796,12 +796,16 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="locations-map-sites.js"></script>
     <script>
-        // Initialize map preview after Leaflet is loaded
+        // Initialize map preview after Leaflet is loaded (data: locations-map-sites.js — same as locations.html)
         window.addEventListener('load', function() {
             if (typeof L !== 'undefined') {
             const mapPreviewElement = document.getElementById('mapPreview');
             if (mapPreviewElement) {
+                const locations = window.CAMP_MAP_SITES;
+                if (!locations || !locations.length) return;
+
                 const mapPreview = L.map('mapPreview').setView([35.436, 138.57], 11);
 
                 // Add grayscale tile layer
@@ -813,73 +817,6 @@
 
                 // Apply additional grayscale filter for more monochrome effect (same as locations.html)
                 mapPreviewElement.style.filter = 'grayscale(100%) contrast(1.1)';
-
-                // Location coordinates (exact from Google Maps) — keep in sync with locations.html
-                const locations = [
-                    {
-                        name: 'Fumotoppara Camping Ground',
-                        lat: 35.3994331,
-                        lng: 138.5648368,
-                        icon: '🏔️',
-                        description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp'
-                    },
-                    {
-                        name: 'Koan Camping Ground',
-                        lat: 35.473183,
-                        lng: 138.574764,
-                        icon: '⛰️',
-                        description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
-                    },
-                    {
-                        name: '朝霧Camp Base そらいろ',
-                        lat: 35.3934589,
-                        lng: 138.5648634,
-                        icon: '🏕️',
-                        description: 'Bãi camping 朝霧 Camp Base そらいろ gần khu vực Fumotoppara'
-                    },
-                    {
-                        name: 'Fujisan Wild Adventure',
-                        lat: 35.3302986,
-                        lng: 138.6168973,
-                        icon: '🏕️',
-                        description: 'Fujisan Wild Adventure – khu camping và hoạt động ngoài trời gần núi Phú Sĩ'
-                    },
-                    {
-                        name: 'Fujiminooka Auto Camping Ground',
-                        lat: 35.2179438,
-                        lng: 138.7025481,
-                        icon: '🏕️',
-                        description: 'Fujiminooka Auto Camping Ground – bãi camping với không gian rộng và view núi Phú Sĩ'
-                    },
-                    {
-                        name: 'Aone Camping Ground (青根キャンプ場)',
-                        lat: 35.5477275,
-                        lng: 139.1360741,
-                        icon: '🏕️',
-                        description: 'Bãi camping gần Tokyo, gần suối có thể chơi nước mùa hè'
-                    },
-                    {
-                        name: 'Nagatoro Auto Campground',
-                        lat: 36.105016,
-                        lng: 139.114251,
-                        icon: '🏕️',
-                        description: 'Nagatoro Auto Campground – bãi camping ven sông tại Saitama'
-                    },
-                    {
-                        name: 'Tanoue Camping Ground (田の上キャンプ場)',
-                        lat: 36.392397,
-                        lng: 140.611984,
-                        icon: '🏕️',
-                        description: 'Không gian rộng rãi, gần bãi biển, gần Hitachi Kaihin Park'
-                    },
-                    {
-                        name: 'Recamp Ashikaga (RECAMP足利)',
-                        lat: 36.4251696,
-                        lng: 139.4287645,
-                        icon: '🏕️',
-                        description: 'Bãi camping tại Ashikaga, Tochigi'
-                    }
-                ];
 
                 // Add markers
                 locations.forEach(location => {

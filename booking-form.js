@@ -16,7 +16,7 @@
         de: {
             label: 'Hạt Dẻ',
             emoji: '🌰',
-            desc: 'Tự lái xe · full đồ camping · không đưa đón'
+            desc: 'Không đưa đón · full đồ camping'
         },
         bi: {
             label: 'Hạt Bí',

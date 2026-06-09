@@ -2400,7 +2400,6 @@ img {
     margin-bottom: 8px;
 }
 
-.booking-field input[type="date"],
 .booking-field input[type="text"],
 .booking-field input[type="url"],
 .booking-field select {
@@ -2413,6 +2412,12 @@ img {
     color: #1d1d1f;
     background: #fff;
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.booking-field input.booking-date-input {
+    width: 100%;
+    max-width: 11.5rem;
+    min-width: 0;
 }
 
 .booking-field input:focus,
@@ -2812,6 +2817,10 @@ img {
 
     .booking-field-row .booking-field {
         flex: 1 1 100%;
+    }
+
+    .booking-field input.booking-date-input {
+        max-width: 10.5rem;
     }
 }
 

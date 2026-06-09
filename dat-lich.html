@@ -85,7 +85,7 @@
 
                             <div class="booking-field">
                                 <label for="startDate">Ngày đi</label>
-                                <input type="date" id="startDate" name="startDate" required>
+                                <input type="text" id="startDate" name="startDate" class="booking-date-input" required placeholder="dd/mm/yyyy" inputmode="numeric" autocomplete="off" title="Nhập ngày theo định dạng dd/mm/yyyy">
                                 <p class="booking-hint">Chọn ngày khởi hành — hoặc bấm ô <strong>Còn chỗ</strong> trên <a href="schedule.html">lịch trình</a>.</p>
                             </div>
 
@@ -171,8 +171,8 @@
                                 </select>
                             </div>
 
-                            <div class="booking-field">
-                                <label for="campLocationCustom">Hoặc ghi rõ tên bãi (tuỳ chọn)</label>
+                            <div class="booking-field" id="campLocationCustomField" hidden>
+                                <label for="campLocationCustom">Ghi rõ tên bãi</label>
                                 <input type="text" id="campLocationCustom" name="campLocationCustom" placeholder="vd. Fumotoppara, Koan…" autocomplete="off">
                             </div>
 

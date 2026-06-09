@@ -84,6 +84,7 @@
     var pickupCustomInput = document.getElementById('pickupCustom');
     var pickupWarning = document.getElementById('pickupWarning');
     var locationSelect = document.getElementById('campLocation');
+    var locationCustomField = document.getElementById('campLocationCustomField');
     var locationCustom = document.getElementById('campLocationCustom');
     var fbInput = document.getElementById('facebookLink');
     var priceBreakdown = document.getElementById('priceBreakdown');
@@ -128,6 +129,46 @@
         var m = String(date.getMonth() + 1).padStart(2, '0');
         var d = String(date.getDate()).padStart(2, '0');
         return y + '-' + m + '-' + d;
+    }
+
+    function formatVnDate(date) {
+        var d = String(date.getDate()).padStart(2, '0');
+        var m = String(date.getMonth() + 1).padStart(2, '0');
+        var y = date.getFullYear();
+        return d + '/' + m + '/' + y;
+    }
+
+    function parseDateInput(value) {
+        if (!value) {
+            return null;
+        }
+        var trimmed = value.trim();
+        var vn = trimmed.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+        if (vn) {
+            return buildDate(parseInt(vn[3], 10), parseInt(vn[2], 10), parseInt(vn[1], 10));
+        }
+        var iso = trimmed.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+        if (iso) {
+            return buildDate(parseInt(iso[1], 10), parseInt(iso[2], 10), parseInt(iso[3], 10));
+        }
+        return null;
+    }
+
+    function validateStartDate() {
+        if (!startDateInput) {
+            return true;
+        }
+        var value = startDateInput.value.trim();
+        if (!value) {
+            startDateInput.setCustomValidity('');
+            return true;
+        }
+        if (!parseDateInput(value)) {
+            startDateInput.setCustomValidity('Nhập ngày theo định dạng dd/mm/yyyy');
+            return false;
+        }
+        startDateInput.setCustomValidity('');
+        return true;
     }
 
     function formatMan(value) {
@@ -185,6 +226,7 @@
         if (pickupCustomInput) {
             pickupCustomInput.required = isOtherPickup;
             if (!isOtherPickup) {
+                pickupCustomInput.value = '';
                 pickupCustomInput.setCustomValidity('');
             }
         }
@@ -206,6 +248,21 @@
         }
 
         return !missingCustom;
+    }
+
+    function updateLocationUi() {
+        var isOtherLocation = locationSelect && locationSelect.value === 'other';
+
+        if (locationCustomField) {
+            locationCustomField.hidden = !isOtherLocation;
+        }
+        if (locationCustom) {
+            locationCustom.required = false;
+            if (!isOtherLocation) {
+                locationCustom.value = '';
+                locationCustom.setCustomValidity('');
+            }
+        }
     }
 
     function getPeopleCount() {
@@ -288,15 +345,12 @@
     }
 
     function getCampLocationLabel() {
-        var custom = locationCustom.value.trim();
-        if (custom) {
-            return custom;
+        if (locationSelect.value === 'other') {
+            var custom = locationCustom ? locationCustom.value.trim() : '';
+            return custom || 'Khác / chưa biết';
         }
         if (locationSelect.value === 'suggest') {
             return 'Gợi ý giúp mình';
-        }
-        if (locationSelect.value === 'other') {
-            return 'Chưa chọn — gợi ý giúp mình';
         }
         var option = locationSelect.options[locationSelect.selectedIndex];
         return option ? option.textContent.replace(/\s*[—–-]\s*.+$/, '').trim() : '';
@@ -338,7 +392,7 @@
         var params = new URLSearchParams(window.location.search);
         var parsed = parseNgayParam(params.get('ngay'));
         if (parsed) {
-            startDateInput.value = formatIsoDate(parsed);
+            startDateInput.value = formatVnDate(parsed);
         }
     }
 
@@ -419,11 +473,7 @@
     }
 
     function getStartDate() {
-        if (!startDateInput.value) {
-            return null;
-        }
-        var parts = startDateInput.value.split('-');
-        return buildDate(parseInt(parts[0], 10), parseInt(parts[1], 10), parseInt(parts[2], 10));
+        return parseDateInput(startDateInput.value);
     }
 
     function buildMessage() {
@@ -479,6 +529,7 @@
 
     function refreshUi() {
         updatePickupUi();
+        updateLocationUi();
         var duration = DURATIONS[durationSelect.value] || DURATIONS['2d1n'];
         var price = calculatePrice();
         if (priceBreakdown) {
@@ -523,7 +574,7 @@
     }
 
     function copyMessage() {
-        if (!updatePickupUi() || !form.reportValidity()) {
+        if (!updatePickupUi() || !validateStartDate() || !form.reportValidity()) {
             if (pickupCustomInput && pickupSelect.value === 'khac' && !isHatDePlan()) {
                 pickupCustomInput.focus();
             }
@@ -571,8 +622,13 @@
     prefillDateFromUrl();
     refreshUi();
 
-    form.addEventListener('input', refreshUi);
-    form.addEventListener('change', refreshUi);
+    function onFormInput() {
+        validateStartDate();
+        refreshUi();
+    }
+
+    form.addEventListener('input', onFormInput);
+    form.addEventListener('change', onFormInput);
     planRadios.forEach(function (radio) {
         radio.addEventListener('change', refreshUi);
     });

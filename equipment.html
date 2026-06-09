@@ -25,9 +25,10 @@
     <meta property="twitter:description" content="Danh sách đầy đủ dụng cụ camping tại Camp Nhà Thỏ: lều 2 room, túi ngủ, bếp gas/củi, đèn, máy ảnh Fujifilm X-T5, Nintendo Switch, máy chiếu Full HD.">
     <meta property="twitter:image" content="https://campnhatho.com/images/equipment-hero.jpg">
 
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260421">
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
+    <script src="promo-bar.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -49,11 +50,21 @@
         }
 
         .hero-wrapper {
+            width: 100%;
             max-width: var(--page-hero-max-width);
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 60px;
             align-items: center;
+            min-width: 0;
+        }
+
+        /* Override homepage.css .hero-content constraints inside equipment hero grid */
+        .equipment-hero .hero-content {
+            max-width: none;
+            margin-bottom: 0;
+            min-width: 0;
         }
 
         .hero-content h1 {
@@ -86,14 +97,21 @@
             object-fit: cover;
         }
 
+        /* Single padding layer — avoid stacking with .section (100px) from homepage.css */
+        .equipment-main-section.section {
+            padding: 0;
+        }
+
         .equipment-content {
+            width: 100%;
             max-width: var(--page-hero-max-width);
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 60px 20px 80px;
+            min-width: 0;
         }
 
         .content-section {
-            margin-bottom: 100px;
+            margin-bottom: 72px;
         }
 
         .section-title {
@@ -105,108 +123,123 @@
             text-align: center;
         }
 
+        /* 6 large category cards — Snow Peak–style: short lines + ※ notes */
         .category-grid {
             display: grid;
-            /* 6 thẻ: 3 cột × 2 hàng */
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            align-items: stretch;
-            justify-items: stretch;
-            gap: 14px;
+            gap: 20px;
             max-width: 1000px;
-            margin: 0 auto 60px;
+            margin: 0 auto 20px;
         }
 
         .category-card {
-            width: 100%;
-            max-width: min(100%, var(--card-item-max-width));
-            justify-self: stretch;
             min-width: 0;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            min-height: 0;
             background: white;
-            padding: 0;
+            border: 1px solid #e5e5e7;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
         }
 
         .category-image {
             flex-shrink: 0;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #f5f5f7;
+        }
+
+        .category-image img {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .category-content {
+        .category-body {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            min-height: 0;
+            min-width: 0;
+            padding: 22px 24px 24px;
         }
 
-        .category-header {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .category-icon {
-            font-size: 26px;
-        }
-
-        .category-name {
-            font-size: 18px;
+        .category-title {
+            font-size: 20px;
             font-weight: 600;
             color: #1d1d1f;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin: 0 0 14px;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
-        .category-items {
-            flex: 1;
+        .category-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .category-items li {
+        .category-list li {
             font-size: 15px;
-            line-height: 1.65;
+            line-height: 1.55;
             color: #1d1d1f;
             margin-bottom: 6px;
-            padding-left: 20px;
+            padding-left: 14px;
             position: relative;
+            min-width: 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
-        .category-items li:before {
-            content: "•";
+        .category-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-list li::before {
+            content: "·";
             position: absolute;
             left: 0;
-            color: #0071e3;
+            color: #86868b;
             font-weight: bold;
-            font-size: 18px;
         }
 
-        .category-items li strong {
-            font-weight: 600;
-            color: #1d1d1f;
+        .category-list .item-note {
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        .category-footnotes {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 4px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #86868b;
+            text-align: center;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .category-footnotes p {
+            margin: 0 0 6px;
+        }
+
+        .category-footnotes p:last-child {
+            margin-bottom: 0;
         }
 
         .principles-section {
             background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            padding: 60px 50px;
+            padding: 48px 40px;
             border-radius: 30px;
-            margin: 80px 0;
+            margin: 64px 0;
             border: 1px solid #e5e5e7;
         }
 
@@ -220,7 +253,7 @@
 
         .principles-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
             align-items: stretch;
         }
@@ -233,8 +266,8 @@
             background: white;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            height: 100%;
-            min-height: 0;
+            height: auto;
+            min-width: 0;
         }
 
         .principle-icon {
@@ -243,61 +276,372 @@
         }
 
         .principle-text {
+            flex: 1;
+            min-width: 0;
             font-size: 17px;
             line-height: 1.6;
             color: #1d1d1f;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
-        .what-to-bring {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 80px 0;
-            align-items: center;
+        .beginner-intro {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 50px;
         }
 
-        .what-to-bring-content {
-            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            padding: 50px 40px;
-            border-radius: 25px;
-            border: 1px solid #e5e5e7;
-        }
-
-        .what-to-bring h3 {
-            font-size: 32px;
+        .beginner-intro h2 {
+            font-size: 36px;
             font-weight: 600;
-            margin-bottom: 25px;
+            letter-spacing: -0.02em;
             color: #1d1d1f;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .what-to-bring-list {
+        .beginner-intro p {
+            font-size: 19px;
+            line-height: 1.65;
+            color: #86868b;
+            margin-bottom: 16px;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .beginner-pain-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 900px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+
+        .pain-point-card {
+            min-width: 0;
+            background: white;
+            border: 1px solid #e5e5e7;
+            border-radius: 20px;
+            padding: 24px 22px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .pain-point-card .pain-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .pain-point-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            line-height: 1.35;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .pain-point-card p {
+            font-size: 15px;
+            line-height: 1.55;
+            color: #86868b;
+            margin: 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .equipment-top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px 28px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            border: 1px solid #e5e5e7;
+            border-radius: 24px;
+            padding: 28px 32px;
+            margin-bottom: 64px;
+        }
+
+        .price-anchor {
+            text-align: center;
+            min-width: 0;
+            max-width: 100%;
+            flex: 1 1 220px;
+        }
+
+        .price-anchor-label {
+            display: block;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 4px;
+            line-height: 1.45;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .price-anchor-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0071e3;
+            letter-spacing: -0.02em;
+        }
+
+        .price-anchor-note {
+            display: block;
+            font-size: 13px;
+            color: #86868b;
+            margin-top: 4px;
+            line-height: 1.45;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .price-anchor a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .price-anchor a:hover .price-anchor-value {
+            text-decoration: underline;
+        }
+
+        .equipment-cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            flex: 1 1 240px;
+            min-width: 0;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #0071e3;
+            border: 2px solid #0071e3;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #0071e3;
+            color: white;
+        }
+
+        .timeline-section {
+            margin: 64px 0;
+        }
+
+        .timeline-intro {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: #86868b;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-day {
+            min-width: 0;
+            height: auto;
+            overflow: visible;
+            background: white;
+            border: 1px solid #e5e5e7;
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .timeline-day-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #0071e3;
+            margin-bottom: 8px;
+        }
+
+        .timeline-day h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            line-height: 1.35;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .timeline-steps {
             list-style: none;
             padding: 0;
-            margin: 0 0 25px 0;
+            margin: 0;
         }
 
-        .what-to-bring-list li {
-            font-size: 19px;
-            line-height: 1.8;
+        .timeline-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f0f0f2;
+            font-size: 16px;
+            line-height: 1.55;
             color: #1d1d1f;
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
+            min-width: 0;
         }
 
-        .what-to-bring-list li:before {
+        .timeline-steps li > span:not(.timeline-time) {
+            flex: 1;
+            min-width: 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .timeline-steps li:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .timeline-time {
+            flex-shrink: 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #86868b;
+            min-width: 72px;
+        }
+
+        .what-to-bring-section {
+            margin: 64px 0;
+        }
+
+        .what-to-bring-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 16px;
+        }
+
+        .what-to-bring-header h2 {
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+        }
+
+        .what-to-bring-disclaimer {
+            display: inline-block;
+            max-width: 100%;
+            font-size: 15px;
+            color: #86868b;
+            background: #f5f5f7;
+            border-radius: 20px;
+            padding: 8px 18px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            text-align: center;
+        }
+
+        .what-to-bring-grid {
+            display: grid;
+            /* 6 thẻ: 3 cột × 2 hàng */
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+
+        .bring-category {
+            min-width: 0;
+            background: white;
+            border: 1px solid #e5e5e7;
+            border-radius: 20px;
+            padding: 22px 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .bring-category h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            line-height: 1.35;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .bring-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bring-category li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1d1d1f;
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .bring-category li:before {
             content: "•";
             position: absolute;
             left: 0;
             color: #0071e3;
             font-weight: bold;
-            font-size: 20px;
+        }
+
+        .what-to-bring-footer {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.65;
+            color: #1d1d1f;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .what-to-bring-footer a {
+            color: #0071e3;
         }
 
         .what-to-bring-image {
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .what-to-bring-image img {
@@ -309,9 +653,9 @@
         .highlight-box {
             background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
             color: white;
-            padding: 60px 50px;
+            padding: 48px 40px;
             border-radius: 30px;
-            margin: 80px 0;
+            margin: 64px 0 0;
             text-align: center;
         }
 
@@ -319,55 +663,171 @@
             font-size: 22px;
             line-height: 1.8;
             margin: 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .highlight-box strong {
             font-weight: 600;
         }
 
+        @media (max-width: 1100px) {
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .what-to-bring-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 968px) {
-            .hero-wrapper,
-            .what-to-bring {
+            .equipment-hero {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .hero-wrapper {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 36px;
             }
 
             .hero-content h1 {
                 font-size: 40px;
             }
 
-            .category-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            .hero-content p {
+                font-size: 19px;
+            }
+
+            .equipment-content {
+                padding: 48px 20px 64px;
+            }
+
+            .beginner-pain-points,
+            .timeline,
+            .what-to-bring-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .equipment-top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 24px 20px;
+                gap: 20px;
+            }
+
+            .price-anchor,
+            .equipment-cta-buttons {
+                flex: 1 1 auto;
+                width: 100%;
             }
 
             .principles-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
+            .section-title,
+            .beginner-intro h2,
+            .what-to-bring-header h2,
+            .principles-section h2 {
                 font-size: 32px;
             }
 
             .principles-section {
-                padding: 40px 30px;
+                padding: 36px 24px;
+            }
+
+            .timeline-day {
+                padding: 28px 22px;
+            }
+
+            .content-section,
+            .timeline-section,
+            .what-to-bring-section {
+                margin-bottom: 56px;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .beginner-pain-points {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 640px) {
+            .equipment-hero {
+                padding: 48px 16px;
+            }
+
+            .equipment-content {
+                padding: 40px 16px 56px;
+            }
+
             .category-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
-            .category-content,
-            .what-to-bring-content,
+            .category-body {
+                padding: 20px 18px 22px;
+            }
+
+            .category-title {
+                font-size: 18px;
+            }
+
+            .category-list li {
+                font-size: 14px;
+            }
+
             .highlight-box {
-                padding: 30px 20px;
+                padding: 36px 20px;
             }
 
-            .category-items li,
+            .highlight-box p {
+                font-size: 18px;
+                line-height: 1.65;
+            }
+
             .principle-text,
-            .what-to-bring-list li {
+            .bring-category li,
+            .timeline-steps li {
                 font-size: 16px;
+            }
+
+            .timeline-time {
+                min-width: 64px;
+            }
+
+            .equipment-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .equipment-cta-buttons .btn-hero,
+            .equipment-cta-buttons .btn-outline {
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .equipment-top-bar {
+                padding: 20px 16px;
+            }
+
+            .price-anchor-value {
+                font-size: 26px;
+            }
+
+            .bring-category {
+                padding: 20px 18px;
+            }
+
+            .beginner-intro p,
+            .timeline-intro {
+                font-size: 17px;
             }
         }
     </style>
@@ -386,7 +846,7 @@
                 <span></span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="index.html#about">Giới thiệu</a>
+                <a href="about.html">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
@@ -394,7 +854,7 @@
                 <a href="locations.html">Vị trí</a>
                 <a href="faq.html">FAQ</a>
                 <a href="blog/">Blog</a>
-                <a href="contact.html" class="contact-link">Liên hệ</a>
+                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
             </div>
         </div>
     </nav>
@@ -406,8 +866,8 @@
             <div class="hero-content">
                 <h1>Dụng cụ camping tại Camp Nhà Thỏ</h1>
                 <p>
-                    Camp Nhà Thỏ chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
-                    giúp bạn không phải mua sắm hay mang vác cồng kềnh.
+                    Chưa có đồ camping? Lần đầu đi cũng yên tâm — Camp Nhà Thỏ chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong>,
+                    bạn chỉ cần mang đồ cá nhân và tinh thần thư giãn.
                 </p>
             </div>
             <div class="hero-image-wrapper">
@@ -417,104 +877,187 @@
     </section>
 
     <!-- Equipment Content -->
-    <section class="section">
+    <section class="section equipment-main-section">
         <div class="equipment-content">
+            <!-- Beginner Messaging -->
+            <div class="beginner-intro">
+                <h2>Lần đầu camping cũng được</h2>
+                <p>
+                    Nhiều bạn lo vì <strong>chưa có đồ</strong>, không biết cần mang gì, hay sợ thiếu thứ quan trọng.
+                    Với Camp Nhà Thỏ, bạn không cần mua sắm hay tự dựng lều — tụi mình lo phần kỹ thuật, bạn chỉ việc trải nghiệm.
+                </p>
+                <div class="beginner-pain-points">
+                    <div class="pain-point-card">
+                        <div class="pain-icon">🎒</div>
+                        <h3>Chưa có đồ camping</h3>
+                        <p>Lều, bếp, đèn, túi ngủ… đã có sẵn. Không cần đầu tư ngay từ lần đầu.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <div class="pain-icon">🌱</div>
+                        <h3>Lần đầu, chưa biết bắt đầu</h3>
+                        <p>Tụi mình hướng dẫn setup, nấu ăn và sinh hoạt tại bãi — an toàn, dễ dùng cho người mới.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <div class="pain-icon">😌</div>
+                        <h3>Sợ mang thiếu hoặc quá nhiều</h3>
+                        <p>Danh sách gợi ý rõ ràng bên dưới. Phần lớn đồ kỹ thuật, Camp Nhà Thỏ đã lo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Early Booking CTA + Price Anchor -->
+            <div class="equipment-top-bar">
+                <div class="price-anchor">
+                    <span class="price-anchor-label">Plan Hạt Bí 🎃 · 2N1Đ · 2 người</span>
+                    <a href="pricing.html">
+                        <span class="price-anchor-value">5.4man</span>
+                    </a>
+                    <span class="price-anchor-note">Từ 4.7man (1 người) · <a href="pricing.html" style="color: #0071e3;">Xem bảng giá</a></span>
+                </div>
+                <div class="equipment-cta-buttons">
+                    <a href="schedule.html" class="btn-hero">Đặt lịch sớm</a>
+                    <a href="dat-lich.html" class="btn-outline">Đặt lịch</a>
+                </div>
+            </div>
+
             <!-- Categories Section -->
             <div class="content-section">
                 <h2 class="section-title">Danh mục dụng cụ hiện có</h2>
-                
-                <div class="category-grid">
-                    <!-- Lều & che chắn -->
-                    <div class="category-card">
-                        <img src="images/equipment-tent.jpg" alt="Lều & che chắn" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">⛺</div>
-                                <div class="category-name">Lều & che chắn</div>
-                            </div>
-                            <ul class="category-items">
-                                <li>Lều <strong>2 room</strong> (2 phòng: ngủ & sinh hoạt)</li>
-                                <li>Tarp che nắng mưa</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <!-- Ngủ nghỉ -->
-                    <div class="category-card">
-                        <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">🛏️</div>
-                                <div class="category-name">Ngủ nghỉ</div>
-                            </div>
-                            <ul class="category-items">
+                <div class="category-grid">
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/equipment-sleep.jpg" alt="Lều và chỗ ngủ" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Lều &amp; chỗ ngủ</h3>
+                            <ul class="category-list">
+                                <li>Lều 2 room <span class="item-note">※ Ngủ &amp; sinh hoạt</span></li>
                                 <li>Túi ngủ</li>
-                                <li>Thảm bạc cách nhiệt</li>
+                                <li>Thảm bạc <span class="item-note">※ Cách nhiệt</span></li>
                                 <li>Chăn theo mùa</li>
                             </ul>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Sinh hoạt -->
-                    <div class="category-card">
-                        <img src="images/equipment-table.jpg" alt="Sinh hoạt" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">🪑</div>
-                                <div class="category-name">Sinh hoạt</div>
-                            </div>
-                            <ul class="category-items">
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/equipment-table.jpg" alt="Bàn ghế và không gian" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Bàn ghế &amp; không gian</h3>
+                            <ul class="category-list">
                                 <li>Bàn camping</li>
                                 <li>Ghế xếp</li>
+                                <li>Tarp che <span class="item-note">※ Nắng &amp; mưa</span></li>
                             </ul>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Nấu ăn -->
-                    <div class="category-card">
-                        <img src="images/equipment-cooking.jpg" alt="Nấu ăn" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">🔥</div>
-                                <div class="category-name">Nấu ăn</div>
-                            </div>
-                            <ul class="category-items">
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/equipment-cooking.jpg" alt="Nấu ăn và BBQ" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Nấu ăn &amp; BBQ</h3>
+                            <ul class="category-list">
                                 <li>Bếp gas</li>
-                                <li>Bếp củi</li>
-                                <li>Bộ đồ nấu ăn (nồi, chảo, dao, thớt, bát đũa…)</li>
+                                <li>Bếp củi <span class="item-note">※ Gồm củi, lửa</span></li>
+                                <li>Nồi · chảo · dao <span class="item-note">※ Bộ nấu ăn</span></li>
                             </ul>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Ánh sáng, điện & sưởi ấm -->
-                    <div class="category-card">
-                        <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">💡</div>
-                                <div class="category-name">Ánh sáng, điện & sưởi ấm</div>
-                            </div>
-                            <ul class="category-items">
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/food-drink.jpg" alt="Ăn uống và dụng cụ" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Ăn uống &amp; dụng cụ</h3>
+                            <ul class="category-list">
+                                <li>Bát · đĩa · cốc</li>
+                                <li>Đũa · muỗng · nĩa</li>
+                                <li>Dụng cụ ăn uống <span class="item-note">※ Đi kèm bộ nấu</span></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/equipment-light.jpg" alt="Đèn và điện" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Đèn &amp; điện</h3>
+                            <ul class="category-list">
                                 <li>Đèn trang trí</li>
-                                <li><strong>Lò sưởi dầu</strong> (dùng mùa lạnh)</li>
+                                <li>Lò sưởi dầu <span class="item-note">※ Mùa lạnh</span></li>
                             </ul>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Giải trí & trải nghiệm -->
-                    <div class="category-card">
-                        <img src="images/equipment-entertainment.jpg" alt="Giải trí & trải nghiệm" class="category-image" loading="lazy" decoding="async">
-                        <div class="category-content">
-                            <div class="category-header">
-                                <div class="category-icon">🎮</div>
-                                <div class="category-name">Giải trí & trải nghiệm</div>
-                            </div>
-                            <ul class="category-items">
-                                <li>Máy ảnh <strong><span class="no-break">Fujifilm X-T5</span></strong> (chụp kỷ niệm)</li>
-                                <li><strong><span class="no-break">Nintendo Switch</span></strong></li>
-                                <li><strong>Máy chiếu Full HD</strong> (xem phim, chill buổi tối)</li>
+                    <article class="category-card">
+                        <div class="category-image">
+                            <img src="images/equipment-entertainment.jpg" alt="Giải trí và ghi hình" loading="lazy" decoding="async">
+                        </div>
+                        <div class="category-body">
+                            <h3 class="category-title">Giải trí &amp; ghi hình</h3>
+                            <ul class="category-list">
+                                <li>Fujifilm X-T5 <span class="item-note">※ Máy ảnh</span></li>
+                                <li>Nintendo Switch</li>
+                                <li>Máy chiếu Full HD <span class="item-note">※ Buổi tối</span></li>
                             </ul>
                         </div>
+                    </article>
+                </div>
+
+                <div class="category-footnotes">
+                    <p>※ Máy ảnh, Switch, máy chiếu — báo trước để chuẩn bị.</p>
+                </div>
+            </div>
+
+            <!-- Timeline 2N1Đ -->
+            <div class="timeline-section">
+                <h2 class="section-title">Lịch trình 2 ngày 1 đêm</h2>
+                <p class="timeline-intro">
+                    Một chuyến camping tiêu chuẩn với Plan Hạt Bí — tụi mình đưa đón, setup và hỗ trợ xuyên suốt.
+                    Giờ giấc linh hoạt theo nhóm, dưới đây là khung tham khảo.
+                </p>
+                <div class="timeline">
+                    <div class="timeline-day">
+                        <span class="timeline-day-label">Ngày 1</span>
+                        <h3>Đón · Đến bãi · Setup · Buổi tối</h3>
+                        <ol class="timeline-steps">
+                            <li>
+                                <span class="timeline-time">Sáng</span>
+                                <span>Đón tại Tokyo, Saitama hoặc Kanagawa (theo điểm hẹn)</span>
+                            </li>
+                            <li>
+                                <span class="timeline-time">Chiều</span>
+                                <span>Đến bãi camp, dựng lều &amp; setup không gian sinh hoạt</span>
+                            </li>
+                            <li>
+                                <span class="timeline-time">Tối</span>
+                                <span>Nấu ăn, đốt lửa trại, chill — Nintendo Switch, máy chiếu, chụp ảnh tùy chọn</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="timeline-day">
+                        <span class="timeline-day-label">Ngày 2</span>
+                        <h3>Ăn sáng · Thu dọn · Về</h3>
+                        <ol class="timeline-steps">
+                            <li>
+                                <span class="timeline-time">Sáng</span>
+                                <span>Ăn sáng nhẹ, dọn dẹp khu vực camping</span>
+                            </li>
+                            <li>
+                                <span class="timeline-time">Trưa</span>
+                                <span>Thu gọn lều &amp; đồ đạc, rời bãi camp</span>
+                            </li>
+                            <li>
+                                <span class="timeline-time">Chiều</span>
+                                <span>Đưa về khu vực đón ban đầu</span>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -543,23 +1086,69 @@
             </div>
 
             <!-- What to Bring Section -->
-            <div class="what-to-bring">
-                <div class="what-to-bring-content">
-                    <h3>Bạn cần mang theo gì?</h3>
-                    <p style="font-size: 19px; color: #1d1d1f; margin-bottom: 25px;">
-                        Bạn chỉ cần chuẩn bị:
-                    </p>
-                    <ul class="what-to-bring-list">
-                        <li>Quần áo cá nhân</li>
-                        <li>Đồ ăn / thức uống yêu thích</li>
-                        <li>Tinh thần thư giãn 😌</li>
-                    </ul>
-                    <p style="font-size: 19px; color: #1d1d1f; margin-top: 25px; font-weight: 500;">
-                        Mọi thứ còn lại, Camp Nhà Thỏ đã lo sẵn.
-                    </p>
+            <div class="what-to-bring-section">
+                <div class="what-to-bring-header">
+                    <h2>Mang theo gì?</h2>
+                    <p class="what-to-bring-disclaimer">Gợi ý tham khảo — không bắt buộc mang đủ tất cả</p>
                 </div>
-                <div class="what-to-bring-image">
-                    <img src="images/equipment-bring.jpg" alt="Bạn cần mang theo gì" loading="lazy" decoding="async">
+                <div class="what-to-bring-grid">
+                    <div class="bring-category">
+                        <h4>👕 Trang phục &amp; giữ ấm</h4>
+                        <ul>
+                            <li>Quần áo thoải mái, dễ vận động</li>
+                            <li>Áo khoác giữ ấm (kể cả mùa xuân, đầu hè)</li>
+                            <li>Áo dài tay mỏng chống gió</li>
+                            <li>Vớ dày, mũ hoặc khăn mỏng</li>
+                        </ul>
+                    </div>
+                    <div class="bring-category">
+                        <h4>👟 Giày dép</h4>
+                        <ul>
+                            <li>Giày thể thao hoặc giày đi bộ</li>
+                            <li>Đế chắc, không trơn trượt</li>
+                            <li>Dép đi trong lều (tùy chọn)</li>
+                        </ul>
+                    </div>
+                    <div class="bring-category">
+                        <h4>🧴 Đồ tắm &amp; vệ sinh</h4>
+                        <ul>
+                            <li>Bàn chải, kem đánh răng</li>
+                            <li>Khăn mặt, khăn tắm nhỏ</li>
+                            <li>Giấy ướt, khăn ướt</li>
+                            <li>Kem chống nắng, kem dưỡng da</li>
+                        </ul>
+                    </div>
+                    <div class="bring-category">
+                        <h4>🛏️ Gối &amp; ngủ ngon hơn</h4>
+                        <ul>
+                            <li>Gối cá nhân (túi ngủ đã có sẵn)</li>
+                            <li>Bị mỏng hoặc khăn ngủ riêng</li>
+                            <li>Earplug nếu nhạy cảm với tiếng ồn</li>
+                        </ul>
+                    </div>
+                    <div class="bring-category">
+                        <h4>🍱 Đồ ăn &amp; nước uống</h4>
+                        <ul>
+                            <li>Nước uống đủ dùng</li>
+                            <li>Đồ ăn, snack yêu thích</li>
+                            <li>Báo trước nếu mang nhiều đồ ăn</li>
+                        </ul>
+                    </div>
+                    <div class="bring-category">
+                        <h4>💊 Khác</h4>
+                        <ul>
+                            <li>Thuốc cá nhân (nếu cần)</li>
+                            <li>Balo vừa phải — không dùng vali</li>
+                            <li>Tinh thần thư giãn 😌</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="what-to-bring-footer">
+                    Mọi đồ camping kỹ thuật — lều, bếp, đèn, túi ngủ — Camp Nhà Thỏ đã lo sẵn.
+                    Xem thêm <a href="blog/checklistcampingnhatban/">checklist chi tiết</a> hoặc <a href="faq.html">FAQ</a>.
+                </p>
+                <div class="what-to-bring-image" style="margin-top: 40px;">
+                    <img src="images/equipment-bring.jpg" alt="Đồ cá nhân nên mang khi đi camping" loading="lazy" decoding="async">
                 </div>
             </div>
 

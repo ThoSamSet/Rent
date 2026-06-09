@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Về Camp Nhà Thỏ - Share đồ Camping Phú Sĩ | Chụp hình chill cảnh đẹp</title>
-    <meta name="description" content="Tìm hiểu về Camp Nhà Thỏ - dịch vụ share đồ camping tại Phú Sĩ. Không phải cho thuê thông thường, mà là chia sẻ đồ camping + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
+    <meta name="description" content="Tìm hiểu về Camp Nhà Thỏ - share đồ camping tại Phú Sĩ. Đặt lịch online, chia sẻ đồ + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
     <meta name="keywords" content="giới thiệu Camp Nhà Thỏ, về dịch vụ camping Phú Sĩ, share đồ camping, chụp hình Phú Sĩ, chill cảnh đẹp Nhật Bản">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="6Jb7Q150HqA8yTBqcR8_sUdWY2mwKTpTIoPTJhN8iVY">
@@ -15,19 +15,20 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://campnhatho.com/about.html">
     <meta property="og:title" content="Về Camp Nhà Thỏ - Share đồ Camping Phú Sĩ | Chụp hình chill cảnh đẹp">
-    <meta property="og:description" content="Tìm hiểu về Camp Nhà Thỏ - dịch vụ share đồ camping tại Phú Sĩ. Không phải cho thuê thông thường, mà là chia sẻ đồ camping + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
+    <meta property="og:description" content="Tìm hiểu về Camp Nhà Thỏ - share đồ camping tại Phú Sĩ. Đặt lịch online, chia sẻ đồ + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
     <meta property="og:image" content="https://campnhatho.com/images/about-hero.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://campnhatho.com/about.html">
     <meta property="twitter:title" content="Về Camp Nhà Thỏ - Share đồ Camping Phú Sĩ | Chụp hình chill cảnh đẹp">
-    <meta property="twitter:description" content="Tìm hiểu về Camp Nhà Thỏ - dịch vụ share đồ camping tại Phú Sĩ. Không phải cho thuê thông thường, mà là chia sẻ đồ camping + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
+    <meta property="twitter:description" content="Tìm hiểu về Camp Nhà Thỏ - share đồ camping tại Phú Sĩ. Đặt lịch online, chia sẻ đồ + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
     <meta property="twitter:image" content="https://campnhatho.com/images/about-hero.jpg">
 
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260421">
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
+    <script src="promo-bar.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -69,7 +70,58 @@
             font-size: 21px;
             color: #86868b;
             line-height: 1.6;
-            margin-bottom: 0;
+            margin-bottom: 24px;
+        }
+
+        .about-hero-price {
+            margin-bottom: 28px;
+        }
+
+        .price-anchor-label {
+            display: block;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 4px;
+        }
+
+        .price-anchor-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0071e3;
+            letter-spacing: -0.02em;
+        }
+
+        .price-anchor a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .price-anchor a:hover .price-anchor-value {
+            text-decoration: underline;
+        }
+
+        .about-hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #0071e3;
+            border: 2px solid #0071e3;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #0071e3;
+            color: white;
         }
 
         .hero-image-wrapper {
@@ -155,7 +207,7 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin: 40px 0;
         }
@@ -164,18 +216,9 @@
             display: none;
         }
 
-        /* Responsive for smaller desktop screens */
-        @media (max-width: 1400px) {
+        @media (max-width: 1100px) {
             .service-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .service-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -389,6 +432,259 @@
             color: #1d1d1f;
         }
 
+        .final-message .tagline {
+            display: block;
+            margin-top: 28px;
+            font-size: 21px;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .about-steps-section {
+            margin: 0 0 60px;
+            padding: 48px 40px;
+            background: #f5f5f7;
+            border-radius: 24px;
+        }
+
+        .about-steps-section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 0 32px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .about-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 640px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            counter-reset: step;
+        }
+
+        .about-steps li {
+            counter-increment: step;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .about-steps li::before {
+            content: counter(step);
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: #0071e3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .about-step-content h3 {
+            font-size: 19px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 0 0 6px;
+        }
+
+        .about-step-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #86868b;
+            margin: 0;
+        }
+
+        .about-step-content a {
+            color: #0071e3;
+        }
+
+        .beginner-block {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            border: 1px solid #e5e5e7;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .beginner-block h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 0 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .beginner-block p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #1d1d1f;
+            margin: 0;
+            max-width: var(--text-narrow-max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .beginner-block a {
+            color: #0071e3;
+        }
+
+        .plans-overview {
+            margin-bottom: 80px;
+        }
+
+        .plans-overview h2 {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 0 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .plans-overview-intro {
+            text-align: center;
+            font-size: 18px;
+            color: #86868b;
+            margin: 0 auto 40px;
+            max-width: var(--text-narrow-max-width);
+            line-height: 1.6;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .plan-card {
+            background: #f5f5f7;
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .plan-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 12px;
+            color: #1d1d1f;
+        }
+
+        .plan-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #86868b;
+            margin: 0;
+        }
+
+        .plans-overview-link {
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .plans-overview-link a {
+            color: #0071e3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .plans-overview-link a:hover {
+            text-decoration: underline;
+        }
+
+        .about-timeline {
+            margin-bottom: 80px;
+        }
+
+        .about-timeline h2 {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 0 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .about-timeline-intro {
+            text-align: center;
+            font-size: 18px;
+            color: #86868b;
+            margin: 0 auto 32px;
+            max-width: var(--text-narrow-max-width);
+            line-height: 1.6;
+        }
+
+        .about-timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 24px;
+            max-width: 560px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .about-timeline-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .about-timeline-list li::before {
+            content: "·";
+            flex-shrink: 0;
+            font-size: 24px;
+            line-height: 1.2;
+            color: #0071e3;
+            font-weight: 700;
+        }
+
+        .about-timeline-detail {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .about-timeline-detail a {
+            color: #0071e3;
+            font-weight: 500;
+        }
+
+        .about-explore {
+            margin: 0 0 40px;
+        }
+
+        .about-explore-title {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 0 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .about-explore-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #86868b;
+            margin: 0 auto;
+            max-width: var(--text-narrow-max-width);
+            line-height: 1.6;
+        }
+
         @media (max-width: 968px) {
             .hero-wrapper,
             .section-with-image {
@@ -419,6 +715,21 @@
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero-cta {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .comparison-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
         }
 
         @media (max-width: 640px) {
@@ -430,16 +741,31 @@
                 font-size: 28px;
             }
 
-            .comparison-table-wrap {
-                overflow-x: auto;
-            }
-
             .highlight-card {
                 padding: 30px 20px;
             }
 
             .highlight-card p {
                 font-size: 19px;
+            }
+
+            .about-steps-section {
+                padding: 32px 20px;
+            }
+
+            .beginner-block {
+                padding: 28px 20px;
+            }
+
+            .about-explore-title {
+                font-size: 28px;
+            }
+
+            .about-hero-cta .btn-hero,
+            .about-hero-cta .btn-outline {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
             }
         }
     </style>
@@ -458,7 +784,7 @@
                 <span></span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="index.html#about">Giới thiệu</a>
+                <a href="about.html" aria-current="page">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
@@ -466,7 +792,7 @@
                 <a href="locations.html">Vị trí</a>
                 <a href="faq.html">FAQ</a>
                 <a href="blog/">Blog</a>
-                <a href="contact.html" class="contact-link">Liên hệ</a>
+                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
             </div>
         </div>
     </nav>
@@ -480,6 +806,16 @@
                 <p>
                     Mình tạo ra Camp Nhà Thỏ vì muốn mọi người có thể dễ dàng trải nghiệm cắm trại mà không cần phải đầu tư quá nhiều dụng cụ hay chuẩn bị phức tạp.
                 </p>
+                <div class="price-anchor about-hero-price">
+                    <span class="price-anchor-label">Plan Hạt Bí 🎃 · 2N1Đ · 2 người</span>
+                    <a href="pricing.html">
+                        <span class="price-anchor-value">từ 5.4man</span>
+                    </a>
+                </div>
+                <div class="about-hero-cta">
+                    <a href="dat-lich.html" class="btn-hero">Đặt lịch</a>
+                    <a href="schedule.html" class="btn-outline">Xem lịch trình</a>
+                </div>
             </div>
             <div class="hero-image-wrapper">
                 <img src="images/about-hero.jpg" alt="Camp Nhà Thỏ" loading="eager" decoding="async" fetchpriority="high">
@@ -536,6 +872,18 @@
                         <div class="service-icon">📸</div>
                         <div class="service-text">Hỗ trợ chụp ảnh kỷ niệm (nếu bạn cần)</div>
                     </div>
+                    <div class="service-item">
+                        <div class="service-icon">🌿</div>
+                        <div class="service-text">Đi riêng – không ghép khách</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🔥</div>
+                        <div class="service-text">Tự do ăn chơi, chill theo cách của bạn</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🧭</div>
+                        <div class="service-text">Hướng dẫn người mới camping từng bước</div>
+                    </div>
                 </div>
 
                 <!-- Service Slider (Mobile) -->
@@ -572,6 +920,24 @@
                                     <div class="service-text">Hỗ trợ chụp ảnh kỷ niệm (nếu bạn cần)</div>
                                 </div>
                             </div>
+                            <div class="slider-item">
+                                <div class="service-item">
+                                    <div class="service-icon">🌿</div>
+                                    <div class="service-text">Đi riêng – không ghép khách</div>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="service-item">
+                                    <div class="service-icon">🔥</div>
+                                    <div class="service-text">Tự do ăn chơi, chill theo cách của bạn</div>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="service-item">
+                                    <div class="service-icon">🧭</div>
+                                    <div class="service-text">Hướng dẫn người mới camping từng bước</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="slider-arrow prev" id="servicePrev" aria-label="Xem dịch vụ trước">‹</button>
@@ -586,6 +952,7 @@
                 <p class="section-intro">
                     Cùng một chuyến camping, mức độ thoải mái và tiết kiệm thời gian sẽ rất khác nhau khi bạn có người đồng hành hỗ trợ đúng việc.
                 </p>
+                <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
                 <div class="comparison-table-wrap">
                     <table class="comparison-table" aria-label="Bảng so sánh lợi ích sử dụng Camp Nhà Thỏ">
                         <thead>
@@ -626,6 +993,16 @@
                                 <td class="with-service">Kết hợp linh hoạt giữa camping và tham quan, lịch trình nhẹ nhàng hơn.</td>
                                 <td class="without-service">Tự chia lịch, tự canh đường đi, dễ bị gấp gáp hoặc bỏ lỡ điểm đẹp.</td>
                             </tr>
+                            <tr>
+                                <td class="feature-col">Đặt lịch / chi phí</td>
+                                <td class="with-service">Form đặt lịch tự tính chi phí theo plan &amp; số người — rõ ràng trước khi nhắn.</td>
+                                <td class="without-service">Tự hỏi từng khoản, dễ thiếu hoặc nhầm mục, khó so sánh tổng chi phí.</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-col">Hướng dẫn người mới</td>
+                                <td class="with-service">Hướng dẫn setup, nấu ăn tại bãi — <a href="equipment.html" style="color: inherit;">đồ đã chuẩn bị sẵn</a>.</td>
+                                <td class="without-service">Tự mò mẫm, dễ thiếu kỹ năng hoặc mang thiếu đồ quan trọng.</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -637,6 +1014,31 @@
                     Bạn và nhóm của bạn sẽ <strong>đi riêng, không ghép khách</strong> với bất kỳ ai khác.<br>
                     Lịch trình linh hoạt, không gò bó, đi theo nhịp của bạn.
                 </p>
+            </div>
+
+            <!-- Booking Steps -->
+            <div class="about-steps-section">
+                <h2>Cách đặt lịch</h2>
+                <ol class="about-steps">
+                    <li>
+                        <div class="about-step-content">
+                            <h3>Xem lịch trống</h3>
+                            <p>Chọn ngày <strong>Còn chỗ</strong> trên <a href="schedule.html">lịch trình</a>.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="about-step-content">
+                            <h3>Điền form</h3>
+                            <p>Mở <a href="dat-lich.html">form đặt lịch</a> — hệ thống tạo sẵn mẫu tin nhắn.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="about-step-content">
+                            <h3>Gửi &amp; xác nhận</h3>
+                            <p>Copy gửi qua TikTok hoặc Facebook — <strong>không cần cọc</strong>, chờ xác nhận qua inbox.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
 
             <!-- Target Audience Section -->
@@ -670,6 +1072,49 @@
                 </div>
             </div>
 
+            <!-- Beginner Block -->
+            <div class="beginner-block">
+                <h2>Lần đầu camping?</h2>
+                <p>
+                    Chưa có đồ hay chưa biết bắt đầu từ đâu cũng không sao — Camp Nhà Thỏ chuẩn bị sẵn dụng cụ và hướng dẫn setup, nấu ăn tại bãi.
+                    <a href="equipment.html">Xem danh sách dụng cụ</a>.
+                </p>
+            </div>
+
+            <!-- Plans Overview -->
+            <div class="plans-overview">
+                <h2>3 plan camping</h2>
+                <p class="plans-overview-intro">Chọn mức hỗ trợ phù hợp — từ tự lái đến trọn gói đưa đón.</p>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3>🌰 Hạt Dẻ</h3>
+                        <p>Tự chọn ngày &amp; bãi, full đồ camping — tự lái xe. Từ 3.7man.</p>
+                    </div>
+                    <div class="plan-card">
+                        <h3>🎃 Hạt Bí</h3>
+                        <p>Đưa đón, setup trọn gói — plan phổ biến nhất. Từ 4.7man.</p>
+                    </div>
+                    <div class="plan-card">
+                        <h3>🍇 Hạt Nho</h3>
+                        <p>Bungalow + không gian camping — không lo mưa. Từ 5.7man.</p>
+                    </div>
+                </div>
+                <p class="plans-overview-link"><a href="pricing.html">Xem bảng giá chi tiết →</a></p>
+            </div>
+
+            <!-- Short Timeline -->
+            <div class="about-timeline">
+                <h2>Lịch trình 2N1Đ</h2>
+                <p class="about-timeline-intro">Khung tham khảo với Plan Hạt Bí — giờ giấc linh hoạt theo nhóm.</p>
+                <ul class="about-timeline-list">
+                    <li><strong>Ngày 1 sáng:</strong> Đón tại Tokyo, Saitama hoặc Kanagawa</li>
+                    <li><strong>Ngày 1 chiều:</strong> Đến bãi camp, dựng lều &amp; setup</li>
+                    <li><strong>Ngày 1 tối:</strong> Nấu ăn, đốt lửa trại, chill buổi tối</li>
+                    <li><strong>Ngày 2:</strong> Ăn sáng, thu dọn, đưa về</li>
+                </ul>
+                <p class="about-timeline-detail">Chi tiết từng bước → <a href="equipment.html">trang dụng cụ</a></p>
+            </div>
+
             <!-- Values Section -->
             <div class="values-section">
                 <h2 class="values-title">Giá trị Camp Nhà Thỏ hướng tới</h2>
@@ -701,7 +1146,34 @@
                 <p>
                     Camp Nhà Thỏ không chỉ là dịch vụ,<br>
                     mà là <strong>người bạn đồng hành</strong> trong mỗi chuyến đi của bạn.
+                    <span class="tagline">Share đồ – Đi riêng – Trải nghiệm</span>
                 </p>
+            </div>
+
+            <!-- Cross-links -->
+            <div class="about-explore">
+                <h2 class="about-explore-title">Tìm hiểu thêm</h2>
+                <p class="about-explore-subtitle">Chi phí, dụng cụ và câu hỏi thường gặp — tất cả trước khi bạn đặt lịch.</p>
+                <div class="explore-card-grid">
+                    <a href="pricing.html" class="explore-card">
+                        <div class="explore-card-icon" aria-hidden="true">💰</div>
+                        <h3 class="explore-card-title">Chi phí &amp; plan</h3>
+                        <p class="explore-card-desc">So sánh 3 plan Hạt Dẻ, Hạt Bí, Hạt Nho — bảng giá minh bạch theo nhóm.</p>
+                        <span class="explore-card-cta">Xem bảng giá →</span>
+                    </a>
+                    <a href="equipment.html" class="explore-card">
+                        <div class="explore-card-icon" aria-hidden="true">⛺</div>
+                        <h3 class="explore-card-title">Dụng cụ camping</h3>
+                        <p class="explore-card-desc">Lều, bếp, đèn, ghế — danh sách đầy đủ được chuẩn bị sẵn cho bạn.</p>
+                        <span class="explore-card-cta">Xem dụng cụ →</span>
+                    </a>
+                    <a href="faq.html" class="explore-card">
+                        <div class="explore-card-icon" aria-hidden="true">❓</div>
+                        <h3 class="explore-card-title">Câu hỏi thường gặp</h3>
+                        <p class="explore-card-desc">Đặt lịch, thanh toán, lần đầu camping — giải đáp nhanh các thắc mắc.</p>
+                        <span class="explore-card-cta">Đọc FAQ →</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -711,10 +1183,14 @@
         <div class="container">
             <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
             <p class="section-text">
-                Kết nối với chúng mình qua TikTok hoặc Facebook.<br>
+                Điền form đặt lịch — hệ thống tạo sẵn mẫu tin nhắn để bạn copy và gửi qua TikTok hoặc Facebook.<br>
                 Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.
             </p>
-            <div class="social-buttons">
+            <div class="section-actions">
+                <a href="dat-lich.html" class="btn-primary btn-large">Đặt lịch</a>
+            </div>
+            <p class="cta-secondary-text">Hoặc gửi tin nhắn trực tiếp qua mạng xã hội — xem hướng dẫn tại <a href="dat-lich.html#lien-he">trang liên hệ</a>.</p>
+            <div class="social-buttons social-buttons-secondary">
                 <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
                     <span class="social-btn-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
@@ -743,6 +1219,7 @@
         </div>
     </footer>
 
+    <script src="table-swipe-hint.js" defer></script>
     <script>
         // Burger menu toggle
         const burgerMenu = document.getElementById('burgerMenu');

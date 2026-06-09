@@ -60,12 +60,20 @@
         <priority>0.8</priority>
     </url>
     
-    <!-- Contact Page -->
+    <!-- Booking Page -->
+    <url>
+        <loc>https://campnhatho.com/dat-lich.html</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Contact redirect (legacy URL) -->
     <url>
         <loc>https://campnhatho.com/contact.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-06-09</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.3</priority>
     </url>
     
     <!-- Blog Page -->

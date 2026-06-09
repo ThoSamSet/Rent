@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Công cụ tính giá - CAMP Nhà Thỏ</title>
+    <meta name="description" content="Công cụ tham khảo giá cước dịch vụ camping tại Camp Nhà Thỏ theo khu vực, thời gian và số người.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9B%BA%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="canonical" href="https://campnhatho.com/calculator.html">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://campnhatho.com/calculator.html">
@@ -25,96 +28,151 @@
       gtag('js', new Date());
       gtag('config', 'G-22W1X4CVZK');
     </script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
+    <script src="promo-bar.js" defer></script>
 </head>
 <body>
     <div class="announcement-bar">
         <a href="schedule.html" class="announcement-secondary">Kiểm tra lịch trình</a>
     </div>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1>CAMP Nhà Thỏ<br>Công cụ tham khảo giá</h1>
-            <h5 id="lastUpdatedDate"></h5>
-        </header>
-        
-        <!-- Sticky Total Cost Bar -->
-        <div class="sticky-total-cost" id="stickyTotalCost">
-            <span>Tổng cước phí ước tính: <strong>0¥</strong></span>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LogoCampNhaTho.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img"></a>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Giới thiệu</a>
+                <a href="equipment.html">Dụng cụ</a>
+                <a href="options.html">Option</a>
+                <a href="pricing.html">Chi phí</a>
+                <a href="schedule.html">Lịch trình</a>
+                <a href="locations.html">Vị trí</a>
+                <a href="faq.html">FAQ</a>
+                <a href="blog/">Blog</a>
+                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
+            </div>
         </div>
-        
-        <!-- Main Content -->
-        <main class="content">
-            <!-- Công cụ tính giá cước -->
-            <section class="block">
-                <h2>Công cụ tính giá cước thuê dịch vụ</h2>
-                <p>・Thông tin địa điểm là bắt buộc</p>
-                <p>・Hỗ trợ tối đa nhóm 3 người (đã bao gồm trẻ em)</p>
-                <p>・Đã bao gồm tiền xe</p>
-                <br>
-                <a href="Notes.html"> Chi tiết xin vui lòng tham khảo những lưu ý khi sử dụng dịch vụ tại đây</a>
-                <div class="result">
-                    <span id="totalCost"><br>Tổng cước phí ước tính: <strong>0¥</strong></span>
-                </div>
-            </section>
+    </nav>
 
-            <!-- Vật dụng -->
-            <section class="block">
-                <h2>Chọn set vật dụng bạn muốn mượn</h2>
-                <div class="form-group">
-                    <label for="equipmentSet"><h3>Bạn muốn chọn set vật dụng nào?</h3></label>
-                    <select id="equipmentSet">
-                        <option value="" selected>Không chọn set</option>
-                    </select>
-                    <div id="equipmentSetChoice"></div>
-                    <div id="equipmentSetCostSTR"></div>
-                </div>
-            </section>
+    <main>
+        <section class="section calculator-page">
+            <div class="container calculator-container">
+                <header class="calculator-header">
+                    <h1 class="calculator-title">Công cụ tham khảo giá</h1>
+                    <p class="calculator-updated" id="lastUpdatedDate"></p>
+                </header>
 
-            <!-- Thông tin hành trình -->
-            <section class="block">
-                <h2>Thông tin hành trình <span class="required">*</span></h2>
-                <div class="form-group">
-                    <label for="rentalTime"><h3>Bạn hãy chọn thời gian</h3></label>
-                    <select id="rentalTime">
-                        <option value="" selected disabled>Chọn thời gian</option>
-                        <option value="overnight">Xuất phát thứ 7 (qua đêm)</option>
-                        <option value="day7" disabled>Trong ngày (xuất phát thứ 7) &lt;Tạm dừng dịch vụ&gt;</option>
-                        <option value="day8" disabled>Trong ngày (xuất phát chủ nhật) &lt;Tạm dừng dịch vụ&gt;</option>
-                    </select>
-                    <div id="rentalTimeChoice"></div>
-                    <div id="rentalTimeChoiceCostSTR"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="camping"><h3>Bạn muốn đi chơi ở khu vực nào?</h3></label>
-                    <select id="camping">
-                        <option value="" selected disabled>Chọn điểm đến</option>
-                        <option value="fuji">Quanh chân núi Phú Sĩ</option>
-                        <option value="saitama" disabled>Saitama</option>
-                    </select>
-                    <div id="campingChoice"></div>
-                    <div id="campingChoiceCostSTR"></div>
+                <div class="sticky-total-cost" id="stickyTotalCost">
+                    <span>Tổng cước phí ước tính: <strong>0¥</strong></span>
                 </div>
 
-                <div class="form-group">
-                    <label for="location"><h3>Vị trí xuất phát của bạn (ước tính)</h3></label>
-                    <select id="location">
-                        <option value="" selected disabled>Chọn địa điểm xuất phát</option>
-                        <option value="tokyo">Tokyo</option>
-                        <option value="saitama">Saitama</option>
-                        <option value="kanagawa">Kanagawa</option>
-                    </select>
-                    <div id="distance"></div>
-                    <div id="cost"></div>
-                </div>
-            </section>
-        </main>
-    </div>
+                <div class="calculator-content">
+                    <section class="calculator-block">
+                        <h2>Công cụ tính giá cước thuê dịch vụ</h2>
+                        <p>・Thông tin địa điểm là bắt buộc</p>
+                        <p>・Hỗ trợ tối đa nhóm 3 người (đã bao gồm trẻ em)</p>
+                        <p>・Đã bao gồm tiền xe</p>
+                        <p><a href="Notes.html">Chi tiết xin vui lòng tham khảo những lưu ý khi sử dụng dịch vụ tại đây</a></p>
+                        <div class="result">
+                            <span id="totalCost"><br>Tổng cước phí ước tính: <strong>0¥</strong></span>
+                        </div>
+                    </section>
 
+                    <section class="calculator-block">
+                        <h2>Chọn set vật dụng bạn muốn mượn</h2>
+                        <div class="form-group">
+                            <label for="equipmentSet"><h3>Bạn muốn chọn set vật dụng nào?</h3></label>
+                            <select id="equipmentSet">
+                                <option value="" selected>Không chọn set</option>
+                            </select>
+                            <div id="equipmentSetChoice"></div>
+                            <div id="equipmentSetCostSTR"></div>
+                        </div>
+                    </section>
+
+                    <section class="calculator-block">
+                        <h2>Thông tin hành trình <span class="required">*</span></h2>
+                        <div class="form-group">
+                            <label for="rentalTime"><h3>Bạn hãy chọn thời gian</h3></label>
+                            <select id="rentalTime">
+                                <option value="" selected disabled>Chọn thời gian</option>
+                                <option value="overnight">Xuất phát thứ 7 (qua đêm)</option>
+                                <option value="day7" disabled>Trong ngày (xuất phát thứ 7) &lt;Tạm dừng dịch vụ&gt;</option>
+                                <option value="day8" disabled>Trong ngày (xuất phát chủ nhật) &lt;Tạm dừng dịch vụ&gt;</option>
+                            </select>
+                            <div id="rentalTimeChoice"></div>
+                            <div id="rentalTimeChoiceCostSTR"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="camping"><h3>Bạn muốn đi chơi ở khu vực nào?</h3></label>
+                            <select id="camping">
+                                <option value="" selected disabled>Chọn điểm đến</option>
+                                <option value="fuji">Quanh chân núi Phú Sĩ</option>
+                                <option value="saitama" disabled>Saitama</option>
+                            </select>
+                            <div id="campingChoice"></div>
+                            <div id="campingChoiceCostSTR"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location"><h3>Vị trí xuất phát của bạn (ước tính)</h3></label>
+                            <select id="location">
+                                <option value="" selected disabled>Chọn địa điểm xuất phát</option>
+                                <option value="tokyo">Tokyo</option>
+                                <option value="saitama">Saitama</option>
+                                <option value="kanagawa">Kanagawa</option>
+                            </select>
+                            <div id="distance"></div>
+                            <div id="cost"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (burgerMenu && navLinks) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnBurger = burgerMenu.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
-

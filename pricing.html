@@ -25,9 +25,10 @@
     <meta property="twitter:description" content="Bảng chi phí camping tại Camp Nhà Thỏ theo số người và plan. Khu vực Tokyo, Saitama, Kanagawa.">
     <meta property="twitter:image" content="https://campnhatho.com/images/camping-1.jpg">
 
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260421">
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
+    <script src="promo-bar.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -122,7 +123,7 @@
                 <span></span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="index.html#about">Giới thiệu</a>
+                <a href="about.html">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
@@ -130,7 +131,7 @@
                 <a href="locations.html">Vị trí</a>
                 <a href="faq.html">FAQ</a>
                 <a href="blog/">Blog</a>
-                <a href="contact.html" class="contact-link">Liên hệ</a>
+                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
             </div>
         </div>
     </nav>
@@ -209,6 +210,7 @@
                 <p class="pricing-option-disclaimer-text">Chưa bao gồm đồ ăn &amp; các option mở rộng (xem phim, đường thường…). Xem thêm tại <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.</p>
             </div>
 
+            <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
             <div class="pricing-table-wrapper" style="margin-top: 10px; margin-bottom: 40px;">
                 <h3 class="pricing-subtitle">Bảng so sánh plan</h3>
                 <table class="pricing-table">
@@ -266,6 +268,7 @@
                     </tbody>
                 </table>
             </div>
+            <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
             <div class="pricing-table-wrapper">
                 <h3 class="pricing-subtitle">Bảng giá dịch vụ <span class="pricing-subtitle-note">(2 ngày 1 đêm)</span></h3>
                 <table class="pricing-table">
@@ -375,7 +378,7 @@
             <div class="pricing-note-box">
                 Option thêm (đồ ăn, máy chiếu ngoài trời, di chuyển đường thường): tham khảo thêm tại <a href="options.html" style="color: inherit; text-decoration: underline;">trang Option</a>.<br>
                 *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
-                Liên hệ chúng mình để được tư vấn chi tiết.
+                <a href="dat-lich.html">Đặt lịch</a> để được tư vấn chi tiết.
             </div>
         </div>
     </section>
@@ -428,6 +431,7 @@
         </div>
     </footer>
 
+    <script src="table-swipe-hint.js" defer></script>
     <script>
         // Burger menu toggle
         const burgerMenu = document.getElementById('burgerMenu');

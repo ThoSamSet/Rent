@@ -26,9 +26,10 @@
     <meta property="twitter:image" content="https://campnhatho.com/images/hero-camping.jpg">
     
     <link rel="canonical" href="https://campnhatho.com/">
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260421">
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
+    <script src="promo-bar.js" defer></script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -107,15 +108,15 @@
                 <span></span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="#about">Giới thiệu</a>
+                <a href="about.html">Giới thiệu</a>
                 <a href="equipment.html">Dụng cụ</a>
                 <a href="options.html">Option</a>
                 <a href="pricing.html">Chi phí</a>
                 <a href="schedule.html">Lịch trình</a>
-                <a href="#locations">Vị trí</a>
+                <a href="locations.html">Vị trí</a>
                 <a href="faq.html">FAQ</a>
                 <a href="blog/">Blog</a>
-                <a href="contact.html" class="contact-link">Liên hệ</a>
+                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
             </div>
         </div>
     </nav>
@@ -401,8 +402,9 @@
             <h2 class="section-title">Chi phí</h2>
             <p class="section-text">Option thêm (đồ ăn, máy chiếu ngoài trời, di chuyển đường thường): tham khảo thêm tại <a href="options.html">trang Option</a>.<br>
                 *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
-                Liên hệ chúng mình để được tư vấn chi tiết.
+                <a href="dat-lich.html">Đặt lịch</a> để được tư vấn chi tiết.
             </p>
+            <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
             <div class="pricing-table-wrapper">
                 <h3 class="pricing-subtitle">Bảng giá dịch vụ <span class="pricing-subtitle-note">(2 ngày 1 đêm)</span></h3>
                 <table class="pricing-table">
@@ -509,8 +511,10 @@
                 </table>
             </div>
 
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="pricing.html" class="btn-primary btn-large">Xem chi phí và lịch trình</a>
+            <div class="section-actions">
+                <a href="pricing.html" class="btn-primary btn-large">Xem bảng giá chi tiết</a>
+                <a href="dat-lich.html" class="btn-outline btn-large">Đặt lịch</a>
+                <a href="schedule.html" class="btn-outline btn-large">Xem lịch trình</a>
             </div>
         </div>
     </section>
@@ -618,10 +622,14 @@
         <div class="container">
             <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
             <p class="section-text">
-                Kết nối với chúng mình qua TikTok hoặc Facebook.<br>
+                Điền form đặt lịch — hệ thống tạo sẵn mẫu tin nhắn để bạn copy và gửi qua TikTok hoặc Facebook.<br>
                 Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.
             </p>
-            <div class="social-buttons">
+            <div class="section-actions">
+                <a href="dat-lich.html" class="btn-primary btn-large">Đặt lịch</a>
+            </div>
+            <p class="cta-secondary-text">Hoặc gửi tin nhắn trực tiếp qua mạng xã hội — xem hướng dẫn tại <a href="dat-lich.html#lien-he">trang liên hệ</a>.</p>
+            <div class="social-buttons social-buttons-secondary">
                 <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
                     <span class="social-btn-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
@@ -650,6 +658,7 @@
         </div>
     </footer>
 
+    <script src="table-swipe-hint.js" defer></script>
     <script>
         // Burger menu toggle
         const burgerMenu = document.getElementById('burgerMenu');

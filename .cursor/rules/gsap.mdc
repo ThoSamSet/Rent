@@ -1,0 +1,30 @@
+---
+description: Use when writing frontend animations with GSAP in this repository.
+globs: **/*.{js,html}
+alwaysApply: false
+---
+
+# GSAP Animation Standards
+
+- Prefer GSAP for animation instead of CSS keyframes.
+- Use timelines for multi-step sequences.
+- Use ScrollTrigger for scroll-based effects.
+- In React, always clean up animations on unmount.
+- Prefer refs, `gsap.context`, or `useGSAP` when working with components.
+- Keep animations smooth and performant.
+- Avoid animating layout-heavy properties when transform/opacity is enough.
+
+## This repository
+
+This project is vanilla HTML/JS. Reuse patterns from `gsap-utils.js` (`CampGsap` helpers, `ScrollTrigger` registration, `prefers-reduced-motion` checks) before adding new animation utilities.
+
+```javascript
+// ✅ GOOD — transform/opacity, ScrollTrigger, reduced-motion guard
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(el, { opacity: 0, y: 12, duration: 0.6, ease: 'power2.out' });
+}
+
+// ❌ BAD — layout thrashing
+gsap.to(el, { width: '100%', height: 'auto', top: 0 });
+```

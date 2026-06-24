@@ -5,13 +5,13 @@
 ## Tên file ảnh cần có:
 
 ### Trang chủ (index.html):
-1. **hero-camping.jpg** - Ảnh hero chính (khuyến nghị: 1920x1080px hoặc lớn hơn)
+1. **hero-camping.webp** - Ảnh hero chính (khuyến nghị: 1920x1080px hoặc lớn hơn)
    - Ảnh này sẽ hiển thị ở phần đầu trang
 
-2. **camping-1.jpg** đến **camping-6.jpg** - Ảnh gallery (khuyến nghị: 1200x900px)
+2. **camping-1.webp** đến **camping-6.webp** - Ảnh gallery (khuyến nghị: 1200x900px)
    - 6 ảnh để hiển thị trong phần gallery
 
-### Trang Về CAMP Nhà Thỏ (about.html):
+### Trang Về Camp Nhà Thỏ (about.html):
 3. **about-hero.jpg** - Ảnh hero trang về mình (khuyến nghị: 1200x800px)
    - Ảnh hiển thị bên cạnh tiêu đề
 

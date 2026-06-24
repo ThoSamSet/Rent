@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ | Chụp hình chill cảnh đẹp Nhật Bản</title>
+    <title>Camp Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ | Chụp hình chill cảnh đẹp Nhật Bản</title>
     <meta name="description" content="Camp Nhà Thỏ - Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm. Trải nghiệm camping chill với view núi Phú Sĩ tuyệt đẹp.">
     <meta name="keywords" content="cho thuê đồ camping, share đồ cắm trại, camping Phú Sĩ, chụp hình Phú Sĩ, chill cảnh đẹp Nhật Bản, bãi camping Phú Sĩ, Fumotoppara, Koan camping">
     <meta name="author" content="Camp Nhà Thỏ">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="6Jb7Q150HqA8yTBqcR8_sUdWY2mwKTpTIoPTJhN8iVY">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9B%BA%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://campnhatho.com/">
-    <meta property="og:title" content="CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
+    <meta property="og:title" content="Camp Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
     <meta property="og:description" content="Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm với view núi Phú Sĩ tuyệt đẹp.">
-    <meta property="og:image" content="https://campnhatho.com/images/hero-camping.jpg">
+    <meta property="og:image" content="https://campnhatho.com/images/hero-camping.webp">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://campnhatho.com/">
-    <meta property="twitter:title" content="CAMP Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
+    <meta property="twitter:title" content="Camp Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ">
     <meta property="twitter:description" content="Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm.">
-    <meta property="twitter:image" content="https://campnhatho.com/images/hero-camping.jpg">
+    <meta property="twitter:image" content="https://campnhatho.com/images/hero-camping.webp">
     
     <link rel="canonical" href="https://campnhatho.com/">
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
-    <link rel="stylesheet" href="motion.css">
-    <script src="motion.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260625a">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="promo-bar.js" defer></script>
     
     <!-- Google tag (gtag.js) -->
@@ -48,7 +53,7 @@
       "name": "Camp Nhà Thỏ",
       "description": "Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ, Nhật Bản. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm.",
       "url": "https://campnhatho.com/",
-      "image": "https://campnhatho.com/images/hero-camping.jpg",
+      "image": "https://campnhatho.com/images/hero-camping.webp",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Shizuoka",
@@ -67,34 +72,8 @@
       "priceRange": "$$"
     }
     </script>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        .map-preview-container {
-            margin: 60px auto 0;
-            max-width: var(--page-hero-max-width);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            height: 600px;
-            background: #f5f5f7;
-        }
-
-        #mapPreview {
-            width: 100%;
-            height: 100%;
-            filter: grayscale(100%);
-        }
-
-        @media (max-width: 768px) {
-            .map-preview-container {
-                height: 400px;
-                margin: 40px auto 0;
-            }
-        }
-    </style>
 </head>
-<body>
+<body data-page="home">
     <div class="announcement-bar">
         <a href="schedule.html" class="announcement-secondary">Kiểm tra lịch trình</a>
     </div>
@@ -121,544 +100,176 @@
         </div>
     </nav>
 
-    <main>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Share đồ Camping</h1>
-            <p class="hero-subtitle">Cùng đi - Cùng chill</p>
-        </div>
-        <div class="hero-image">
-            <img src="images/hero-camping.jpg" alt="Camping Phú Sĩ - Share đồ cắm trại, chụp hình chill cảnh đẹp Nhật Bản" id="heroImg" loading="eager" decoding="async" fetchpriority="high">
-        </div>
-    </section>
+    <div class="home-hero__scroll-hint" aria-label="Cuộn xuống để khám phá">
+        <span class="home-hero__scroll-text" aria-hidden="true">Cuộn xuống</span>
+        <span class="home-hero__scroll-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title"><span class="no-break">Camp Nhà Thỏ</span></h2>
-            <p class="section-text" style="font-size: 24px; font-weight: 500; margin-bottom: 30px;">
-                Share đồ camping cho chuyến đi của bạn
-            </p>
-            <p class="section-text" style="font-size: 19px; margin-bottom: 40px;">
-                <span class="no-break">Camp Nhà Thỏ</span> không phải dịch vụ cho thuê thông thường.<br>
-                Đây là nơi <strong>chia sẻ đồ camping</strong> dành cho những ai yêu thiên nhiên, muốn cắm trại nhưng chưa có đủ dụng cụ.
-            </p>
-            <p class="section-text" style="font-size: 19px; margin-bottom: 60px;">
-                Mình trực tiếp <strong>đưa đón, chuẩn bị đồ và hỗ trợ setup</strong> cho chuyến đi của bạn.<br>
-                Bạn chỉ cần tận hưởng, còn lại cứ để <span class="no-break">Camp Nhà Thỏ</span> lo.
-            </p>
-            <!-- Features Grid (Desktop) -->
-            <div class="features features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🌿</div>
-                    <h3>Đi riêng – không ghép khách</h3>
-                    <p>Chuyến đi riêng tư, thoải mái theo nhịp của bạn</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Có xe đưa đón</h3>
-                    <p>Mình trực tiếp đưa đón bạn đến điểm camping</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⛺</div>
-                    <h3>Có lều, đồ camping sẵn</h3>
-                    <p>Chuẩn bị đầy đủ dụng cụ cho bạn</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📸</div>
-                    <h3>Hỗ trợ chụp ảnh kỷ niệm</h3>
-                    <p>Lưu giữ những khoảnh khắc đẹp của bạn</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔥</div>
-                    <h3>Tự do ăn chơi, chill theo cách của bạn</h3>
-                    <p>Trải nghiệm camping theo phong cách riêng</p>
-                </div>
+    <main class="home-editorial">
+        <!-- Hero full-bleed -->
+        <section class="home-hero" aria-label="Camp Nhà Thỏ — trang chủ">
+            <div class="home-hero__media parallax-wrap">
+                <img src="images/hero-camping.webp" alt="Camping Phú Sĩ - Share đồ cắm trại, chụp hình chill cảnh đẹp Nhật Bản" id="heroImg" class="home-hero__img parallax-layer" loading="eager" decoding="async" fetchpriority="high">
             </div>
-            
-            <!-- Features Slider (Mobile) -->
-            <div class="slider-container features-slider">
-                <div class="slider-wrapper">
-                    <div class="slider-track" id="featuresSlider">
-                        <div class="slider-item">
-                            <div class="feature">
-                                <div class="feature-icon">🌿</div>
-                                <h3>Đi riêng – không ghép khách</h3>
-                                <p>Chuyến đi riêng tư, thoải mái theo nhịp của bạn</p>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="feature">
-                                <div class="feature-icon">🚗</div>
-                                <h3>Có xe đưa đón</h3>
-                                <p>Mình trực tiếp đưa đón bạn đến điểm camping</p>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="feature">
-                                <div class="feature-icon">⛺</div>
-                                <h3>Có lều, đồ camping sẵn</h3>
-                                <p>Chuẩn bị đầy đủ dụng cụ cho bạn</p>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="feature">
-                                <div class="feature-icon">📸</div>
-                                <h3>Hỗ trợ chụp ảnh kỷ niệm</h3>
-                                <p>Lưu giữ những khoảnh khắc đẹp của bạn</p>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="feature">
-                                <div class="feature-icon">🔥</div>
-                                <h3>Tự do ăn chơi, chill theo cách của bạn</h3>
-                                <p>Trải nghiệm camping theo phong cách riêng</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="slider-arrow prev" id="featuresPrev" aria-label="Xem tính năng trước">‹</button>
-                <button class="slider-arrow next" id="featuresNext" aria-label="Xem tính năng tiếp theo">›</button>
-                <div class="slider-nav" id="featuresDots"></div>
+            <div class="home-hero__overlay">
+                <p class="home-hero__label">Camp Nhà Thỏ</p>
+                <h1 class="home-hero__title">Share đồ Camping</h1>
+                <p class="home-hero__subtitle">Cùng đi — Cùng chill</p>
             </div>
-            <p class="section-text" style="font-size: 19px; margin-top: 60px; font-style: italic; color: #86868b;">
-                <span class="no-break">Camp Nhà Thỏ</span> mong muốn mang đến <strong>những chuyến đi thoải mái và chân thật</strong> –<br>
-                để bạn tận hưởng thiên nhiên theo nhịp của riêng mình.
-            </p>
-            <p class="section-text" style="font-size: 21px; margin-top: 40px; font-weight: 500; color: #1d1d1f;">
-                Share đồ – Đi riêng – Trải nghiệm
-            </p>
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="about.html" class="btn-primary" style="display: inline-block;">Về CAMP Nhà Thỏ</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Equipment Section -->
-    <section id="equipment" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Dụng cụ Camping</h2>
-            <p class="section-text">
-                <span class="no-break">Camp Nhà Thỏ</span> chuẩn bị sẵn <strong>đầy đủ dụng cụ cần thiết</strong> cho một chuyến camping thoải mái,
-                giúp bạn không phải mua sắm hay mang vác cồng kềnh.
-            </p>
-            <div class="equipment-preview">
-                <!-- Equipment Grid (Desktop) -->
-                <div class="equipment-preview-grid equipment-preview-grid-slider">
-                    <div class="equipment-preview-item">
-                        <div class="equipment-preview-image">
-                            <img src="images/equipment-tent.jpg" alt="Lều & che chắn" loading="lazy" decoding="async">
+        <!-- About — image + headline -->
+        <a href="about.html" class="home-section home-about" id="about" data-reveal>
+            <div class="home-about__media">
+                <img src="images/camping-3.webp" alt="Camping Phú Sĩ — trải nghiệm chill" loading="lazy" decoding="async">
+            </div>
+            <div class="home-about__copy">
+                <p class="home-section__label">Giới thiệu</p>
+                <h2 class="home-section__title">Chuyến đi của bạn, nhịp của bạn</h2>
+            </div>
+        </a>
+
+        <!-- Equipment — large image + link -->
+        <a href="equipment.html" class="home-section home-equipment" id="equipment" data-reveal>
+            <div class="home-equipment__media">
+                <img src="images/equipment-tent.jpg" alt="Dụng cụ camping — lều và thiết bị" loading="lazy" decoding="async">
+            </div>
+            <div class="home-equipment__copy">
+                <p class="home-section__label">Dụng cụ</p>
+                <h2 class="home-section__title">Đầy đủ đồ camping</h2>
+                <span class="home-section__link">Xem dụng cụ</span>
+            </div>
+        </a>
+
+        <!-- Pricing — horizontal scroll carousel -->
+        <section class="home-section home-pricing" id="pricing" data-reveal aria-label="Bảng giá">
+            <div class="home-pricing__header">
+                <p class="home-section__label">Bảng giá</p>
+                <h2 class="home-section__title">LINEUP</h2>
+            </div>
+            <div class="home-pricing__pin">
+                <div class="home-pricing__track" tabindex="0" aria-label="Gói camping — vuốt ngang để xem thêm">
+                    <a href="pricing.html#plan-de" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/camping-1.webp" alt="Gói Hạt dẻ — camping cơ bản" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-body">
+                            <span class="home-pricing__card-name">Hạt dẻ</span>
+                            <span class="home-pricing__card-price">từ 3.7<small>man</small></span>
                         </div>
-                        <div class="equipment-icon">⛺</div>
-                        <h3>Lều & che chắn</h3>
-                        <p>Lều 2 room, tarp che nắng mưa</p>
-                    </div>
-                    <div class="equipment-preview-item">
-                        <div class="equipment-preview-image">
-                            <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ" loading="lazy" decoding="async">
+                    </a>
+                    <a href="pricing.html#plan-bi" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/camping-2.webp" alt="Gói Hạt bí — camping tiêu chuẩn" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-body">
+                            <span class="home-pricing__card-name">Hạt bí</span>
+                            <span class="home-pricing__card-price">từ 4.7<small>man</small></span>
                         </div>
-                        <div class="equipment-icon">🛏️</div>
-                        <h3>Ngủ nghỉ</h3>
-                        <p>Túi ngủ, đệm, chăn theo mùa</p>
-                    </div>
-                    <div class="equipment-preview-item">
-                        <div class="equipment-preview-image">
-                            <img src="images/equipment-cooking.jpg" alt="Nấu ăn" loading="lazy" decoding="async">
+                    </a>
+                    <a href="pricing.html#plan-nho" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/camping-4.webp" alt="Gói Hạt nho — camping đầy đủ" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-body">
+                            <span class="home-pricing__card-name">Hạt nho</span>
+                            <span class="home-pricing__card-price">từ 5.7<small>man</small></span>
                         </div>
-                        <div class="equipment-icon">🔥</div>
-                        <h3>Nấu ăn</h3>
-                        <p>Bếp gas, bếp củi, bộ đồ nấu ăn</p>
-                    </div>
-                    <div class="equipment-preview-item">
-                        <div class="equipment-preview-image">
-                            <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm" loading="lazy" decoding="async">
-                        </div>
-                        <div class="equipment-icon">💡</div>
-                        <h3>Ánh sáng, điện & sưởi ấm</h3>
-                        <p>Đèn trang trí, lò sưởi dầu</p>
-                    </div>
-                    <div class="equipment-preview-item">
-                        <div class="equipment-preview-image">
-                            <img src="images/equipment-entertainment.jpg" alt="Giải trí" loading="lazy" decoding="async">
-                        </div>
-                        <div class="equipment-icon">🎮</div>
-                        <h3>Giải trí</h3>
-                        <p>Máy ảnh, <span class="no-break">Nintendo Switch</span>, máy chiếu</p>
-                    </div>
-                </div>
-                
-                <!-- Equipment Slider (Mobile) -->
-                <div class="slider-container equipment-preview-slider">
-                    <div class="slider-wrapper">
-                        <div class="slider-track" id="equipmentSlider">
-                            <div class="slider-item">
-                                <div class="equipment-preview-item">
-                                    <div class="equipment-preview-image">
-                                        <img src="images/equipment-tent.jpg" alt="Lều & che chắn" loading="lazy" decoding="async">
-                                    </div>
-                                    <div class="equipment-icon">⛺</div>
-                                    <h3>Lều & che chắn</h3>
-                                    <p>Lều 2 room, tarp che nắng mưa</p>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="equipment-preview-item">
-                                    <div class="equipment-preview-image">
-                                        <img src="images/equipment-sleep.jpg" alt="Ngủ nghỉ" loading="lazy" decoding="async">
-                                    </div>
-                                    <div class="equipment-icon">🛏️</div>
-                                    <h3>Ngủ nghỉ</h3>
-                                    <p>Túi ngủ, đệm, chăn theo mùa</p>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="equipment-preview-item">
-                                    <div class="equipment-preview-image">
-                                        <img src="images/equipment-cooking.jpg" alt="Nấu ăn" loading="lazy" decoding="async">
-                                    </div>
-                                    <div class="equipment-icon">🔥</div>
-                                    <h3>Nấu ăn</h3>
-                                    <p>Bếp gas, bếp củi, bộ đồ nấu ăn</p>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="equipment-preview-item">
-                                    <div class="equipment-preview-image">
-                                        <img src="images/equipment-light.jpg" alt="Ánh sáng, điện & sưởi ấm" loading="lazy" decoding="async">
-                                    </div>
-                                    <div class="equipment-icon">💡</div>
-                                    <h3>Ánh sáng, điện & sưởi ấm</h3>
-                                    <p>Đèn trang trí, lò sưởi dầu</p>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="equipment-preview-item">
-                                    <div class="equipment-preview-image">
-                                        <img src="images/equipment-entertainment.jpg" alt="Giải trí" loading="lazy" decoding="async">
-                                    </div>
-                                    <div class="equipment-icon">🎮</div>
-                                    <h3>Giải trí</h3>
-                                    <p>Máy ảnh, <span class="no-break">Nintendo Switch</span>, máy chiếu</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="slider-arrow prev" id="equipmentPrev" aria-label="Xem dụng cụ trước">‹</button>
-                    <button class="slider-arrow next" id="equipmentNext" aria-label="Xem dụng cụ tiếp theo">›</button>
-                    <div class="slider-nav" id="equipmentDots"></div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 50px;">
-                    <a href="equipment.html" class="btn-primary">Xem chi tiết dụng cụ</a>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-        <div class="container">
-            <h2 class="section-title">Bài viết mới</h2>
-            <p class="section-text">Góc chia sẻ trải nghiệm camping và những mùa đẹp nhất trong năm.</p>
-            <div class="blog-preview-grid">
-                <a href="blog/checklistcampingnhatban/" class="blog-preview-card">
-                    <div class="blog-preview-image">
-                        <img src="blog/checklistcampingnhatban/checklist-camping-hero.jpg" alt="Checklist cơ bản cho người mới đi camping ở Nhật" loading="lazy" decoding="async">
-                    </div>
-                    <div class="blog-preview-content">
-                        <div class="blog-preview-title">Lần đầu đi camping ở Nhật cần chuẩn bị gì? Checklist cơ bản cho người mới</div>
-                        <div class="blog-preview-text">Checklist đơn giản cho người mới: trang phục, giày dép, đồ cá nhân và những lưu ý quan trọng trước chuyến đi.</div>
-                        <div class="blog-preview-link">Đọc bài viết →</div>
-                    </div>
+        <!-- Blog — featured full-width -->
+        <section class="home-section home-blog" id="blog" data-reveal aria-label="Blog">
+            <div class="home-blog__header">
+                <p class="home-section__label">Blog</p>
+                <a href="blog/" class="home-section__link">Tất cả bài viết</a>
+            </div>
+            <a href="blog/checklistcampingnhatban/" class="home-blog__featured">
+                <figure class="home-blog__featured-media">
+                    <img src="blog/checklistcampingnhatban/checklist-camping-hero.jpg" alt="Checklist cơ bản cho người mới đi camping ở Nhật" loading="lazy" decoding="async">
+                </figure>
+                <h2 class="home-blog__featured-title">Lần đầu đi camping ở Nhật cần chuẩn bị gì?</h2>
+            </a>
+            <div class="home-blog__strip" tabindex="0" aria-label="Bài viết khác — vuốt ngang">
+                <a href="blog/campingsakura2026/" class="home-blog__strip-item">
+                    <img src="blog/campingsakura2026/sakura-hero.jpg" alt="Camping mùa Sakura ở Nhật" loading="lazy" decoding="async">
+                    <span>Camping mùa Sakura ở Nhật</span>
                 </a>
-                <a href="blog/campingsakura2026/" class="blog-preview-card">
-                    <div class="blog-preview-image">
-                        <img src="blog/campingsakura2026/sakura-hero.jpg" alt="Camping mùa Sakura ở Nhật" loading="lazy" decoding="async">
-                    </div>
-                    <div class="blog-preview-content">
-                        <div class="blog-preview-title">Camping mùa Sakura ở Nhật – Khi hoa anh đào gặp những đêm lều yên tĩnh</div>
-                        <div class="blog-preview-text">Mùa sakura không chỉ để ngắm, mà để cảm nhận. Cùng khám phá vì sao camping giữa mùa hoa anh đào lại đặc biệt đến vậy.</div>
-                        <div class="blog-preview-link">Đọc bài viết →</div>
-                    </div>
-                </a>
-                <a href="blog/campingnhatban/" class="blog-preview-card">
-                    <div class="blog-preview-image">
-                        <img src="blog/campingnhatban/campingnhatban-hero.jpg" alt="Camping ở Nhật cho người mới bắt đầu" loading="lazy" decoding="async">
-                    </div>
-                    <div class="blog-preview-content">
-                        <div class="blog-preview-title">Camping ở Nhật có khó không? Hướng dẫn cơ bản cho người mới bắt đầu</div>
-                        <div class="blog-preview-text">Giải đáp băn khoăn cho người mới: chuẩn bị, khác biệt và cách bắt đầu camping ở Nhật.</div>
-                        <div class="blog-preview-link">Đọc bài viết →</div>
-                    </div>
+                <a href="blog/campingnhatban/" class="home-blog__strip-item">
+                    <img src="blog/campingnhatban/campingnhatban-hero.jpg" alt="Camping ở Nhật cho người mới" loading="lazy" decoding="async">
+                    <span>Camping ở Nhật cho người mới</span>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="section">
-        <div class="container">
-            <h2 class="section-title">Chi phí</h2>
-            <p class="section-text">Option thêm (đồ ăn, máy chiếu ngoài trời, di chuyển đường thường): tham khảo thêm tại <a href="options.html">trang Option</a>.<br>
-                *Chi phí áp dụng cho khu vực Tokyo, Saitama, Kanagawa.<br>
-                <a href="dat-lich.html">Đặt lịch</a> để được tư vấn chi tiết.
-            </p>
-            <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
-            <div class="pricing-table-wrapper">
-                <h3 class="pricing-subtitle">Bảng giá dịch vụ <span class="pricing-subtitle-note">(2 ngày 1 đêm)</span></h3>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Số người</th>
-                            <th scope="col">Plan hạt dẻ 🌰</th>
-                            <th scope="col">Plan hạt bí 🎃</th>
-                            <th scope="col">Plan hạt nho 🍇<br><span class="plan-new-badge">Mới</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="pricing-people">5 người</th>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">6.5man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span style="color: #1d1d1f;" aria-label="Không hỗ trợ">-</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">8.5man</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">4 người</th>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">5.8man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">6.8man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">7.8man</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">3 người</th>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">5man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">6man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">7man</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">2 người</th>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">4.4man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">5.4man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">6.4man</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="pricing-people">1 người</th>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">3.7man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">4.7man</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="pricing-prices">
-                                    <span class="pricing-price-value">5.7man</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Gallery — taller strip -->
+        <section class="home-section home-gallery" id="gallery" data-reveal aria-label="Gallery">
+            <div class="home-gallery__header">
+                <p class="home-section__label">Gallery</p>
             </div>
-
-            <div class="section-actions">
-                <a href="pricing.html" class="btn-primary btn-large">Xem bảng giá chi tiết</a>
-                <a href="dat-lich.html" class="btn-outline btn-large">Đặt lịch</a>
-                <a href="schedule.html" class="btn-outline btn-large">Xem lịch trình</a>
+            <div class="home-gallery__strip" tabindex="0" aria-label="Ảnh camping Phú Sĩ — vuốt ngang để xem thêm">
+                <figure class="home-gallery__item">
+                    <img src="images/camping-1.webp" alt="Camping Phú Sĩ - View núi Phú Sĩ tuyệt đẹp" loading="lazy" decoding="async">
+                </figure>
+                <figure class="home-gallery__item">
+                    <img src="images/camping-2.webp" alt="Chụp hình camping Phú Sĩ" loading="lazy" decoding="async">
+                </figure>
+                <figure class="home-gallery__item">
+                    <img src="images/camping-3.webp" alt="Bãi camping Phú Sĩ" loading="lazy" decoding="async">
+                </figure>
+                <figure class="home-gallery__item">
+                    <img src="images/camping-4.webp" alt="Camping view núi Phú Sĩ" loading="lazy" decoding="async">
+                </figure>
+                <figure class="home-gallery__item">
+                    <img src="images/camping-5.webp" alt="Chụp hình kỷ niệm camping Phú Sĩ" loading="lazy" decoding="async">
+                </figure>
+                <figure class="home-gallery__item">
+                    <img src="images/camping-6.webp" alt="Camping chill cảnh đẹp tại Phú Sĩ" loading="lazy" decoding="async">
+                </figure>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Options hub -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Option thêm</h2>
-            <p class="section-text">Đồ ăn, xem phim ngoài trời và option đi đường thường</p>
-            <div style="text-align: center; margin-top: 32px;">
-                <a href="options.html" class="btn-primary btn-large">Xem trang Option</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/camping-1.jpg" alt="Camping Phú Sĩ - View núi Phú Sĩ tuyệt đẹp" class="gallery-img" loading="lazy" decoding="async">
+        <!-- Map + FAQ — image tiles -->
+        <section class="home-section home-bottom" data-reveal>
+            <a href="locations.html" class="home-map" id="locations">
+                <div class="home-map__media">
+                    <div id="mapPreview" role="img" aria-label="Bản đồ bãi camping quanh Phú Sĩ và Kanto"></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/camping-2.jpg" alt="Chụp hình camping Phú Sĩ - Chill cảnh đẹp Nhật Bản" class="gallery-img" loading="lazy" decoding="async">
+                <div class="home-map__copy">
+                    <p class="home-section__label">Vị trí</p>
+                    <h2 class="home-section__title">Bản đồ các bãi camping</h2>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/camping-3.jpg" alt="Bãi camping Phú Sĩ - Share đồ cắm trại" class="gallery-img" loading="lazy" decoding="async">
+            </a>
+            <a href="faq.html" class="home-faq">
+                <div class="home-faq__media">
+                    <img src="images/camping-5.webp" alt="FAQ — câu hỏi thường gặp" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item">
-                    <img src="images/camping-4.jpg" alt="Camping view núi Phú Sĩ - Cho thuê đồ camping" class="gallery-img" loading="lazy" decoding="async">
+                <div class="home-faq__copy">
+                    <p class="home-section__label">FAQ</p>
+                    <h2 class="home-section__title">Các câu hỏi thường gặp</h2>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/camping-5.jpg" alt="Chụp hình kỷ niệm camping Phú Sĩ" class="gallery-img" loading="lazy" decoding="async">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/camping-6.jpg" alt="Camping chill cảnh đẹp tại Phú Sĩ Nhật Bản" class="gallery-img" loading="lazy" decoding="async">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Locations Preview Section -->
-    <section id="locations" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Vị trí camping</h2>
-            <p class="section-text"><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực Kanto, Nhật Bản</p>
-            
-            <div class="map-preview-container">
-                <div id="mapPreview"></div>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="locations.html" class="btn-primary btn-large">Xem chi tiết vị trí</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Preview Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Câu hỏi thường gặp</h2>
-            <p class="section-text">Một số câu hỏi phổ biến về <span class="no-break">Camp Nhà Thỏ</span></p>
-            
-            <div class="faq-preview-container">
-                <div class="faq-preview-item">
-                    <div class="faq-preview-question">
-                        <span class="faq-preview-icon">❓</span>
-                        <h3><span class="no-break">Camp Nhà Thỏ</span> là dịch vụ cho thuê hay tour ghép?</h3>
-                    </div>
-                    <div class="faq-preview-answer">
-                        <p><span class="no-break">Camp Nhà Thỏ</span> <strong>không phải tour ghép</strong> và cũng không đơn thuần là cho thuê. Mô hình chính là <strong>chia sẻ đồ camping</strong> + hỗ trợ đưa đón & setup. Bạn và nhóm của bạn <strong>đi riêng</strong>, không ghép với khách khác.</p>
-                    </div>
-                </div>
-
-                <div class="faq-preview-item">
-                    <div class="faq-preview-question">
-                        <span class="faq-preview-icon">❓</span>
-                        <h3>Tôi chưa từng đi camping, có phù hợp không?</h3>
-                    </div>
-                    <div class="faq-preview-answer">
-                        <p>Rất phù hợp. Mình sẽ chuẩn bị đầy đủ đồ, hướng dẫn setup lều và chỉ cách sử dụng bếp, đèn, thiết bị. Bạn không cần kinh nghiệm trước.</p>
-                    </div>
-                </div>
-
-                <div class="faq-preview-item">
-                    <div class="faq-preview-question">
-                        <span class="faq-preview-icon">❓</span>
-                        <h3>Có cần cọc tiền trước không?</h3>
-                    </div>
-                    <div class="faq-preview-answer">
-                        <p>Không cần cọc tiền. Chỉ cần cung cấp link Facebook hoặc trang cá nhân của toàn bộ thành viên. Thanh toán trước khi khởi hành bằng tiền mặt.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="faq.html" class="btn-primary btn-large">Xem tất cả câu hỏi</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section section-cta">
-        <div class="container">
-            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
-            <p class="section-text">
-                Điền form đặt lịch — hệ thống tạo sẵn mẫu tin nhắn để bạn copy và gửi qua TikTok hoặc Facebook.<br>
-                Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.
-            </p>
-            <div class="section-actions">
-                <a href="dat-lich.html" class="btn-primary btn-large">Đặt lịch</a>
-            </div>
-            <p class="cta-secondary-text">Hoặc gửi tin nhắn trực tiếp qua mạng xã hội — xem hướng dẫn tại <a href="dat-lich.html#lien-he">trang liên hệ</a>.</p>
-            <div class="social-buttons social-buttons-secondary">
-                <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
-                    <span class="social-btn-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </span>
-                    <span>TikTok</span>
-                </a>
-                <a href="https://www.facebook.com/share/15VaMf4oUvn/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-facebook">
-                    <span class="social-btn-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </span>
-                    <span>Facebook</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
+            </a>
+        </section>
     </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 CAMP Nhà Thỏ. All rights reserved.</p>
+            <p>&copy; 2026 Camp Nhà Thỏ. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="table-swipe-hint.js" defer></script>
+    <script src="vendor/gsap.min.js" defer></script>
+    <script src="vendor/ScrollTrigger.min.js" defer></script>
+    <script src="gsap-utils.js" defer></script>
+    <script src="animations/core.js" defer></script>
+    <script src="animations/home.js" defer></script>
     <script>
         // Burger menu toggle
         const burgerMenu = document.getElementById('burgerMenu');
@@ -690,179 +301,65 @@
                 }
             });
         }
-
-        // Slider functionality
-        function initSlider(sliderId, prevId, nextId, dotsId) {
-            const sliderTrack = document.getElementById(sliderId);
-            const prevBtn = document.getElementById(prevId);
-            const nextBtn = document.getElementById(nextId);
-            const dotsContainer = document.getElementById(dotsId);
-            
-            if (!sliderTrack || !prevBtn || !nextBtn || !dotsContainer) return;
-            
-            const sliderWrapper = sliderTrack.parentElement;
-            const items = sliderTrack.querySelectorAll('.slider-item');
-            let currentIndex = 0;
-            
-            // Create dots
-            items.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-            
-            function updateSlider() {
-                sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // Update dots
-                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-                
-                // Update arrow states
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === items.length - 1;
-            }
-            
-            function goToSlide(index) {
-                currentIndex = Math.max(0, Math.min(index, items.length - 1));
-                updateSlider();
-            }
-            
-            function nextSlide() {
-                if (currentIndex < items.length - 1) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            }
-            
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSlider();
-                }
-            }
-            
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-            
-            // Touch swipe support
-            let touchStartX = 0;
-            let touchStartY = 0;
-            let touchEndX = 0;
-            let touchEndY = 0;
-            let isDragging = false;
-            
-            sliderWrapper.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-                isDragging = true;
-            }, { passive: true });
-            
-            sliderWrapper.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                touchEndX = e.touches[0].clientX;
-                touchEndY = e.touches[0].clientY;
-            }, { passive: true });
-            
-            sliderWrapper.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                
-                const diffX = touchStartX - touchEndX;
-                const diffY = Math.abs(touchStartY - touchEndY);
-                
-                // Only trigger swipe if horizontal movement is greater than vertical
-                if (Math.abs(diffX) > diffY && Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        // Swipe left - next
-                        nextSlide();
-                    } else {
-                        // Swipe right - prev
-                        prevSlide();
-                    }
-                }
-            }, { passive: true });
-            
-            // Initialize
-            updateSlider();
-        }
-        
-        // Initialize sliders when DOM is ready
-        function initializeSliders() {
-            initSlider('featuresSlider', 'featuresPrev', 'featuresNext', 'featuresDots');
-            initSlider('equipmentSlider', 'equipmentPrev', 'equipmentNext', 'equipmentDots');
-        }
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeSliders);
-        } else {
-            // DOM already loaded
-            initializeSliders();
-        }
     </script>
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="locations-map-sites.js"></script>
     <script>
-        // Initialize map preview after Leaflet is loaded (data: locations-map-sites.js — same as locations.html)
-        window.addEventListener('load', function() {
-            if (typeof L !== 'undefined') {
-            const mapPreviewElement = document.getElementById('mapPreview');
-            if (mapPreviewElement) {
-                const locations = window.CAMP_MAP_SITES;
-                if (!locations || !locations.length) return;
+        (function () {
+            if (typeof L === 'undefined') return;
 
-                const mapPreview = L.map('mapPreview').setView([35.436, 138.57], 11);
+            var mapPreviewElement = document.getElementById('mapPreview');
+            var locations = window.CAMP_MAP_SITES;
+            if (!mapPreviewElement || !locations || !locations.length) return;
 
-                // Add grayscale tile layer
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                    subdomains: 'abcd',
-                    maxZoom: 19,
-                }).addTo(mapPreview);
+            var mapPreview = L.map('mapPreview', {
+                dragging: false,
+                touchZoom: false,
+                scrollWheelZoom: false,
+                doubleClickZoom: false,
+                boxZoom: false,
+                keyboard: false,
+                zoomControl: false,
+                attributionControl: false
+            }).setView([35.436, 138.57], 11);
 
-                // Apply additional grayscale filter for more monochrome effect (same as locations.html)
-                mapPreviewElement.style.filter = 'grayscale(100%) contrast(1.1)';
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(mapPreview);
 
-                // Add markers
-                locations.forEach(location => {
-                    const customIcon = L.divIcon({
-                        className: 'custom-marker',
-                        html: `<div style="font-size: 32px; text-align: center;">${location.icon}</div>`,
-                        iconSize: [40, 40],
-                        iconAnchor: [20, 40],
-                        popupAnchor: [0, -40]
-                    });
+            mapPreviewElement.style.filter = 'grayscale(100%) contrast(1.1)';
 
-                    L.marker([location.lat, location.lng], { icon: customIcon })
-                        .addTo(mapPreview)
-                        .bindPopup(`
-                            <div style="text-align: center; padding: 10px;">
-                                <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">${location.name}</h3>
-                                <p style="margin: 0; font-size: 14px; color: #666;">${location.description}</p>
-                            </div>
-                        `);
+            locations.forEach(function (location) {
+                var customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: '<div style="font-size: 32px; text-align: center;">' + location.icon + '</div>',
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 40]
                 });
 
-                // Fit map to show all markers
-                const bounds = L.latLngBounds(locations.map(l => [l.lat, l.lng]));
-                mapPreview.fitBounds(bounds.pad(0.1));
+                L.marker([location.lat, location.lng], { icon: customIcon, interactive: false })
+                    .addTo(mapPreview);
+            });
 
-                // Style for custom markers (same as locations.html)
-                const mapMarkerStyle = document.createElement('style');
-                mapMarkerStyle.textContent = `
-            .custom-marker {
-                background: transparent;
-                border: none;
+            var bounds = L.latLngBounds(locations.map(function (l) { return [l.lat, l.lng]; }));
+            mapPreview.fitBounds(bounds.pad(0.1));
+
+            window.homeMapPreview = mapPreview;
+
+            function refreshMapPreview() {
+                mapPreview.invalidateSize({ pan: false });
             }
-        `;
-                document.head.appendChild(mapMarkerStyle);
-            }
-        }
-        });
+
+            window.addEventListener('load', function () {
+                refreshMapPreview();
+                setTimeout(refreshMapPreview, 200);
+            });
+
+            window.addEventListener('resize', refreshMapPreview);
+        }());
     </script>
+
 </body>
 </html>

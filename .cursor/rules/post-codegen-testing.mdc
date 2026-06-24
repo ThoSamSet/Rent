@@ -1,0 +1,39 @@
+---
+description: Chạy pipeline kiểm thử sau khi sửa HTML/CSS/JS
+globs: "**/*.{html,css,js}"
+alwaysApply: false
+---
+
+# Pipeline kiểm thử sau khi generate code
+
+Sau khi chỉnh sửa giao diện hoặc logic frontend, **luôn chạy pipeline QA** trước khi kết thúc:
+
+```bash
+npm run test:full
+```
+
+## Thứ tự pipeline
+
+1. **Lint** — `eslint` (JS) + `html-validate` (HTML)
+2. **Build** — copy GSAP vào `vendor/`, kiểm tra file bắt buộc
+3. **Playwright** — E2E + chụp màn hình desktop & mobile
+4. **Báo cáo** — `test-results/report.md`
+
+## Khi test thất bại
+
+1. Đọc `test-results/report.md` và `playwright-report/index.html`
+2. Xem ảnh tại `test-results/screenshots/`
+3. Sửa lỗi UI/lint/console
+4. Chạy lại `npm run test:full` cho đến khi pass
+
+## Lệnh riêng lẻ
+
+- `npm run lint` — chỉ lint
+- `npm run build` — chuẩn bị site tĩnh
+- `npm run test:e2e` — chỉ Playwright
+- `npm run playwright:install` — cài Chromium (lần đầu)
+
+## Ghi chú
+
+- Site tĩnh, không có bundler — phục vụ bằng `serve` trong Playwright
+- Báo cáo dùng tiếng Việt trong script output

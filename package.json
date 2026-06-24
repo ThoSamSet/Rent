@@ -1,0 +1,25 @@
+{
+  "name": "campnhatho-rent",
+  "private": true,
+  "scripts": {
+    "postinstall": "mkdir -p vendor && cp node_modules/gsap/dist/gsap.min.js vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js vendor/",
+    "lint": "npm run lint:js && npm run lint:html",
+    "lint:js": "eslint \"*.js\" \"animations/**/*.js\"",
+    "lint:html": "html-validate \"*.html\" \"blog/**/*.html\"",
+    "build": "node scripts/build.js",
+    "test:e2e": "playwright test",
+    "test:report": "node scripts/generate-report.js",
+    "test:full": "bash scripts/run-pipeline.sh",
+    "playwright:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "eslint": "^9.28.0",
+    "globals": "^16.2.0",
+    "html-validate": "^9.5.5",
+    "serve": "^14.2.4"
+  }
+}

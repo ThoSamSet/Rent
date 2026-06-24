@@ -1,0 +1,10 @@
+# Test artifacts
+test-results/
+playwright-report/
+.playwright/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store

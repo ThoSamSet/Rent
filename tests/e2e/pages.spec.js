@@ -70,3 +70,53 @@ test('navigation chính hiển thị trên trang chủ', async ({ page }) => {
   const nav = page.locator('nav, header').first();
   await expect(nav).toBeVisible();
 });
+
+test.describe('burger menu', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
+
+  test('nút burger hiển thị trên mobile', async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
+
+    const burger = page.locator('#burgerMenu');
+    await expect(burger).toBeVisible();
+    await expect(burger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  test('click mở menu toàn màn hình trên mobile', async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
+
+    const burger = page.locator('#burgerMenu');
+    const navMenu = page.locator('#navMenu');
+    const panel = page.locator('#navMenuPanel');
+
+    await burger.click();
+    await expect(navMenu).toHaveClass(/is-open/);
+    await expect(burger).toHaveAttribute('aria-expanded', 'true');
+    await expect(panel).toBeVisible();
+    await expect(page.locator('#navLinks a').first()).toBeVisible();
+    await expect(page.locator('html')).toHaveClass(/nav-menu-open/);
+
+    const panelBox = await panel.boundingBox();
+    const viewport = page.viewportSize();
+    expect(panelBox).toBeTruthy();
+    expect(viewport).toBeTruthy();
+    expect(panelBox.width).toBeGreaterThanOrEqual(viewport.width * 0.95);
+    expect(panelBox.height).toBeGreaterThanOrEqual(viewport.height * 0.95);
+  });
+
+  test('nút Đặt lịch nằm bên trái burger trong nav', async ({ page }) => {
+    const cta = page.locator('.nav-actions .nav-cta');
+    const burger = page.locator('.nav-actions #burgerMenu');
+
+    await expect(cta).toBeVisible();
+    await expect(burger).toBeVisible();
+
+    const ctaBox = await cta.boundingBox();
+    const burgerBox = await burger.boundingBox();
+    expect(ctaBox).toBeTruthy();
+    expect(burgerBox).toBeTruthy();
+    expect(ctaBox.x).toBeLessThan(burgerBox.x);
+  });
+});

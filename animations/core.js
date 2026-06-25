@@ -67,6 +67,39 @@
         });
     }
 
+    function revealHomeCardsNow() {
+        if (document.body.getAttribute('data-page') !== 'home') {
+            return;
+        }
+
+        if (reducedMotion || !hasScrollTrigger) {
+            document.querySelectorAll(
+                '.home-pricing__card, .home-gallery__item, .home-pricing__header, .home-gallery__header'
+            ).forEach(function (el) {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+            return;
+        }
+
+        gsap.utils.toArray('.home-pricing, .home-gallery').forEach(function (section) {
+            var rect = section.getBoundingClientRect();
+            if (rect.top >= window.innerHeight * 0.95 || rect.bottom <= 0) {
+                return;
+            }
+
+            var header = section.querySelector('.home-pricing__header, .home-gallery__header');
+            var targets = section.querySelectorAll('.home-pricing__card, .home-gallery__item');
+
+            if (header) {
+                gsap.set(header, { opacity: 1, y: 0 });
+            }
+            if (targets.length) {
+                gsap.set(targets, { opacity: 1 });
+            }
+        });
+    }
+
     function initBatchReveals() {
         if (!hasScrollTrigger || reducedMotion) {
             document.querySelectorAll('.js-reveal').forEach(function (el) {
@@ -76,7 +109,7 @@
         }
 
         var revealSelectors = [
-            'main > section:not(.hero):not(.home-editorial)',
+            'main > section:not(.hero):not(.home-editorial):not(.home-section)',
             'footer.footer'
         ].join(', ');
 
@@ -99,16 +132,42 @@
         });
 
         revealVisibleNow(revealSelectors);
+        revealHomeCardsNow();
         window.addEventListener('load', function () {
             revealVisibleNow(revealSelectors);
+            revealHomeCardsNow();
             refreshScrollTriggers();
         }, { once: true });
     }
 
+    var refreshTimer = null;
+
     function refreshScrollTriggers() {
-        if (hasScrollTrigger && !reducedMotion) {
-            ScrollTrigger.refresh();
+        if (!hasScrollTrigger || reducedMotion) {
+            return;
         }
+
+        if (refreshTimer) {
+            clearTimeout(refreshTimer);
+        }
+
+        refreshTimer = setTimeout(function () {
+            refreshTimer = null;
+            ScrollTrigger.refresh();
+        }, 150);
+    }
+
+    function refreshScrollTriggersNow() {
+        if (!hasScrollTrigger || reducedMotion) {
+            return;
+        }
+
+        if (refreshTimer) {
+            clearTimeout(refreshTimer);
+            refreshTimer = null;
+        }
+
+        ScrollTrigger.refresh();
     }
 
     function init() {
@@ -125,6 +184,7 @@
         ScrollTrigger: hasScrollTrigger ? ScrollTrigger : null,
         reducedMotion: reducedMotion,
         refresh: refreshScrollTriggers,
+        refreshNow: refreshScrollTriggersNow,
         init: init
     };
 

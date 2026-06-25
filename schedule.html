@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
     <script src="promo-bar.js" defer></script>
+    <script src="nav-menu.js" defer></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
     <script>
@@ -378,24 +379,31 @@
     <div class="announcement-bar">
         <a href="schedule.html" class="announcement-secondary">Kiểm tra lịch trình</a>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Thanh điều hướng chính">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LogoCampNhaTho.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img"></a>
-            <div class="burger-menu" id="burgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <a href="dat-lich.html" class="nav-cta">Đặt lịch</a>
+                <button type="button" class="burger-menu" id="burgerMenu" aria-expanded="false" aria-controls="navMenuPanel" aria-label="Mở menu điều hướng">
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                </button>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="about.html">Giới thiệu</a>
-                <a href="equipment.html">Dụng cụ</a>
-                <a href="options.html">Option</a>
-                <a href="pricing.html">Chi phí</a>
-                <a href="schedule.html">Lịch trình</a>
-                <a href="locations.html">Vị trí</a>
-                <a href="faq.html">FAQ</a>
-                <a href="blog/">Blog</a>
-                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
+        </div>
+        <div class="nav-menu" id="navMenu" inert>
+            <button type="button" class="nav-menu__backdrop" id="navMenuBackdrop" aria-label="Đóng menu"></button>
+            <div class="nav-menu__panel" id="navMenuPanel">
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html">Giới thiệu</a>
+                    <a href="equipment.html">Dụng cụ</a>
+                    <a href="options.html">Option</a>
+                    <a href="pricing.html">Chi phí</a>
+                    <a href="schedule.html">Lịch trình</a>
+                    <a href="locations.html">Vị trí</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="blog/">Blog</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -1068,35 +1076,6 @@
     </footer>
 
     <script src="table-swipe-hint.js" defer></script>
-    <script>
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        if (burgerMenu && navLinks) {
-            burgerMenu.addEventListener('click', function() {
-                burgerMenu.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            const links = navLinks.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', function() {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navLinks.contains(event.target);
-                const isClickOnBurger = burgerMenu.contains(event.target);
-
-                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-        }
-    </script>
-    <script src="booking-calendar.js" defer></script>
+<script src="booking-calendar.js" defer></script>
 </body>
 </html>

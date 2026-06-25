@@ -20,19 +20,18 @@
     <meta property="og:url" content="https://campnhatho.com/about.html">
     <meta property="og:title" content="Về Camp Nhà Thỏ - Share đồ Camping Phú Sĩ | Chụp hình chill cảnh đẹp">
     <meta property="og:description" content="Tìm hiểu về Camp Nhà Thỏ - share đồ camping tại Phú Sĩ. Đặt lịch online, chia sẻ đồ + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
-    <meta property="og:image" content="https://campnhatho.com/images/about-hero.jpg">
+    <meta property="og:image" content="https://campnhatho.com/images/about-hero.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://campnhatho.com/about.html">
     <meta property="twitter:title" content="Về Camp Nhà Thỏ - Share đồ Camping Phú Sĩ | Chụp hình chill cảnh đẹp">
     <meta property="twitter:description" content="Tìm hiểu về Camp Nhà Thỏ - share đồ camping tại Phú Sĩ. Đặt lịch online, chia sẻ đồ + hỗ trợ đưa đón, setup, chụp hình kỷ niệm.">
-    <meta property="twitter:image" content="https://campnhatho.com/images/about-hero.jpg">
+    <meta property="twitter:image" content="https://campnhatho.com/images/about-hero.webp">
 
-    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260610">
-    <link rel="stylesheet" href="motion.css">
-    <script src="motion.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="homepage.css?v=20260626d">
     <script src="promo-bar.js" defer></script>
+    <script src="nav-menu.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -42,1158 +41,203 @@
       gtag('js', new Date());
       gtag('config', 'G-22W1X4CVZK');
     </script>
-    <style>
-        .about-hero {
-            margin-top: 104px;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
-        }
-
-        .hero-wrapper {
-            max-width: var(--page-hero-max-width);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 56px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 30px;
-            color: #1d1d1f;
-            line-height: 1.1;
-        }
-
-        .hero-content p {
-            font-size: 21px;
-            color: #86868b;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .about-hero-price {
-            margin-bottom: 28px;
-        }
-
-        .price-anchor-label {
-            display: block;
-            font-size: 14px;
-            color: #86868b;
-            margin-bottom: 4px;
-        }
-
-        .price-anchor-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0071e3;
-            letter-spacing: -0.02em;
-        }
-
-        .price-anchor a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .price-anchor a:hover .price-anchor-value {
-            text-decoration: underline;
-        }
-
-        .about-hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: #0071e3;
-            border: 2px solid #0071e3;
-            padding: 14px 28px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: #0071e3;
-            color: white;
-        }
-
-        .hero-image-wrapper {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 4 / 3;
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .about-content {
-            max-width: var(--page-hero-max-width);
-            margin: 0 auto;
-            padding: 100px 20px;
-        }
-
-        .content-section {
-            margin-bottom: 100px;
-        }
-
-        .content-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .section-with-image {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 100px;
-        }
-
-        .section-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* First content image (about-1): 4:3 frame, full column width like other section images */
-        .section-image--ratio {
-            aspect-ratio: 4 / 3;
-            width: 100%;
-        }
-
-        .section-image--ratio img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .section-text-content h2 {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-        .section-text-content p {
-            font-size: 19px;
-            line-height: 1.7;
-            color: #1d1d1f;
-            margin-bottom: 20px;
-        }
-
-        .section-text-content strong {
-            font-weight: 600;
-            color: #1d1d1f;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 40px 0;
-        }
-
-        .service-grid-slider {
-            display: none;
-        }
-
-        @media (max-width: 1100px) {
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .service-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 18px;
-            background: #f5f5f7;
-            border-radius: 15px;
-        }
-
-        .service-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .service-text {
-            font-size: 17px;
-            line-height: 1.6;
-            color: #1d1d1f;
-        }
-
-        .target-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .target-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 20px;
-            background: #f5f5f7;
-            border-radius: 15px;
-        }
-
-        .target-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .target-text {
-            font-size: 17px;
-            line-height: 1.6;
-            color: #1d1d1f;
-        }
-
-        .highlight-card {
-            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            padding: 50px;
-            border-radius: 25px;
-            margin: 60px 0;
-            text-align: center;
-            border: 1px solid #e5e5e7;
-        }
-
-        .highlight-card p {
-            font-size: 22px;
-            line-height: 1.7;
-            color: #1d1d1f;
-            margin: 0;
-        }
-
-        .highlight-card strong {
-            font-weight: 600;
-            color: #1d1d1f;
-        }
-
-        .comparison-section {
-            margin: 60px 0 80px;
-        }
-
-        .comparison-section h2 {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-        .comparison-section .section-intro {
-            font-size: 18px;
-            color: #86868b;
-            margin-bottom: 28px;
-            line-height: 1.6;
-        }
-
-        .comparison-table-wrap {
-            border: 1px solid #e5e5e7;
-            border-radius: 20px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 680px;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 16px 18px;
-            text-align: left;
-            border-bottom: 1px solid #f0f0f2;
-            vertical-align: top;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #1d1d1f;
-        }
-
-        .comparison-table thead th {
-            background: #f5f5f7;
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .comparison-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table .feature-col {
-            width: 22%;
-            font-weight: 600;
-            background: #fafafa;
-        }
-
-        .comparison-table .with-service {
-            color: #1b5e20;
-        }
-
-        .comparison-table .without-service {
-            color: #9a3412;
-        }
-
-        .values-section {
-            background: #f5f5f7;
-            padding: 80px 20px;
-            border-radius: 30px;
-            margin: 80px 0;
-        }
-
-        .values-title {
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: var(--content-wide-max-width);
-            margin: 0 auto;
-        }
-
-        /* Responsive for smaller desktop screens */
-        @media (max-width: 1200px) {
-            .values-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 25px;
-            }
-        }
-
-        .value-card {
-            text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .value-card .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .value-card .text {
-            font-size: 19px;
-            font-weight: 500;
-            color: #1d1d1f;
-        }
-
-        .final-message {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
-            border-radius: 25px;
-            margin: 80px 0;
-        }
-
-        .final-message p {
-            font-size: 24px;
-            line-height: 1.7;
-            color: #1d1d1f;
-            margin: 0;
-            max-width: var(--card-grid-max-width);
-            margin: 0 auto;
-        }
-
-        .final-message strong {
-            font-weight: 600;
-            color: #1d1d1f;
-        }
-
-        .final-message .tagline {
-            display: block;
-            margin-top: 28px;
-            font-size: 21px;
-            font-weight: 500;
-            color: #1d1d1f;
-        }
-
-        .about-steps-section {
-            margin: 0 0 60px;
-            padding: 48px 40px;
-            background: #f5f5f7;
-            border-radius: 24px;
-        }
-
-        .about-steps-section h2 {
-            font-size: 28px;
-            font-weight: 600;
-            text-align: center;
-            margin: 0 0 32px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .about-steps {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            max-width: 640px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            counter-reset: step;
-        }
-
-        .about-steps li {
-            counter-increment: step;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .about-steps li::before {
-            content: counter(step);
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            background: #0071e3;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .about-step-content h3 {
-            font-size: 19px;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin: 0 0 6px;
-        }
-
-        .about-step-content p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #86868b;
-            margin: 0;
-        }
-
-        .about-step-content a {
-            color: #0071e3;
-        }
-
-        .beginner-block {
-            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            border: 1px solid #e5e5e7;
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 80px;
-            text-align: center;
-        }
-
-        .beginner-block h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin: 0 0 16px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .beginner-block p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #1d1d1f;
-            margin: 0;
-            max-width: var(--text-narrow-max-width);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .beginner-block a {
-            color: #0071e3;
-        }
-
-        .plans-overview {
-            margin-bottom: 80px;
-        }
-
-        .plans-overview h2 {
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center;
-            margin: 0 0 16px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .plans-overview-intro {
-            text-align: center;
-            font-size: 18px;
-            color: #86868b;
-            margin: 0 auto 40px;
-            max-width: var(--text-narrow-max-width);
-            line-height: 1.6;
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 28px;
-        }
-
-        .plan-card {
-            background: #f5f5f7;
-            border-radius: 20px;
-            padding: 28px 24px;
-            text-align: center;
-        }
-
-        .plan-card h3 {
-            font-size: 22px;
-            font-weight: 600;
-            margin: 0 0 12px;
-            color: #1d1d1f;
-        }
-
-        .plan-card p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #86868b;
-            margin: 0;
-        }
-
-        .plans-overview-link {
-            text-align: center;
-            font-size: 17px;
-        }
-
-        .plans-overview-link a {
-            color: #0071e3;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .plans-overview-link a:hover {
-            text-decoration: underline;
-        }
-
-        .about-timeline {
-            margin-bottom: 80px;
-        }
-
-        .about-timeline h2 {
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center;
-            margin: 0 0 16px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .about-timeline-intro {
-            text-align: center;
-            font-size: 18px;
-            color: #86868b;
-            margin: 0 auto 32px;
-            max-width: var(--text-narrow-max-width);
-            line-height: 1.6;
-        }
-
-        .about-timeline-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto 24px;
-            max-width: 560px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .about-timeline-list li {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #1d1d1f;
-        }
-
-        .about-timeline-list li::before {
-            content: "·";
-            flex-shrink: 0;
-            font-size: 24px;
-            line-height: 1.2;
-            color: #0071e3;
-            font-weight: 700;
-        }
-
-        .about-timeline-detail {
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .about-timeline-detail a {
-            color: #0071e3;
-            font-weight: 500;
-        }
-
-        .about-explore {
-            margin: 0 0 40px;
-        }
-
-        .about-explore-title {
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center;
-            margin: 0 0 16px;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-
-        .about-explore-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #86868b;
-            margin: 0 auto;
-            max-width: var(--text-narrow-max-width);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 968px) {
-            .hero-wrapper,
-            .section-with-image {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-content h1 {
-                font-size: 40px;
-            }
-
-            .section-text-content h2 {
-                font-size: 28px;
-            }
-
-            .service-grid-desktop {
-                display: none;
-            }
-
-            .service-grid-slider {
-                display: block;
-            }
-
-            .target-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-hero-cta {
-                justify-content: flex-start;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .comparison-table-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-section h2 {
-                font-size: 28px;
-            }
-
-            .highlight-card {
-                padding: 30px 20px;
-            }
-
-            .highlight-card p {
-                font-size: 19px;
-            }
-
-            .about-steps-section {
-                padding: 32px 20px;
-            }
-
-            .beginner-block {
-                padding: 28px 20px;
-            }
-
-            .about-explore-title {
-                font-size: 28px;
-            }
-
-            .about-hero-cta .btn-hero,
-            .about-hero-cta .btn-outline {
-                width: 100%;
-                text-align: center;
-                box-sizing: border-box;
-            }
-        }
-    </style>
 </head>
-<body>
+<body data-page="about">
     <div class="announcement-bar">
         <a href="schedule.html" class="announcement-secondary">Kiểm tra lịch trình</a>
     </div>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Thanh điều hướng chính">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LogoCampNhaTho.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img"></a>
-            <div class="burger-menu" id="burgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <a href="dat-lich.html" class="nav-cta">Đặt lịch</a>
+                <button type="button" class="burger-menu" id="burgerMenu" aria-expanded="false" aria-controls="navMenuPanel" aria-label="Mở menu điều hướng">
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                </button>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="about.html" aria-current="page">Giới thiệu</a>
-                <a href="equipment.html">Dụng cụ</a>
-                <a href="options.html">Option</a>
-                <a href="pricing.html">Chi phí</a>
-                <a href="schedule.html">Lịch trình</a>
-                <a href="locations.html">Vị trí</a>
-                <a href="faq.html">FAQ</a>
-                <a href="blog/">Blog</a>
-                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
+        </div>
+        <div class="nav-menu" id="navMenu" inert>
+            <button type="button" class="nav-menu__backdrop" id="navMenuBackdrop" aria-label="Đóng menu"></button>
+            <div class="nav-menu__panel" id="navMenuPanel">
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html" aria-current="page">Giới thiệu</a>
+                    <a href="equipment.html">Dụng cụ</a>
+                    <a href="options.html">Option</a>
+                    <a href="pricing.html">Chi phí</a>
+                    <a href="schedule.html">Lịch trình</a>
+                    <a href="locations.html">Vị trí</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="blog/">Blog</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main>
-    <!-- Hero Section -->
-    <section class="about-hero">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <h1>Về Camp Nhà Thỏ</h1>
-                <p>
-                    Mình tạo ra Camp Nhà Thỏ vì muốn mọi người có thể dễ dàng trải nghiệm cắm trại mà không cần phải đầu tư quá nhiều dụng cụ hay chuẩn bị phức tạp.
+    <main class="home-editorial">
+        <!-- Hero full-bleed -->
+        <section class="home-hero" aria-label="Giới thiệu Camp Nhà Thỏ">
+            <div class="home-hero__media parallax-wrap">
+                <img src="images/about-hero.webp" alt="Camp Nhà Thỏ — share đồ camping Phú Sĩ" id="heroImg" class="home-hero__img parallax-layer" loading="eager" decoding="async" fetchpriority="high">
+            </div>
+            <div class="home-hero__overlay">
+                <p class="home-hero__label">Giới thiệu</p>
+                <h1 class="home-hero__title">Về Camp Nhà Thỏ</h1>
+                <p class="home-hero__subtitle">Chuyến đi của bạn, nhịp chill của bạn</p>
+                <p class="about-hero__price">
+                    <span class="about-hero__price-label">Plan Hạt Bí 🎃 · 2N1Đ · 2 người</span>
+                    <a href="pricing.html" class="about-hero__price-value">từ 5.4man</a>
                 </p>
-                <div class="price-anchor about-hero-price">
-                    <span class="price-anchor-label">Plan Hạt Bí 🎃 · 2N1Đ · 2 người</span>
-                    <a href="pricing.html">
-                        <span class="price-anchor-value">từ 5.4man</span>
-                    </a>
-                </div>
-                <div class="about-hero-cta">
+                <div class="about-hero__actions">
                     <a href="dat-lich.html" class="btn-hero">Đặt lịch</a>
                     <a href="schedule.html" class="btn-outline">Xem lịch trình</a>
                 </div>
             </div>
-            <div class="hero-image-wrapper">
-                <img src="images/about-hero.jpg" alt="Camp Nhà Thỏ" loading="eager" decoding="async" fetchpriority="high">
+        </section>
+
+        <!-- Bento: mô hình + khác biệt + đối tượng -->
+        <section class="about-bento home-section" data-reveal aria-label="Về Camp Nhà Thỏ">
+            <div class="about-bento__grid">
+                <article class="about-bento__card about-bento__card--model" aria-labelledby="about-share-title">
+                    <div class="about-bento__media">
+                        <img src="images/about-1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
+                    </div>
+                    <div class="about-bento__copy">
+                        <p class="home-section__label">Mô hình</p>
+                        <h2 class="about-bento__title" id="about-share-title">Không phải cho thuê, <br>mà là chia sẻ</h2>
+                        <p class="about-bento__text">Chia sẻ đồ camping và hỗ trợ trọn gói <br>mình lo đưa đón, setup; bạn chỉ cần chill.</p>
+                    </div>
+                </article>
+                <article class="about-bento__card about-bento__card--setup" aria-labelledby="about-setup-title">
+                    <div class="about-bento__media">
+                        <img src="images/equipment-tent.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true">
+                    </div>
+                    <div class="about-bento__copy">
+                        <p class="home-section__label">Khác biệt</p>
+                        <h3 class="about-bento__title" id="about-setup-title">Đồ &amp; setup</h3>
+                        <p class="about-bento__text">Đồ đầy đủ, setup sẵn <br>không cần tự gom từng món.</p>
+                    </div>
+                </article>
+                <article class="about-bento__card about-bento__card--pickup" aria-labelledby="about-pickup-title">
+                    <div class="about-bento__media">
+                        <img src="images/camping-2.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
+                    </div>
+                    <div class="about-bento__copy">
+                        <p class="home-section__label">Khác biệt</p>
+                        <h3 class="about-bento__title" id="about-pickup-title">Đưa đón</h3>
+                        <p class="about-bento__text">Đón tận nơi, đi riêng <br>không ghép khách.</p>
+                    </div>
+                </article>
+                <article class="about-bento__card about-bento__card--chill" aria-labelledby="about-chill-title">
+                    <div class="about-bento__media">
+                        <img src="images/camping-5.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
+                    </div>
+                    <div class="about-bento__copy">
+                        <p class="home-section__label">Khác biệt</p>
+                        <h3 class="about-bento__title" id="about-chill-title">Chill &amp; chụp ảnh</h3>
+                        <p class="about-bento__text">Tự do ăn chơi, hỗ trợ chụp hình kỷ niệm.</p>
+                    </div>
+                </article>
+                <article class="about-bento__card about-bento__card--audience" aria-labelledby="about-audience-title">
+                    <div class="about-bento__media">
+                        <img src="images/about-2.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true">
+                    </div>
+                    <div class="about-bento__copy">
+                        <p class="home-section__label">Đối tượng</p>
+                        <h3 class="about-bento__title" id="about-audience-title">Dành cho ai?</h3>
+                        <ul class="about-bento__list">
+                            <li><span aria-hidden="true">🌿</span> Lần đầu camping / chưa có đồ</li>
+                            <li><span aria-hidden="true">👥</span> Nhóm nhỏ, couple, gia đình</li>
+                            <li><span aria-hidden="true">⏰</span> Bận rộn, không muốn tự chuẩn bị</li>
+                        </ul>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Content -->
-    <section class="section">
-        <div class="about-content">
-            <!-- First Section -->
-            <div class="content-section">
-                <div class="section-with-image">
-                    <div class="section-image section-image--ratio">
-                        <img src="images/about-1.jpg" alt="Chia sẻ đồ camping" loading="lazy" decoding="async">
-                    </div>
-                    <div class="section-text-content">
-                        <h2>Không phải cho thuê, mà là chia sẻ</h2>
-                        <p>
-                            Camp Nhà Thỏ không hoạt động như dịch vụ cho thuê thông thường. Mình làm theo mô hình <strong>chia sẻ đồ camping</strong> và hỗ trợ trọn gói cho chuyến đi của bạn.
-                        </p>
-                        <p>
-                            Mình sẽ trực tiếp đưa đón, chuẩn bị đồ và hỗ trợ setup. Bạn chỉ cần tận hưởng, còn lại cứ để mình lo.
-                        </p>
-                    </div>
-                </div>
+        <!-- Pricing — horizontal scroll carousel -->
+        <section class="home-section home-pricing" id="pricing" data-reveal aria-label="Bảng giá">
+            <div class="home-pricing__header">
+                <p class="home-section__label">Bảng giá</p>
+                <h2 class="home-section__title">LINEUP</h2>
             </div>
-
-            <!-- Services Section -->
-            <div class="content-section">
-                <div class="section-text-content">
-                    <h2>Dịch vụ của Camp Nhà Thỏ</h2>
-                    <p>Mình sẽ hỗ trợ bạn từ A đến Z:</p>
-                </div>
-                <!-- Service Grid (Desktop) -->
-                <div class="service-grid service-grid-desktop">
-                    <div class="service-item">
-                        <div class="service-icon">⛺</div>
-                        <div class="service-text">Chia sẻ đầy đủ đồ camping cần thiết</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🚗</div>
-                        <div class="service-text">Đưa đón theo lịch hẹn</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🏕️</div>
-                        <div class="service-text">Hỗ trợ setup lều và khu vực sinh hoạt</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">📍</div>
-                        <div class="service-text">Tư vấn địa điểm phù hợp</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">📸</div>
-                        <div class="service-text">Hỗ trợ chụp ảnh kỷ niệm (nếu bạn cần)</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🌿</div>
-                        <div class="service-text">Đi riêng – không ghép khách</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🔥</div>
-                        <div class="service-text">Tự do ăn chơi, chill theo cách của bạn</div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🧭</div>
-                        <div class="service-text">Hướng dẫn người mới camping từng bước</div>
-                    </div>
-                </div>
-
-                <!-- Service Slider (Mobile) -->
-                <div class="slider-container service-grid-slider">
-                    <div class="slider-wrapper">
-                        <div class="slider-track" id="serviceSlider">
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">⛺</div>
-                                    <div class="service-text">Chia sẻ đầy đủ đồ camping cần thiết</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">🚗</div>
-                                    <div class="service-text">Đưa đón theo lịch hẹn</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">🏕️</div>
-                                    <div class="service-text">Hỗ trợ setup lều và khu vực sinh hoạt</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">📍</div>
-                                    <div class="service-text">Tư vấn địa điểm phù hợp</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">📸</div>
-                                    <div class="service-text">Hỗ trợ chụp ảnh kỷ niệm (nếu bạn cần)</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">🌿</div>
-                                    <div class="service-text">Đi riêng – không ghép khách</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">🔥</div>
-                                    <div class="service-text">Tự do ăn chơi, chill theo cách của bạn</div>
-                                </div>
-                            </div>
-                            <div class="slider-item">
-                                <div class="service-item">
-                                    <div class="service-icon">🧭</div>
-                                    <div class="service-text">Hướng dẫn người mới camping từng bước</div>
-                                </div>
-                            </div>
+            <div class="home-pricing__pin">
+                <div class="home-pricing__track" tabindex="0" aria-label="Gói camping — vuốt ngang để xem thêm">
+                    <a href="pricing.html#plan-de" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/plan-de.webp" alt="Hạt Dẻ — tự chọn ngày và bãi, full đồ camping, không đưa đón" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-overlay">
+                            <span class="home-pricing__card-price">từ 3.7<small>man</small></span>
+                            <span class="home-pricing__card-name">plan Hạt dẻ 🌰</span>
+                            <span class="home-pricing__card-cta">chi tiết</span>
                         </div>
-                    </div>
-                    <button class="slider-arrow prev" id="servicePrev" aria-label="Xem dịch vụ trước">‹</button>
-                    <button class="slider-arrow next" id="serviceNext" aria-label="Xem dịch vụ tiếp theo">›</button>
-                    <div class="slider-nav" id="serviceDots"></div>
-                </div>
-            </div>
-
-            <!-- Comparison Section -->
-            <div class="comparison-section">
-                <h2>So sánh nhanh khi dùng Camp Nhà Thỏ</h2>
-                <p class="section-intro">
-                    Cùng một chuyến camping, mức độ thoải mái và tiết kiệm thời gian sẽ rất khác nhau khi bạn có người đồng hành hỗ trợ đúng việc.
-                </p>
-                <p class="table-swipe-hint" aria-hidden="true"><span class="table-swipe-hint-icon">↔</span> Vuốt ngang để xem thêm</p>
-                <div class="comparison-table-wrap">
-                    <table class="comparison-table" aria-label="Bảng so sánh lợi ích sử dụng Camp Nhà Thỏ">
-                        <thead>
-                            <tr>
-                                <th>Hạng mục</th>
-                                <th>✅ Dùng Camp Nhà Thỏ</th>
-                                <th>❌ Tự chuẩn bị</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="feature-col">Lều</td>
-                                <td class="with-service">Có sẵn lều phù hợp nhóm, được tư vấn theo thời tiết và nhu cầu.</td>
-                                <td class="without-service">Tự tìm mua hoặc thuê lẻ, dễ chọn nhầm size/chất liệu, tốn công thử.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Đồ đạc</td>
-                                <td class="with-service">Có bộ đồ camping đồng bộ, gọn gàng, đủ món cần thiết.</td>
-                                <td class="without-service">Phải tự lên checklist, gom từng món, dễ thiếu hoặc mang dư cồng kềnh.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Hỗ trợ đặt bãi</td>
-                                <td class="with-service">Được gợi ý bãi phù hợp, hỗ trợ đặt chỗ nhanh và rõ thông tin.</td>
-                                <td class="without-service">Tự tra cứu nhiều nơi, dễ gặp bãi không phù hợp hoặc hết chỗ.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Xe</td>
-                                <td class="with-service">Có hỗ trợ đưa đón theo lịch hẹn, tiện di chuyển cả người và đồ.</td>
-                                <td class="without-service">Tự xoay xe, tự sắp xếp hành lý cồng kềnh, phát sinh mệt từ lúc bắt đầu.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Hỗ trợ setup</td>
-                                <td class="with-service">Được hỗ trợ dựng lều và bố trí khu sinh hoạt nhanh, đỡ mất sức.</td>
-                                <td class="without-service">Tự mày mò setup, tốn thời gian và dễ sai kỹ thuật khi mới đi.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Đưa đón + tham quan du lịch</td>
-                                <td class="with-service">Kết hợp linh hoạt giữa camping và tham quan, lịch trình nhẹ nhàng hơn.</td>
-                                <td class="without-service">Tự chia lịch, tự canh đường đi, dễ bị gấp gáp hoặc bỏ lỡ điểm đẹp.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Đặt lịch / chi phí</td>
-                                <td class="with-service">Form đặt lịch tự tính chi phí theo plan &amp; số người — rõ ràng trước khi nhắn.</td>
-                                <td class="without-service">Tự hỏi từng khoản, dễ thiếu hoặc nhầm mục, khó so sánh tổng chi phí.</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-col">Hướng dẫn người mới</td>
-                                <td class="with-service">Hướng dẫn setup, nấu ăn tại bãi — <a href="equipment.html" style="color: inherit;">đồ đã chuẩn bị sẵn</a>.</td>
-                                <td class="without-service">Tự mò mẫm, dễ thiếu kỹ năng hoặc mang thiếu đồ quan trọng.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Highlight Card -->
-            <div class="highlight-card">
-                <p>
-                    Bạn và nhóm của bạn sẽ <strong>đi riêng, không ghép khách</strong> với bất kỳ ai khác.<br>
-                    Lịch trình linh hoạt, không gò bó, đi theo nhịp của bạn.
-                </p>
-            </div>
-
-            <!-- Booking Steps -->
-            <div class="about-steps-section">
-                <h2>Cách đặt lịch</h2>
-                <ol class="about-steps">
-                    <li>
-                        <div class="about-step-content">
-                            <h3>Xem lịch trống</h3>
-                            <p>Chọn ngày <strong>Còn chỗ</strong> trên <a href="schedule.html">lịch trình</a>.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="about-step-content">
-                            <h3>Điền form</h3>
-                            <p>Mở <a href="dat-lich.html">form đặt lịch</a> — hệ thống tạo sẵn mẫu tin nhắn.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="about-step-content">
-                            <h3>Gửi &amp; xác nhận</h3>
-                            <p>Copy gửi qua TikTok hoặc Facebook — <strong>không cần cọc</strong>, chờ xác nhận qua inbox.</p>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-
-            <!-- Target Audience Section -->
-            <div class="content-section">
-                <div class="section-with-image">
-                    <div class="section-text-content">
-                        <h2>Camp Nhà Thỏ dành cho ai?</h2>
-                        <p>Nếu bạn thuộc một trong những trường hợp này, Camp Nhà Thỏ sẽ phù hợp với bạn:</p>
-                    </div>
-                    <div class="section-image">
-                        <img src="images/about-2.jpg" alt="Người dùng Camp Nhà Thỏ" loading="lazy" decoding="async">
-                    </div>
-                </div>
-                <div class="target-grid">
-                    <div class="target-item">
-                        <div class="target-icon">🌿</div>
-                        <div class="target-text">Người muốn thử camping lần đầu</div>
-                    </div>
-                    <div class="target-item">
-                        <div class="target-icon">👥</div>
-                        <div class="target-text">Nhóm bạn nhỏ, couple, gia đình</div>
-                    </div>
-                    <div class="target-item">
-                        <div class="target-icon">⏰</div>
-                        <div class="target-text">Người bận rộn, không có nhiều thời gian chuẩn bị</div>
-                    </div>
-                    <div class="target-item">
-                        <div class="target-icon">🌲</div>
-                        <div class="target-text">Người thích thiên nhiên nhưng thiếu dụng cụ</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Beginner Block -->
-            <div class="beginner-block">
-                <h2>Lần đầu camping?</h2>
-                <p>
-                    Chưa có đồ hay chưa biết bắt đầu từ đâu cũng không sao — Camp Nhà Thỏ chuẩn bị sẵn dụng cụ và hướng dẫn setup, nấu ăn tại bãi.
-                    <a href="equipment.html">Xem danh sách dụng cụ</a>.
-                </p>
-            </div>
-
-            <!-- Plans Overview -->
-            <div class="plans-overview">
-                <h2>3 plan camping</h2>
-                <p class="plans-overview-intro">Chọn mức hỗ trợ phù hợp — từ đi xe riêng đến trọn gói đưa đón.</p>
-                <div class="plans-grid">
-                    <div class="plan-card">
-                        <h3>🌰 Hạt Dẻ</h3>
-                        <p>Tự chọn ngày &amp; bãi, full đồ camping — không đưa đón. Từ 3.7man.</p>
-                    </div>
-                    <div class="plan-card">
-                        <h3>🎃 Hạt Bí</h3>
-                        <p>Đưa đón, setup trọn gói — plan phổ biến nhất. Từ 4.7man.</p>
-                    </div>
-                    <div class="plan-card">
-                        <h3>🍇 Hạt Nho</h3>
-                        <p>Bungalow + không gian camping — không lo mưa. Từ 5.7man.</p>
-                    </div>
-                </div>
-                <p class="plans-overview-link"><a href="pricing.html">Xem bảng giá chi tiết →</a></p>
-            </div>
-
-            <!-- Short Timeline -->
-            <div class="about-timeline">
-                <h2>Lịch trình 2N1Đ</h2>
-                <p class="about-timeline-intro">Khung tham khảo với Plan Hạt Bí — giờ giấc linh hoạt theo nhóm.</p>
-                <ul class="about-timeline-list">
-                    <li><strong>Ngày 1 sáng:</strong> Đón tại Tokyo, Saitama hoặc Kanagawa</li>
-                    <li><strong>Ngày 1 chiều:</strong> Đến bãi camp, dựng lều &amp; setup</li>
-                    <li><strong>Ngày 1 tối:</strong> Nấu ăn, đốt lửa trại, chill buổi tối</li>
-                    <li><strong>Ngày 2:</strong> Ăn sáng, thu dọn, đưa về</li>
-                </ul>
-                <p class="about-timeline-detail">Chi tiết từng bước → <a href="equipment.html">trang dụng cụ</a></p>
-            </div>
-
-            <!-- Values Section -->
-            <div class="values-section">
-                <h2 class="values-title">Giá trị Camp Nhà Thỏ hướng tới</h2>
-                <p style="text-align: center; font-size: 19px; color: #86868b; margin-bottom: 50px; max-width: var(--text-narrow-max-width); margin-left: auto; margin-right: auto;">
-                    Mình mong muốn tạo ra những chuyến đi:
-                </p>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="icon">✨</div>
-                        <div class="text">Thoải mái</div>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">🤝</div>
-                        <div class="text">Gần gũi</div>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">😌</div>
-                        <div class="text">Không áp lực</div>
-                    </div>
-                    <div class="value-card">
-                        <div class="icon">🌅</div>
-                        <div class="text">Đúng tinh thần "đi để nghỉ ngơi"</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Final Message -->
-            <div class="final-message">
-                <p>
-                    Camp Nhà Thỏ không chỉ là dịch vụ,<br>
-                    mà là <strong>người bạn đồng hành</strong> trong mỗi chuyến đi của bạn.
-                    <span class="tagline">Share đồ – Đi riêng – Trải nghiệm</span>
-                </p>
-            </div>
-
-            <!-- Cross-links -->
-            <div class="about-explore">
-                <h2 class="about-explore-title">Tìm hiểu thêm</h2>
-                <p class="about-explore-subtitle">Chi phí, dụng cụ và câu hỏi thường gặp — tất cả trước khi bạn đặt lịch.</p>
-                <div class="explore-card-grid">
-                    <a href="pricing.html" class="explore-card">
-                        <div class="explore-card-icon" aria-hidden="true">💰</div>
-                        <h3 class="explore-card-title">Chi phí &amp; plan</h3>
-                        <p class="explore-card-desc">So sánh 3 plan Hạt Dẻ, Hạt Bí, Hạt Nho — bảng giá minh bạch theo nhóm.</p>
-                        <span class="explore-card-cta">Xem bảng giá →</span>
                     </a>
-                    <a href="equipment.html" class="explore-card">
-                        <div class="explore-card-icon" aria-hidden="true">⛺</div>
-                        <h3 class="explore-card-title">Dụng cụ camping</h3>
-                        <p class="explore-card-desc">Lều, bếp, đèn, ghế — danh sách đầy đủ được chuẩn bị sẵn cho bạn.</p>
-                        <span class="explore-card-cta">Xem dụng cụ →</span>
+                    <a href="pricing.html#plan-bi" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/plan-bi.webp" alt="Hạt Bí — đưa đón, lều / shelter, setup trọn gói" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-overlay">
+                            <span class="home-pricing__card-price">từ 4.7<small>man</small></span>
+                            <span class="home-pricing__card-name">plan Hạt bí 🎃</span>
+                            <span class="home-pricing__card-cta">chi tiết</span>
+                        </div>
                     </a>
-                    <a href="faq.html" class="explore-card">
-                        <div class="explore-card-icon" aria-hidden="true">❓</div>
-                        <h3 class="explore-card-title">Câu hỏi thường gặp</h3>
-                        <p class="explore-card-desc">Đặt lịch, thanh toán, lần đầu camping — giải đáp nhanh các thắc mắc.</p>
-                        <span class="explore-card-cta">Đọc FAQ →</span>
+                    <a href="pricing.html#plan-nho" class="home-pricing__card">
+                        <figure class="home-pricing__card-media">
+                            <img src="images/plan-nho.webp" alt="Hạt Nho — bungalow, không lo mưa, đưa đón" loading="lazy" decoding="async">
+                        </figure>
+                        <div class="home-pricing__card-overlay">
+                            <span class="home-pricing__card-price">từ 5.7<small>man</small></span>
+                            <span class="home-pricing__card-name">plan Hạt nho 🍇</span>
+                            <span class="home-pricing__card-cta">chi tiết</span>
+                        </div>
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="section section-cta">
-        <div class="container">
-            <h2 class="section-title">Sẵn sàng cho chuyến đi của bạn?</h2>
-            <p class="section-text">
-                Điền form đặt lịch — hệ thống tạo sẵn mẫu tin nhắn để bạn copy và gửi qua TikTok hoặc Facebook.<br>
-                Bạn đang có nhiều thắc mắc về <span class="no-break">Camp Nhà Thỏ</span>? Tham khảo các câu hỏi thường gặp <a href="faq.html">tại đây</a>.
-            </p>
-            <div class="section-actions">
-                <a href="dat-lich.html" class="btn-primary btn-large">Đặt lịch</a>
+        <!-- Cross-links -->
+        <section class="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
+            <a href="pricing.html" class="home-faq">
+                <div class="home-faq__media">
+                    <img src="images/camping-1.webp" alt="Chi phí và plan camping" loading="lazy" decoding="async">
+                </div>
+                <div class="home-faq__copy">
+                    <p class="home-section__label">Chi phí</p>
+                    <h2 class="home-section__title">Bảng giá &amp; plan</h2>
+                </div>
+            </a>
+            <a href="equipment.html" class="home-faq">
+                <div class="home-faq__media">
+                    <img src="images/equipment-tent.jpg" alt="Dụng cụ camping" loading="lazy" decoding="async">
+                </div>
+                <div class="home-faq__copy">
+                    <p class="home-section__label">Dụng cụ</p>
+                    <h2 class="home-section__title">Danh sách đồ camping</h2>
+                </div>
+            </a>
+            <a href="faq.html" class="home-faq about-explore__full">
+                <div class="home-faq__media">
+                    <img src="images/camping-5.webp" alt="Câu hỏi thường gặp" loading="lazy" decoding="async">
+                </div>
+                <div class="home-faq__copy">
+                    <p class="home-section__label">FAQ</p>
+                    <h2 class="home-section__title">Câu hỏi thường gặp</h2>
+                </div>
+            </a>
+        </section>
+
+        <!-- CTA -->
+        <section class="about-cta home-section" data-reveal>
+            <h2 class="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
+            <p class="about-cta__tagline">Share đồ – Đi riêng – Trải nghiệm</p>
+            <p class="about-cta__text">Đặt lịch online — không cần cọc. Thắc mắc? Xem <a href="faq.html">FAQ</a>.</p>
+            <div class="about-cta__actions">
+                <a href="dat-lich.html" class="btn-hero">Đặt lịch</a>
             </div>
-            <p class="cta-secondary-text">Hoặc gửi tin nhắn trực tiếp qua mạng xã hội — xem hướng dẫn tại <a href="dat-lich.html#lien-he">trang liên hệ</a>.</p>
             <div class="social-buttons social-buttons-secondary">
                 <a href="https://www.tiktok.com/@camp.nha.tho?_r=1&_t=ZS-930ogoGIv22" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tiktok">
                     <span class="social-btn-icon" aria-hidden="true">
@@ -1212,141 +256,19 @@
                     <span>Facebook</span>
                 </a>
             </div>
-        </div>
-    </section>
-
+        </section>
     </main>
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Camp Nhà Thỏ. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="table-swipe-hint.js" defer></script>
-    <script>
-        // Burger menu toggle
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        if (burgerMenu && navLinks) {
-            burgerMenu.addEventListener('click', function() {
-                burgerMenu.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            // Close menu when clicking on a link
-            const links = navLinks.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', function() {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navLinks.contains(event.target);
-                const isClickOnBurger = burgerMenu.contains(event.target);
-                
-                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-        }
-
-        // Slider functionality
-        function initSlider(sliderId, prevId, nextId, dotsId) {
-            const sliderTrack = document.getElementById(sliderId);
-            const prevBtn = document.getElementById(prevId);
-            const nextBtn = document.getElementById(nextId);
-            const dotsContainer = document.getElementById(dotsId);
-            
-            if (!sliderTrack || !prevBtn || !nextBtn || !dotsContainer) return;
-            
-            const sliderWrapper = sliderTrack.parentElement;
-            const items = sliderTrack.querySelectorAll('.slider-item');
-            let currentIndex = 0;
-            
-            // Create dots
-            items.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = 'slider-dot' + (index === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-            
-            function updateSlider() {
-                sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // Update dots
-                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-                
-                // Update arrow states
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === items.length - 1;
-            }
-            
-            function goToSlide(index) {
-                currentIndex = Math.max(0, Math.min(index, items.length - 1));
-                updateSlider();
-            }
-            
-            function nextSlide() {
-                if (currentIndex < items.length - 1) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            }
-            
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSlider();
-                }
-            }
-            
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-            
-            // Touch swipe support
-            let startX = 0;
-            let currentX = 0;
-            let isDragging = false;
-            
-            sliderWrapper.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-            
-            sliderWrapper.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                currentX = e.touches[0].clientX;
-            });
-            
-            sliderWrapper.addEventListener('touchend', () => {
-                if (!isDragging) return;
-                isDragging = false;
-                
-                const diff = startX - currentX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
-                }
-            });
-            
-            // Initialize
-            updateSlider();
-        }
-        
-        // Initialize service slider
-        initSlider('serviceSlider', 'servicePrev', 'serviceNext', 'serviceDots');
-    </script>
+    <script src="vendor/gsap.min.js" defer></script>
+    <script src="vendor/ScrollTrigger.min.js" defer></script>
+    <script src="gsap-utils.js" defer></script>
+    <script src="animations/core.js?v=20260626a" defer></script>
+    <script src="animations/home.js?v=20260626b" defer></script>
 </body>
 </html>

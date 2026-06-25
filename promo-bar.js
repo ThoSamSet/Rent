@@ -189,7 +189,7 @@
     function markCurrentNavLink() {
         var currentPath = normalizePathname(window.location.pathname);
 
-        document.querySelectorAll('.nav-links a').forEach(function (link) {
+        document.querySelectorAll('.nav-links a, .nav-cta').forEach(function (link) {
             link.removeAttribute('aria-current');
 
             var href = (link.getAttribute('href') || '').trim();

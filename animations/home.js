@@ -5,7 +5,8 @@
 (function () {
     'use strict';
 
-    if (document.body.getAttribute('data-page') !== 'home') {
+    var page = document.body.getAttribute('data-page');
+    if (page !== 'home' && page !== 'about') {
         return;
     }
 
@@ -26,37 +27,24 @@
         }
 
         var heroImg = document.getElementById('heroImg');
-        var pending = 0;
-        var done = function () {
-            pending -= 1;
-            if (pending <= 0) {
-                CampAnimCore.refresh();
-            }
-        };
 
-        if (heroImg && !heroImg.complete) {
-            pending += 1;
-            heroImg.addEventListener('load', done, { once: true });
-            heroImg.addEventListener('error', done, { once: true });
+        function afterLayoutStable() {
+            CampAnimCore.refreshNow();
+            refreshMapPreview();
         }
 
-        document.querySelectorAll('.home-gallery__item img, .home-equipment__media img, .home-blog__featured-media img, .home-pricing__card-media img').forEach(function (img) {
-            if (!img.complete) {
-                pending += 1;
-                img.addEventListener('load', done, { once: true });
-                img.addEventListener('error', done, { once: true });
-            }
-        });
-
-        if (pending === 0) {
-            CampAnimCore.refresh();
+        // Only the hero image affects above-the-fold trigger geometry.
+        // Below-fold lazy images were firing refresh mid-scroll and causing first-scroll jank.
+        if (heroImg && !heroImg.complete) {
+            heroImg.addEventListener('load', afterLayoutStable, { once: true });
+            heroImg.addEventListener('error', afterLayoutStable, { once: true });
+        } else {
+            afterLayoutStable();
         }
 
         window.addEventListener('load', function () {
-            setTimeout(function () {
-                CampAnimCore.refresh();
-                refreshMapPreview();
-            }, 120);
+            CampAnimCore.refresh();
+            refreshMapPreview();
         }, { once: true });
     }
 
@@ -164,87 +152,172 @@
         });
     }
 
+    function showPricingGalleryNow() {
+        document.querySelectorAll(
+            '.home-pricing__card, .home-gallery__item, .home-pricing__header, .home-gallery__header'
+        ).forEach(function (el) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    }
+
+    function revealPricingGalleryNow() {
+        if (reducedMotion) {
+            showPricingGalleryNow();
+            return;
+        }
+
+        gsap.utils.toArray('.home-pricing, .home-gallery').forEach(function (section) {
+            var rect = section.getBoundingClientRect();
+            if (rect.top >= window.innerHeight * 0.95 || rect.bottom <= 0) {
+                return;
+            }
+
+            var header = section.querySelector('.home-pricing__header, .home-gallery__header');
+            var targets = section.querySelectorAll('.home-pricing__card, .home-gallery__item');
+
+            if (header) {
+                gsap.set(header, { opacity: 1, y: 0 });
+            }
+            if (targets.length) {
+                gsap.set(targets, { opacity: 1 });
+            }
+        });
+    }
+
     function initSectionReveals() {
         if (reducedMotion || !hasScrollTrigger) {
             document.querySelectorAll('.home-section[data-reveal]').forEach(function (section) {
                 section.style.opacity = '1';
             });
+            showPricingGalleryNow();
             refreshMapPreview();
             return;
         }
 
         gsap.utils.toArray('.home-section[data-reveal]').forEach(function (section) {
-            var isBottom = section.classList.contains('home-bottom');
-            var fromVars = { opacity: 0, y: 48 };
-            var toVars = {
+            // Pricing/gallery use horizontal scroll tracks — never transform their section wrapper.
+            if (section.classList.contains('home-pricing')
+                || section.classList.contains('home-gallery')) {
+                return;
+            }
+
+            gsap.set(section, { opacity: 0, y: 48 });
+            gsap.to(section, {
                 opacity: 1,
                 y: 0,
-                ease: 'none',
+                duration: 0.85,
+                ease: 'power2.out',
                 scrollTrigger: {
                     trigger: section,
                     start: 'top 88%',
-                    end: isBottom ? 'bottom bottom' : 'top 62%',
-                    scrub: 1,
-                    onRefresh: refreshMapPreview
+                    once: true
                 }
-            };
-
-            // Bottom-of-page section: skip bottom clip-path (unreachable scroll end clips FAQ tile on mobile)
-            if (!isBottom) {
-                fromVars.clipPath = 'inset(0 0 6% 0)';
-                toVars.clipPath = 'inset(0 0 0% 0)';
-            }
-
-            gsap.fromTo(section, fromVars, toVars);
+            });
         });
     }
 
     function initPricingReveal() {
-        if (reducedMotion || !hasScrollTrigger) {
+        var section = document.querySelector('.home-pricing');
+        if (!section) {
             return;
         }
 
-        var cards = document.querySelectorAll('.home-pricing__card');
+        var header = section.querySelector('.home-pricing__header');
+        var cards = section.querySelectorAll('.home-pricing__card');
         if (!cards.length) {
             return;
         }
 
-        gsap.from(cards, {
-            opacity: 0,
-            x: 32,
-            ease: 'none',
-            stagger: 0.1,
-            scrollTrigger: {
-                trigger: '.home-pricing',
-                start: 'top 85%',
-                end: 'top 60%',
-                scrub: 1
-            }
-        });
-    }
-
-    function initGalleryStrip() {
         if (reducedMotion || !hasScrollTrigger) {
+            showPricingGalleryNow();
             return;
         }
 
-        var items = document.querySelectorAll('.home-gallery__item');
+        var triggerConfig = {
+            trigger: section,
+            start: 'top 85%',
+            once: true
+        };
+
+        var tl = gsap.timeline({
+            scrollTrigger: triggerConfig,
+            onComplete: function () {
+                gsap.set(cards, { opacity: 1 });
+            }
+        });
+
+        if (header) {
+            tl.from(header, {
+                opacity: 0,
+                y: 24,
+                ease: 'power2.out',
+                duration: 0.7
+            }, 0);
+        }
+
+        // CSS already sets opacity:0 — .from() would animate 0→0; use explicit to-value.
+        tl.fromTo(cards,
+            { opacity: 0 },
+            {
+                opacity: 1,
+                ease: 'power2.out',
+                duration: 0.75,
+                stagger: 0.1
+            },
+            header ? 0.08 : 0
+        );
+    }
+
+    function initGalleryStrip() {
+        var section = document.querySelector('.home-gallery');
+        if (!section) {
+            return;
+        }
+
+        var header = section.querySelector('.home-gallery__header');
+        var items = section.querySelectorAll('.home-gallery__item');
         if (!items.length) {
             return;
         }
 
-        gsap.from(items, {
-            opacity: 0,
-            x: 32,
-            ease: 'none',
-            stagger: 0.08,
-            scrollTrigger: {
-                trigger: '.home-gallery',
-                start: 'top 85%',
-                end: 'top 60%',
-                scrub: 1
+        if (reducedMotion || !hasScrollTrigger) {
+            showPricingGalleryNow();
+            return;
+        }
+
+        var triggerConfig = {
+            trigger: section,
+            start: 'top 85%',
+            once: true
+        };
+
+        var tl = gsap.timeline({
+            scrollTrigger: triggerConfig,
+            onComplete: function () {
+                gsap.set(items, { opacity: 1 });
             }
         });
+
+        if (header) {
+            tl.from(header, {
+                opacity: 0,
+                y: 24,
+                ease: 'power2.out',
+                duration: 0.7
+            }, 0);
+        }
+
+        tl.fromTo(items,
+            { opacity: 0 },
+            {
+                opacity: 1,
+                ease: 'power2.out',
+                duration: 0.7,
+                stagger: 0.08
+            },
+            header ? 0.08 : 0
+        );
     }
 
     function init() {
@@ -254,7 +327,12 @@
         initSectionReveals();
         initPricingReveal();
         initGalleryStrip();
+        revealPricingGalleryNow();
         refreshAfterAssets();
+
+        window.addEventListener('load', function () {
+            revealPricingGalleryNow();
+        }, { once: true });
     }
 
     if (document.readyState === 'loading') {

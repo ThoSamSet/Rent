@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="motion.css">
     <script src="motion.js" defer></script>
     <script src="promo-bar.js" defer></script>
+    <script src="nav-menu.js" defer></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-22W1X4CVZK"></script>
@@ -403,24 +404,31 @@
         <a href="schedule.html" class="announcement-secondary">Kiểm tra lịch trình</a>
     </div>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Thanh điều hướng chính">
         <div class="nav-container">
             <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;"><img src="images/LogoCampNhaTho.jpg" alt="Camp Nhà Thỏ" class="nav-logo-img"></a>
-            <div class="burger-menu" id="burgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <a href="dat-lich.html" class="nav-cta">Đặt lịch</a>
+                <button type="button" class="burger-menu" id="burgerMenu" aria-expanded="false" aria-controls="navMenuPanel" aria-label="Mở menu điều hướng">
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                    <span class="burger-menu__line" aria-hidden="true"></span>
+                </button>
             </div>
-            <div class="nav-links" id="navLinks">
-                <a href="about.html">Giới thiệu</a>
-                <a href="equipment.html">Dụng cụ</a>
-                <a href="options.html">Option</a>
-                <a href="pricing.html">Chi phí</a>
-                <a href="schedule.html">Lịch trình</a>
-                <a href="locations.html" aria-current="page">Vị trí</a>
-                <a href="faq.html">FAQ</a>
-                <a href="blog/">Blog</a>
-                <a href="dat-lich.html" class="contact-link">Đặt lịch</a>
+        </div>
+        <div class="nav-menu" id="navMenu" inert>
+            <button type="button" class="nav-menu__backdrop" id="navMenuBackdrop" aria-label="Đóng menu"></button>
+            <div class="nav-menu__panel" id="navMenuPanel">
+                <div class="nav-links" id="navLinks">
+                    <a href="about.html">Giới thiệu</a>
+                    <a href="equipment.html">Dụng cụ</a>
+                    <a href="options.html">Option</a>
+                    <a href="pricing.html">Chi phí</a>
+                    <a href="schedule.html">Lịch trình</a>
+                    <a href="locations.html">Vị trí</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="blog/">Blog</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -942,225 +950,5 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="locations-map-sites.js"></script>
-    <script>
-        // Burger menu toggle
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        if (burgerMenu && navLinks) {
-            burgerMenu.addEventListener('click', function() {
-                burgerMenu.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            // Close menu when clicking on a link
-            const links = navLinks.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', function() {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navLinks.contains(event.target);
-                const isClickOnBurger = burgerMenu.contains(event.target);
-                
-                if (!isClickInsideNav && !isClickOnBurger && navLinks.classList.contains('active')) {
-                    burgerMenu.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-        }
-
-        // Initialize map
-        const map = L.map('map').setView([35.436, 138.57], 11);
-
-        // Add grayscale tile layer (CartoDB Positron - light and minimal)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19,
-        }).addTo(map);
-
-        // Apply additional grayscale filter for more monochrome effect
-        const mapElement = document.getElementById('map');
-        mapElement.style.filter = 'grayscale(100%) contrast(1.1)';
-        
-        const locations = window.CAMP_MAP_SITES;
-
-        const markersBySiteId = {};
-
-        locations.forEach(location => {
-            const customIcon = L.divIcon({
-                className: 'custom-marker',
-                html: `<div style="font-size: 32px; text-align: center;">${location.icon}</div>`,
-                iconSize: [40, 40],
-                iconAnchor: [20, 40],
-                popupAnchor: [0, -40]
-            });
-
-            const marker = L.marker([location.lat, location.lng], { icon: customIcon })
-                .addTo(map)
-                .bindPopup(`
-                    <div style="text-align: center; padding: 10px;">
-                        <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">${location.name}</h3>
-                        <p style="margin: 0; font-size: 14px; color: #666;">${location.description}</p>
-                    </div>
-                `);
-            markersBySiteId[location.id] = marker;
-        });
-
-        function fitMapToLocationIds(visibleIds) {
-            if (!visibleIds.length) {
-                map.setView([35.436, 138.57], 8);
-                return;
-            }
-            if (visibleIds.length === 1) {
-                const loc = locations.find(function (l) {
-                    return l.id === visibleIds[0];
-                });
-                if (loc) map.setView([loc.lat, loc.lng], 11);
-                return;
-            }
-            const pts = visibleIds.map(function (id) {
-                const loc = locations.find(function (l) {
-                    return l.id === id;
-                });
-                return loc ? [loc.lat, loc.lng] : null;
-            }).filter(Boolean);
-            map.fitBounds(L.latLngBounds(pts).pad(0.15));
-        }
-
-        function syncMapToCards(cards, showAll) {
-            const visibleIds = [];
-            cards.forEach(function (card) {
-                if (!card.classList.contains('location-hidden')) {
-                    const sid = card.getAttribute('data-site-id');
-                    if (sid) visibleIds.push(sid);
-                }
-            });
-
-            locations.forEach(function (loc) {
-                const marker = markersBySiteId[loc.id];
-                if (!marker) return;
-                if (visibleIds.indexOf(loc.id) !== -1) {
-                    if (!map.hasLayer(marker)) marker.addTo(map);
-                } else {
-                    map.removeLayer(marker);
-                }
-            });
-
-            if (showAll) {
-                map.fitBounds(L.latLngBounds(locations.map(function (l) {
-                    return [l.lat, l.lng];
-                })).pad(0.1));
-                return;
-            }
-
-            fitMapToLocationIds(visibleIds);
-        }
-
-        // Style for custom markers
-        const style = document.createElement('style');
-        style.textContent = `
-            .custom-marker {
-                background: transparent;
-                border: none;
-            }
-        `;
-        document.head.appendChild(style);
-
-        (function initLocationFilters() {
-            var grid = document.getElementById('location-info-grid');
-            var statusEl = document.getElementById('location-filter-status');
-            var emptyEl = document.getElementById('location-empty-state');
-            var wrap = document.querySelector('.location-filter-wrap');
-            if (!grid || !statusEl || !wrap) return;
-
-            var cards = grid.querySelectorAll('.location-detail');
-            var total = cards.length;
-            var selectedTags = {};
-
-            function getCardTagSet(card) {
-                var raw = (card.getAttribute('data-tags') || '').trim();
-                if (!raw) return [];
-                return raw.split(/\s+/).filter(Boolean);
-            }
-
-            function applyFilter() {
-                var activeList = Object.keys(selectedTags).filter(function (k) {
-                    return selectedTags[k];
-                });
-                var showAll = activeList.length === 0;
-                var visible = 0;
-
-                cards.forEach(function (card) {
-                    var tags = getCardTagSet(card);
-                    var match =
-                        showAll ||
-                        activeList.every(function (t) {
-                            return tags.indexOf(t) !== -1;
-                        });
-                    if (match) {
-                        card.classList.remove('location-hidden');
-                        visible++;
-                    } else {
-                        card.classList.add('location-hidden');
-                    }
-                });
-
-                statusEl.textContent =
-                    visible === total && showAll ? 'Hiển thị ' + total + ' / ' + total + ' bãi' :
-                    'Hiển thị ' + visible + ' / ' + total + ' bãi';
-
-                if (emptyEl) {
-                    var noResults = !showAll && visible === 0;
-                    emptyEl.classList.toggle('is-visible', noResults);
-                    emptyEl.setAttribute('aria-hidden', noResults ? 'false' : 'true');
-                }
-
-                wrap.querySelectorAll('.filter-tag-btn[data-filter-tag]').forEach(function (btn) {
-                    var tag = btn.getAttribute('data-filter-tag');
-                    var on = !!selectedTags[tag];
-                    btn.classList.toggle('is-active', on);
-                    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-                });
-
-                var clearBtn = wrap.querySelector('.filter-tag-btn[data-filter-action="clear"]');
-                if (clearBtn) {
-                    var allOn = showAll;
-                    clearBtn.classList.toggle('is-active', allOn);
-                    clearBtn.setAttribute('aria-pressed', allOn ? 'true' : 'false');
-                }
-
-                syncMapToCards(cards, showAll);
-            }
-
-            wrap.addEventListener('click', function (e) {
-                var btn = e.target.closest('.filter-tag-btn');
-                if (!btn || !wrap.contains(btn)) return;
-
-                if (btn.getAttribute('data-filter-action') === 'clear') {
-                    selectedTags = {};
-                    applyFilter();
-                    return;
-                }
-
-                var tag = btn.getAttribute('data-filter-tag');
-                if (!tag) return;
-
-                if (selectedTags[tag]) {
-                    delete selectedTags[tag];
-                } else {
-                    selectedTags[tag] = true;
-                }
-                applyFilter();
-            });
-
-            applyFilter();
-        })();
-    </script>
 </body>
 </html>

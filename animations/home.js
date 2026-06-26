@@ -6,7 +6,7 @@
     'use strict';
 
     var page = document.body.getAttribute('data-page');
-    if (page !== 'home' && page !== 'about') {
+    if (page !== 'home' && page !== 'about' && page !== 'equipment') {
         return;
     }
 

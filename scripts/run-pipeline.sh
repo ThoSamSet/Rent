@@ -35,8 +35,8 @@ run_step() {
 PIPELINE_START=$(date +%s)
 PIPELINE_OK=true
 
-run_step "Lint (ESLint + HTML Validate)" npm run lint || PIPELINE_OK=false
-run_step "Build (vendor + kiểm tra file)" npm run build || PIPELINE_OK=false
+run_step "Lint (ESLint)" npm run lint || PIPELINE_OK=false
+run_step "Build (Next.js export → out/)" npm run build || PIPELINE_OK=false
 
 if [[ "$PIPELINE_OK" == "true" ]]; then
   step "Cài Playwright Chromium (nếu chưa có)"

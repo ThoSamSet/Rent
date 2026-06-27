@@ -1,25 +1,15 @@
 import Link from 'next/link';
-import SiteImage from '@/components/media/SiteImage';
+import HeroSlideshow from '@/components/home/HeroSlideshow';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 import BentoImage from '@/components/media/BentoImage';
+import { HERO_SLIDES } from '@/lib/hero/slides';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
 
 export default function EquipmentPageContent() {
   return (
     <main className="home-editorial">
       <section className="home-hero" aria-label="Dụng cụ camping Camp Nhà Thỏ">
-        <div className="home-hero__media parallax-wrap">
-          <SiteImage
-            src="/images/responsive/equipment-hero-960w.webp"
-            srcSet="/images/responsive/equipment-hero-480w.webp 480w, /images/responsive/equipment-hero-960w.webp 960w, /images/responsive/equipment-hero-1440w.webp 1440w"
-            sizes="100vw"
-            alt="Dụng cụ camping tại Camp Nhà Thỏ"
-            id="heroImg"
-            className="home-hero__img parallax-layer"
-            width={IMAGE_DIMS.heroFull.width}
-            height={IMAGE_DIMS.heroFull.height}
-            priority
-          />
-        </div>
+        <HeroSlideshow slides={HERO_SLIDES.equipment} />
         <div className="home-hero__overlay">
           <p className="home-hero__label">Dụng cụ</p>
           <h1 className="home-hero__title">Dụng cụ camping đã sẵn sàng</h1>
@@ -142,7 +132,7 @@ export default function EquipmentPageContent() {
       <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
         <Link href="/schedule" className="home-faq">
           <div className="home-faq__media">
-            <SiteImage src="/images/camping-2.webp" alt="Lịch trình camping 2N1Đ" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/camping-2.webp" alt="Lịch trình camping 2N1Đ" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">Lịch trình</p>
@@ -151,7 +141,7 @@ export default function EquipmentPageContent() {
         </Link>
         <Link href="/pricing" className="home-faq">
           <div className="home-faq__media">
-            <SiteImage src="/images/chi-phi-1.webp" alt="Chi phí và plan camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/chi-phi-1.webp" alt="Chi phí và plan camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">Chi phí</p>
@@ -160,7 +150,7 @@ export default function EquipmentPageContent() {
         </Link>
         <Link href="/faq" className="home-faq about-explore__full">
           <div className="home-faq__media">
-            <SiteImage src="/images/camping-5.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/camping-5.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">FAQ</p>

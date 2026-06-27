@@ -14,16 +14,19 @@ export default function SiteImage({
   className = '',
   id,
   priority = false,
+  eager = false,
   sizes,
   srcSet,
   decorative = false,
+  noFade = false,
   ...rest
 }) {
-  const [loaded, setLoaded] = useState(priority);
+  const [loaded, setLoaded] = useState(priority || noFade);
   const altText = decorative ? '' : alt;
   const a11y = decorative ? { 'aria-hidden': true } : {};
-  const fadeClass = `site-image--fade${loaded ? ' is-loaded' : ''}`;
+  const fadeClass = noFade ? '' : `site-image--fade${loaded ? ' is-loaded' : ''}`;
   const mergedClass = [className, fadeClass].filter(Boolean).join(' ');
+  const loadEager = priority || eager;
 
   const onLoad = useCallback(() => {
     setLoaded(true);
@@ -50,9 +53,9 @@ export default function SiteImage({
         height={height}
         className={mergedClass}
         id={id}
-        loading={priority ? 'eager' : 'lazy'}
+        loading={loadEager ? 'eager' : 'lazy'}
         decoding="async"
-        fetchPriority={priority ? 'high' : 'auto'}
+        fetchPriority={priority ? 'high' : eager ? 'low' : 'auto'}
         data-priority={priority ? 'true' : 'false'}
         onLoad={onLoad}
         {...a11y}
@@ -70,6 +73,7 @@ export default function SiteImage({
       className={mergedClass}
       id={id}
       priority={priority}
+      loading={loadEager ? 'eager' : undefined}
       sizes={sizes}
       unoptimized
       data-priority={priority ? 'true' : 'false'}

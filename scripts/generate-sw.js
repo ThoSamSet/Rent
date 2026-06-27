@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Generate sw.js with cache version for static asset repeat visits.
+ * CSS is bundled by Next.js under /_next/static/ — cached via fetch handler.
  */
 const fs = require('fs');
 const path = require('path');
@@ -14,16 +15,12 @@ const STATIC_CACHE = 'campnhatho-static-' + CACHE_VERSION;
 
 const PRECACHE_URLS = [
   '/',
-  '/index.html',
-  '/homepage.css',
-  '/fonts/be-vietnam-pro.css',
-  '/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
-  '/nav-menu.js',
-  '/promo-bar.js',
-  '/vendor/gsap.min.js',
-  '/vendor/ScrollTrigger.min.js',
-  '/images/responsive/hero-camping-1280w.webp',
   '/favicon.ico',
+  '/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
+  '/images/responsive/hero-camping-1280w.webp',
+  '/nav-menu.js',
+  '/home-map-preview.js',
+  '/locations-map-sites.js',
 ];
 
 self.addEventListener('install', function (event) {
@@ -54,7 +51,8 @@ self.addEventListener('activate', function (event) {
 
 function isCacheableAsset(url) {
   if (url.origin !== self.location.origin) return false;
-  return /\\.(css|js|webp|png|jpg|jpeg|gif|svg|woff2?|ico)$/i.test(url.pathname);
+  return /\\.(css|js|webp|png|jpg|jpeg|gif|svg|woff2?|ico)$/i.test(url.pathname)
+    || url.pathname.startsWith('/_next/static/');
 }
 
 self.addEventListener('fetch', function (event) {
@@ -100,7 +98,6 @@ self.addEventListener('fetch', function (event) {
 `;
 
 const targets = [
-  path.join(root, 'sw.js'),
   path.join(root, 'public', 'sw.js'),
 ];
 
@@ -109,4 +106,4 @@ for (const target of targets) {
   fs.writeFileSync(target, SW_SOURCE);
 }
 
-console.log(`✅ Service worker — sw.js (cache ${version})`);
+console.log(`✅ Service worker — public/sw.js (cache ${version})`);

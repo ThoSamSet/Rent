@@ -36,9 +36,9 @@ module.exports = defineConfig({
     },
   ],
   webServer: {
-    command: `node scripts/static-server.js`,
+    command: 'npm run build:pages && node scripts/static-server.js',
     url: BASE_URL,
-    reuseExistingServer: false,
-    timeout: 120_000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 300_000,
   },
 });

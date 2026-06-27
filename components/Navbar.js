@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SiteImage from '@/components/media/SiteImage';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
 import { NAV_LINKS } from '@/lib/constants';
 
@@ -8,8 +8,8 @@ export default function Navbar({ currentPath }) {
     <nav className="navbar" aria-label="Thanh điều hướng chính">
       <div className="nav-container">
         <Link href="/" className="nav-logo" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <SiteImage
-            src="/images/LogoCampNhaTho.jpg"
+          <ResponsiveImage
+            src="/images/LogoCampNhaThoBRAND.png"
             alt="Camp Nhà Thỏ"
             className="nav-logo-img"
             width={IMAGE_DIMS.logoNav.width}

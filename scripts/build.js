@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Static site "build" — vendor, fonts, responsive images, service worker, verify files.
- * No bundler; site is served as-is from the repo root.
+ * Prepare static assets (fonts, responsive images, vendor, service worker).
+ * CSS lives in styles/ and is bundled by Next.js — no root homepage.css.
  */
 const fs = require('fs');
 const path = require('path');
@@ -10,16 +10,12 @@ const { execSync } = require('child_process');
 const root = path.resolve(__dirname, '..');
 
 const requiredFiles = [
-  'index.html',
-  'homepage.css',
-  'script.js',
   'vendor/gsap.min.js',
   'vendor/ScrollTrigger.min.js',
   'images/logoTrongSuot1-512x256.png',
   'images/logoTrongSuot1-1024x512.png',
-  'fonts/be-vietnam-pro.css',
   'fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
-  'sw.js',
+  'public/sw.js',
   'home-map-preview.js',
   'images/responsive/hero-camping-1280w.webp',
   'images/responsive/about-hero-960w.webp',
@@ -27,7 +23,18 @@ const requiredFiles = [
   'images/responsive/plan-de-400w.webp',
 ];
 
-console.log('🔨 Đang chuẩn bị site tĩnh...');
+console.log('🔨 Đang chuẩn bị assets tĩnh...');
+
+const logoFiles = ['logoTrongSuot1-512x256.png', 'logoTrongSuot1-1024x512.png'];
+const publicImagesDir = path.join(root, 'public', 'images');
+fs.mkdirSync(publicImagesDir, { recursive: true });
+for (const file of logoFiles) {
+  fs.copyFileSync(path.join(root, 'images', file), path.join(publicImagesDir, file));
+}
+fs.copyFileSync(
+  path.join(root, 'images', 'LogoCampNhaThoBRAND.png'),
+  path.join(publicImagesDir, 'LogoCampNhaThoBRAND.png'),
+);
 
 const buildSteps = [
   ['postinstall', () => execSync('npm run postinstall', { cwd: root, stdio: 'inherit' })],
@@ -52,4 +59,4 @@ if (missing.length) {
   process.exit(1);
 }
 
-console.log('✅ Build xong — site sẵn sàng phục vụ tĩnh (node scripts/static-server.js hoặc npm run test:e2e)');
+console.log('✅ Assets sẵn sàng — chạy npm run build:pages để export Next.js');

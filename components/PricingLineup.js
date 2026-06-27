@@ -1,33 +1,7 @@
 import Link from 'next/link';
-import SiteImage from '@/components/media/SiteImage';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
+import { PRICING_PLANS } from '@/lib/home/pricing-plans';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
-
-const PLANS = [
-  {
-    href: '/pricing#plan-de',
-    img: '/images/responsive/plan-de-400w.webp',
-    srcSet: '/images/responsive/plan-de-400w.webp 400w, /images/responsive/plan-de-800w.webp 800w',
-    alt: 'Hạt Dẻ — tự chọn ngày và bãi, full đồ camping, không đưa đón',
-    price: '3.7',
-    name: 'plan Hạt dẻ 🌰',
-  },
-  {
-    href: '/pricing#plan-bi',
-    img: '/images/responsive/plan-bi-400w.webp',
-    srcSet: '/images/responsive/plan-bi-400w.webp 400w, /images/responsive/plan-bi-800w.webp 800w',
-    alt: 'Hạt Bí — đưa đón, lều / shelter, setup trọn gói',
-    price: '4.7',
-    name: 'plan Hạt bí 🎃',
-  },
-  {
-    href: '/pricing#plan-nho',
-    img: '/images/responsive/plan-nho-400w.webp',
-    srcSet: '/images/responsive/plan-nho-400w.webp 400w, /images/responsive/plan-nho-800w.webp 800w',
-    alt: 'Hạt Nho — bungalow, không lo mưa, đưa đón',
-    price: '5.7',
-    name: 'plan Hạt nho 🍇',
-  },
-];
 
 export default function PricingLineup() {
   return (
@@ -38,10 +12,10 @@ export default function PricingLineup() {
       </div>
       <div className="home-pricing__pin">
         <div className="home-pricing__track" tabIndex={0} aria-label="Gói camping — vuốt ngang để xem thêm">
-          {PLANS.map((plan) => (
+          {PRICING_PLANS.map((plan) => (
             <Link key={plan.href} href={plan.href} className="home-pricing__card">
               <figure className="home-pricing__card-media">
-                <SiteImage
+                <ResponsiveImage
                   src={plan.img}
                   srcSet={plan.srcSet}
                   sizes="(min-width: 640px) 380px, 75vw"

@@ -1,4 +1,3 @@
-import EditorialLayout from '@/layouts/EditorialLayout';
 import AboutPageContent from '@/components/pages/AboutPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
@@ -11,9 +10,5 @@ export const metadata = buildPageMetadata({
 });
 
 export default function AboutPage() {
-  return (
-    <EditorialLayout page="about" currentPath="/about" gsapHomeVersion="20260626b">
-      <AboutPageContent />
-    </EditorialLayout>
-  );
+  return <AboutPageContent />;
 }

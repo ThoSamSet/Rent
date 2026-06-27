@@ -26,8 +26,8 @@ function ensurePagesPublicFiles() {
 
 console.log('🔨 Build GitHub Pages (Next.js static export)...');
 
+run('node scripts/build.js');
 ensurePagesPublicFiles();
-run('node scripts/generate-sw.js');
 run('node scripts/generate-html-redirects.js');
 run('next build');
 

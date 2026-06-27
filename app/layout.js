@@ -1,9 +1,10 @@
-import '@/styles/homepage.css';
+import '@/styles/site/index.css';
 import '@/styles/motion.css';
 import '@/styles/ux.css';
 import './globals.css';
 import { beVietnamPro } from '@/lib/fonts';
 import ClientProviders from '@/components/ux/ClientProviders';
+import SiteHeader from '@/components/SiteHeader';
 
 export const metadata = {
   metadataBase: new URL('https://campnhatho.com'),
@@ -28,9 +29,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi">
+    <html lang="vi" className={beVietnamPro.variable} data-scroll-behavior="smooth">
       <body className={beVietnamPro.className}>
-        <ClientProviders>{children}</ClientProviders>
+        <ClientProviders>
+          <SiteHeader />
+          {children}
+        </ClientProviders>
       </body>
     </html>
   );

@@ -2,13 +2,15 @@
 
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import SiteScripts from '@/components/SiteScripts';
+import PageScrollReveal from '@/components/motion/PageScrollReveal';
 
-/** Client-only scripts for standard (motion.js) pages. */
-export default function StandardClientBundle({ motion = true, scripts = [] }) {
+/** Client-only scripts for standard (legacy content) pages. */
+export default function StandardClientBundle({ scripts = [] }) {
   return (
     <>
+      <PageScrollReveal />
       <GoogleAnalytics />
-      <SiteScripts motion={motion} scripts={scripts} />
+      <SiteScripts scripts={scripts} />
     </>
   );
 }

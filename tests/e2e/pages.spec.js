@@ -6,14 +6,13 @@ const path = require('path');
 /** @type {{ path: string; name: string; heading?: RegExp }[]} */
 const PAGES = [
   { path: '/', name: 'index', heading: /Camp|Nhà Thỏ|camping/i },
-  { path: '/index.html', name: 'index-html', heading: /Camp|Nhà Thỏ|camping/i },
-  { path: '/schedule.html', name: 'schedule', heading: /lịch|schedule|đặt/i },
-  { path: '/equipment.html', name: 'equipment', heading: /đồ|thiết bị|dụng cụ|equipment|camping/i },
-  { path: '/about.html', name: 'about' },
-  { path: '/pricing.html', name: 'pricing' },
-  { path: '/locations.html', name: 'locations' },
-  { path: '/faq.html', name: 'faq' },
-  { path: '/dat-lich.html', name: 'dat-lich' },
+  { path: '/schedule', name: 'schedule', heading: /lịch|schedule|đặt/i },
+  { path: '/equipment', name: 'equipment', heading: /đồ|thiết bị|dụng cụ|equipment|camping/i },
+  { path: '/about', name: 'about' },
+  { path: '/pricing', name: 'pricing' },
+  { path: '/locations', name: 'locations' },
+  { path: '/faq', name: 'faq' },
+  { path: '/dat-lich', name: 'dat-lich' },
 ];
 
 const screenshotDir = path.join(__dirname, '../../test-results/screenshots');
@@ -28,7 +27,6 @@ for (const page of PAGES) {
     pw.on('console', (msg) => {
       if (msg.type() === 'error') {
         const text = msg.text();
-        // Bỏ qua lỗi mạng/CDN phổ biến khi chạy local
         if (/favicon|google|gtag|analytics|leaflet|unpkg|fonts\.google/i.test(text)) return;
         consoleErrors.push(text);
       }
@@ -47,6 +45,12 @@ for (const page of PAGES) {
       if (await heading.count()) {
         await expect(heading).toContainText(page.heading);
       }
+    }
+
+    if (page.name === 'index') {
+      await expect(pw.locator('#pricing')).toBeVisible();
+      await expect(pw.locator('#blog')).toBeVisible();
+      await expect(pw.locator('#gallery')).toBeVisible();
     }
 
     const viewport = testInfo.project.name.includes('mobile') ? 'mobile' : 'desktop';

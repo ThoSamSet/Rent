@@ -1,6 +1,6 @@
 /**
  * Premium micro-interactions — subtle, calm, under 400ms.
- * Loaded after homepage.css; does not change layout or colors.
+ * Loaded after site CSS; does not change layout or colors.
  */
 
 :root {
@@ -29,11 +29,9 @@
 @keyframes ux-page-enter {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -48,6 +46,11 @@ body:not(.is-ui-ready) .page-enter {
 
 body.is-ui-ready .page-enter {
   animation: ux-page-enter var(--ux-duration-medium) var(--ux-ease-out) both;
+}
+
+body.is-ui-ready .page-home .page-enter {
+  animation: none;
+  opacity: 1;
 }
 
 /* ── Legacy / hydrated content reveal ─────────────────── */
@@ -83,7 +86,7 @@ body.is-ui-ready .page-enter {
 a:focus-visible,
 button:focus-visible,
 [tabindex='0']:focus-visible {
-  outline: 2px solid #0071e3;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
@@ -255,9 +258,8 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.camp-gsap body[data-page='home'] .home-section[data-reveal],
-  html.camp-gsap body[data-page='about'] .home-section[data-reveal],
-  html.camp-gsap body[data-page='equipment'] .home-section[data-reveal] {
+  .page-home .home-section[data-reveal],
+  .page-editorial .home-section[data-reveal] {
     opacity: 1 !important;
     transform: none !important;
   }

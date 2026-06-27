@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
- * Minimal static file server for Playwright E2E (127.0.0.1 only, no networkInterfaces).
+ * Static file server for Playwright E2E — serves Next.js export from out/.
  */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '..');
+const ROOT = process.env.STATIC_ROOT || path.join(root, 'out');
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = Number(process.env.PORT || 4173);
 
@@ -53,15 +54,47 @@ function sendFile(res, filePath) {
   });
 }
 
-const server = http.createServer((req, res) => {
-  let urlPath = req.url || '/';
+function resolveFilePath(urlPath) {
   if (urlPath === '/') {
-    urlPath = '/index.html';
-  } else if (urlPath.endsWith('/')) {
-    urlPath += 'index.html';
+    return safePath('/index.html');
   }
 
-  const filePath = safePath(urlPath);
+  const direct = safePath(urlPath);
+  if (!direct) {
+    return null;
+  }
+
+  if (fs.existsSync(direct) && fs.statSync(direct).isFile()) {
+    return direct;
+  }
+
+  if (urlPath.endsWith('/')) {
+    return safePath(`${urlPath}index.html`);
+  }
+
+  const htmlFallback = safePath(`${urlPath}.html`);
+  if (htmlFallback && fs.existsSync(htmlFallback) && fs.statSync(htmlFallback).isFile()) {
+    return htmlFallback;
+  }
+
+  const dirIndex = safePath(`${urlPath}/index.html`);
+  if (dirIndex && fs.existsSync(dirIndex) && fs.statSync(dirIndex).isFile()) {
+    return dirIndex;
+  }
+
+  return direct;
+}
+
+if (!fs.existsSync(ROOT)) {
+  console.error(`❌ Thư mục static không tồn tại: ${ROOT}`);
+  console.error('   Chạy npm run build:pages trước khi serve.');
+  process.exit(1);
+}
+
+const server = http.createServer((req, res) => {
+  const urlPath = req.url || '/';
+  const filePath = resolveFilePath(urlPath);
+
   if (!filePath) {
     res.writeHead(403);
     res.end('Forbidden');
@@ -83,7 +116,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  process.stdout.write(`Static server http://${HOST}:${PORT}\n`);
+  process.stdout.write(`Static server http://${HOST}:${PORT} → ${ROOT}\n`);
 });
 
 function shutdown() {

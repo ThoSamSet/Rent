@@ -1,10 +1,10 @@
-import SiteImage from '@/components/media/SiteImage';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
 
 /** Decorative bento card image — alt empty, dimensions for CLS. */
 export default function BentoImage({ src }) {
   return (
-    <SiteImage
+    <ResponsiveImage
       src={src}
       alt=""
       decorative

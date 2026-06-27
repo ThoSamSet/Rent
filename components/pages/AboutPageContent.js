@@ -1,29 +1,22 @@
 import Link from 'next/link';
+import HeroLogo from '@/components/home/HeroLogo';
+import HeroSlideshow from '@/components/home/HeroSlideshow';
 import PricingLineup from '@/components/PricingLineup';
-import SiteImage from '@/components/media/SiteImage';
+import ResponsiveImage from '@/components/media/ResponsiveImage';
 import BentoImage from '@/components/media/BentoImage';
+import { HERO_SLIDES } from '@/lib/hero/slides';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
 
 export default function AboutPageContent() {
   return (
     <main className="home-editorial">
       <section className="home-hero" aria-label="Giới thiệu Camp Nhà Thỏ">
-        <div className="home-hero__media parallax-wrap">
-          <SiteImage
-            src="/images/responsive/about-hero-960w.webp"
-            srcSet="/images/responsive/about-hero-480w.webp 480w, /images/responsive/about-hero-960w.webp 960w, /images/responsive/about-hero-1440w.webp 1440w"
-            sizes="100vw"
-            alt="Camp Nhà Thỏ — share đồ camping Phú Sĩ"
-            id="heroImg"
-            className="home-hero__img parallax-layer"
-            width={IMAGE_DIMS.heroFull.width}
-            height={IMAGE_DIMS.heroFull.height}
-            priority
-          />
-        </div>
+        <HeroSlideshow slides={HERO_SLIDES.about} />
         <div className="home-hero__overlay">
           <p className="home-hero__label">Giới thiệu</p>
-          <h1 className="home-hero__title">Camp Nhà Thỏ</h1>
+          <h1 className="home-hero__title home-hero__logo-wrap">
+            <HeroLogo priority />
+          </h1>
           <p className="home-hero__subtitle">Chuyến đi của bạn, nhịp chill của bạn</p>
           <div className="about-hero__actions">
             <Link href="/schedule" className="btn-outline">
@@ -131,7 +124,7 @@ export default function AboutPageContent() {
       <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
         <Link href="/pricing" className="home-faq">
           <div className="home-faq__media">
-            <SiteImage src="/images/chi-phi-1.webp" alt="Chi phí và plan camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/chi-phi-1.webp" alt="Chi phí và plan camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">Chi phí</p>
@@ -140,7 +133,7 @@ export default function AboutPageContent() {
         </Link>
         <Link href="/equipment" className="home-faq">
           <div className="home-faq__media">
-            <SiteImage src="/images/equipment-tent.jpg" alt="Dụng cụ camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/equipment-tent.jpg" alt="Dụng cụ camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">Dụng cụ</p>
@@ -149,7 +142,7 @@ export default function AboutPageContent() {
         </Link>
         <Link href="/faq" className="home-faq about-explore__full">
           <div className="home-faq__media">
-            <SiteImage src="/images/camping-5.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/camping-5.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">FAQ</p>

@@ -1,4 +1,3 @@
-import EditorialLayout from '@/layouts/EditorialLayout';
 import EquipmentPageContent from '@/components/pages/EquipmentPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
@@ -11,9 +10,5 @@ export const metadata = buildPageMetadata({
 });
 
 export default function EquipmentPage() {
-  return (
-    <EditorialLayout page="equipment" currentPath="/equipment" gsapHomeVersion="20260626c">
-      <EquipmentPageContent />
-    </EditorialLayout>
-  );
+  return <EquipmentPageContent />;
 }

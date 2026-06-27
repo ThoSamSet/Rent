@@ -10,21 +10,26 @@ export default function HeroSlideshow({ slides }) {
 
   return (
     <>
-      <div className="home-hero__media parallax-wrap home-hero__slideshow" data-hero-slideshow>
+      <div className="home-hero__media home-hero__slideshow" data-hero-slideshow>
         {slides.map(({ baseName, widths, alt }, index) => {
           const defaultWidth = widths[Math.min(1, widths.length - 1)];
           return (
-            <div key={baseName} className="home-hero__slide" aria-hidden={index === 0 ? undefined : true}>
+            <div
+              key={baseName}
+              className={`home-hero__slide${index === 0 ? ' is-active' : ''}`}
+              aria-hidden={index === 0 ? undefined : true}
+            >
               <ResponsiveImage
                 src={responsiveSrc(baseName, defaultWidth)}
                 srcSet={buildSrcSet(baseName, widths)}
                 sizes="100vw"
                 alt={alt}
-                className="home-hero__slide-img parallax-layer"
+                className="home-hero__slide-img"
                 width={IMAGE_DIMS.heroFull.width}
                 height={IMAGE_DIMS.heroFull.height}
                 priority={index === 0}
-                eager={index === 1}
+                eager={index > 0}
+                decoding="sync"
               />
             </div>
           );

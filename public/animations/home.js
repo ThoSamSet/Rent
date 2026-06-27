@@ -68,7 +68,7 @@
         var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
         if (media) {
-            tl.from(media, { opacity: 0, scale: 1.04, duration: 1.1 }, 0.1);
+            tl.from(media, { scale: 1.04, duration: 1.1 }, 0.1);
         }
         if (label) {
             tl.from(label, { opacity: 0, y: 16, duration: 0.65 }, 0.4);

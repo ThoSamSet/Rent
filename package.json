@@ -2,18 +2,26 @@
   "name": "campnhatho-rent",
   "private": true,
   "scripts": {
-    "postinstall": "mkdir -p vendor && cp node_modules/gsap/dist/gsap.min.js vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js vendor/",
-    "lint": "npm run lint:js && npm run lint:html",
-    "lint:js": "eslint \"*.js\" \"animations/**/*.js\"",
+    "postinstall": "mkdir -p vendor public/vendor && cp node_modules/gsap/dist/gsap.min.js vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js vendor/ && cp node_modules/gsap/dist/gsap.min.js public/vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js public/vendor/",
+    "dev": "next dev",
+    "lint": "npm run lint:js && npm run lint:html && npm run lint:next",
+    "lint:js": "eslint \"*.js\" \"animations/**/*.js\" \"lib/constants.js\"",
     "lint:html": "html-validate \"*.html\" \"blog/**/*.html\"",
-    "build": "node scripts/build.js",
+    "lint:next": "eslint app/ components/ layouts/ lib/",
+    "build:legacy": "node scripts/build.js",
+    "build:next": "node scripts/generate-html-redirects.js && next build",
+    "build": "npm run build:legacy && npm run build:next",
+    "start": "next start",
     "test:e2e": "playwright test",
     "test:report": "node scripts/generate-report.js",
     "test:full": "bash scripts/run-pipeline.sh",
     "playwright:install": "playwright install chromium"
   },
   "dependencies": {
-    "gsap": "^3.15.0"
+    "gsap": "^3.15.0",
+    "next": "^16.2.9",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@fontsource/be-vietnam-pro": "^5.2.8",

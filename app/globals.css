@@ -1,0 +1,10 @@
+/* Step 1: minimal global reset. Full styles imported per-page in Step 2. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}

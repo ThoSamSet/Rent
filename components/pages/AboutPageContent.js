@@ -28,7 +28,12 @@ export default function AboutPageContent() {
 
       <section className="about-bento home-section" data-reveal aria-label="Về Camp Nhà Thỏ">
         <div className="about-bento__grid">
-          <article className="about-bento__card about-bento__card--model" aria-labelledby="about-share-title">
+          <article
+            className="about-bento__card about-bento__card--model"
+            aria-labelledby="about-share-title"
+            tabIndex={0}
+            aria-expanded="false"
+          >
             <div className="about-bento__media">
               <BentoImage src="/images/about-1.webp" />
             </div>
@@ -38,75 +43,120 @@ export default function AboutPageContent() {
                 Không phải cho thuê, <br />
                 mà là chia sẻ
               </h2>
-              <p className="about-bento__text">
-                Chia sẻ đồ camping và hỗ trợ trọn gói <br />
-                Chúng mình lo đưa đón, setup; bạn chỉ cần chill.
-              </p>
+              <div className="about-bento__detail">
+                <div className="about-bento__detail-inner">
+                  <p className="about-bento__text">
+                    Chia sẻ đồ camping và hỗ trợ trọn gói — chúng mình lo đưa đón, setup; bạn chỉ cần chill.
+                  </p>
+                </div>
+              </div>
             </div>
+            <span className="about-bento__hint" aria-hidden="true">
+              +
+            </span>
           </article>
-          <article className="about-bento__card about-bento__card--setup" aria-labelledby="about-setup-title">
-            <div className="about-bento__media">
-              <BentoImage src="/images/dung-cu-1.webp" />
-            </div>
+          <article
+            className="about-bento__card about-bento__card--setup about-bento__card--no-media"
+            aria-labelledby="about-setup-title"
+            tabIndex={0}
+            aria-expanded="false"
+          >
             <div className="about-bento__copy">
-              <p className="home-section__label">Khác biệt</p>
               <h3 className="about-bento__title" id="about-setup-title">
+                <span className="about-bento__icon" aria-hidden="true">
+                  🎒
+                </span>
                 Đồ &amp; setup
               </h3>
-              <p className="about-bento__text">
-                Đầy đủ gear camping <br /> setup và thu dọn <br />
-                không cần tự chuẩn bị gì thêm.
-              </p>
+              <div className="about-bento__detail">
+                <div className="about-bento__detail-inner">
+                  <p className="about-bento__text">
+                    Đầy đủ gear camping, setup và thu dọn — không cần tự chuẩn bị gì thêm.
+                  </p>
+                </div>
+              </div>
             </div>
+            <span className="about-bento__hint" aria-hidden="true">
+              +
+            </span>
           </article>
-          <article className="about-bento__card about-bento__card--pickup" aria-labelledby="about-pickup-title">
-            <div className="about-bento__media">
-              <BentoImage src="/images/dua-don-1.webp" />
-            </div>
+          <article
+            className="about-bento__card about-bento__card--pickup about-bento__card--no-media"
+            aria-labelledby="about-pickup-title"
+            tabIndex={0}
+            aria-expanded="false"
+          >
             <div className="about-bento__copy">
-              <p className="home-section__label">Khác biệt</p>
               <h3 className="about-bento__title" id="about-pickup-title">
+                <span className="about-bento__icon" aria-hidden="true">
+                  🚐
+                </span>
                 Đưa đón
               </h3>
-              <p className="about-bento__text">
-                Đón tận nơi, đi riêng <br />
-                không ghép khách.
-              </p>
+              <div className="about-bento__detail">
+                <div className="about-bento__detail-inner">
+                  <p className="about-bento__text">Đón tận nơi, đi riêng — không ghép khách.</p>
+                </div>
+              </div>
             </div>
+            <span className="about-bento__hint" aria-hidden="true">
+              +
+            </span>
           </article>
-          <article className="about-bento__card about-bento__card--chill" aria-labelledby="about-chill-title">
+          <article
+            className="about-bento__card about-bento__card--chill"
+            aria-labelledby="about-chill-title"
+            tabIndex={0}
+            aria-expanded="false"
+          >
             <div className="about-bento__media">
               <BentoImage src="/images/chill-chup-anh-1.webp" />
             </div>
             <div className="about-bento__copy">
-              <p className="home-section__label">Khác biệt</p>
               <h3 className="about-bento__title" id="about-chill-title">
                 Chill &amp; chụp ảnh
               </h3>
-              <p className="about-bento__text">Tự do ăn chơi, hỗ trợ chụp hình kỷ niệm.</p>
+              <div className="about-bento__detail">
+                <div className="about-bento__detail-inner">
+                  <p className="about-bento__text">Tự do ăn chơi, hỗ trợ chụp hình kỷ niệm.</p>
+                </div>
+              </div>
             </div>
+            <span className="about-bento__hint" aria-hidden="true">
+              +
+            </span>
           </article>
-          <article className="about-bento__card about-bento__card--audience" aria-labelledby="about-audience-title">
-            <div className="about-bento__media">
-              <BentoImage src="/images/doi-tuong-1.webp" />
-            </div>
+          <article
+            className="about-bento__card about-bento__card--audience about-bento__card--no-media"
+            aria-labelledby="about-audience-title"
+            tabIndex={0}
+            aria-expanded="false"
+          >
             <div className="about-bento__copy">
               <p className="home-section__label">Đối tượng</p>
               <h3 className="about-bento__title" id="about-audience-title">
                 Dành cho ai?
               </h3>
-              <ul className="about-bento__list">
-                <li>
-                  <span aria-hidden="true">🌿</span> Lần đầu camping / chưa có đồ
-                </li>
-                <li>
-                  <span aria-hidden="true">👥</span> Nhóm nhỏ, couple, gia đình
-                </li>
-                <li>
-                  <span aria-hidden="true">⏰</span> Bận rộn, không muốn tự chuẩn bị
-                </li>
-              </ul>
+              <p className="about-bento__tags">Lần đầu · Nhóm nhỏ · Bận rộn</p>
+              <div className="about-bento__detail">
+                <div className="about-bento__detail-inner">
+                  <ul className="about-bento__list">
+                    <li>
+                      <span aria-hidden="true">🌿</span> Lần đầu camping / chưa có đồ
+                    </li>
+                    <li>
+                      <span aria-hidden="true">👥</span> Nhóm nhỏ, couple, gia đình
+                    </li>
+                    <li>
+                      <span aria-hidden="true">⏰</span> Bận rộn, không muốn tự chuẩn bị
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+            <span className="about-bento__hint" aria-hidden="true">
+              +
+            </span>
           </article>
         </div>
       </section>

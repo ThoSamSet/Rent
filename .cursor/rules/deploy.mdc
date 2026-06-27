@@ -5,26 +5,23 @@ alwaysApply: false
 
 # Deploy — GitHub Pages (Camp Nhà Thỏ)
 
-Hosting: **GitHub Pages** — deploy = **push lên git**. GitHub phục vụ file tĩnh từ repo; **không** có bước build trên server.
+Hosting: **GitHub Pages** với **GitHub Actions** — deploy tự động khi push `main`.
 
-Khi user nhờ **deploy**, **push production**, **publish**, hoặc tương đương — **tự động thực hiện** theo thứ tự:
+Custom domain: `campnhatho.com` (file `CNAME` → `public/CNAME` → `out/CNAME`).
 
-## 1. Build site tĩnh (bắt buộc)
+## 1. Build production (local verify)
 
 ```bash
-npm run build
+npm run build:pages
 ```
 
-Tạo/verify artifact phải có trong repo trước push:
+Tạo artifact trong `out/` (Next.js static export). Kiểm tra:
 
-- `vendor/` — GSAP + ScrollTrigger
-- `fonts/` — Be Vietnam Pro self-hosted
-- `images/responsive/` — WebP srcset
-- `sw.js` — service worker
+- `out/index.html`, `out/_next/`
+- `out/CNAME`, `out/.nojekyll`
+- `out/sw.js`, redirect `.html` stubs
 
-**Không push** nếu build fail hoặc thiếu file trong `scripts/build.js` → `requiredFiles`.
-
-## 2. Pipeline QA (bắt buộc)
+## 2. Pipeline QA (trước khi push)
 
 ```bash
 npm run test:full
@@ -32,30 +29,25 @@ npm run test:full
 
 Pass: lint + build + Playwright. Fail → sửa, chạy lại, **chưa push**.
 
-## 3. Commit artifact generated (bắt buộc cho GitHub Pages)
-
-Vì Pages **không chạy** `npm run build`, mọi file build **phải commit** cùng thay đổi nguồn:
-
-- `fonts/**`
-- `images/responsive/**`
-- `sw.js`
-- (+ HTML/CSS/JS/images nguồn đã sửa)
-
-Stage các file liên quan; commit message mô tả ngắn gọn thay đổi.
-
-## 4. Push lên git (= deploy)
+## 3. Push lên git (= trigger deploy)
 
 ```bash
-git push origin <branch>
+git push origin main
 ```
 
-Branch deploy thường là `main`/`master` (hoặc `gh-pages` nếu project cấu hình vậy — kiểm tra Settings → Pages).
+Workflow `.github/workflows/deploy.yml` sẽ:
+
+1. `npm ci` + `npm run build:pages`
+2. Upload `out/` → GitHub Pages
+
+**Lần đầu:** Settings → Pages → Source = **GitHub Actions**.
 
 - Chỉ push khi user **yêu cầu rõ** deploy/commit
 - **Không** force-push `main`/`master`
-- Sau push, site cập nhật sau vài phút (GitHub Pages propagate)
+- Site cập nhật sau vài phút (GitHub Pages propagate)
 
 ## Ghi chú
 
-- Service worker (`sw.js`) chỉ hoạt động trên **HTTPS** — GitHub Pages (`*.github.io` hoặc custom domain) OK
-- Preload/srcset trong HTML trỏ path tương đối — phù hợp GitHub Pages root deploy
+- `out/` **không commit** — CI build mỗi lần deploy
+- `GITHUB_PAGES_BASE_PATH` để trống (custom domain root)
+- Service worker (`sw.js`) chỉ hoạt động trên **HTTPS** — GitHub Pages OK

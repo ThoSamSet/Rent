@@ -99,5 +99,14 @@ self.addEventListener('fetch', function (event) {
 });
 `;
 
-fs.writeFileSync(path.join(root, 'sw.js'), SW_SOURCE);
+const targets = [
+  path.join(root, 'sw.js'),
+  path.join(root, 'public', 'sw.js'),
+];
+
+for (const target of targets) {
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, SW_SOURCE);
+}
+
 console.log(`✅ Service worker — sw.js (cache ${version})`);

@@ -10,6 +10,7 @@
     "lint:next": "eslint app/ components/ layouts/ lib/",
     "build:legacy": "node scripts/build.js",
     "build:next": "node scripts/generate-html-redirects.js && next build",
+    "build:pages": "node scripts/build-pages.js",
     "build": "npm run build:legacy && npm run build:next",
     "start": "next start",
     "test:e2e": "playwright test",

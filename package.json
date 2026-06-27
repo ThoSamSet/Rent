@@ -9,6 +9,7 @@
     "lint:html": "html-validate \"public/**/*.html\"",
     "lint:next": "eslint app/ components/ layouts/ lib/",
     "build:assets": "node scripts/build.js",
+    "process:images": "node scripts/process-source-images.js && node scripts/generate-responsive-images.js",
     "build:next": "node scripts/generate-html-redirects.js && next build",
     "build:pages": "node scripts/build-pages.js",
     "build": "npm run build:pages",

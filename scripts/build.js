@@ -25,20 +25,10 @@ const requiredFiles = [
 
 console.log('🔨 Đang chuẩn bị assets tĩnh...');
 
-const logoFiles = ['logoTrongSuot1-512x256.png', 'logoTrongSuot1-1024x512.png'];
-const publicImagesDir = path.join(root, 'public', 'images');
-fs.mkdirSync(publicImagesDir, { recursive: true });
-for (const file of logoFiles) {
-  fs.copyFileSync(path.join(root, 'images', file), path.join(publicImagesDir, file));
-}
-fs.copyFileSync(
-  path.join(root, 'images', 'LogoCampNhaThoBRAND.png'),
-  path.join(publicImagesDir, 'LogoCampNhaThoBRAND.png'),
-);
-
 const buildSteps = [
   ['postinstall', () => execSync('npm run postinstall', { cwd: root, stdio: 'inherit' })],
   ['setup-fonts', () => execSync('node scripts/setup-fonts.js', { cwd: root, stdio: 'inherit' })],
+  ['source-images', () => execSync('node scripts/process-source-images.js', { cwd: root, stdio: 'inherit' })],
   ['responsive-images', () => execSync('node scripts/generate-responsive-images.js', { cwd: root, stdio: 'inherit' })],
   ['service-worker', () => execSync('node scripts/generate-sw.js', { cwd: root, stdio: 'inherit' })],
 ];

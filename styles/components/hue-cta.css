@@ -1,0 +1,85 @@
+/* Gradient hover CTA — shared with phương châm chips (nav warm, page footer dusk) */
+
+.hue-cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0a0a0a;
+    color: #ffffff;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.hue-cta::before,
+.hue-cta::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hue-cta::before {
+    inset: -40%;
+    z-index: -2;
+    filter: blur(28px);
+    transform: scale(1.05);
+}
+
+.hue-cta::after {
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.28);
+}
+
+/* Gần gũi — coral + amber + rose (nav) */
+.hue-cta--warm::before {
+    background:
+        radial-gradient(circle at 22% 35%, #e8836a 0%, transparent 54%),
+        radial-gradient(circle at 78% 68%, #f4c542 0%, transparent 50%),
+        radial-gradient(circle at 48% 85%, #e8a0b4 0%, transparent 56%),
+        radial-gradient(circle at 70% 25%, #f0a878 0%, transparent 46%);
+}
+
+/* Nghỉ ngơi đúng nghĩa — indigo + teal + plum (footer CTA) */
+.hue-cta--dusk::before {
+    background:
+        radial-gradient(circle at 25% 32%, #5b6b9a 0%, transparent 54%),
+        radial-gradient(circle at 75% 68%, #4a9090 0%, transparent 50%),
+        radial-gradient(circle at 50% 88%, #8b6b8e 0%, transparent 56%),
+        radial-gradient(circle at 68% 28%, #6a8a9a 0%, transparent 46%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hue-cta:is(:hover, :focus-visible)::before,
+    .hue-cta:is(:hover, :focus-visible)::after {
+        opacity: 1;
+    }
+
+    .hue-cta:is(:hover, :focus-visible) {
+        background: transparent;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .hue-cta:active::before,
+    .hue-cta:active::after {
+        opacity: 1;
+    }
+
+    .hue-cta:active {
+        background: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hue-cta::before {
+        transform: none;
+    }
+
+    .hue-cta::before,
+    .hue-cta::after {
+        transition-duration: 0.15s;
+    }
+}

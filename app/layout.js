@@ -1,6 +1,7 @@
 import '@/styles/site/index.css';
 import '@/styles/motion.css';
 import '@/styles/ux.css';
+import '@/styles/components/hue-cta.css';
 import './globals.css';
 import { beVietnamPro } from '@/lib/fonts';
 import ClientProviders from '@/components/ux/ClientProviders';

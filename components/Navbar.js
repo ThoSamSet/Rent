@@ -18,7 +18,7 @@ export default function Navbar({ currentPath }) {
           />
         </Link>
         <div className="nav-actions">
-          <Link href="/dat-lich" className="nav-cta">
+          <Link href="/dat-lich" className="nav-cta hue-cta hue-cta--warm">
             Đặt lịch
           </Link>
           <button

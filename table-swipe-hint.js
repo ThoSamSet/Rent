@@ -1,6 +1,6 @@
 (function () {
     var HINT_SELECTOR = '.table-swipe-hint, .schedule-swipe-hint';
-    var WRAPPER_SELECTOR = '.schedule-table-wrapper, .pricing-table-wrapper, .comparison-table-wrap';
+    var WRAPPER_SELECTOR = '.schedule-table-wrapper, .pricing-table-wrapper, .comparison-table-wrap, .about-comparison__wrap';
 
     function initTableSwipeHints() {
         document.querySelectorAll(HINT_SELECTOR).forEach(function (hint) {

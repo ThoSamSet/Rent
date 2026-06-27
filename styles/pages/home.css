@@ -39,15 +39,15 @@
 }
 
 .page-home .btn-primary,
-.page-home .btn-hero,
-.page-home .nav-cta {
+.page-home .btn-hero:not(.hue-cta),
+.page-home .nav-cta:not(.hue-cta) {
     background: var(--color-accent);
     color: #fff;
 }
 
 .page-home .btn-primary:hover,
-.page-home .btn-hero:hover,
-.page-home .nav-cta:hover {
+.page-home .btn-hero:not(.hue-cta):hover,
+.page-home .nav-cta:not(.hue-cta):hover {
     background: var(--color-accent-hover);
 }
 

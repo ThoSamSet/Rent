@@ -57,7 +57,7 @@ export default function SiteHeader() {
             />
           </Link>
           <div className="nav-actions">
-            <Link href="/dat-lich" className="nav-cta">
+            <Link href="/dat-lich" className="nav-cta hue-cta hue-cta--warm">
               Đặt lịch
             </Link>
             <button

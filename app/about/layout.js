@@ -8,7 +8,7 @@ export default function AboutLayout({ children }) {
     <div className="page-editorial page-about">
       {children}
       <Footer />
-      <EditorialClientEffects />
+      <EditorialClientEffects scripts={['/table-swipe-hint.js']} />
     </div>
   );
 }

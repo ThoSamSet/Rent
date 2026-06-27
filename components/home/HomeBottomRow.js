@@ -17,7 +17,7 @@ export default function HomeBottomRow() {
       <Link href="/faq" className="home-faq">
         <div className="home-faq__media">
           <ResponsiveImage
-            src="/images/camping-6.webp"
+            src="/images/subBanner-faq.webp"
             alt="FAQ — câu hỏi thường gặp"
             width={IMAGE_DIMS.faqTile.width}
             height={IMAGE_DIMS.faqTile.height}

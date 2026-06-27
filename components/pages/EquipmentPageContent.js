@@ -132,11 +132,11 @@ export default function EquipmentPageContent() {
       <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
         <Link href="/schedule" className="home-faq">
           <div className="home-faq__media">
-            <ResponsiveImage src="/images/camping-2.webp" alt="Lịch trình camping 2N1Đ" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/subBanner-lich-trinh.webp" alt="Lịch trình camping — kiểm tra lịch trống sắp tới" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">Lịch trình</p>
-            <h2 className="home-section__title">2 ngày 1 đêm</h2>
+            <h2 className="home-section__title">Kiểm tra lịch trống sắp tới</h2>
           </div>
         </Link>
         <Link href="/pricing" className="home-faq">
@@ -150,7 +150,7 @@ export default function EquipmentPageContent() {
         </Link>
         <Link href="/faq" className="home-faq about-explore__full">
           <div className="home-faq__media">
-            <ResponsiveImage src="/images/camping-5.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+            <ResponsiveImage src="/images/subBanner-faq.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
           </div>
           <div className="home-faq__copy">
             <p className="home-section__label">FAQ</p>
@@ -163,7 +163,7 @@ export default function EquipmentPageContent() {
         <h2 className="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
         <p className="about-cta__tagline">Share đồ – Đi riêng – Trải nghiệm</p>
         <div className="about-cta__actions">
-          <Link href="/dat-lich" className="btn-hero">
+          <Link href="/dat-lich" className="btn-hero hue-cta hue-cta--dusk">
             Đặt lịch
           </Link>
         </div>

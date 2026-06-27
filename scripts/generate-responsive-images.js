@@ -34,6 +34,23 @@ function basenameNoExt(filePath) {
   return path.basename(filePath, path.extname(filePath));
 }
 
+const SOURCE_EXTS = ['.webp', '.jpg', '.jpeg', '.png'];
+
+/** Resolve images/{base}.webp|jpg|jpeg|png — prefer WebP after process-source-images. */
+function resolveSourcePath(relativeSrc) {
+  const dir = path.dirname(relativeSrc);
+  const base = basenameNoExt(relativeSrc);
+
+  for (const ext of SOURCE_EXTS) {
+    const candidate = path.join(root, dir, `${base}${ext}`);
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return path.join(root, relativeSrc);
+}
+
 async function ensureVariant(sourcePath, width, destPath) {
   if (fs.existsSync(destPath)) {
     const sourceMtime = fs.statSync(sourcePath).mtimeMs;
@@ -60,9 +77,9 @@ async function main() {
   let skipped = 0;
 
   for (const { src, widths } of IMAGE_SETS) {
-    const sourcePath = path.join(root, src);
+    const sourcePath = resolveSourcePath(src);
     if (!fs.existsSync(sourcePath)) {
-      console.error(`❌ Không tìm thấy ảnh nguồn: ${src}`);
+      console.error(`❌ Không tìm thấy ảnh nguồn: ${src} (đã thử ${SOURCE_EXTS.join(', ')})`);
       process.exit(1);
     }
 

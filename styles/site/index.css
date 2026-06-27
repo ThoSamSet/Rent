@@ -130,8 +130,6 @@ img {
 }
 
 .nav-cta {
-    background: var(--color-accent);
-    color: #ffffff;
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 500;
@@ -141,7 +139,12 @@ img {
     transition: background 0.3s ease;
 }
 
-.nav-cta:hover {
+.nav-cta:not(.hue-cta) {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+.nav-cta:not(.hue-cta):hover {
     background: var(--color-accent-hover);
 }
 
@@ -372,8 +375,6 @@ html.nav-menu-open .navbar {
 
 .btn-hero {
     display: inline-block;
-    background: var(--color-accent);
-    color: white;
     padding: 14px 28px;
     border-radius: 25px;
     text-decoration: none;
@@ -382,7 +383,12 @@ html.nav-menu-open .navbar {
     transition: background 0.3s, transform 0.2s;
 }
 
-.btn-hero:hover {
+.btn-hero:not(.hue-cta) {
+    background: var(--color-accent);
+    color: white;
+}
+
+.btn-hero:not(.hue-cta):hover {
     background: var(--color-accent-hover);
     transform: translateY(-2px);
 }

@@ -109,3 +109,22 @@
         }
     });
 })();
+
+(function registerServiceWorker() {
+    'use strict';
+
+    if (!('serviceWorker' in navigator)) {
+        return;
+    }
+
+    var isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (location.protocol !== 'https:' && !isLocalhost) {
+        return;
+    }
+
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').catch(function () {
+            /* SW optional */
+        });
+    });
+})();

@@ -10,6 +10,7 @@ export default [
       'playwright.config.js',
       'scripts/**',
       'tests/**',
+      'sw.js',
     ],
   },
   {

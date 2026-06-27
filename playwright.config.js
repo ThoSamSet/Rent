@@ -36,9 +36,9 @@ module.exports = defineConfig({
     },
   ],
   webServer: {
-    command: `npx serve . -l ${PORT} --no-request-logging`,
+    command: `node scripts/static-server.js`,
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });

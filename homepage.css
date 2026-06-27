@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('fonts/be-vietnam-pro.css');
 
 /* Reset & Base Styles */
 * {
@@ -4284,6 +4284,7 @@ body[data-page="home"] .home-gallery__strip::-webkit-scrollbar-thumb {
 }
 
 body[data-page="home"] .home-gallery__item {
+    position: relative;
     flex: 0 0 auto;
     width: clamp(220px, 28vw, 360px);
     margin: 0;
@@ -4292,7 +4293,7 @@ body[data-page="home"] .home-gallery__item {
     aspect-ratio: 3 / 4;
 }
 
-body[data-page="home"] .home-gallery__item img {
+body[data-page="home"] .home-gallery__item img:not(.home-gallery__brand) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -4300,8 +4301,20 @@ body[data-page="home"] .home-gallery__item img {
     transition: transform 0.4s ease;
 }
 
-body[data-page="home"] .home-gallery__item:hover img {
+body[data-page="home"] .home-gallery__item:hover img:not(.home-gallery__brand) {
     transform: scale(1.04);
+}
+
+body[data-page="home"] .home-gallery__brand {
+    position: absolute;
+    right: clamp(8px, 1.5vw, 12px);
+    bottom: clamp(8px, 1.5vw, 12px);
+    width: 33.333%;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+    display: block;
 }
 
 /* Map + FAQ bottom */

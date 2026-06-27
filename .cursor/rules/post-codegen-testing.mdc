@@ -15,7 +15,7 @@ npm run test:full
 ## Thứ tự pipeline
 
 1. **Lint** — `eslint` (JS) + `html-validate` (HTML)
-2. **Build** — copy GSAP vào `vendor/`, kiểm tra file bắt buộc
+2. **Build** — GSAP `vendor/`, fonts self-host, ảnh responsive `images/responsive/`, `sw.js`, kiểm tra file bắt buộc
 3. **Playwright** — E2E + chụp màn hình desktop & mobile
 4. **Báo cáo** — `test-results/report.md`
 
@@ -35,5 +35,5 @@ npm run test:full
 
 ## Ghi chú
 
-- Site tĩnh, không có bundler — phục vụ bằng `serve` trong Playwright
+- Site tĩnh — Playwright dùng `node scripts/static-server.js` (port 4173)
 - Báo cáo dùng tiếng Việt trong script output

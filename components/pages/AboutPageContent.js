@@ -56,16 +56,16 @@ export default function AboutPageContent() {
             </span>
           </article>
           <article
-            className="about-bento__card about-bento__card--setup about-bento__card--no-media"
+            className="about-bento__card about-bento__card--setup"
             aria-labelledby="about-setup-title"
             tabIndex={0}
             aria-expanded="false"
           >
+            <div className="about-bento__media">
+              <BentoImage src="/images/dung-cu-1.webp" />
+            </div>
             <div className="about-bento__copy">
               <h3 className="about-bento__title" id="about-setup-title">
-                <span className="about-bento__icon" aria-hidden="true">
-                  🎒
-                </span>
                 Đồ &amp; setup
               </h3>
               <div className="about-bento__detail">
@@ -81,16 +81,16 @@ export default function AboutPageContent() {
             </span>
           </article>
           <article
-            className="about-bento__card about-bento__card--pickup about-bento__card--no-media"
+            className="about-bento__card about-bento__card--pickup"
             aria-labelledby="about-pickup-title"
             tabIndex={0}
             aria-expanded="false"
           >
+            <div className="about-bento__media">
+              <BentoImage src="/images/dua-don-1.webp" />
+            </div>
             <div className="about-bento__copy">
               <h3 className="about-bento__title" id="about-pickup-title">
-                <span className="about-bento__icon" aria-hidden="true">
-                  🚐
-                </span>
                 Đưa đón
               </h3>
               <div className="about-bento__detail">
@@ -127,11 +127,14 @@ export default function AboutPageContent() {
             </span>
           </article>
           <article
-            className="about-bento__card about-bento__card--audience about-bento__card--no-media"
+            className="about-bento__card about-bento__card--audience"
             aria-labelledby="about-audience-title"
             tabIndex={0}
             aria-expanded="false"
           >
+            <div className="about-bento__media">
+              <BentoImage src="/images/doi-tuong-1.webp" />
+            </div>
             <div className="about-bento__copy">
               <p className="home-section__label">Đối tượng</p>
               <h3 className="about-bento__title" id="about-audience-title">

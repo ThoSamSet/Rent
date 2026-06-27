@@ -316,7 +316,7 @@ body:has(.page-editorial) .navbar:not(.navbar--scrolled) .burger-menu__line {
 .page-editorial .about-bento__card--audience ,
 .page-editorial .about-bento__card--audience {
     grid-column: 1 / -1;
-    min-height: clamp(180px, 22vw, 260px);
+    min-height: clamp(240px, 28vw, 320px);
 }
 
 .page-editorial .about-bento__media ,

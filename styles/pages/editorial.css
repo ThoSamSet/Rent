@@ -1271,182 +1271,86 @@ html.camp-gsap .page-editorial .home-gallery__item {
 }
 
 /* ==========================================================================
-   Equipment page — bento grid (categories)
+   Equipment page — category sections
    ========================================================================== */
 
-.page-editorial .equipment-bento {
-    margin-top: var(--home-card-gap);
-    padding: clamp(32px, 6vw, 64px) 0;
+.page-editorial .equipment-category .about-block__header {
+    margin-bottom: clamp(20px, 3vw, 32px);
 }
 
-.page-editorial .equipment-bento__grid {
+.page-editorial .equipment-gallery__item {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: minmax(200px, auto);
-    gap: var(--home-card-gap);
+    grid-template-rows: minmax(0, 2fr) minmax(0, 1fr);
 }
 
-.page-editorial .equipment-bento__card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: clamp(220px, 28vw, 280px);
-    overflow: hidden;
-    background: var(--color-dark);
-}
-
-.page-editorial .equipment-bento__card--intro {
-    grid-column: span 2;
-    grid-row: span 2;
-    min-height: clamp(280px, 40vw, 420px);
-}
-
-/* Nấu ăn & BBQ, Giải trí — wider category tiles */
-.page-editorial .equipment-bento__card:nth-child(4),
-.page-editorial .equipment-bento__card:nth-child(7) {
-    grid-column: span 2;
-}
-
-.page-editorial .equipment-bento__card--bring {
-    grid-column: 1 / -1;
-    min-height: clamp(240px, 28vw, 320px);
-}
-
-.page-editorial .equipment-bento__media {
-    position: absolute;
-    inset: 0;
-}
-
-.page-editorial .equipment-bento__media img {
+.page-editorial .equipment-gallery__item img:not(.home-gallery__brand) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.55s ease;
+    transition: transform 0.4s ease;
 }
 
-.page-editorial .equipment-bento__card:hover .equipment-bento__media img,
-.page-editorial .equipment-bento__card:focus-within .equipment-bento__media img {
+.page-editorial .equipment-gallery__media {
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.page-editorial .equipment-gallery__caption {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    min-height: 0;
+    padding: clamp(10px, 1.5vw, 14px) clamp(12px, 2vw, 16px);
+    padding-right: 38%;
+    background-color: #000;
+    color: #fff;
+}
+
+.page-editorial .equipment-gallery__caption-text {
+    margin: 0;
+    font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+    line-height: 1.35;
+    font-weight: 500;
+    color: #fff;
+}
+
+.page-editorial .equipment-gallery__note {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.page-editorial .equipment-gallery__item:hover .equipment-gallery__media img {
     transform: scale(1.04);
 }
 
-.page-editorial .equipment-bento__card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        165deg,
-        rgba(0, 0, 0, 0.08) 0%,
-        rgba(0, 0, 0, 0.22) 42%,
-        rgba(0, 0, 0, 0.78) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-.page-editorial .equipment-bento__copy {
-    position: relative;
+.page-editorial .equipment-gallery__item .home-gallery__brand {
     z-index: 2;
-    padding: clamp(20px, 3vw, 28px);
-    color: var(--color-elevated);
 }
 
-.page-editorial .equipment-bento__copy .home-section__label {
-    color: color-mix(in srgb, var(--color-elevated) 72%, var(--color-accent));
-}
-
-.page-editorial .equipment-bento__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.0625rem, 2vw, 1.25rem);
-    font-weight: 600;
-    line-height: 1.25;
-    margin: 8px 0 0;
-    color: var(--color-elevated);
-}
-
-.page-editorial .equipment-bento__card--intro .equipment-bento__title,
-.page-editorial .equipment-bento__card--bring .equipment-bento__title {
-    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
-}
-
-.page-editorial .equipment-bento__text {
-    font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
-    line-height: 1.55;
-    margin: 8px 0 0;
-    color: color-mix(in srgb, var(--color-elevated) 88%, transparent);
-}
-
-.page-editorial .equipment-bento__list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.page-editorial .equipment-bento__list li {
-    font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
-    line-height: 1.45;
-    color: color-mix(in srgb, var(--color-elevated) 92%, transparent);
-}
-
-.page-editorial .equipment-bento__note {
-    font-size: 0.8125rem;
-    color: color-mix(in srgb, var(--color-elevated) 65%, transparent);
-}
-
-.page-editorial .equipment-bento__link {
-    margin: 12px 0 0;
+.page-editorial .equipment-bring__link {
+    margin: clamp(12px, 2vw, 16px) 0 0;
     font-size: 0.9375rem;
     font-weight: 600;
 }
 
-.page-editorial .equipment-bento__link a {
-    color: var(--color-elevated);
+.page-editorial .equipment-bring__link a {
+    color: var(--color-accent);
     text-decoration: none;
 }
 
-.page-editorial .equipment-bento__link a:hover {
+.page-editorial .equipment-bring__link a:hover {
     text-decoration: underline;
 }
 
-.page-editorial .equipment-bento__footnotes {
-    margin: clamp(20px, 3vw, 28px) 0 0;
+.page-editorial .equipment-footnotes {
+    margin: clamp(20px, 3vw, 28px) var(--home-page-gutter) 0;
     font-size: 0.8125rem;
     line-height: 1.6;
     color: var(--color-muted);
     text-align: center;
-}
-
-@media (max-width: 968px) {
-    .page-editorial .equipment-bento__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .page-editorial .equipment-bento__card--intro {
-        grid-column: span 2;
-        grid-row: span 1;
-        min-height: clamp(280px, 45vw, 380px);
-    }
-
-    .page-editorial .equipment-bento__card:nth-child(4),
-    .page-editorial .equipment-bento__card:nth-child(7),
-    .page-editorial .equipment-bento__card--bring {
-        grid-column: span 2;
-    }
-}
-
-@media (max-width: 640px) {
-    /* Keep 2-column staggered bento — do not collapse to single column */
-    .page-editorial .equipment-bento__card--intro {
-        min-height: clamp(240px, 50vw, 320px);
-    }
-
-    .page-editorial .equipment-bento__card--bring {
-        min-height: clamp(220px, 45vw, 300px);
-    }
 }
 
 /* ==========================================================================

@@ -21,6 +21,7 @@ const PRECACHE_URLS = [
   '/nav-menu.js',
   '/home-map-preview.js',
   '/locations-map-sites.js',
+  '/locations-map.js',
 ];
 
 self.addEventListener('install', function (event) {

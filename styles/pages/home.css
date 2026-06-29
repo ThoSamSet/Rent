@@ -1331,6 +1331,17 @@ body:has(.page-home) .navbar:not(.navbar--scrolled) .burger-menu__line {
     border: none;
 }
 
+.page-home .home-map__media .custom-marker__dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+    border-radius: 50%;
+    background: var(--color-text, #1d1d1f);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
 .page-home .home-faq__media img {
     width: 100%;
     height: 100%;

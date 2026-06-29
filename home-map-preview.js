@@ -102,9 +102,9 @@
             locations.forEach(function (location) {
                 var customIcon = L.divIcon({
                     className: 'custom-marker',
-                    html: '<div style="font-size: 32px; text-align: center;">' + location.icon + '</div>',
-                    iconSize: [40, 40],
-                    iconAnchor: [20, 40]
+                    html: '<span class="custom-marker__dot" aria-hidden="true"></span>',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8],
                 });
 
                 L.marker([location.lat, location.lng], { icon: customIcon, interactive: false })

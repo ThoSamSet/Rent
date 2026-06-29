@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 /**
  * Renders extracted legacy <main> HTML with a soft content reveal.
  */
-export default function LegacyMainContent({ html, inlineStyles = '' }) {
+export default function LegacyMainContent({ html, inlineStyles = '', mainClassName = '' }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -13,11 +13,15 @@ export default function LegacyMainContent({ html, inlineStyles = '' }) {
     return () => cancelAnimationFrame(frame);
   }, [html]);
 
+  const mainClass = [mainClassName, visible ? 'legacy-main--enter' : '']
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <>
       {inlineStyles ? <div dangerouslySetInnerHTML={{ __html: inlineStyles }} /> : null}
       <main
-        className={visible ? 'legacy-main--enter' : undefined}
+        className={mainClass || undefined}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </>

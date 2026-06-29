@@ -7,7 +7,8 @@ const { metadata, Page } = createLegacyPage({
   description:
     'Bãi camping đẹp tại Phú Sĩ: Fumotoppara và Koan. View núi Phú Sĩ tuyệt đẹp, không gian rộng rãi. Camp Nhà Thỏ hỗ trợ đưa đón đến các bãi camping này.',
   image: '/images/location-fumotoppara.jpg',
-  scripts: ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', '/locations-map-sites.js'],
+  scripts: [],
+  mainClassName: 'home-editorial',
 });
 
 export { metadata };

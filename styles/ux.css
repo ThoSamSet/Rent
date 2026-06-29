@@ -213,6 +213,7 @@ button:focus-visible,
 
   .home-pricing__track,
   .home-gallery__strip,
+  .page-locations .locations-gallery__grid,
   .home-blog__strip {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;

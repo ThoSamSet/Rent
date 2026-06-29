@@ -1,5 +1,5 @@
-/* Camp Nhà Thỏ — service worker (generated 20260628) */
-const CACHE_VERSION = '20260628';
+/* Camp Nhà Thỏ — service worker (generated 20260629) */
+const CACHE_VERSION = '20260629';
 const STATIC_CACHE = 'campnhatho-static-' + CACHE_VERSION;
 
 const PRECACHE_URLS = [
@@ -10,6 +10,7 @@ const PRECACHE_URLS = [
   '/nav-menu.js',
   '/home-map-preview.js',
   '/locations-map-sites.js',
+  '/locations-map.js',
 ];
 
 self.addEventListener('install', function (event) {

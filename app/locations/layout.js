@@ -1,8 +1,15 @@
+import '@/styles/pages/home.css';
+import '@/styles/pages/editorial.css';
+import '@/styles/pages/locations.css';
+import EditorialClientEffects from '@/components/motion/EditorialClientEffects';
+import LocationsMapInit from '@/components/locations/LocationsMapInit';
+
 export default function LocationsLayout({ children }) {
   return (
-    <>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <div className="page-editorial page-locations">
       {children}
-    </>
+      <LocationsMapInit />
+      <EditorialClientEffects />
+    </div>
   );
 }

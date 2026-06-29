@@ -1,15 +1,14 @@
-import { createLegacyPage } from '@/lib/create-legacy-page';
+import LocationsPageContent from '@/components/pages/LocationsPageContent';
+import { buildPageMetadata } from '@/lib/seo';
 
-const { metadata, Page } = createLegacyPage({
-  slug: 'locations',
-  path: '/locations',
+export const metadata = buildPageMetadata({
   title: 'Vị trí Camping Phú Sĩ - Fumotoppara & Koan',
   description:
     'Bãi camping đẹp tại Phú Sĩ: Fumotoppara và Koan. View núi Phú Sĩ tuyệt đẹp, không gian rộng rãi. Camp Nhà Thỏ hỗ trợ đưa đón đến các bãi camping này.',
-  image: '/images/location-fumotoppara.jpg',
-  scripts: [],
-  mainClassName: 'home-editorial',
+  path: '/locations',
+  image: '/images/location-hero.webp',
 });
 
-export { metadata };
-export default Page;
+export default function LocationsPage() {
+  return <LocationsPageContent />;
+}

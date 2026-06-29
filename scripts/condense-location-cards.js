@@ -7,17 +7,6 @@ const path = require('path');
 
 const JSON_PATH = path.join(__dirname, '../content/legacy/locations.json');
 
-const HERO_BLOCK = `    <section class="home-hero" aria-label="Vị trí camping Camp Nhà Thỏ">
-        <div class="home-hero__media">
-            <img class="home-hero__img" src="/images/location-fumotoppara.webp" alt="Fumotoppara Camping Ground - view núi Phú Sĩ" width="1200" height="675" loading="eager" decoding="async">
-        </div>
-        <div class="home-hero__overlay">
-            <p class="home-hero__label">Vị trí</p>
-            <h1 class="home-hero__title">Vị trí Camping</h1>
-            <p class="home-hero__subtitle"><span class="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu vực Kanto, Nhật Bản</p>
-        </div>
-    </section>`;
-
 const REGION_BENTO = [
   {
     tag: 'view-phu-si',
@@ -242,10 +231,7 @@ function restructureToRegionLayout(html) {
 
   const cards = splitCards(gridInner).map(transformCard).join('\n\n                        ');
 
-  return `<!-- Hero Section -->
-${HERO_BLOCK}
-
-    <!-- Locations Content -->
+  return `<!-- Locations Content -->
     <section class="locations-map-section home-section" data-reveal>
         <div class="locations-content">
             <div class="locations-intro">
@@ -300,7 +286,6 @@ const data = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
 const updated = restructureToRegionLayout(data.content);
 
 [
-  'home-hero',
   'locations-intro',
   'locations-regions',
   'locations-region__card',

@@ -89,7 +89,7 @@
                 cell.dataset.bookingDate = iso;
 
                 function goToBooking() {
-                    window.location.href = 'dat-lich.html?ngay=' + encodeURIComponent(iso);
+                    window.location.href = '/dat-lich?ngay=' + encodeURIComponent(iso);
                 }
 
                 cell.addEventListener('click', goToBooking);

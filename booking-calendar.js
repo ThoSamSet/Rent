@@ -1,5 +1,5 @@
 /**
- * Wire schedule calendar: click "Còn chỗ" cells → dat-lich.html?ngay=YYYY-MM-DD
+ * Wire schedule calendar: click "Còn chỗ" cells → /dat-lich?ngay=YYYY-MM-DD
  */
 (function () {
     'use strict';
@@ -89,7 +89,7 @@
                 cell.dataset.bookingDate = iso;
 
                 function goToBooking() {
-                    window.location.href = 'dat-lich.html?ngay=' + encodeURIComponent(iso);
+                    window.location.href = '/dat-lich?ngay=' + encodeURIComponent(iso);
                 }
 
                 cell.addEventListener('click', goToBooking);

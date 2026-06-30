@@ -1,0 +1,14 @@
+import '@/styles/pages/home.css';
+import '@/styles/pages/editorial.css';
+import Footer from '@/components/Footer';
+import EditorialClientEffects from '@/components/motion/EditorialClientEffects';
+
+export default function PricingLayout({ children }) {
+  return (
+    <div className="page-editorial page-pricing">
+      {children}
+      <Footer />
+      <EditorialClientEffects scripts={['/table-swipe-hint.js']} />
+    </div>
+  );
+}

@@ -10,7 +10,7 @@ const PAGES = [
   { path: '/equipment', name: 'equipment', heading: /đồ|thiết bị|dụng cụ|equipment|camping/i },
   { path: '/options', name: 'options', heading: /option/i },
   { path: '/about', name: 'about' },
-  { path: '/pricing', name: 'pricing' },
+  { path: '/pricing', name: 'pricing', heading: /chi phí|pricing|plan/i },
   { path: '/locations', name: 'locations' },
   { path: '/faq', name: 'faq' },
   { path: '/dat-lich', name: 'dat-lich' },
@@ -74,6 +74,28 @@ test('navigation chính hiển thị trên trang chủ', async ({ page }) => {
   await page.goto('/');
   const nav = page.locator('nav, header').first();
   await expect(nav).toBeVisible();
+});
+
+test.describe('schedule mobile', () => {
+  test('bảng lịch vuốt ngang trên mobile', async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
+
+    await page.goto('/schedule', { waitUntil: 'domcontentloaded' });
+
+    const wrapper = page.locator('.schedule-table-wrapper').first();
+    await expect(wrapper).toBeVisible();
+
+    const dimensions = await wrapper.evaluate((el) => ({
+      scrollWidth: el.scrollWidth,
+      clientWidth: el.clientWidth,
+    }));
+    expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth);
+
+    const hint = page.locator('.table-swipe-hint').first();
+    await expect(hint).toBeVisible();
+    const display = await hint.evaluate((el) => getComputedStyle(el).display);
+    expect(display).not.toBe('none');
+  });
 });
 
 test.describe('burger menu', () => {

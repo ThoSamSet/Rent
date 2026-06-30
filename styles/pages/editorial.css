@@ -1472,11 +1472,247 @@ html.camp-gsap .page-editorial .home-gallery__item {
 }
 
 /* ==========================================================================
+   Pricing page — plan blocks & tables
+   ========================================================================== */
+
+.page-editorial .pricing-plans__list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 6vw, 72px);
+    margin-top: clamp(24px, 4vw, 40px);
+}
+
+.page-editorial .pricing-plan__title {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+}
+
+.page-editorial .pricing-plan__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(20px, 4vw, 48px);
+    align-items: center;
+    max-width: var(--page-hero-max-width);
+    margin-inline: auto;
+}
+
+.page-editorial .pricing-plan__grid--reverse .pricing-plan__media {
+    order: 2;
+}
+
+.page-editorial .pricing-plan__grid--reverse .pricing-plan__copy {
+    order: 1;
+}
+
+.page-editorial .pricing-plan__media {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-dark);
+}
+
+.page-editorial .pricing-plan__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.page-editorial .pricing-plan__copy {
+    min-width: 0;
+}
+
+.page-editorial .pricing-plan__text {
+    margin: clamp(12px, 2vw, 16px) 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-plan__tagline {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-plan__list {
+    margin: clamp(16px, 2.5vw, 24px) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-editorial .pricing-plan__list li {
+    position: relative;
+    padding-left: 1.25em;
+    margin-bottom: 0.65em;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-text);
+}
+
+.page-editorial .pricing-plan__list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.page-editorial .pricing-plan__feature-note {
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-option-disclaimer {
+    text-align: center;
+    margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.page-editorial .pricing-option-disclaimer__text {
+    max-width: 48ch;
+    margin: clamp(8px, 1.5vw, 12px) auto 0;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-option-disclaimer__text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.page-editorial .pricing-table-wrapper {
+    max-width: var(--page-hero-max-width);
+    margin: 0 auto clamp(24px, 4vw, 40px);
+    background: var(--color-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.page-editorial .pricing-table-wrapper .pricing-subtitle {
+    padding: clamp(16px, 2.5vw, 24px) clamp(16px, 2.5vw, 24px) 0;
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.page-editorial .pricing-table-wrapper--comparison .pricing-subtitle {
+    padding: clamp(16px, 2.5vw, 24px) clamp(16px, 2.5vw, 24px) 0;
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.page-editorial .pricing-subtitle-note {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.page-editorial .pricing-table th,
+.page-editorial .pricing-table td {
+    padding: clamp(12px, 2vw, 18px);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.page-editorial .pricing-table thead th {
+    background: var(--color-dark);
+    color: var(--color-elevated);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.page-editorial .pricing-table thead th:first-child,
+.page-editorial .pricing-table tbody th.pricing-people {
+    text-align: left;
+}
+
+.page-editorial .pricing-table tbody th.pricing-people {
+    font-weight: 600;
+    background: color-mix(in srgb, var(--color-bg) 50%, var(--color-elevated));
+}
+
+.page-editorial .pricing-table tbody tr:last-child td,
+.page-editorial .pricing-table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+.page-editorial .pricing-table .pricing-price-value {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.page-editorial .pricing-price-per-person {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-note-box {
+    max-width: var(--page-hero-max-width);
+    margin: clamp(24px, 4vw, 40px) auto 0;
+    padding: clamp(20px, 3vw, 28px);
+    text-align: center;
+    background: color-mix(in srgb, var(--color-bg) 70%, var(--color-elevated));
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+}
+
+.page-editorial .pricing-note-box p {
+    margin: 0 0 0.75em;
+}
+
+.page-editorial .pricing-note-box p:last-child {
+    margin-bottom: 0;
+}
+
+.page-editorial .pricing-note-box a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .page-editorial .pricing-plan__grid,
+    .page-editorial .pricing-plan__grid--reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .page-editorial .pricing-plan__grid--reverse .pricing-plan__media,
+    .page-editorial .pricing-plan__grid--reverse .pricing-plan__copy {
+        order: unset;
+    }
+}
+
+/* ==========================================================================
    Legacy page typography (extracted from inline <style> blocks)
    ========================================================================== */
 
 .faq-hero h1,
-.schedule-hero h1,
 .options-hero .hero-content h1,
 .pricing-hero h1,
 .booking-hero h1,
@@ -1490,7 +1726,6 @@ html.camp-gsap .page-editorial .home-gallery__item {
 }
 
 .faq-hero p,
-.schedule-hero p,
 .options-hero .hero-content p,
 .pricing-hero p,
 .booking-hero p,
@@ -1589,4 +1824,252 @@ html.camp-gsap .page-editorial .home-gallery__item {
 .section-meta {
     font-size: var(--text-sm);
     color: #86868b;
+}
+
+/* ==========================================================================
+   Schedule page — inner dark panels on light sections (calendar in index.css)
+   ========================================================================== */
+
+.page-editorial.page-schedule .schedule-last-updated {
+    margin: 4px 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+}
+
+.page-editorial.page-schedule .schedule-legend {
+    margin: clamp(16px, 3vw, 24px) 0 0;
+    padding: 20px 24px;
+    background: #f0f0ee;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+
+.page-editorial.page-schedule .schedule-legend-title {
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+}
+
+.page-editorial.page-schedule .schedule-legend-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.page-editorial.page-schedule .schedule-legend-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+    color: var(--color-text);
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.page-editorial.page-schedule .legend-swatch {
+    flex-shrink: 0;
+    width: 84px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border, #e5e5e7);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-plan-nho {
+    background: #f3efff;
+    border-color: #d4c4f5;
+    border-left: 4px solid #8b5cf6;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-plan-bi {
+    background: #fff4e6;
+    border-color: #f5d4a8;
+    border-left: 4px solid #e67e22;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-plan-de {
+    background: #faf0eb;
+    border-color: #e8cfc0;
+    border-left: 4px solid #a0634a;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-available {
+    background: #e6f4ea;
+    border-color: #b8dfc4;
+    color: #1d7a3a;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
+    padding: 2px;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-empty {
+    color: #d2d2d7;
+    font-weight: 600;
+}
+
+.page-editorial.page-schedule .legend-swatch.legend-holiday {
+    background: rgba(196, 30, 58, 0.08);
+    border-color: rgba(196, 30, 58, 0.25);
+    color: #c41e3a;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
+    padding: 2px;
+}
+
+.page-editorial.page-schedule .schedule-early-banner {
+    margin: clamp(20px, 3vw, 32px) 0;
+    padding: 20px 24px;
+    background: var(--color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+}
+
+.page-editorial.page-schedule .schedule-early-banner p {
+    margin: 0;
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--color-elevated) 92%, transparent);
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.page-editorial.page-schedule .schedule-early-banner p + p {
+    margin-top: 8px;
+}
+
+.page-editorial.page-schedule .schedule-early-note {
+    color: color-mix(in srgb, var(--color-elevated) 65%, transparent) !important;
+}
+
+.page-editorial.page-schedule .schedule-calendar {
+    min-width: 0;
+    overflow: visible;
+}
+
+.page-editorial.page-schedule .schedule-month {
+    margin-top: clamp(32px, 5vw, 48px);
+    min-width: 0;
+}
+
+.page-editorial.page-schedule .schedule-month-title {
+    color: var(--color-text);
+}
+
+.page-editorial.page-schedule .schedule-table-wrapper {
+    width: 100%;
+    max-width: var(--card-grid-max-width);
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+}
+
+.page-editorial.page-schedule .schedule-table {
+    width: 100%;
+    min-width: 720px;
+}
+
+@media (max-width: 768px) {
+    .page-editorial.page-schedule .schedule-table-wrapper {
+        max-width: 100%;
+    }
+
+    .page-editorial.page-schedule .schedule-table {
+        width: 720px;
+        min-width: 720px;
+    }
+}
+
+.page-editorial.page-schedule .table-swipe-hint {
+    max-width: 100%;
+}
+
+.page-editorial.page-schedule .schedule-steps {
+    list-style: none;
+    padding: 0;
+    margin: clamp(24px, 4vw, 36px) auto 0;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    counter-reset: step;
+}
+
+.page-editorial.page-schedule .schedule-steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.page-editorial.page-schedule .schedule-steps li::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--color-dark);
+    color: var(--color-elevated);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.page-editorial.page-schedule .schedule-step-content h3 {
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.page-editorial.page-schedule .schedule-step-content p {
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.page-editorial.page-schedule .schedule-step-content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.page-editorial.page-schedule .schedule-step-content a:hover {
+    opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+    .page-editorial.page-schedule .schedule-legend {
+        padding: 16px 18px;
+    }
+
+    .page-editorial.page-schedule .schedule-early-banner {
+        padding: 16px 18px;
+    }
+
+    .page-editorial.page-schedule .schedule-legend-list li {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .page-editorial.page-schedule .legend-swatch {
+        width: 100%;
+        height: 32px;
+        font-size: 0.75rem;
+    }
 }

@@ -13,6 +13,7 @@ const PAGES = [
   { path: '/pricing', name: 'pricing', heading: /chi phí|pricing|plan/i },
   { path: '/locations', name: 'locations' },
   { path: '/faq', name: 'faq' },
+  { path: '/blog', name: 'blog', heading: /blog/i },
   { path: '/dat-lich', name: 'dat-lich' },
 ];
 

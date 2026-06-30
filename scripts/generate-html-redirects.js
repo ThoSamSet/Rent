@@ -22,6 +22,7 @@ const redirects = [
   { file: 'Notes.html', target: '/Notes' },
   { file: 'contact.html', target: '/dat-lich#lien-he' },
   { file: 'blog/index.html', target: '/blog' },
+  { file: 'blog/chonbaicamtraimuachen/index.html', target: '/blog/chonbaicamtraimuachen' },
   { file: 'blog/checklistcampingnhatban/index.html', target: '/blog/checklistcampingnhatban' },
   { file: 'blog/campingnhatban/index.html', target: '/blog/campingnhatban' },
   { file: 'blog/campingsakura2026/index.html', target: '/blog/campingsakura2026' },

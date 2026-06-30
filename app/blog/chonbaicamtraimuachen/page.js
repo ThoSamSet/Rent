@@ -2,7 +2,7 @@ import BlogArticlePageContent from '@/components/pages/BlogArticlePageContent';
 import { getBlogPost } from '@/lib/blog/content';
 import { buildPageMetadata } from '@/lib/seo';
 
-const post = getBlogPost('checklistcampingnhatban');
+const post = getBlogPost('chonbaicamtraimuachen');
 
 export const metadata = buildPageMetadata({
   title: post.title,
@@ -11,6 +11,6 @@ export const metadata = buildPageMetadata({
   image: post.cardImage,
 });
 
-export default function ChecklistCampingPage() {
-  return <BlogArticlePageContent slug="checklistcampingnhatban" />;
+export default function ChonBaiCampMuaHePage() {
+  return <BlogArticlePageContent slug="chonbaicamtraimuachen" />;
 }

@@ -8,6 +8,7 @@ const PAGES = [
   { path: '/', name: 'index', heading: /Camp|Nhà Thỏ|camping/i },
   { path: '/schedule', name: 'schedule', heading: /lịch|schedule|đặt/i },
   { path: '/equipment', name: 'equipment', heading: /đồ|thiết bị|dụng cụ|equipment|camping/i },
+  { path: '/options', name: 'options', heading: /option/i },
   { path: '/about', name: 'about' },
   { path: '/pricing', name: 'pricing' },
   { path: '/locations', name: 'locations' },

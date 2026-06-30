@@ -1354,6 +1354,124 @@ html.camp-gsap .page-editorial .home-gallery__item {
 }
 
 /* ==========================================================================
+   Options page — category sections
+   ========================================================================== */
+
+.page-editorial .option-category .about-block__header {
+    margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.page-editorial .option-status {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 4px 12px;
+    border-radius: 980px;
+    margin: clamp(8px, 1.5vw, 12px) 0 clamp(12px, 2vw, 16px);
+}
+
+.page-editorial .option-status--paused {
+    background: #fff3e0;
+    color: #b45309;
+}
+
+.page-editorial .option-status--open {
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+.page-editorial .option-gallery__item {
+    display: grid;
+    grid-template-rows: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.page-editorial .option-gallery__item img:not(.home-gallery__brand) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.page-editorial .option-gallery__media {
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.page-editorial .option-gallery__caption {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 0.5vw, 4px);
+    margin: 0;
+    min-height: 0;
+    height: 100%;
+    padding: clamp(10px, 1.5vw, 14px) clamp(12px, 2vw, 16px);
+    padding-right: 38%;
+    background-color: #000;
+    color: #fff;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.page-editorial .option-gallery__caption::-webkit-scrollbar {
+    display: none;
+}
+
+.page-editorial .option-gallery__title {
+    margin: 0;
+    font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+    line-height: 1.35;
+    font-weight: 600;
+    color: #fff;
+}
+
+.page-editorial .option-gallery__price {
+    margin: 0;
+    font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+    line-height: 1.3;
+    font-weight: 600;
+    color: #fff;
+}
+
+.page-editorial .option-gallery__note {
+    margin: 0;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.page-editorial .option-gallery__features {
+    margin: 2px 0 0;
+    padding-left: 1.1em;
+    font-size: 0.6875rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.page-editorial .option-gallery__features li {
+    margin-bottom: 0.2em;
+}
+
+.page-editorial .option-gallery__item:hover .option-gallery__media img {
+    transform: scale(1.04);
+}
+
+.page-editorial .option-gallery__item .home-gallery__brand {
+    z-index: 2;
+}
+
+.page-editorial .option-category__footnote {
+    margin: clamp(12px, 2vw, 16px) var(--home-page-gutter) 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+/* ==========================================================================
    Legacy page typography (extracted from inline <style> blocks)
    ========================================================================== */
 

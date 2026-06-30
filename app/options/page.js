@@ -1,13 +1,14 @@
-import { createLegacyPage } from '@/lib/create-legacy-page';
+import OptionsPageContent from '@/components/pages/OptionsPageContent';
+import { buildPageMetadata } from '@/lib/seo';
 
-const { metadata, Page } = createLegacyPage({
-  slug: 'options',
-  path: '/options',
+export const metadata = buildPageMetadata({
   title: 'Option thêm — Đồ ăn, xem phim, di chuyển',
   description:
     'Các option kèm chuyến camping tại Camp Nhà Thỏ: đồ ăn, xem phim, option đi đường thường để tiết kiệm chi phí. Giá tham khảo và trạng thái dịch vụ.',
-  image: '/images/options-hero.jpg',
+  path: '/options',
+  image: '/images/option-hero.webp',
 });
 
-export { metadata };
-export default Page;
+export default function OptionsPage() {
+  return <OptionsPageContent />;
+}

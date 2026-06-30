@@ -41,6 +41,7 @@ const IMAGE_SETS = [
   { src: 'images/camping-4.webp', widths: [400, 800, 1200] },
   { src: 'images/camping-5.webp', widths: [400, 800, 1200] },
   { src: 'images/camping-6.webp', widths: [400, 800, 1200] },
+  { src: 'images/faq-hero.webp', widths: [640, 1280, 1920] },
 ];
 
 function basenameNoExt(filePath) {

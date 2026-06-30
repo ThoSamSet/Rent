@@ -1,13 +1,14 @@
-import { createLegacyPage } from '@/lib/create-legacy-page';
+import FaqPageContent from '@/components/pages/FaqPageContent';
+import { buildPageMetadata } from '@/lib/seo';
 
-const { metadata, Page } = createLegacyPage({
-  slug: 'faq',
-  path: '/faq',
+export const metadata = buildPageMetadata({
   title: 'FAQ - Câu hỏi thường gặp về Camping Phú Sĩ',
   description:
     'Câu hỏi thường gặp về dịch vụ share đồ camping tại Phú Sĩ. Giải đáp về giá, thanh toán, đặt lịch, dụng cụ, và các thắc mắc khác.',
-  image: '/images/faq-hero.jpg',
+  path: '/faq',
+  image: '/images/faq-hero.webp',
 });
 
-export { metadata };
-export default Page;
+export default function FaqPage() {
+  return <FaqPageContent />;
+}

@@ -14,6 +14,7 @@ const outDirs = [
 
 /** @type {{ src: string; widths: number[] }[]} */
 const IMAGE_SETS = [
+  { src: 'images/sale-hero.webp', widths: [640, 1280, 1920] },
   { src: 'images/hero-camping.webp', widths: [640, 1280, 1920] },
   { src: 'images/index-slide-2.webp', widths: [640, 1280, 1920] },
   { src: 'images/index-slide-3.webp', widths: [640, 1280, 1920] },

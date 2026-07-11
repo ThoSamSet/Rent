@@ -1683,6 +1683,20 @@ html.nav-menu-open .navbar {
     word-break: break-word;
 }
 
+.schedule-sale {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 6px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, #e74c3c 0%, #ff6b6b 100%);
+}
+
 .schedule-table td.is-holiday .schedule-date {
     color: #c41e3a;
 }
@@ -1958,6 +1972,12 @@ html.nav-menu-open .navbar {
     }
 
     .schedule-holiday {
+        font-size: var(--text-xs);
+        padding: 2px 4px;
+        margin-bottom: 4px;
+    }
+
+    .schedule-sale {
         font-size: var(--text-xs);
         padding: 2px 4px;
         margin-bottom: 4px;

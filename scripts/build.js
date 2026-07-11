@@ -17,7 +17,7 @@ const requiredFiles = [
   'fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
   'public/sw.js',
   'home-map-preview.js',
-  'images/responsive/hero-camping-1280w.webp',
+  'images/responsive/sale-hero-1280w.webp',
   'images/responsive/about-hero-960w.webp',
   'images/responsive/equipment-hero-960w.webp',
   'images/responsive/plan-de-400w.webp',

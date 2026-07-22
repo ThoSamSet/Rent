@@ -1,12 +1,12 @@
-/* Camp Nhà Thỏ — service worker (generated 20260711) */
-const CACHE_VERSION = '20260711';
+/* Camp Nhà Thỏ — service worker (generated 20260722) */
+const CACHE_VERSION = '20260722';
 const STATIC_CACHE = 'campnhatho-static-' + CACHE_VERSION;
 
 const PRECACHE_URLS = [
   '/',
   '/favicon.ico',
   '/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
-  '/images/responsive/sale-hero-1280w.webp',
+  '/images/responsive/hero-camping-1280w.webp',
   '/nav-menu.js',
   '/home-map-preview.js',
   '/locations-map-sites.js',

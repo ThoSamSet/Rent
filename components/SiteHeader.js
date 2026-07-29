@@ -42,6 +42,9 @@ export default function SiteHeader() {
       <div className="announcement-bar">
         <Link href="/schedule" className="announcement-secondary">
           Kiểm tra lịch trình
+          <span className="nav-promo-badge" aria-label="Có ngày giảm giá">
+            Sale
+          </span>
         </Link>
       </div>
       <nav className="navbar" aria-label="Thanh điều hướng chính">

@@ -173,10 +173,19 @@ img {
     font-size: var(--text-sm);
     font-weight: 600;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .announcement-bar a:hover {
     text-decoration: underline;
+}
+
+.announcement-bar .nav-promo-badge {
+    margin-left: 0;
+    flex-shrink: 0;
+    text-decoration: none;
 }
 
 #schedule {

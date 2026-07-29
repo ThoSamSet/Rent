@@ -1,5 +1,5 @@
-/* Camp Nhà Thỏ — service worker (generated 20260722) */
-const CACHE_VERSION = '20260722';
+/* Camp Nhà Thỏ — service worker (generated 20260729) */
+const CACHE_VERSION = '20260729';
 const STATIC_CACHE = 'campnhatho-static-' + CACHE_VERSION;
 
 const PRECACHE_URLS = [

@@ -1670,8 +1670,12 @@ html.nav-menu-open .navbar {
     font-size: var(--text-sm);
 }
 
+.schedule-table td.is-empty {
+    background: #c7c7cc;
+}
+
 .schedule-table td.is-empty .schedule-status {
-    color: #d2d2d7;
+    color: #86868b;
     font-weight: 500;
 }
 

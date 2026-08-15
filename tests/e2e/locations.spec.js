@@ -33,6 +33,10 @@ async function waitForMapReady(page, options = {}) {
   }, null, { timeout: 20_000 });
 }
 
+async function visibleMarkerCount(page) {
+  return page.locator('#map .leaflet-marker-icon').count();
+}
+
 test.describe('trang locations — map split', () => {
   test('map tiles render sau khi tải trang (desktop)', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('mobile'), 'Chỉ chạy trên desktop');
@@ -54,59 +58,83 @@ test.describe('trang locations — map split', () => {
     await expect(page.locator('#map .leaflet-marker-pane')).toBeAttached();
   });
 
-  test('filter tag ẩn bớt card', async ({ page }) => {
+  test('lọc vùng ẩn bớt marker và fitBounds', async ({ page }) => {
     await page.goto('/locations', { waitUntil: 'domcontentloaded' });
     await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});
-    await waitForLocationsScript(page);
+    await waitForMapReady(page);
 
-    const statusBefore = await page.locator('#location-filter-status').textContent();
-    expect(statusBefore).toMatch(/15 \/ 15/);
+    const allCount = await visibleMarkerCount(page);
+    expect(allCount).toBeGreaterThan(1);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="view-phu-si"]').click();
-    await expect(page.locator('#location-filter-status')).not.toHaveText(/15 \/ 15/);
-    await expect(page.locator('.location-detail.location-hidden')).not.toHaveCount(0);
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]').click();
+    await expect.poll(() => visibleMarkerCount(page)).toBeLessThan(allCount);
+    await expect.poll(() => visibleMarkerCount(page)).toBe(1);
+
+    await expect.poll(async () => {
+      const mapBox = await page.locator('#map').boundingBox();
+      const marker = await page.locator('#map .leaflet-marker-icon').first().boundingBox();
+      if (!mapBox || !marker) return false;
+      const mapCx = mapBox.x + mapBox.width / 2;
+      const mapCy = mapBox.y + mapBox.height / 2;
+      const markerCx = marker.x + marker.width / 2;
+      const markerCy = marker.y + marker.height / 2;
+      return (
+        Math.abs(markerCx - mapCx) < mapBox.width * 0.3 &&
+        Math.abs(markerCy - mapCy) < mapBox.height * 0.3
+      );
+    }).toBeTruthy();
+
+    const regionCard = page.locator('.locations-region__card[data-filter-tag="saitama"]');
+    await expect(regionCard).toHaveClass(/is-active/);
+    await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]')).toHaveClass(/is-active/);
+
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="bien"]').click();
+    await expect.poll(() => visibleMarkerCount(page)).toBe(3);
+    await expect(page.locator('.locations-region__card[data-filter-tag="bien"]')).toHaveClass(/is-active/);
+    await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="ibaraki"]')).toHaveCount(0);
   });
 
-  test('filter không có kết quả hiện thông báo', async ({ page }) => {
+  test('Tất cả hiện lại toàn bộ marker', async ({ page }) => {
     await page.goto('/locations', { waitUntil: 'domcontentloaded' });
     await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});
-    await waitForLocationsScript(page);
+    await waitForMapReady(page);
 
-    const tags = [
-      'view-phu-si',
-      'gan-bien',
-      'gan-ho',
-      'gan-tokyo',
-      'gan-suoi-song',
-      'mua-xuan',
-      'mua-he',
-      'mua-thu',
-    ];
+    const allCount = await visibleMarkerCount(page);
+    expect(allCount).toBeGreaterThan(1);
 
-    for (const tag of tags) {
-      await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="' + tag + '"]').click();
-    }
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="phu-si"]').click();
+    await expect.poll(() => visibleMarkerCount(page)).toBeLessThan(allCount);
 
-    await expect(page.locator('#location-filter-status')).toHaveText(/0 \/ 15/);
-    await expect(page.locator('#location-empty-state.is-visible')).toBeVisible();
-    await expect(page.locator('#location-empty-state')).toContainText('Không có bãi phù hợp');
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]').click();
+    await expect.poll(() => visibleMarkerCount(page)).toBe(allCount);
+    await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]')).toHaveClass(/is-active/);
   });
 
-  test('click card highlight và hiện overlay map (desktop)', async ({ page }, testInfo) => {
+  test('overlay camp không hiện; marker không interactive', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('mobile'), 'Chỉ chạy trên desktop');
 
     await page.goto('/locations', { waitUntil: 'domcontentloaded' });
     await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});
     await waitForMapReady(page);
 
-    const firstCard = page.locator('.location-detail:not(.location-hidden)').first();
-    await firstCard.scrollIntoViewIfNeeded();
-    await firstCard.click();
+    await expect(page.locator('#map-site-overlay')).toHaveCount(0);
+    await expect(page.locator('.map-site-overlay')).toHaveCount(0);
+    await expect(page.locator('.location-detail')).toHaveCount(0);
 
-    await expect(firstCard).toHaveClass(/location-detail--active/);
-    const overlay = page.locator('#map-site-overlay.is-visible');
-    await expect(overlay).toBeVisible();
-    await expect(overlay.locator('.map-site-overlay__title')).not.toBeEmpty();
+    const marker = page.locator('#map .leaflet-marker-icon').first();
+    await expect(marker).toBeAttached();
+    await marker.click({ force: true });
+
+    await expect(page.locator('#map-site-overlay')).toHaveCount(0);
+    await expect(page.locator('.map-site-overlay.is-visible')).toHaveCount(0);
+
+    const interactive = await page.evaluate(() => {
+      const el = document.querySelector('#map .leaflet-marker-icon');
+      if (!el) return true;
+      const style = window.getComputedStyle(el);
+      return style.pointerEvents !== 'none';
+    });
+    expect(interactive).toBe(false);
   });
 
   test('map hiển thị ngay trên mobile (không cần accordion)', async ({ page }, testInfo) => {

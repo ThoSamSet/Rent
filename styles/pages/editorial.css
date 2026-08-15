@@ -1890,24 +1890,6 @@ html.camp-gsap .page-editorial .home-gallery__item {
     font-weight: 500;
 }
 
-.page-editorial.page-schedule .legend-swatch.legend-plan-nho {
-    background: #f3efff;
-    border-color: #d4c4f5;
-    border-left: 4px solid #8b5cf6;
-}
-
-.page-editorial.page-schedule .legend-swatch.legend-plan-bi {
-    background: #fff4e6;
-    border-color: #f5d4a8;
-    border-left: 4px solid #e67e22;
-}
-
-.page-editorial.page-schedule .legend-swatch.legend-plan-de {
-    background: #faf0eb;
-    border-color: #e8cfc0;
-    border-left: 4px solid #a0634a;
-}
-
 .page-editorial.page-schedule .legend-swatch.legend-available {
     background: #e6f4ea;
     border-color: #b8dfc4;
@@ -1919,7 +1901,9 @@ html.camp-gsap .page-editorial .home-gallery__item {
 }
 
 .page-editorial.page-schedule .legend-swatch.legend-empty {
-    color: #d2d2d7;
+    background: #c7c7cc;
+    border-color: #a1a1a6;
+    color: #86868b;
     font-weight: 600;
 }
 

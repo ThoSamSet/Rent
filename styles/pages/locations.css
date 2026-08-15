@@ -108,10 +108,14 @@
 .locations-region__card img {
     position: absolute;
     inset: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
+    object-position: center;
     display: block;
+    opacity: 1;
     transition: transform 0.45s ease;
 }
 
@@ -180,6 +184,22 @@
     font-size: 0.9375rem;
     line-height: 1.55;
     color: var(--color-muted);
+}
+
+.locations-map-band__header .locations-filters--secondary {
+    margin-top: clamp(16px, 2.5vw, 24px);
+}
+
+.locations-map-band__header .location-filter-scroll {
+    justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+    .locations-map-band__header .location-filter-scroll {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
 }
 
 .locations-map-panel {

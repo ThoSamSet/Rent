@@ -1,6 +1,7 @@
 /**
  * Single source of truth for camping site markers on Leaflet maps (index + locations).
  * Edit here only; do not duplicate arrays in HTML.
+ * `region` drives the locations page map filter; booking form still uses id/name.
  */
 window.CAMP_MAP_SITES = [
     {
@@ -9,7 +10,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.3994331,
         lng: 138.5648368,
         icon: '🏔️',
-        description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp'
+        description: 'Bãi camping với view núi Phú Sĩ tuyệt đẹp',
+        region: 'phu-si'
     },
     {
         id: 'koan',
@@ -17,7 +19,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.473183,
         lng: 138.574764,
         icon: '⛰️',
-        description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên'
+        description: 'Địa điểm lý tưởng để ngắm cảnh và tận hưởng thiên nhiên',
+        region: 'phu-si'
     },
     {
         id: 'asagiri-sorairo',
@@ -25,7 +28,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.3934589,
         lng: 138.5648634,
         icon: '🏕️',
-        description: 'Bãi camping 朝霧 Camp Base そらいろ gần khu vực Fumotoppara'
+        description: 'Bãi camping 朝霧 Camp Base そらいろ gần khu vực Fumotoppara',
+        region: 'phu-si'
     },
     {
         id: 'fujisan-wild',
@@ -33,7 +37,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.3302986,
         lng: 138.6168973,
         icon: '🏕️',
-        description: 'Fujisan Wild Adventure – khu camping và hoạt động ngoài trời gần núi Phú Sĩ'
+        description: 'Fujisan Wild Adventure – khu camping và hoạt động ngoài trời gần núi Phú Sĩ',
+        region: 'phu-si'
     },
     {
         id: 'fujiminooka',
@@ -41,7 +46,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.2179438,
         lng: 138.7025481,
         icon: '🏕️',
-        description: 'Fujiminooka Auto Camping Ground – bãi camping với không gian rộng và view núi Phú Sĩ'
+        description: 'Fujiminooka Auto Camping Ground – bãi camping với không gian rộng và view núi Phú Sĩ',
+        region: 'phu-si'
     },
     {
         id: 'tanukiko',
@@ -49,7 +55,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.3419124,
         lng: 138.5615542,
         icon: '🏕️',
-        description: 'Bãi camping ven hồ Tanuki, chân núi Phú Sĩ — view hồ và núi'
+        description: 'Bãi camping ven hồ Tanuki, chân núi Phú Sĩ — view hồ và núi',
+        region: 'phu-si'
     },
     {
         id: 'aone',
@@ -57,7 +64,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.5477275,
         lng: 139.1360741,
         icon: '🏕️',
-        description: 'Bãi camping gần Tokyo, gần suối với không khí mát mẻ mùa hè'
+        description: 'Bãi camping gần Tokyo, gần suối với không khí mát mẻ mùa hè',
+        region: 'kanagawa'
     },
     {
         id: 'nagatoro',
@@ -65,7 +73,8 @@ window.CAMP_MAP_SITES = [
         lat: 36.105016,
         lng: 139.114251,
         icon: '🏕️',
-        description: 'Nagatoro Auto Campground – bãi camping ven sông tại Saitama'
+        description: 'Nagatoro Auto Campground – bãi camping ven sông tại Saitama',
+        region: 'saitama'
     },
     {
         id: 'tanoue',
@@ -73,7 +82,8 @@ window.CAMP_MAP_SITES = [
         lat: 36.392397,
         lng: 140.611984,
         icon: '🏕️',
-        description: 'Gần bãi biển, gần Hitachi Kaihin Park'
+        description: 'Gần bãi biển, gần Hitachi Kaihin Park',
+        region: 'bien'
     },
     {
         id: 'cliff-camp-bbq',
@@ -81,7 +91,8 @@ window.CAMP_MAP_SITES = [
         lat: 35.1920506,
         lng: 139.60963,
         icon: '🏕️',
-        description: 'Bãi camp gần biển, tiện di chuyển từ Tokyo'
+        description: 'Bãi camp gần biển, tiện di chuyển từ Tokyo',
+        region: 'kanagawa'
     },
     {
         id: 'camp-koganezaki',
@@ -89,7 +100,8 @@ window.CAMP_MAP_SITES = [
         lat: 34.842715,
         lng: 138.76564,
         icon: '🏕️',
-        description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu'
+        description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu',
+        region: 'bien'
     },
     {
         id: 'beach-camp-ugusu',
@@ -97,7 +109,8 @@ window.CAMP_MAP_SITES = [
         lat: 34.8545339,
         lng: 138.7765388,
         icon: '🏕️',
-        description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu'
+        description: 'Bãi camp gần biển, phù hợp đi mùa hè và mùa thu',
+        region: 'bien'
     },
     {
         id: 'snowpeak-akagi',
@@ -105,7 +118,8 @@ window.CAMP_MAP_SITES = [
         lat: 36.5559831,
         lng: 139.1699522,
         icon: '🏕️',
-        description: 'Campfield gần hồ, phù hợp đi mùa hè và mùa thu'
+        description: 'Campfield gần hồ, phù hợp đi mùa hè và mùa thu',
+        region: 'bac-kanto'
     },
     {
         id: 'kanuma-campfield-spa',
@@ -113,7 +127,8 @@ window.CAMP_MAP_SITES = [
         lat: 36.5405447,
         lng: 139.6797904,
         icon: '🏕️',
-        description: 'Campfield & spa, phù hợp đi mùa hè và mùa thu'
+        description: 'Campfield & spa, phù hợp đi mùa hè và mùa thu',
+        region: 'bac-kanto'
     },
     {
         id: 'recamp-ashikaga',
@@ -121,6 +136,7 @@ window.CAMP_MAP_SITES = [
         lat: 36.4251696,
         lng: 139.4287645,
         icon: '🏕️',
-        description: 'Bãi camping tại Ashikaga, Tochigi'
+        description: 'Bãi camping tại Ashikaga, Tochigi',
+        region: 'bac-kanto'
     }
 ];

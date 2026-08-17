@@ -1,6 +1,7 @@
 import PricingLineup from '@/components/PricingLineup';
 import HomeHero from '@/components/home/HomeHero';
 import HomeIntroRow from '@/components/home/HomeIntroRow';
+import HomeNoticesSection from '@/components/home/HomeNoticesSection';
 import HomeBlogSection from '@/components/home/HomeBlogSection';
 import HomeGallerySection from '@/components/home/HomeGallerySection';
 import HomeBottomRow from '@/components/home/HomeBottomRow';
@@ -23,6 +24,7 @@ export default function HomePageContent() {
         <HomeHero />
         <HomeIntroRow />
         <PricingLineup />
+        <HomeNoticesSection />
         <HomeBlogSection />
         <HomeGallerySection />
         <HomeBottomRow />

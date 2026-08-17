@@ -51,6 +51,7 @@ for (const page of PAGES) {
 
     if (page.name === 'index') {
       await expect(pw.locator('#pricing')).toBeVisible();
+      await expect(pw.locator('#notices')).toBeVisible();
       await expect(pw.locator('#blog')).toBeVisible();
       await expect(pw.locator('#gallery')).toBeVisible();
     }

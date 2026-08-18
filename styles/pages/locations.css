@@ -191,15 +191,10 @@
 }
 
 .locations-map-band__header .location-filter-scroll {
-    justify-content: flex-start;
-}
-
-@media (min-width: 768px) {
-    .locations-map-band__header .location-filter-scroll {
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow: visible;
-    }
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+    row-gap: 8px;
 }
 
 .locations-map-panel {
@@ -314,6 +309,7 @@
     cursor: pointer;
     flex-shrink: 0;
     min-height: 44px;
+    scroll-margin-top: calc(var(--site-header-height) + 12px);
     padding: 10px 18px;
     border-radius: 999px;
     border: 1px solid var(--color-border);

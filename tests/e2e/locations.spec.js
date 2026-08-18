@@ -41,6 +41,18 @@ async function visibleGalleryCount(page) {
   return page.locator('#locations-gallery-strip .home-gallery__item:not(.location-hidden)').count();
 }
 
+/** Secondary filter chips sit under the sticky header on mobile unless scrolled with margin. */
+async function selectSecondaryRegion(page, tag) {
+  const btn = page.locator(
+    tag === null
+      ? '.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]'
+      : `.locations-filters--secondary .filter-tag-btn[data-filter-tag="${tag}"]`,
+  );
+  await btn.scrollIntoViewIfNeeded();
+  await btn.click();
+  await expect(btn).toHaveClass(/is-active/);
+}
+
 test.describe('trang locations — map split', () => {
   test('map tiles render sau khi tải trang (desktop)', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('mobile'), 'Chỉ chạy trên desktop');
@@ -70,7 +82,7 @@ test.describe('trang locations — map split', () => {
     const allCount = await visibleMarkerCount(page);
     expect(allCount).toBeGreaterThan(1);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]').click();
+    await selectSecondaryRegion(page, 'saitama');
     await expect.poll(() => visibleMarkerCount(page)).toBeLessThan(allCount);
     await expect.poll(() => visibleMarkerCount(page)).toBe(1);
 
@@ -92,7 +104,7 @@ test.describe('trang locations — map split', () => {
     await expect(regionCard).toHaveClass(/is-active/);
     await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]')).toHaveClass(/is-active/);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="bien"]').click();
+    await selectSecondaryRegion(page, 'bien');
     await expect.poll(() => visibleMarkerCount(page)).toBe(3);
     await expect(page.locator('.locations-region__card[data-filter-tag="bien"]')).toHaveClass(/is-active/);
     await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="ibaraki"]')).toHaveCount(0);
@@ -106,10 +118,10 @@ test.describe('trang locations — map split', () => {
     const allCount = await visibleMarkerCount(page);
     expect(allCount).toBeGreaterThan(1);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="phu-si"]').click();
+    await selectSecondaryRegion(page, 'phu-si');
     await expect.poll(() => visibleMarkerCount(page)).toBeLessThan(allCount);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]').click();
+    await selectSecondaryRegion(page, null);
     await expect.poll(() => visibleMarkerCount(page)).toBe(allCount);
     await expect(page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]')).toHaveClass(/is-active/);
   });
@@ -163,13 +175,13 @@ test.describe('trang locations — map split', () => {
 
     await expect.poll(() => visibleGalleryCount(page)).toBe(15);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]').click();
+    await selectSecondaryRegion(page, 'saitama');
     await expect.poll(() => visibleGalleryCount(page)).toBe(1);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="bien"]').click();
+    await selectSecondaryRegion(page, 'bien');
     await expect.poll(() => visibleGalleryCount(page)).toBe(3);
 
-    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]').click();
+    await selectSecondaryRegion(page, null);
     await expect.poll(() => visibleGalleryCount(page)).toBe(15);
   });
 

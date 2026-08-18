@@ -14,20 +14,8 @@ export const metadata = buildPageMetadata({
 export default function HomePage() {
   return (
     <>
-      <link
-        rel="preload"
-        as="image"
-        href="/images/responsive/about-hero-960w.webp"
-        imageSrcSet="/images/responsive/about-hero-480w.webp 480w, /images/responsive/about-hero-960w.webp 960w, /images/responsive/about-hero-1440w.webp 1440w"
-        imageSizes="(min-width: 900px) 50vw, 100vw"
-      />
-      <link
-        rel="preload"
-        as="image"
-        href="/images/responsive/equipment-hero-960w.webp"
-        imageSrcSet="/images/responsive/equipment-hero-480w.webp 480w, /images/responsive/equipment-hero-960w.webp 960w, /images/responsive/equipment-hero-1440w.webp 1440w"
-        imageSizes="(min-width: 900px) 50vw, 100vw"
-      />
+      <link rel="preload" as="image" href="/images/about-hero.webp" />
+      <link rel="preload" as="image" href="/images/equipment-hero.webp" />
       <LocalBusinessJsonLd />
       <HomePageContent />
     </>

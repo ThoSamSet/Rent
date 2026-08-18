@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /**
  * Convert raster originals in images/ to WebP and sync assets to public/images/.
- * Runs before generate-responsive-images on each build.
  */
 const fs = require('fs');
 const path = require('path');

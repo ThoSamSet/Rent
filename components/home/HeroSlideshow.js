@@ -1,5 +1,5 @@
 import ResponsiveImage from '@/components/media/ResponsiveImage';
-import { buildSrcSet, responsiveSrc } from '@/lib/media/responsive';
+import { imageSrc } from '@/lib/media/responsive';
 import { IMAGE_DIMS } from '@/lib/image-sizes';
 
 /** @param {{ slides: import('@/lib/hero/slides').HeroSlide[] }} props */
@@ -11,8 +11,7 @@ export default function HeroSlideshow({ slides }) {
   return (
     <>
       <div className="home-hero__media home-hero__slideshow" data-hero-slideshow>
-        {slides.map(({ baseName, widths, alt }, index) => {
-          const defaultWidth = widths[Math.min(1, widths.length - 1)];
+        {slides.map(({ baseName, alt }, index) => {
           return (
             <div
               key={baseName}
@@ -20,9 +19,7 @@ export default function HeroSlideshow({ slides }) {
               aria-hidden={index === 0 ? undefined : true}
             >
               <ResponsiveImage
-                src={responsiveSrc(baseName, defaultWidth)}
-                srcSet={buildSrcSet(baseName, widths)}
-                sizes="100vw"
+                src={imageSrc(baseName)}
                 alt={alt}
                 className="home-hero__slide-img"
                 width={IMAGE_DIMS.heroFull.width}

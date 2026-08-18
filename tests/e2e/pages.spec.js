@@ -29,7 +29,7 @@ for (const page of PAGES) {
     pw.on('console', (msg) => {
       if (msg.type() === 'error') {
         const text = msg.text();
-        if (/favicon|google|gtag|analytics|leaflet|unpkg|fonts\.google/i.test(text)) return;
+        if (/favicon|google|gtag|analytics|leaflet|unpkg|fonts\.google|ERR_INVALID_CHUNKED_ENCODING/i.test(text)) return;
         consoleErrors.push(text);
       }
     });

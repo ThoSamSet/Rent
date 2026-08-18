@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Prepare static assets (fonts, responsive images, vendor, service worker).
+ * Prepare static assets (fonts, source images, vendor, service worker).
  * CSS lives in styles/ and is bundled by Next.js — no root homepage.css.
  */
 const fs = require('fs');
@@ -17,10 +17,10 @@ const requiredFiles = [
   'fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
   'public/sw.js',
   'home-map-preview.js',
-  'images/responsive/hero-camping-1280w.webp',
-  'images/responsive/about-hero-960w.webp',
-  'images/responsive/equipment-hero-960w.webp',
-  'images/responsive/plan-de-400w.webp',
+  'images/hero-camping.webp',
+  'images/about-hero.webp',
+  'images/equipment-hero.webp',
+  'images/plan-de.webp',
 ];
 
 console.log('🔨 Đang chuẩn bị assets tĩnh...');
@@ -29,7 +29,6 @@ const buildSteps = [
   ['postinstall', () => execSync('npm run postinstall', { cwd: root, stdio: 'inherit' })],
   ['setup-fonts', () => execSync('node scripts/setup-fonts.js', { cwd: root, stdio: 'inherit' })],
   ['source-images', () => execSync('node scripts/process-source-images.js', { cwd: root, stdio: 'inherit' })],
-  ['responsive-images', () => execSync('node scripts/generate-responsive-images.js', { cwd: root, stdio: 'inherit' })],
   ['service-worker', () => execSync('node scripts/generate-sw.js', { cwd: root, stdio: 'inherit' })],
 ];
 

@@ -17,7 +17,7 @@ const PRECACHE_URLS = [
   '/',
   '/favicon.ico',
   '/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
-  '/images/responsive/hero-camping-1280w.webp',
+  '/images/hero-camping.webp',
   '/nav-menu.js',
   '/home-map-preview.js',
   '/locations-map-sites.js',

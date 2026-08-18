@@ -8,9 +8,7 @@ export default function HomeIntroRow() {
       <Link href="/about" className="home-section home-about" id="about" data-reveal>
         <div className="home-about__media" aria-hidden="true">
           <ResponsiveImage
-            src="/images/responsive/about-hero-960w.webp"
-            srcSet="/images/responsive/about-hero-480w.webp 480w, /images/responsive/about-hero-960w.webp 960w, /images/responsive/about-hero-1440w.webp 1440w"
-            sizes="(min-width: 900px) 50vw, 100vw"
+            src="/images/about-hero.webp"
             alt=""
             decorative
             eager
@@ -28,9 +26,7 @@ export default function HomeIntroRow() {
       <Link href="/equipment" className="home-section home-equipment" id="equipment" data-reveal>
         <div className="home-equipment__media" aria-hidden="true">
           <ResponsiveImage
-            src="/images/responsive/equipment-hero-960w.webp"
-            srcSet="/images/responsive/equipment-hero-480w.webp 480w, /images/responsive/equipment-hero-960w.webp 960w, /images/responsive/equipment-hero-1440w.webp 1440w"
-            sizes="(min-width: 900px) 50vw, 100vw"
+            src="/images/equipment-hero.webp"
             alt=""
             decorative
             eager

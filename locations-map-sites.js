@@ -150,7 +150,7 @@ window.CAMP_MAP_SITES = [
         lat: 36.4251696,
         lng: 139.4287645,
         icon: '🏕️',
-        description: 'Bãi camping tại Ashikaga, Tochigi',
+        description: 'Bãi camping tại Ashikaga, Tochigi — view đập',
         region: 'bac-kanto',
         image: '/images/location-recamp-ashikaga.webp'
     }

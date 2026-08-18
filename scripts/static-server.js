@@ -39,19 +39,21 @@ function safePath(urlPath) {
   return filePath;
 }
 
-function sendFile(res, filePath) {
+function sendFile(res, filePath, stat) {
   const ext = path.extname(filePath).toLowerCase();
   const type = MIME[ext] || 'application/octet-stream';
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(err.code === 'ENOENT' ? 404 : 500);
-      res.end(err.code === 'ENOENT' ? 'Not Found' : 'Server Error');
-      return;
-    }
-    res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-cache' });
-    res.end(data);
+  res.writeHead(200, {
+    'Content-Type': type,
+    'Content-Length': stat.size,
+    'Cache-Control': 'no-cache',
   });
+
+  const stream = fs.createReadStream(filePath);
+  stream.on('error', () => {
+    res.destroy();
+  });
+  stream.pipe(res);
 }
 
 function resolveFilePath(urlPath) {
@@ -103,17 +105,29 @@ const server = http.createServer((req, res) => {
 
   fs.stat(filePath, (err, stat) => {
     if (!err && stat.isDirectory()) {
-      sendFile(res, path.join(filePath, 'index.html'));
+      const indexPath = path.join(filePath, 'index.html');
+      fs.stat(indexPath, (indexErr, indexStat) => {
+        if (indexErr || !indexStat.isFile()) {
+          res.writeHead(404);
+          res.end('Not Found');
+          return;
+        }
+        sendFile(res, indexPath, indexStat);
+      });
       return;
     }
-    if (err) {
+    if (err || !stat.isFile()) {
       res.writeHead(404);
       res.end('Not Found');
       return;
     }
-    sendFile(res, filePath);
+    sendFile(res, filePath, stat);
   });
 });
+
+server.keepAliveTimeout = 5_000;
+server.headersTimeout = 10_000;
+server.requestTimeout = 60_000;
 
 server.listen(PORT, HOST, () => {
   process.stdout.write(`Static server http://${HOST}:${PORT} → ${ROOT}\n`);

@@ -17,8 +17,6 @@ export default function PricingLineup() {
               <figure className="home-pricing__card-media">
                 <ResponsiveImage
                   src={plan.img}
-                  srcSet={plan.srcSet}
-                  sizes="(min-width: 640px) 380px, 75vw"
                   alt={plan.alt}
                   width={IMAGE_DIMS.pricingCard.width}
                   height={IMAGE_DIMS.pricingCard.height}

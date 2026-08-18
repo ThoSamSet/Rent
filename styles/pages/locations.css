@@ -497,7 +497,8 @@
     line-height: 1.3;
 }
 
-.location-detail.location-hidden {
+.location-detail.location-hidden,
+.locations-gallery .home-gallery__item.location-hidden {
     display: none;
 }
 

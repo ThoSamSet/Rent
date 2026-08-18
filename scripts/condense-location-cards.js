@@ -1,11 +1,29 @@
 /**
- * Generate locations legacy HTML: region bento + map (no per-camp gallery).
+ * Generate locations legacy HTML: region bento + map + camp gallery strip.
  * Run: node scripts/condense-location-cards.js
  */
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const JSON_PATH = path.join(__dirname, '../content/legacy/locations.json');
+const SITES_PATH = path.join(__dirname, '../public/locations-map-sites.js');
+
+function loadMapSites() {
+  const src = fs.readFileSync(SITES_PATH, 'utf8');
+  const sandbox = { window: {} };
+  vm.runInNewContext(src, sandbox);
+  const sites = sandbox.window.CAMP_MAP_SITES;
+  if (!Array.isArray(sites) || !sites.length) {
+    throw new Error('CAMP_MAP_SITES empty');
+  }
+  sites.forEach((site) => {
+    if (!site.id || !site.name || !site.region || !site.image) {
+      throw new Error(`Site missing id/name/region/image: ${site && site.id}`);
+    }
+  });
+  return sites;
+}
 
 const REGION_BENTO = [
   {
@@ -88,6 +106,26 @@ const CTA_BLOCK = `<section class="home-bottom about-explore" data-reveal aria-l
                 </a>
             </section>`;
 
+function buildGalleryStrip(sites) {
+  const figures = sites
+    .map(
+      (site) => `<figure class="home-gallery__item" data-region="${escapeHtmlAttr(site.region)}" data-site-id="${escapeHtmlAttr(site.id)}">
+                        <img src="${escapeHtmlAttr(site.image)}" alt="${escapeHtmlAttr(site.name)}" width="800" height="600" loading="lazy" decoding="async">
+                        <img class="home-gallery__brand" src="/images/logoTrongSuot1-512x256.png" srcset="/images/logoTrongSuot1-512x256.png 1996w" sizes="(min-width: 1286px) 120px, (min-width: 786px) 9.33vw, 73px" alt="" aria-hidden="true" width="1996" height="582" loading="lazy" decoding="async">
+                    </figure>`,
+    )
+    .join('\n                    ');
+
+  return `<section class="home-section home-gallery locations-gallery" data-reveal aria-label="Ảnh các bãi camping">
+                <div class="home-gallery__header locations-gallery__header">
+                    <p class="home-section__label">Gallery</p>
+                </div>
+                <div class="home-gallery__strip" id="locations-gallery-strip" tabindex="0" aria-label="Ảnh camping theo khu vực — vuốt ngang để xem thêm">
+                    ${figures}
+                </div>
+            </section>`;
+}
+
 function buildRegionBento() {
   const cards = REGION_BENTO.map((region) => {
     const featuredClass = region.featured
@@ -110,7 +148,7 @@ function buildRegionBento() {
                 </section>`;
 }
 
-function buildLocationsHtml() {
+function buildLocationsHtml(sites) {
   return `<!-- Locations Content -->
     <section class="locations-map-section home-section" data-reveal>
         <div class="locations-content">
@@ -141,14 +179,17 @@ function buildLocationsHtml() {
                     </div>
                 </div>
             </section>
+
+            ${buildGalleryStrip(sites)}
         </div>
     </section>
 
     ${CTA_BLOCK}`;
 }
 
+const mapSites = loadMapSites();
 const data = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
-const updated = buildLocationsHtml();
+const updated = buildLocationsHtml(mapSites);
 
 [
   'locations-intro',
@@ -164,6 +205,9 @@ const updated = buildLocationsHtml();
   'data-filter-tag="saitama"',
   'data-filter-tag="bac-kanto"',
   'data-filter-action="clear"',
+  'locations-gallery',
+  'id="locations-gallery-strip"',
+  'home-gallery__brand',
 ].forEach((token) => {
   if (!updated.includes(token)) {
     throw new Error(`Sanity check failed: ${token} missing`);
@@ -189,9 +233,14 @@ if (regionCardCount !== 5) {
   throw new Error(`Expected 5 region cards, got ${regionCardCount}`);
 }
 
+const galleryItemCount = (updated.match(/class="home-gallery__item"/g) || []).length;
+if (galleryItemCount !== mapSites.length) {
+  throw new Error(`Expected ${mapSites.length} gallery items, got ${galleryItemCount}`);
+}
+
 data.content = updated;
 if (data.inlineStyles) {
   data.inlineStyles = '<style></style>';
 }
 fs.writeFileSync(JSON_PATH, `${JSON.stringify(data, null, 2)}\n`);
-console.log(`Updated ${JSON_PATH} (5 region cards, map-only layout)`);
+console.log(`Updated ${JSON_PATH} (5 region cards, ${mapSites.length} gallery images)`);

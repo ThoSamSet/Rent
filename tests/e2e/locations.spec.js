@@ -37,6 +37,10 @@ async function visibleMarkerCount(page) {
   return page.locator('#map .leaflet-marker-icon').count();
 }
 
+async function visibleGalleryCount(page) {
+  return page.locator('#locations-gallery-strip .home-gallery__item:not(.location-hidden)').count();
+}
+
 test.describe('trang locations — map split', () => {
   test('map tiles render sau khi tải trang (desktop)', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('mobile'), 'Chỉ chạy trên desktop');
@@ -120,6 +124,8 @@ test.describe('trang locations — map split', () => {
     await expect(page.locator('#map-site-overlay')).toHaveCount(0);
     await expect(page.locator('.map-site-overlay')).toHaveCount(0);
     await expect(page.locator('.location-detail')).toHaveCount(0);
+    await expect(page.locator('.location-gallery-card__overlay')).toHaveCount(0);
+    await expect(page.locator('.location-map-link')).toHaveCount(0);
 
     const marker = page.locator('#map .leaflet-marker-icon').first();
     await expect(marker).toBeAttached();
@@ -135,6 +141,36 @@ test.describe('trang locations — map split', () => {
       return style.pointerEvents !== 'none';
     });
     expect(interactive).toBe(false);
+  });
+
+  test('gallery dưới bản đồ lọc theo khu vực; không có card chi tiết', async ({ page }) => {
+    await page.goto('/locations', { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});
+    await waitForLocationsScript(page);
+
+    const strip = page.locator('#locations-gallery-strip');
+    await expect(strip).toBeVisible();
+    await expect(page.locator('#locations-gallery-strip .home-gallery__item')).toHaveCount(15);
+    await expect(page.locator('#locations-gallery-strip .home-gallery__brand')).toHaveCount(15);
+    await expect(page.locator('#locations-gallery-strip a, #locations-gallery-strip button')).toHaveCount(0);
+    await expect(page.locator('.location-detail')).toHaveCount(0);
+    await expect(page.locator('.location-gallery-card__overlay')).toHaveCount(0);
+    await expect(page.locator('.location-map-link')).toHaveCount(0);
+
+    const mapBox = await page.locator('#locations-map-band').boundingBox();
+    const galleryBox = await strip.boundingBox();
+    expect(mapBox && galleryBox && galleryBox.y >= mapBox.y).toBeTruthy();
+
+    await expect.poll(() => visibleGalleryCount(page)).toBe(15);
+
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="saitama"]').click();
+    await expect.poll(() => visibleGalleryCount(page)).toBe(1);
+
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-tag="bien"]').click();
+    await expect.poll(() => visibleGalleryCount(page)).toBe(3);
+
+    await page.locator('.locations-filters--secondary .filter-tag-btn[data-filter-action="clear"]').click();
+    await expect.poll(() => visibleGalleryCount(page)).toBe(15);
   });
 
   test('map hiển thị ngay trên mobile (không cần accordion)', async ({ page }, testInfo) => {

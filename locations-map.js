@@ -207,9 +207,20 @@
             });
         }
 
+        function syncGalleryToRegion(region) {
+            var strip = $('locations-gallery-strip');
+            if (!strip) return;
+            strip.querySelectorAll('.home-gallery__item[data-region]').forEach(function (item) {
+                var match = !region || item.getAttribute('data-region') === region;
+                item.classList.toggle('location-hidden', !match);
+            });
+            strip.scrollLeft = 0;
+        }
+
         function applyFilter() {
             syncFilterButtonStates();
             syncMapToRegion(selectedRegion);
+            syncGalleryToRegion(selectedRegion);
         }
 
         root.addEventListener('click', function (e) {

@@ -155,3 +155,85 @@ window.CAMP_MAP_SITES = [
         image: '/images/location-recamp-ashikaga.webp'
     }
 ];
+
+/**
+ * Light gray raster tiles without an API key (Carto Positron look-alike).
+ * CARTO basemaps.cartocdn.com now watermarks tiles with "API KEY REQUIRED".
+ * Prefecture borders are a separate overlay so they stay darker than the tiles.
+ */
+window.CAMP_MAP_ADD_TILE_LAYER = function (map) {
+    var attribution = 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>';
+    var options = {
+        attribution: attribution,
+        maxZoom: 16,
+        maxNativeZoom: 16
+    };
+
+    L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+        options
+    ).addTo(map);
+
+    var labels = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+        options
+    ).addTo(map);
+
+    var tilePane = map.getPane('tilePane');
+    if (tilePane) {
+        tilePane.style.filter = 'grayscale(100%) contrast(1.12)';
+    }
+
+    addPrefectureBorders(map);
+    return labels;
+};
+
+function prefectureBorderStyle(map) {
+    var zoom = map.getZoom();
+    return {
+        color: '#6e6e6e',
+        weight: zoom >= 10 ? 1.6 : zoom >= 8 ? 1.35 : 1.1,
+        opacity: 0.55,
+        fill: false,
+        fillOpacity: 0,
+        lineJoin: 'round',
+        lineCap: 'round'
+    };
+}
+
+function addPrefectureBorders(map) {
+    function paint(geojson) {
+        var layer = L.geoJSON(geojson, {
+            interactive: false,
+            pane: 'overlayPane',
+            style: function () {
+                return prefectureBorderStyle(map);
+            }
+        }).addTo(map);
+
+        map.on('zoomend', function () {
+            layer.setStyle(prefectureBorderStyle(map));
+        });
+    }
+
+    if (window.__CAMP_PREF_GEOJSON) {
+        paint(window.__CAMP_PREF_GEOJSON);
+        return;
+    }
+
+    fetch('/data/japan-prefectures.geojson')
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('prefecture geojson');
+            }
+            return response.json();
+        })
+        .then(function (geojson) {
+            window.__CAMP_PREF_GEOJSON = geojson;
+            if (!map || !map.getPane('overlayPane')) {
+                return;
+            }
+            paint(geojson);
+        })
+        .catch(function () {});
+}

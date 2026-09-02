@@ -88,16 +88,17 @@
                 doubleClickZoom: false,
                 boxZoom: false,
                 keyboard: false,
-                zoomControl: false,
-                attributionControl: false
+                zoomControl: false
             }).setView([35.436, 138.57], 11);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(mapPreview);
-
-            mapPreviewElement.style.filter = 'grayscale(100%) contrast(1.1)';
+            if (typeof window.CAMP_MAP_ADD_TILE_LAYER === 'function') {
+                window.CAMP_MAP_ADD_TILE_LAYER(mapPreview);
+            } else {
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                    maxZoom: 19
+                }).addTo(mapPreview);
+            }
 
             locations.forEach(function (location) {
                 var customIcon = L.divIcon({

@@ -1388,7 +1388,6 @@ body:has(.page-home) .navbar:not(.navbar--scrolled) .burger-menu__line {
 .page-home .home-map__media #mapPreview {
     width: 100%;
     height: 100%;
-    filter: grayscale(100%) contrast(1.1);
 }
 
 .page-home .home-map__media .custom-marker {

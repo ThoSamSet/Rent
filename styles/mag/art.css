@@ -1,0 +1,516 @@
+/*
+ * Art layer — softer type, hand-drawn ornaments, a sky that moves through the night.
+ * Loaded last so it can relax the stricter editorial defaults above it.
+ */
+
+/* Surfaces: a little warmth and light instead of flat fills */
+.tone-paper {
+    background:
+        radial-gradient(1100px 520px at 8% -10%, rgba(232, 160, 107, 0.12), transparent 62%),
+        radial-gradient(900px 480px at 100% 110%, rgba(40, 48, 74, 0.07), transparent 60%),
+        var(--snow);
+}
+
+.tone-ink {
+    background:
+        radial-gradient(1000px 520px at 92% -8%, rgba(40, 48, 74, 0.7), transparent 66%),
+        radial-gradient(700px 420px at 0% 108%, rgba(193, 101, 47, 0.1), transparent 62%),
+        var(--ink);
+}
+
+/* Type: headings lean a touch softer; *emphasis* turns into the wonky italic */
+h1,
+h2,
+h3,
+h4 {
+    font-variation-settings: 'SOFT' 40;
+}
+
+h1 em,
+h2 em,
+h3 em,
+.pullquote em,
+.cover__deck em {
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    color: var(--accent);
+}
+
+.cover__deck em {
+    font-family: var(--font-display);
+    font-size: 1.08em;
+}
+
+/* Kickers read like a note in the margin, not a label on a box */
+.kicker {
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: 'SOFT' 100;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.kicker::before {
+    content: '';
+    flex: none;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+}
+
+.section-head .kicker {
+    margin-bottom: 0;
+}
+
+.caption {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.cover__lines {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* Small labels that were shouting in caps now speak in italic */
+.spread__more,
+.continue__meta,
+.pullquote cite,
+.values,
+.price-mark span {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.spread__more,
+.continue__meta,
+.pullquote cite {
+    font-size: 1.05rem;
+}
+
+.values {
+    font-size: var(--step-1);
+}
+
+.masthead__menu {
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+}
+
+/* Buttons: rounded pebbles, sentence case */
+.btn {
+    min-height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+}
+
+.btn--solid {
+    box-shadow: 0 10px 28px -14px rgba(193, 101, 47, 0.9);
+}
+
+.masthead__cta,
+.masthead__menu {
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: var(--step--1);
+}
+
+/* Drop cap: a tall italic initial across three lines */
+.essay--drop::first-letter {
+    margin: 0.04em 12px 0 0;
+    font-size: 4.4rem;
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    line-height: 0.78;
+}
+
+/* Photos in spreads get a passe-partout line, like a print on the wall */
+.spread__media::after,
+.contents__media::after,
+.cover__media::after {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    z-index: 3;
+    border: 1px solid rgba(244, 237, 224, 0.32);
+    pointer-events: none;
+}
+
+.mosaic .caption {
+    font-size: 1.05rem;
+}
+
+/* Hairline lists: numbers and values in italic serif */
+.ledger__no,
+.ledger__value,
+.step__no,
+.story__no,
+.site-index__no {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100;
+    letter-spacing: 0;
+}
+
+.ledger__value {
+    font-size: 1.05rem;
+}
+
+/* Ornaments */
+.ornament {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+}
+
+.ornament--stars circle {
+    fill: currentColor;
+    stroke: none;
+}
+
+.cta-band__ornament {
+    width: 56px;
+    margin: 0 auto 22px;
+    color: var(--accent);
+}
+
+/* Letter */
+.letter__sheet {
+    max-width: 760px;
+    text-align: center;
+}
+
+.letter__ornament {
+    width: min(220px, 60vw);
+    margin: 0 auto clamp(28px, 4vw, 44px);
+    color: var(--accent);
+}
+
+.letter__greeting {
+    margin-bottom: 26px;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100;
+    color: var(--accent);
+}
+
+.letter__body {
+    max-width: 36ch;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    font-weight: 400;
+    font-variation-settings: 'SOFT' 60;
+    line-height: 1.5;
+}
+
+.letter__body + .letter__body {
+    margin-top: 1.1em;
+}
+
+.letter__signature {
+    display: inline-block;
+    margin-top: clamp(28px, 4vw, 40px);
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    color: var(--accent);
+    transform: rotate(-4deg);
+}
+
+.letter__signature::before {
+    content: '— ';
+    opacity: 0.6;
+}
+
+/* Hours — a night at camp over a sky that moves from afternoon to dawn */
+.hours {
+    --fg: var(--snow);
+    --muted: rgba(244, 237, 224, 0.74);
+    --accent: var(--alpenglow);
+    --rule: rgba(244, 237, 224, 0.22);
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--fg);
+}
+
+.hours__sky {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        linear-gradient(180deg, rgba(14, 20, 32, 0) 40%, rgba(14, 20, 32, 0.55) 100%),
+        linear-gradient(
+            90deg,
+            #6b4a45 0%,
+            #5a3f55 20%,
+            #2d2b48 42%,
+            #121a2b 62%,
+            #1c2640 80%,
+            #4d4a63 100%
+        );
+}
+
+.hours__sky::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1.2px 1.2px at 58% 18%, rgba(244, 237, 224, 0.8), transparent),
+        radial-gradient(1px 1px at 64% 32%, rgba(244, 237, 224, 0.6), transparent),
+        radial-gradient(1.4px 1.4px at 70% 12%, rgba(244, 237, 224, 0.9), transparent),
+        radial-gradient(1px 1px at 76% 26%, rgba(244, 237, 224, 0.5), transparent),
+        radial-gradient(1.2px 1.2px at 52% 40%, rgba(244, 237, 224, 0.5), transparent),
+        radial-gradient(1px 1px at 82% 16%, rgba(244, 237, 224, 0.6), transparent);
+}
+
+.hours__head,
+.hours__list,
+.hours__foot {
+    position: relative;
+    z-index: 1;
+}
+
+.hours__title {
+    max-width: 16ch;
+    font-size: var(--step-4);
+    line-height: 0.98;
+}
+
+.hours__head .lead {
+    margin-top: 18px;
+}
+
+.hours__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 36px 28px;
+    margin-top: clamp(40px, 6vw, 72px);
+}
+
+.hour {
+    position: relative;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+}
+
+.hour::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--alpenglow);
+    box-shadow: 0 0 14px 2px rgba(232, 160, 107, 0.7);
+}
+
+.hour__time {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    line-height: 1;
+    color: var(--alpenglow);
+}
+
+.hour__title {
+    margin-top: 14px;
+    font-size: var(--step-1);
+    line-height: 1.2;
+}
+
+.hour__text {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.hours__foot {
+    margin-top: clamp(40px, 6vw, 64px);
+}
+
+.hours__foot .ornament {
+    width: 140px;
+    margin-left: auto;
+    color: rgba(244, 237, 224, 0.7);
+}
+
+/* Two ways to go (about) */
+.two-ways {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+}
+
+.two-ways__col {
+    padding: clamp(28px, 4vw, 52px);
+    background: var(--surface);
+}
+
+.two-ways__col--us {
+    background: color-mix(in srgb, var(--alpenglow) 13%, var(--surface));
+}
+
+.two-ways__title {
+    margin-bottom: 22px;
+    font-size: var(--step-3);
+}
+
+.two-ways ul {
+    list-style: none;
+}
+
+.two-ways li {
+    display: grid;
+    grid-template-columns: 1.4rem minmax(0, 1fr);
+    padding: 13px 0;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+}
+
+.two-ways li::before {
+    content: '·';
+    color: var(--muted);
+}
+
+.two-ways__col--us li {
+    color: var(--fg);
+}
+
+.two-ways__col--us li::before {
+    content: '✦';
+    font-size: 0.8em;
+    color: var(--accent);
+}
+
+/* Motion, only where the browser can tie it to scroll and the reader allows it */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .ornament path {
+            stroke-dasharray: 420;
+            stroke-dashoffset: 420;
+            animation: ornament-draw linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 45%;
+        }
+
+        .spread__media > img,
+        .mosaic__photo > img {
+            animation: photo-reveal linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 35%;
+        }
+
+        .hour {
+            animation: hour-rise linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 30%;
+        }
+    }
+}
+
+@keyframes ornament-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes photo-reveal {
+    from {
+        transform: scale(1.08);
+    }
+    to {
+        transform: none;
+    }
+}
+
+@keyframes hour-rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .hours__sky {
+        background:
+            linear-gradient(
+                180deg,
+                #6b4a45 0%,
+                #5a3f55 18%,
+                #2d2b48 40%,
+                #121a2b 62%,
+                #1c2640 82%,
+                #4d4a63 100%
+            );
+    }
+
+    .hours__list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .hour {
+        padding: 0 0 30px 30px;
+        border-top: 0;
+        border-left: 1px solid var(--rule);
+    }
+
+    .hour:last-child {
+        padding-bottom: 0;
+    }
+
+    .hour::before {
+        top: 6px;
+        left: -5px;
+    }
+
+    .hour__time {
+        font-size: var(--step-2);
+    }
+
+    .two-ways {
+        grid-template-columns: 1fr;
+    }
+
+    .spread__media::after,
+    .contents__media::after,
+    .cover__media::after {
+        inset: 10px;
+    }
+}

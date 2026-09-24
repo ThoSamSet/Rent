@@ -2,9 +2,9 @@ import BookingPageContent from '@/components/pages/BookingPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Đặt lịch Camping',
+  title: 'Đặt lịch camping',
   description:
-    'Đặt lịch camping với Camp Nhà Thỏ — chọn ngày, plan, nhận mẫu tin nhắn cá nhân hoá kèm ước tính chi phí, rồi liên hệ qua TikTok hoặc Facebook.',
+    'Chọn ngày, plan và số người. Form tạo sẵn tin nhắn kèm ước tính chi phí để gửi qua TikTok hoặc Facebook. Không cần cọc.',
   path: '/dat-lich',
   image: '/images/hero-contact-campnhatho.jpg',
 });

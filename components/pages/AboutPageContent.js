@@ -1,224 +1,133 @@
-import Link from 'next/link';
-import AboutDetails from '@/components/about/AboutDetails';
-import HeroLogo from '@/components/home/HeroLogo';
-import HeroSlideshow from '@/components/home/HeroSlideshow';
-import PricingLineup from '@/components/PricingLineup';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
-import BentoImage from '@/components/media/BentoImage';
-import { HERO_SLIDES } from '@/lib/hero/slides';
-import { IMAGE_DIMS } from '@/lib/image-sizes';
+import Continue from '@/components/mag/Continue';
+import Cover from '@/components/mag/Cover';
+import CtaBand from '@/components/mag/CtaBand';
+import Emph from '@/components/mag/Emph';
+import Hours from '@/components/mag/Hours';
+import Ledger from '@/components/mag/Ledger';
+import Photo from '@/components/mag/Photo';
+import SectionHead from '@/components/mag/SectionHead';
+import Spread from '@/components/mag/Spread';
+import Steps from '@/components/mag/Steps';
+import {
+  ABOUT_AUDIENCE,
+  ABOUT_COVER,
+  ABOUT_HOURS,
+  ABOUT_PILLARS,
+  ABOUT_QUOTE,
+  ABOUT_STORY,
+  ABOUT_TWO_WAYS,
+  ABOUT_VALUES,
+  BOOKING_STEPS,
+} from '@/lib/about/content';
+import { pickContinue } from '@/lib/site/continue';
+import { folioFor } from '@/lib/site/issue';
 
 export default function AboutPageContent() {
   return (
-    <main className="home-editorial">
-      <section className="home-hero" aria-label="Giới thiệu Camp Nhà Thỏ">
-        <HeroSlideshow slides={HERO_SLIDES.about} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">Giới thiệu</p>
-          <h1 className="home-hero__title home-hero__logo-wrap">
-            <HeroLogo priority />
-          </h1>
-          <p className="home-hero__subtitle">Chuyến đi của bạn, nhịp chill của bạn</p>
-          <div className="about-hero__actions">
-            <Link href="/schedule" className="btn-outline">
-              Xem lịch trình
-            </Link>
-          </div>
+    <main>
+      <Cover
+        label="Giới thiệu Camp Nhà Thỏ"
+        folio={folioFor('Giới thiệu')}
+        kicker={ABOUT_COVER.kicker}
+        title={ABOUT_COVER.title}
+        deck={ABOUT_COVER.deck}
+        image={{ src: '/images/about-hero.webp', alt: 'Núi Phú Sĩ nhìn qua mặt hồ' }}
+        caption="Phú Sĩ, buổi sáng bên hồ"
+      />
+
+      <Spread
+        label="Chuyện bắt đầu"
+        image={{ src: '/images/about-1.webp', alt: 'Lều dựng sẵn giữa rừng, cạnh xe đưa đón' }}
+        caption="Lều dựng xong, xe đậu bên cạnh"
+        tone="ink"
+      >
+        <p className="kicker">Chuyện bắt đầu</p>
+        <h2 className="spread__title">
+          <Emph text="Chia sẻ, *không ghép khách*" />
+        </h2>
+        {ABOUT_STORY.map((paragraph, index) => (
+          <p key={paragraph} className={`essay${index === 0 ? ' essay--drop' : ''}`}>
+            {paragraph}
+          </p>
+        ))}
+      </Spread>
+
+      <section className="mag-section tone-ink" aria-label="Tụi mình lo gì">
+        <div className="wrap">
+          <SectionHead kicker="Tụi mình lo gì" title="Ba việc, *để bạn khỏi phải nghĩ*" />
+          <ul className="pillars">
+            {ABOUT_PILLARS.map((pillar) => (
+              <li key={pillar.title} className="pillar">
+                <Photo className="pillar__photo" src={pillar.image} alt={pillar.alt} />
+                <h3 className="pillar__title">{pillar.title}</h3>
+                <p className="pillar__text">{pillar.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="about-bento home-section" data-reveal aria-label="Về Camp Nhà Thỏ">
-        <p className="about-bento__intro">
-          Chúng mình tin rằng một chuyến cắm trại đáng nhớ không nên bắt đầu bằng những lo lắng về việc chuẩn bị đồ
-          đạc. Vì vậy, <strong>Camp Nhà Thỏ</strong> ra đời để giúp mọi người tận hưởng thiên nhiên Nhật Bản một
-          cách trọn vẹn, nhẹ nhàng và gần gũi hơn.
-        </p>
-        <div className="about-bento__grid">
-          <article
-            className="about-bento__card about-bento__card--model"
-            aria-labelledby="about-share-title"
-            tabIndex={0}
-            aria-expanded="false"
-          >
-            <div className="about-bento__media">
-              <BentoImage src="/images/about-1.webp" />
-            </div>
-            <div className="about-bento__copy">
-              <p className="home-section__label">Mô hình</p>
-              <h2 className="about-bento__title" id="about-share-title">
-                Không phải cho thuê, <br />
-                mà là chia sẻ
-              </h2>
-              <div className="about-bento__detail">
-                <div className="about-bento__detail-inner">
-                  <p className="about-bento__text">
-                    Chia sẻ đồ camping và hỗ trợ trọn gói — chúng mình lo đưa đón, setup; bạn chỉ cần chill.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <span className="about-bento__hint" aria-hidden="true">
-              +
-            </span>
-          </article>
-          <article
-            className="about-bento__card about-bento__card--setup"
-            aria-labelledby="about-setup-title"
-            tabIndex={0}
-            aria-expanded="false"
-          >
-            <div className="about-bento__media">
-              <BentoImage src="/images/dung-cu-1.webp" />
-            </div>
-            <div className="about-bento__copy">
-              <h3 className="about-bento__title" id="about-setup-title">
-                Đồ &amp; setup
-              </h3>
-              <div className="about-bento__detail">
-                <div className="about-bento__detail-inner">
-                  <p className="about-bento__text">
-                    Đầy đủ gear camping, setup và thu dọn — không cần tự chuẩn bị gì thêm.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <span className="about-bento__hint" aria-hidden="true">
-              +
-            </span>
-          </article>
-          <article
-            className="about-bento__card about-bento__card--pickup"
-            aria-labelledby="about-pickup-title"
-            tabIndex={0}
-            aria-expanded="false"
-          >
-            <div className="about-bento__media">
-              <BentoImage src="/images/dua-don-1.webp" />
-            </div>
-            <div className="about-bento__copy">
-              <h3 className="about-bento__title" id="about-pickup-title">
-                Đưa đón
-              </h3>
-              <div className="about-bento__detail">
-                <div className="about-bento__detail-inner">
-                  <p className="about-bento__text">Đón tận nơi, đi riêng — không ghép khách.</p>
-                </div>
-              </div>
-            </div>
-            <span className="about-bento__hint" aria-hidden="true">
-              +
-            </span>
-          </article>
-          <article
-            className="about-bento__card about-bento__card--chill"
-            aria-labelledby="about-chill-title"
-            tabIndex={0}
-            aria-expanded="false"
-          >
-            <div className="about-bento__media">
-              <BentoImage src="/images/chill-chup-anh-1.webp" />
-            </div>
-            <div className="about-bento__copy">
-              <h3 className="about-bento__title" id="about-chill-title">
-                Chill &amp; chụp ảnh
-              </h3>
-              <div className="about-bento__detail">
-                <div className="about-bento__detail-inner">
-                  <p className="about-bento__text">Tự do ăn chơi, hỗ trợ chụp hình kỷ niệm.</p>
-                </div>
-              </div>
-            </div>
-            <span className="about-bento__hint" aria-hidden="true">
-              +
-            </span>
-          </article>
-          <article
-            className="about-bento__card about-bento__card--audience"
-            aria-labelledby="about-audience-title"
-            tabIndex={0}
-            aria-expanded="false"
-          >
-            <div className="about-bento__media">
-              <BentoImage src="/images/doi-tuong-1.webp" />
-            </div>
-            <div className="about-bento__copy">
-              <p className="home-section__label">Đối tượng</p>
-              <h3 className="about-bento__title" id="about-audience-title">
-                Dành cho ai?
-              </h3>
-              <p className="about-bento__tags">Lần đầu · Nhóm nhỏ · Bận rộn</p>
-              <div className="about-bento__detail">
-                <div className="about-bento__detail-inner">
-                  <ul className="about-bento__list">
-                    <li>
-                      <span aria-hidden="true">🌿</span> Lần đầu camping / chưa có đồ
-                    </li>
-                    <li>
-                      <span aria-hidden="true">👥</span> Nhóm nhỏ, couple, gia đình
-                    </li>
-                    <li>
-                      <span aria-hidden="true">⏰</span> Bận rộn, không muốn tự chuẩn bị
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <span className="about-bento__hint" aria-hidden="true">
-              +
-            </span>
-          </article>
-        </div>
-      </section>
-
-      <section className="about-quotes home-section" data-reveal aria-label="Lời nhắn từ Camp Nhà Thỏ">
-        <blockquote className="about-quotes__inner" cite="https://campnhatho.com">
-          <p className="about-quotes__line about-quotes__line--accent">Where every journey feels like coming home.</p>
+      <section className="mag-section tone-dusk quote-values" aria-label="Điều tụi mình giữ">
+        <blockquote className="pullquote wrap">
+          <p>
+            <Emph text={ABOUT_QUOTE} />
+          </p>
+          <cite>Camp Nhà Thỏ</cite>
         </blockquote>
+        <ul className="values wrap" aria-label="Điều tụi mình giữ">
+          {ABOUT_VALUES.map((value) => (
+            <li key={value}>{value}</li>
+          ))}
+        </ul>
       </section>
 
-      <AboutDetails />
+      <Spread
+        label="Hợp với ai"
+        image={{ src: ABOUT_AUDIENCE.image, alt: ABOUT_AUDIENCE.alt }}
+        caption="Nhóm nhỏ, lửa nhỏ"
+        reverse
+      >
+        <p className="kicker">Dành cho</p>
+        <h2 className="spread__title">
+          <Emph text={ABOUT_AUDIENCE.title} />
+        </h2>
+        <div className="spread__ledger">
+          <Ledger rows={ABOUT_AUDIENCE.items.map((item) => ({ key: item, label: item }))} label="Hợp với ai" />
+        </div>
+        <p className="essay">{ABOUT_AUDIENCE.note}</p>
+      </Spread>
 
-      <PricingLineup />
+      <Hours label="Một chuyến mẫu" {...ABOUT_HOURS} />
 
-      <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
-        <Link href="/schedule" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/subBanner-lich-trinh.webp" alt="Lịch trình camping — kiểm tra lịch trống sắp tới" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
+      <section className="mag-section tone-ink" aria-label="Hai cách đi">
+        <div className="wrap">
+          <SectionHead kicker="Hai cách đi" title="Tự đi, hay *đi cùng tụi mình*" />
+          <div className="two-ways">
+            {[ABOUT_TWO_WAYS.alone, ABOUT_TWO_WAYS.withUs].map((way, index) => (
+              <div key={way.title} className={`two-ways__col${index === 1 ? ' two-ways__col--us' : ''}`}>
+                <h3 className="two-ways__title">
+                  <Emph text={way.title} />
+                </h3>
+                <ul>
+                  {way.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Lịch trình</p>
-            <h2 className="home-section__title">Kiểm tra lịch trống sắp tới</h2>
-          </div>
-        </Link>
-        <Link href="/equipment" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/subBanner-dung-cu.webp" alt="Dụng cụ camping — danh sách đồ camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Dụng cụ</p>
-            <h2 className="home-section__title">Danh sách đồ camping</h2>
-          </div>
-        </Link>
-        <Link href="/faq" className="home-faq about-explore__full">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/subBanner-faq.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">FAQ</p>
-            <h2 className="home-section__title">Câu hỏi thường gặp</h2>
-          </div>
-        </Link>
-      </section>
-
-      <section className="about-cta home-section" data-reveal>
-        <h2 className="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
-        <p className="about-cta__tagline">Share đồ – Đi riêng – Trải nghiệm</p>
-        <div className="about-cta__actions">
-          <Link href="/dat-lich" className="btn-hero hue-cta hue-cta--dusk">
-            Đặt lịch
-          </Link>
         </div>
       </section>
+
+      <section className="mag-section tone-paper" aria-label="Cách đặt lịch">
+        <div className="wrap">
+          <SectionHead kicker="Đặt lịch" title="Ba bước, *không cần cọc*" />
+          <Steps steps={BOOKING_STEPS} />
+        </div>
+      </section>
+
+      <Continue items={pickContinue(['pricing', 'locations', 'schedule'])} />
+      <CtaBand title="Sẵn sàng cho *một đêm ngoài trời*?" text="Đồ đạc tụi mình lo. Bạn chỉ cần chọn ngày." />
     </main>
   );
 }

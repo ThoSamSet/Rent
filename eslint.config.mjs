@@ -18,11 +18,7 @@ export default [
       '!lib/constants.js',
       '!lib/seo.js',
       '!lib/fonts.js',
-      '!lib/image-sizes.js',
-      '!lib/load-script.js',
-      '!lib/gsap-cleanup.js',
-      '!lib/create-legacy-page.js',
-      '!lib/legacy-content.js',
+      '!lib/social.js',
     ],
   },
   {
@@ -43,21 +39,6 @@ export default [
       'no-undef': 'error',
       'no-console': 'off',
       eqeqeq: ['warn', 'smart'],
-    },
-  },
-  {
-    files: ['*.js', 'animations/**/*.js'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'script',
-      globals: {
-        ...globals.browser,
-        gsap: 'readonly',
-        ScrollTrigger: 'readonly',
-        CampGsap: 'readonly',
-        CampAnimCore: 'readonly',
-        L: 'readonly',
-      },
     },
   },
 ];

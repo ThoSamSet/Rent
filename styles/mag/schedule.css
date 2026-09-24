@@ -1,0 +1,242 @@
+.cal-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    gap: 24px 56px;
+    align-items: end;
+    margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.cal-intro .section-head {
+    margin-bottom: 0;
+}
+
+.cal-legend {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.cal-legend li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+.cal-legend__swatch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg);
+}
+
+.cal-legend__swatch--available {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: var(--snow);
+}
+
+.cal-legend__swatch--sale {
+    background: var(--alpenglow);
+    border-color: var(--alpenglow);
+    color: var(--ink);
+}
+
+.cal-legend__swatch--empty {
+    background: color-mix(in srgb, var(--fg) 9%, transparent);
+    color: color-mix(in srgb, var(--fg) 45%, transparent);
+}
+
+.cal-legend__swatch--holiday {
+    color: var(--ember);
+    border-color: var(--ember);
+}
+
+.cal-months {
+    display: grid;
+    gap: clamp(40px, 6vw, 72px);
+}
+
+.cal-month__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--fg);
+}
+
+.cal-month__title {
+    font-size: var(--step-3);
+}
+
+.cal-month__count {
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.cal-month__count span {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    letter-spacing: 0;
+    color: var(--accent);
+}
+
+.cal-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cal {
+    width: 100%;
+    min-width: 520px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.cal th {
+    padding: 12px 0 10px;
+    font-size: var(--step--2);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-align: left;
+    color: var(--muted);
+}
+
+.cal th:last-child {
+    color: var(--accent);
+}
+
+.cal td {
+    height: clamp(64px, 8vw, 92px);
+    padding: 8px;
+    vertical-align: top;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+}
+
+.cal td:first-child {
+    border-left: 0;
+}
+
+.cal__day {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.cal__holiday {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    color: var(--ember);
+}
+
+.cal__status {
+    display: block;
+    margin-top: 6px;
+    font-size: var(--step--2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cal__status--closed {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    letter-spacing: 0;
+    line-height: 1;
+    color: color-mix(in srgb, var(--fg) 40%, transparent);
+}
+
+.cal td.is-empty {
+    background: color-mix(in srgb, var(--fg) 9%, transparent);
+}
+
+.cal td.is-empty .cal__day {
+    color: color-mix(in srgb, var(--fg) 45%, transparent);
+}
+
+.cal td.is-outside-month .cal__day {
+    color: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+.cal td.is-holiday .cal__day {
+    color: var(--ember);
+}
+
+.cal td.is-available {
+    background: var(--ember);
+    color: var(--snow);
+}
+
+.cal td.is-available .cal__day,
+.cal td.is-available .cal__holiday {
+    color: var(--snow);
+}
+
+.cal td.is-sale {
+    background: var(--alpenglow);
+    color: var(--ink);
+}
+
+.cal td.is-bookable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cal td.is-bookable:hover,
+.cal td.is-bookable:focus-visible {
+    background: var(--ink);
+    outline: none;
+}
+
+@media (max-width: 860px) {
+    .cal-intro {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .cal {
+        min-width: 0;
+    }
+
+    .cal td {
+        height: 58px;
+        padding: 6px 4px;
+    }
+
+    .cal__status {
+        display: none;
+    }
+
+    .cal__status--closed {
+        display: block;
+        margin-top: 4px;
+    }
+
+    .cal__holiday {
+        overflow: hidden;
+        font-size: 0.5625rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .cal th {
+        letter-spacing: 0.06em;
+    }
+}

@@ -5,7 +5,7 @@ const LOCAL_BUSINESS = {
   '@type': 'LocalBusiness',
   name: 'Camp Nhà Thỏ',
   description:
-    'Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ, Nhật Bản. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm.',
+    'Share đồ camping, đưa đón từ Tokyo, Saitama, Kanagawa và dựng trại sẵn tại các bãi quanh Phú Sĩ và Kanto.',
   url: `${SITE_URL}/`,
   image: `${SITE_URL}/images/hero-camping.webp`,
   address: {
@@ -22,7 +22,7 @@ const LOCAL_BUSINESS = {
     '@type': 'City',
     name: 'Phú Sĩ',
   },
-  serviceType: ['Cho thuê đồ camping', 'Share đồ cắm trại', 'Chụp hình kỷ niệm', 'Tour camping'],
+  serviceType: ['Share đồ camping', 'Đưa đón camping', 'Dựng trại', 'Chụp hình kỷ niệm'],
   priceRange: '$$',
 };
 

@@ -3,10 +3,9 @@ import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title:
-    'Camp Nhà Thỏ - Share đồ Camping | Cho thuê đồ cắm trại Phú Sĩ | Chụp hình chill cảnh đẹp Nhật Bản',
+  title: 'Camp Nhà Thỏ — Share đồ camping, đưa đón và dựng trại quanh Kanto',
   description:
-    'Camp Nhà Thỏ - Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ. Hỗ trợ đưa đón, setup lều, chụp hình kỷ niệm. Trải nghiệm camping chill với view núi Phú Sĩ tuyệt đẹp.',
+    'Camp Nhà Thỏ chia sẻ đồ camping, đưa đón từ Tokyo, Saitama, Kanagawa và dựng trại sẵn tại các bãi quanh Phú Sĩ và Kanto. Ba plan từ 3.7 man, không cần cọc.',
   path: '/',
   image: '/images/hero-camping.webp',
 });
@@ -14,8 +13,6 @@ export const metadata = buildPageMetadata({
 export default function HomePage() {
   return (
     <>
-      <link rel="preload" as="image" href="/images/about-hero.webp" />
-      <link rel="preload" as="image" href="/images/equipment-hero.webp" />
       <LocalBusinessJsonLd />
       <HomePageContent />
     </>

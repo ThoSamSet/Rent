@@ -1,70 +1,71 @@
 import Link from 'next/link';
-import EquipmentCategories from '@/components/equipment/EquipmentCategories';
-import HeroSlideshow from '@/components/home/HeroSlideshow';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
-import { HERO_SLIDES } from '@/lib/hero/slides';
-import { IMAGE_DIMS } from '@/lib/image-sizes';
+import Continue from '@/components/mag/Continue';
+import Cover from '@/components/mag/Cover';
+import CtaBand from '@/components/mag/CtaBand';
+import Emph, { plain } from '@/components/mag/Emph';
+import Ledger from '@/components/mag/Ledger';
+import Photo from '@/components/mag/Photo';
+import SectionHead from '@/components/mag/SectionHead';
+import Spread from '@/components/mag/Spread';
+import { EQUIPMENT_BRING, EQUIPMENT_CATEGORIES, EQUIPMENT_COVER, EQUIPMENT_FOOTNOTES } from '@/lib/equipment/content';
+import { pickContinue } from '@/lib/site/continue';
+import { folioFor } from '@/lib/site/issue';
 
 export default function EquipmentPageContent() {
   return (
-    <main className="home-editorial">
-      <section className="home-hero" aria-label="Dụng cụ camping Camp Nhà Thỏ">
-        <HeroSlideshow slides={HERO_SLIDES.equipment} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">Dụng cụ</p>
-          <h1 className="home-hero__title">Dụng cụ camping đã sẵn sàng</h1>
-          <p className="home-hero__subtitle">
-            Bạn chỉ cần mang theo đồ ăn theo nhu cầu, phần còn lại để Camp Nhà Thỏ chuẩn bị.
-          </p>
-          <div className="about-hero__actions">
-            <Link href="/schedule" className="btn-outline">
-              Xem lịch trình
-            </Link>
+    <main>
+      <Cover
+        label="Dụng cụ camping của Camp Nhà Thỏ"
+        folio={folioFor('Dụng cụ')}
+        kicker={EQUIPMENT_COVER.kicker}
+        title={EQUIPMENT_COVER.title}
+        deck={EQUIPMENT_COVER.deck}
+        image={{ src: '/images/equipment-hero.webp', alt: 'Bên trong lều với bàn, ghế và đồ nấu ăn' }}
+        caption="Mọi thứ đã nằm sẵn trong lều"
+        lines={EQUIPMENT_CATEGORIES.map((category) => ({ href: `#${category.id}`, label: plain(category.title) }))}
+      />
+
+      <section className="mag-section tone-ink" aria-label="Các nhóm dụng cụ">
+        {EQUIPMENT_CATEGORIES.map((category) => (
+          <div key={category.id} id={category.id} className="gear">
+            <div className="wrap">
+              <SectionHead kicker="Tụi mình mang theo" title={category.title} as="h2" />
+            </div>
+            <div className="gear__row" data-count={category.images.length}>
+              {category.images.map((image) => (
+                <Photo key={`${category.id}-${image.src}`} className="gear__photo" src={image.src} alt={image.alt} caption={image.caption} />
+              ))}
+            </div>
           </div>
+        ))}
+      </section>
+
+      <Spread
+        label={plain(EQUIPMENT_BRING.title)}
+        image={{ src: '/images/equipment-bring.webp', alt: 'Khách mang túi ngủ và giỏ đồ xuống xe' }}
+        caption="Xuống xe, lên đường"
+      >
+        <p className="kicker">Hành lý nhẹ tênh</p>
+        <h2 className="spread__title">
+          <Emph text={EQUIPMENT_BRING.title} />
+        </h2>
+        <div className="spread__ledger">
+          <Ledger rows={EQUIPMENT_BRING.items.map((item) => ({ key: item, label: item }))} label={plain(EQUIPMENT_BRING.title)} />
         </div>
-      </section>
-
-      <EquipmentCategories />
-
-      <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
-        <Link href="/schedule" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/subBanner-lich-trinh.webp" alt="Lịch trình camping — kiểm tra lịch trống sắp tới" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Lịch trình</p>
-            <h2 className="home-section__title">Kiểm tra lịch trống sắp tới</h2>
-          </div>
+        <Link href={EQUIPMENT_BRING.link.href} className="text-link spread__more">
+          {EQUIPMENT_BRING.link.label}
         </Link>
-        <Link href="/pricing" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/chi-phi-1.webp" alt="Chi phí và plan camping" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Chi phí</p>
-            <h2 className="home-section__title">Bảng giá &amp; plan</h2>
-          </div>
-        </Link>
-        <Link href="/faq" className="home-faq about-explore__full">
-          <div className="home-faq__media">
-            <ResponsiveImage src="/images/subBanner-faq.webp" alt="Câu hỏi thường gặp" width={IMAGE_DIMS.faqTile.width} height={IMAGE_DIMS.faqTile.height} />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">FAQ</p>
-            <h2 className="home-section__title">Câu hỏi thường gặp</h2>
-          </div>
-        </Link>
-      </section>
-
-      <section className="about-cta home-section" data-reveal>
-        <h2 className="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
-        <p className="about-cta__tagline">Share đồ – Đi riêng – Trải nghiệm</p>
-        <div className="about-cta__actions">
-          <Link href="/dat-lich" className="btn-hero hue-cta hue-cta--dusk">
-            Đặt lịch
-          </Link>
+        <div className="spread__notes">
+          {EQUIPMENT_FOOTNOTES.map((note) => (
+            <p key={note} className="muted">
+              {note}
+            </p>
+          ))}
         </div>
-      </section>
+      </Spread>
+
+      <Continue items={pickContinue(['options', 'locations', 'faq'])} />
+      <CtaBand title="Đồ đã sẵn sàng. *Còn bạn?*" />
     </main>
   );
 }

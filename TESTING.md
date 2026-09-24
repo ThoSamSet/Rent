@@ -29,13 +29,9 @@ Pipeline: **lint → build → Playwright (screenshot) → báo cáo**
 - `npm run build` — copy vendor GSAP, kiểm tra file
 - `npm run test:e2e` — chỉ Playwright
 
-## Cursor
-
-- Rule: `.cursor/rules/post-codegen-testing.mdc` — agent nên chạy pipeline sau khi sửa web
-- Hook: `.cursor/hooks/after-codegen-test.sh` — tự chạy khi agent kết thúc (cần bật Hooks trong Cursor)
+Pipeline chỉ chạy khi gọi `npm run test:full` thủ công.
 
 ## Hạn chế
 
 - Site tĩnh, không có bundler — `build` chỉ verify + copy vendor
 - Lỗi CDN/mạng (Google Fonts, Leaflet) có thể bị bỏ qua trong test console
-- Hook `stop` cần Cursor hỗ trợ hooks; nếu không bật, chạy `npm run test:full` thủ công

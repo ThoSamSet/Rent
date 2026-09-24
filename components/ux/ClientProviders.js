@@ -2,12 +2,11 @@
 
 import { useEffect } from 'react';
 import ScrollManager from '@/components/ux/ScrollManager';
+import ServiceWorkerRegister from '@/components/ux/ServiceWorkerRegister';
 
-/** Global client UX: scroll restoration + first-paint readiness. */
+/** Global client UX: scroll restoration and smooth in-page hash links. */
 export default function ClientProviders({ children }) {
   useEffect(() => {
-    document.body.classList.add('is-ui-ready');
-
     const onHashClick = (event) => {
       const anchor = event.target.closest('a[href*="#"]');
       if (!anchor) {
@@ -25,21 +24,14 @@ export default function ClientProviders({ children }) {
       }
 
       const id = url.hash.slice(1);
-      if (!id) {
-        return;
-      }
-
-      const target = document.getElementById(decodeURIComponent(id));
+      const target = id ? document.getElementById(decodeURIComponent(id)) : null;
       if (!target) {
         return;
       }
 
       event.preventDefault();
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({
-        behavior: reducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
+      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
       history.pushState(null, '', `#${id}`);
     };
 
@@ -50,6 +42,7 @@ export default function ClientProviders({ children }) {
   return (
     <>
       <ScrollManager />
+      <ServiceWorkerRegister />
       {children}
     </>
   );

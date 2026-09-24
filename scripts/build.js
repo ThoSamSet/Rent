@@ -10,13 +10,10 @@ const { execSync } = require('child_process');
 const root = path.resolve(__dirname, '..');
 
 const requiredFiles = [
-  'vendor/gsap.min.js',
-  'vendor/ScrollTrigger.min.js',
   'images/logoTrongSuot1-512x256.png',
   'images/logoTrongSuot1-1024x512.png',
-  'fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
+  'public/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
   'public/sw.js',
-  'home-map-preview.js',
   'images/hero-camping.webp',
   'images/about-hero.webp',
   'images/equipment-hero.webp',
@@ -26,7 +23,6 @@ const requiredFiles = [
 console.log('🔨 Đang chuẩn bị assets tĩnh...');
 
 const buildSteps = [
-  ['postinstall', () => execSync('npm run postinstall', { cwd: root, stdio: 'inherit' })],
   ['setup-fonts', () => execSync('node scripts/setup-fonts.js', { cwd: root, stdio: 'inherit' })],
   ['source-images', () => execSync('node scripts/process-source-images.js', { cwd: root, stdio: 'inherit' })],
   ['service-worker', () => execSync('node scripts/generate-sw.js', { cwd: root, stdio: 'inherit' })],

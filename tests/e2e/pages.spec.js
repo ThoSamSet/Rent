@@ -5,16 +5,17 @@ const path = require('path');
 
 /** @type {{ path: string; name: string; heading?: RegExp }[]} */
 const PAGES = [
-  { path: '/', name: 'index', heading: /Camp|Nhà Thỏ|camping/i },
-  { path: '/schedule', name: 'schedule', heading: /lịch|schedule|đặt/i },
-  { path: '/equipment', name: 'equipment', heading: /đồ|thiết bị|dụng cụ|equipment|camping/i },
-  { path: '/options', name: 'options', heading: /option/i },
-  { path: '/about', name: 'about' },
-  { path: '/pricing', name: 'pricing', heading: /chi phí|pricing|plan/i },
-  { path: '/locations', name: 'locations' },
-  { path: '/faq', name: 'faq' },
-  { path: '/blog', name: 'blog', heading: /blog/i },
-  { path: '/dat-lich', name: 'dat-lich' },
+  { path: '/', name: 'index', heading: /cùng chill/i },
+  { path: '/schedule', name: 'schedule', heading: /còn chỗ/i },
+  { path: '/equipment', name: 'equipment', heading: /đồ/i },
+  { path: '/options', name: 'options', heading: /đêm nay/i },
+  { path: '/about', name: 'about', heading: /chia sẻ/i },
+  { path: '/pricing', name: 'pricing', heading: /một đêm/i },
+  { path: '/locations', name: 'locations', heading: /kanto/i },
+  { path: '/faq', name: 'faq', heading: /hay được hỏi/i },
+  { path: '/blog', name: 'blog', heading: /ghi chép/i },
+  { path: '/dat-lich', name: 'dat-lich', heading: /tin nhắn/i },
+  { path: '/blog/campingnhatban', name: 'blog-article', heading: /camping ở nhật/i },
 ];
 
 const screenshotDir = path.join(__dirname, '../../test-results/screenshots');
@@ -50,6 +51,7 @@ for (const page of PAGES) {
     }
 
     if (page.name === 'index') {
+      await expect(pw.locator('#muc-luc')).toBeVisible();
       await expect(pw.locator('#pricing')).toBeVisible();
       await expect(pw.locator('#notices')).toBeVisible();
       await expect(pw.locator('#blog')).toBeVisible();
@@ -72,80 +74,69 @@ for (const page of PAGES) {
   });
 }
 
-test('navigation chính hiển thị trên trang chủ', async ({ page }) => {
+test('masthead hiển thị trên trang chủ', async ({ page }) => {
   await page.goto('/');
-  const nav = page.locator('nav, header').first();
-  await expect(nav).toBeVisible();
+  await expect(page.locator('header.masthead')).toBeVisible();
+  await expect(page.locator('.masthead__logo')).toHaveText('Camp Nhà Thỏ');
 });
 
 test.describe('schedule mobile', () => {
-  test('bảng lịch vuốt ngang trên mobile', async ({ page }, testInfo) => {
+  test('lịch vừa khít màn hình mobile, không cần vuốt ngang', async ({ page }, testInfo) => {
     test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
 
     await page.goto('/schedule', { waitUntil: 'domcontentloaded' });
 
-    const wrapper = page.locator('.schedule-table-wrapper').first();
-    await expect(wrapper).toBeVisible();
+    const scroller = page.locator('.cal-scroll').first();
+    await expect(scroller).toBeVisible();
 
-    const dimensions = await wrapper.evaluate((el) => ({
+    const dimensions = await scroller.evaluate((el) => ({
       scrollWidth: el.scrollWidth,
       clientWidth: el.clientWidth,
     }));
-    expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth);
-
-    const hint = page.locator('.table-swipe-hint').first();
-    await expect(hint).toBeVisible();
-    const display = await hint.evaluate((el) => getComputedStyle(el).display);
-    expect(display).not.toBe('none');
+    expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
   });
 });
 
-test.describe('burger menu', () => {
+test.describe('mục lục toàn trang', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
-  test('nút burger hiển thị trên mobile', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
+  test('nút Mục lục mở và đóng danh mục', async ({ page }) => {
+    const button = page.locator('#mastheadMenuButton');
+    const index = page.locator('#siteIndex');
 
-    const burger = page.locator('#burgerMenu');
-    await expect(burger).toBeVisible();
-    await expect(burger).toHaveAttribute('aria-expanded', 'false');
-  });
+    await expect(button).toBeVisible();
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
 
-  test('click mở menu toàn màn hình trên mobile', async ({ page }, testInfo) => {
-    test.skip(!testInfo.project.name.includes('mobile'), 'Chỉ chạy trên viewport mobile');
+    await button.click();
+    await expect(index).toHaveClass(/is-open/);
+    await expect(button).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.locator('html')).toHaveClass(/site-index-open/);
+    await expect(index.locator('a[href="/pricing"]')).toBeVisible();
 
-    const burger = page.locator('#burgerMenu');
-    const navMenu = page.locator('#navMenu');
-    const panel = page.locator('#navMenuPanel');
-
-    await burger.click();
-    await expect(navMenu).toHaveClass(/is-open/);
-    await expect(burger).toHaveAttribute('aria-expanded', 'true');
-    await expect(panel).toBeVisible();
-    await expect(page.locator('#navLinks a').first()).toBeVisible();
-    await expect(page.locator('html')).toHaveClass(/nav-menu-open/);
-
-    const panelBox = await panel.boundingBox();
+    const box = await index.boundingBox();
     const viewport = page.viewportSize();
-    expect(panelBox).toBeTruthy();
+    expect(box).toBeTruthy();
     expect(viewport).toBeTruthy();
-    expect(panelBox.width).toBeGreaterThanOrEqual(viewport.width * 0.95);
-    expect(panelBox.height).toBeGreaterThanOrEqual(viewport.height * 0.95);
+    expect(box.width).toBeGreaterThanOrEqual(viewport.width * 0.95);
+
+    await page.keyboard.press('Escape');
+    await expect(index).not.toHaveClass(/is-open/);
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
   });
 
-  test('nút Đặt lịch nằm bên trái burger trong nav', async ({ page }) => {
-    const cta = page.locator('.nav-actions .nav-cta');
-    const burger = page.locator('.nav-actions #burgerMenu');
+  test('nút Đặt lịch nằm bên trái nút Mục lục', async ({ page }) => {
+    const cta = page.locator('.masthead__actions .masthead__cta');
+    const button = page.locator('.masthead__actions #mastheadMenuButton');
 
     await expect(cta).toBeVisible();
-    await expect(burger).toBeVisible();
+    await expect(button).toBeVisible();
 
     const ctaBox = await cta.boundingBox();
-    const burgerBox = await burger.boundingBox();
+    const buttonBox = await button.boundingBox();
     expect(ctaBox).toBeTruthy();
-    expect(burgerBox).toBeTruthy();
-    expect(ctaBox.x).toBeLessThan(burgerBox.x);
+    expect(buttonBox).toBeTruthy();
+    expect(ctaBox.x).toBeLessThan(buttonBox.x);
   });
 });

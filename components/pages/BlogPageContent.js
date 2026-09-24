@@ -1,78 +1,32 @@
-import Link from 'next/link';
-import BlogHeroSlideshow from '@/components/blog/BlogHeroSlideshow';
-import BlogPostGrid from '@/components/blog/BlogPostGrid';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
-import { BLOG_INDEX, BLOG_INDEX_HERO_SLIDES, BLOG_POSTS } from '@/lib/blog/content';
-import { IMAGE_DIMS } from '@/lib/image-sizes';
+import Continue from '@/components/mag/Continue';
+import Cover from '@/components/mag/Cover';
+import CtaBand from '@/components/mag/CtaBand';
+import StoryList from '@/components/mag/StoryList';
+import { BLOG_COVER, BLOG_POSTS } from '@/lib/blog/content';
+import { pickContinue } from '@/lib/site/continue';
+import { POST_COUNT, folioFor } from '@/lib/site/issue';
 
 export default function BlogPageContent() {
+  const coverPost = BLOG_POSTS[BLOG_POSTS.length - 1];
+
   return (
-    <main className="home-editorial">
-      <section className="home-hero" aria-label="Blog Camp Nhà Thỏ">
-        <BlogHeroSlideshow slides={BLOG_INDEX_HERO_SLIDES} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">{BLOG_INDEX.label}</p>
-          <h1 className="home-hero__title">{BLOG_INDEX.title}</h1>
-          <p className="home-hero__subtitle">{BLOG_INDEX.subtitle}</p>
+    <main>
+      <Cover
+        label="Blog Camp Nhà Thỏ"
+        folio={folioFor('Blog')}
+        kicker={BLOG_COVER.kicker}
+        title={BLOG_COVER.title}
+        deck={BLOG_COVER.deck}
+        image={{ src: coverPost.cardImage, alt: coverPost.cardAlt }}
+        caption={`${POST_COUNT} bài viết`}
+      />
+      <section className="mag-section tone-paper" aria-label="Danh sách bài viết">
+        <div className="wrap">
+          <StoryList posts={BLOG_POSTS} headingLevel="h2" />
         </div>
       </section>
-
-      <BlogPostGrid posts={BLOG_POSTS} />
-
-      <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
-        <Link href="/schedule" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/subBanner-lich-trinh.webp"
-              alt="Lịch trình camping — kiểm tra lịch trống sắp tới"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Lịch trình</p>
-            <h2 className="home-section__title">Kiểm tra lịch trống sắp tới</h2>
-          </div>
-        </Link>
-        <Link href="/faq" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/subBanner-faq.webp"
-              alt="Câu hỏi thường gặp"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">FAQ</p>
-            <h2 className="home-section__title">Câu hỏi thường gặp</h2>
-          </div>
-        </Link>
-        <Link href="/pricing" className="home-faq about-explore__full">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/chi-phi-1.webp"
-              alt="Chi phí và plan camping"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Chi phí</p>
-            <h2 className="home-section__title">Bảng giá &amp; plan</h2>
-          </div>
-        </Link>
-      </section>
-
-      <section className="about-cta home-section" data-reveal>
-        <h2 className="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
-        <p className="about-cta__tagline">Share đồ – Đi riêng – Trải nghiệm</p>
-        <div className="about-cta__actions">
-          <Link href="/dat-lich" className="btn-hero hue-cta hue-cta--dusk">
-            Đặt lịch
-          </Link>
-        </div>
-      </section>
+      <Continue items={pickContinue(['about', 'locations', 'faq'])} />
+      <CtaBand title="Đọc đủ rồi. *Đi thôi.*" />
     </main>
   );
 }

@@ -2,9 +2,9 @@ import OptionsPageContent from '@/components/pages/OptionsPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Option thêm — Đồ ăn, xem phim, di chuyển',
+  title: 'Option — xem phim, đi đường thường, đồ ăn',
   description:
-    'Các option kèm chuyến camping tại Camp Nhà Thỏ: đồ ăn, xem phim, option đi đường thường để tiết kiệm chi phí. Giá tham khảo và trạng thái dịch vụ.',
+    'Thêm vào chuyến camping: gói xem phim 7.000¥, đi đường thường giảm 5.000¥/chuyến. Option đồ ăn đang tạm dừng.',
   path: '/options',
   image: '/images/option-hero.webp',
 });

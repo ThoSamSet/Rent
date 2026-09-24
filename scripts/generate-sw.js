@@ -18,10 +18,6 @@ const PRECACHE_URLS = [
   '/favicon.ico',
   '/fonts/be-vietnam-pro-vietnamese-400-normal.woff2',
   '/images/hero-camping.webp',
-  '/nav-menu.js',
-  '/home-map-preview.js',
-  '/locations-map-sites.js',
-  '/locations-map.js',
 ];
 
 self.addEventListener('install', function (event) {

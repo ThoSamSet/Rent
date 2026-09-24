@@ -1,24 +1,31 @@
-import HeroSlideshow from '@/components/home/HeroSlideshow';
-import { HERO_SLIDES } from '@/lib/hero/slides';
-import { LEGACY_PAGES } from '@/lib/legacy-content';
+import Continue from '@/components/mag/Continue';
+import Cover from '@/components/mag/Cover';
+import CtaBand from '@/components/mag/CtaBand';
+import SiteDirectory from '@/components/locations/SiteDirectory';
+import { LOCATIONS_COVER } from '@/lib/locations/regions';
+import { pickContinue } from '@/lib/site/continue';
+import { folioFor } from '@/lib/site/issue';
 
 export default function LocationsPageContent() {
-  const { content } = LEGACY_PAGES.locations;
-
   return (
-    <main className="home-editorial">
-      <section className="home-hero" aria-label="Vị trí camping Camp Nhà Thỏ">
-        <HeroSlideshow slides={HERO_SLIDES.locations} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">Vị trí</p>
-          <h1 className="home-hero__title">Vị trí Camping</h1>
-          <p className="home-hero__subtitle">
-            <span className="no-break">Camp Nhà Thỏ</span> hỗ trợ đưa đón đến các bãi camping đẹp quanh khu
-            vực Kanto, Nhật Bản
-          </p>
-        </div>
+    <main>
+      <Cover
+        label="Các bãi cắm trại Camp Nhà Thỏ hay đưa khách tới"
+        folio={folioFor('Bãi cắm trại')}
+        kicker={LOCATIONS_COVER.kicker}
+        title={LOCATIONS_COVER.title}
+        deck={LOCATIONS_COVER.deck}
+        image={{ src: '/images/location-hero.webp', alt: 'Biển chỉ đường bãi cắm trại bên hồ' }}
+        caption="Biển chỉ đường bên hồ"
+      />
+      <section className="tone-ink" aria-label="Danh sách bãi cắm trại">
+        <SiteDirectory />
       </section>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <Continue items={pickContinue(['schedule', 'pricing', 'faq'])} />
+      <CtaBand
+        title="Ưng *bãi nào* rồi?"
+        text="Chọn bãi ngay trong form đặt lịch, hoặc để tụi mình gợi ý theo mùa và theo nhóm của bạn."
+      />
     </main>
   );
 }

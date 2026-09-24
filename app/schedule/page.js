@@ -2,11 +2,11 @@ import SchedulePageContent from '@/components/pages/SchedulePageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Lịch trình Camping',
+  title: 'Lịch trống — ngày còn chỗ',
   description:
-    'Lịch trình camping mới nhất tại Camp Nhà Thỏ. Theo dõi lịch trống, lịch plan và ngày hoạt động trong các tháng sắp tới.',
+    'Xem các ngày còn chỗ trong những tháng tới và chạm để mở form đặt lịch với ngày điền sẵn. Không cần cọc.',
   path: '/schedule',
-  image: '/images/camping-2.webp',
+  image: '/images/subBanner-lich-trinh.webp',
 });
 
 export default function SchedulePage() {

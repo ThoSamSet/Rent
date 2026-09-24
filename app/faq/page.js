@@ -2,9 +2,9 @@ import FaqPageContent from '@/components/pages/FaqPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'FAQ - Câu hỏi thường gặp về Camping Phú Sĩ',
+  title: 'Hỏi đáp — câu hỏi thường gặp',
   description:
-    'Câu hỏi thường gặp về dịch vụ share đồ camping tại Phú Sĩ. Giải đáp về giá, thanh toán, đặt lịch, dụng cụ, và các thắc mắc khác.',
+    'Về dịch vụ, đặt lịch, thanh toán, di chuyển và một đêm ở bãi cùng Camp Nhà Thỏ. Tìm nhanh bằng từ khoá.',
   path: '/faq',
   image: '/images/faq-hero.webp',
 });

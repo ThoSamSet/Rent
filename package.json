@@ -2,12 +2,12 @@
   "name": "campnhatho-rent",
   "private": true,
   "scripts": {
-    "postinstall": "mkdir -p vendor public/vendor && cp node_modules/gsap/dist/gsap.min.js vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js vendor/ && cp node_modules/gsap/dist/gsap.min.js public/vendor/ && cp node_modules/gsap/dist/ScrollTrigger.min.js public/vendor/",
+    "postinstall": "node scripts/setup-fonts.js",
     "dev": "next dev",
     "lint": "npm run lint:js && npm run lint:next",
-    "lint:js": "eslint \"*.js\" \"animations/**/*.js\" \"lib/constants.js\"",
+    "lint:js": "eslint lib/constants.js",
     "lint:html": "html-validate \"public/**/*.html\"",
-    "lint:next": "eslint app/ components/ layouts/ lib/",
+    "lint:next": "eslint app/ components/ lib/",
     "build:assets": "node scripts/build.js",
     "process:images": "node scripts/process-source-images.js",
     "build:next": "node scripts/generate-html-redirects.js && next build",
@@ -20,7 +20,6 @@
     "playwright:install": "playwright install chromium"
   },
   "dependencies": {
-    "gsap": "^3.15.0",
     "next": "^16.2.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
@@ -28,10 +27,17 @@
   "devDependencies": {
     "@fontsource/be-vietnam-pro": "^5.2.8",
     "@playwright/test": "^1.52.0",
+    "@types/node": "26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.6.1",
     "eslint": "^9.28.0",
     "globals": "^16.2.0",
     "html-validate": "^9.5.5",
+    "postcss": "^8.5.28",
     "serve": "^14.2.4",
-    "sharp": "^0.35.2"
+    "sharp": "^0.35.2",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }

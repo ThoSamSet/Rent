@@ -2,9 +2,9 @@ import BlogPageContent from '@/components/pages/BlogPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Blog',
+  title: 'Blog — ghi chép ngoài trời',
   description:
-    'Blog Camp Nhà Thỏ - chia sẻ trải nghiệm camping, mùa đẹp nhất trong năm và các chuyến đi đáng nhớ.',
+    'Kinh nghiệm camping cho người mới, mùa đẹp trong năm và những đêm ở bãi — từ Camp Nhà Thỏ.',
   path: '/blog',
   image: '/blog/checklistcampingnhatban/checklist-camping-hero.jpg',
 });

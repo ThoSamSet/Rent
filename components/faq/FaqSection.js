@@ -8,18 +8,15 @@ import FaqHighlightedText from '@/components/faq/FaqHighlightedText';
 
 const TOTAL_FAQ_COUNT = FAQ_CATEGORIES.reduce((sum, category) => sum + category.items.length, 0);
 
-function FaqAccordionItem({ item, searchTokens, categoryLabel }) {
+function FaqItem({ item, searchTokens, categoryLabel }) {
   return (
-    <details
-      id={item.id}
-      className="faq-accordion__item"
-      open={searchTokens.length > 0}
-    >
-      <summary className="faq-accordion__question">
-        <span className="faq-accordion__question-text">
+    <details id={item.id} className="faq-item" open={searchTokens.length > 0}>
+      <summary className="faq-item__q">
+        <span className="faq-item__text">
           <FaqHighlightedText text={item.question} searchTokens={searchTokens} />
-          {categoryLabel ? <span className="faq-accordion__category">{categoryLabel}</span> : null}
         </span>
+        {categoryLabel ? <span className="faq-item__cat">{categoryLabel}</span> : null}
+        <span className="faq-item__toggle" aria-hidden="true" />
       </summary>
       <FaqAnswer html={item.answerHtml} searchTokens={searchTokens} />
     </details>
@@ -34,30 +31,16 @@ export default function FaqSection() {
   const searchTokens = useMemo(() => tokenizeQuery(trimmedQuery), [trimmedQuery]);
   const isSearching = searchTokens.length > 0;
 
-  const filteredCategories = useMemo(() => {
-    if (isSearching) return [];
-    return FAQ_CATEGORIES.map((category) => ({
-      ...category,
-      items: category.items.filter((item) => matchesQuery(item, searchTokens)),
-    })).filter((category) => category.items.length > 0);
-  }, [isSearching, searchTokens]);
-
   const searchResults = useMemo(() => {
     if (!isSearching) return [];
-    return FAQ_CATEGORIES.flatMap((category) =>
-      category.items.map((item) => ({ ...item, categoryLabel: category.label })),
-    )
+    return FAQ_CATEGORIES.flatMap((category) => category.items.map((item) => ({ ...item, categoryLabel: category.label })))
       .filter((item) => matchesQuery(item, searchTokens))
       .sort((a, b) => compareByRelevance(a, b, searchTokens));
   }, [isSearching, searchTokens]);
 
-  const totalResults = isSearching ? searchResults.length : filteredCategories.reduce((sum, category) => sum + category.items.length, 0);
-
   const leadText = isSearching
-    ? `${totalResults} kết quả cho "${trimmedQuery}"`
-    : `${TOTAL_FAQ_COUNT} câu hỏi — dùng ô tìm kiếm hoặc chọn nhóm bên dưới.`;
-
-  const hasResults = isSearching ? searchResults.length > 0 : filteredCategories.length > 0;
+    ? `${searchResults.length} kết quả cho “${trimmedQuery}”`
+    : `${TOTAL_FAQ_COUNT} câu hỏi trong ${FAQ_CATEGORIES.length} nhóm`;
 
   function scrollToCategory(categoryId) {
     setActiveCategory(categoryId);
@@ -66,116 +49,93 @@ export default function FaqSection() {
   }
 
   return (
-    <section className="about-block faq-section home-section" data-reveal aria-label="Danh sách câu hỏi">
-      <div className="about-block__header">
-        <p className="home-section__label">Hướng dẫn</p>
-        <h2 className="home-section__title">Tìm câu trả lời nhanh</h2>
-        <p className="faq-section__lead" role="status">
+    <div className="faq wrap" id="faq-content">
+      <aside className="faq__rail">
+        <label className="faq-search" htmlFor="faq-search-input">
+          <span className="kicker">Tìm nhanh</span>
+          <input
+            id="faq-search-input"
+            type="search"
+            className="faq-search__input"
+            placeholder="vd: đặt cọc, WiFi, đồ ăn"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            autoComplete="off"
+          />
+        </label>
+        <p className="faq__lead" role="status">
           {leadText}
         </p>
-      </div>
-
-      <div
-        className={`faq-section__layout${isSearching ? ' faq-section__layout--searching' : ''}`}
-        id="faq-content"
-      >
         {!isSearching ? (
           <nav className="faq-nav" aria-label="Nhóm câu hỏi">
-            <ul className="faq-nav__list">
-              <li>
-                <button
-                  type="button"
-                  className={`faq-nav__btn${activeCategory === 'all' ? ' is-active' : ''}`}
-                  onClick={() => scrollToCategory('all')}
-                  aria-pressed={activeCategory === 'all'}
-                >
-                  Tất cả
-                </button>
-              </li>
-              {FAQ_CATEGORIES.map((category) => (
+            <ol>
+              {FAQ_CATEGORIES.map((category, index) => (
                 <li key={category.id}>
                   <button
                     type="button"
-                    className={`faq-nav__btn${activeCategory === category.id ? ' is-active' : ''}`}
-                    onClick={() => scrollToCategory(category.id)}
+                    className="faq-nav__btn"
                     aria-pressed={activeCategory === category.id}
+                    onClick={() => scrollToCategory(category.id)}
                   >
-                    {category.label}
+                    <span className="faq-nav__no">{String(index + 1).padStart(2, '0')}</span>
+                    <span>{category.label}</span>
+                    <span className="faq-nav__count">{category.items.length}</span>
                   </button>
                 </li>
               ))}
-            </ul>
+            </ol>
           </nav>
         ) : null}
+      </aside>
 
-        <div className="faq-main">
-          <label className="faq-search" htmlFor="faq-search-input">
-            <input
-              id="faq-search-input"
-              type="search"
-              className="faq-search__input"
-              placeholder="Tìm câu hỏi… (vd: đặt cọc, WiFi, đồ ăn)"
-              aria-label="Tìm câu hỏi"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              autoComplete="off"
-            />
-          </label>
+      <div className="faq__main">
+        {isSearching && searchResults.length === 0 ? (
+          <p className="faq-empty" role="status">
+            Chưa có câu hỏi khớp. Thử từ khoá khác, hoặc{' '}
+            <button
+              type="button"
+              className="faq-empty__reset text-link"
+              onClick={() => {
+                setQuery('');
+                setActiveCategory('all');
+              }}
+            >
+              xem tất cả
+            </button>
+            .
+          </p>
+        ) : null}
 
-          {!hasResults ? (
-            <p className="faq-empty" role="status">
-              Không tìm thấy câu hỏi phù hợp. Thử từ khóa khác hoặc{' '}
-              <button
-                type="button"
-                className="faq-empty__reset"
-                onClick={() => {
-                  setQuery('');
-                  setActiveCategory('all');
-                }}
-              >
-                xem tất cả
-              </button>
-              .
-            </p>
-          ) : isSearching ? (
-            <section className="faq-category faq-results" aria-labelledby="faq-heading-results">
-              <h3 className="faq-category__title" id="faq-heading-results">
-                Kết quả
-                <span className="faq-category__count">{searchResults.length}</span>
-              </h3>
-              <div className="faq-accordion">
-                {searchResults.map((item) => (
-                  <FaqAccordionItem
-                    key={item.id}
-                    item={item}
-                    searchTokens={searchTokens}
-                    categoryLabel={item.categoryLabel}
-                  />
-                ))}
-              </div>
-            </section>
-          ) : (
-            filteredCategories.map((category) => (
+        {isSearching && searchResults.length > 0 ? (
+          <section className="faq-group" aria-labelledby="faq-heading-results">
+            <h2 className="faq-group__title" id="faq-heading-results">
+              Kết quả
+            </h2>
+            {searchResults.map((item) => (
+              <FaqItem key={item.id} item={item} searchTokens={searchTokens} categoryLabel={item.categoryLabel} />
+            ))}
+          </section>
+        ) : null}
+
+        {!isSearching
+          ? FAQ_CATEGORIES.map((category) => (
               <section
                 key={category.id}
                 id={`faq-${category.id}`}
-                className="faq-category"
+                className="faq-group"
                 aria-labelledby={`faq-heading-${category.id}`}
               >
-                <h3 className="faq-category__title" id={`faq-heading-${category.id}`}>
+                <p className="kicker">{category.items.length} câu hỏi</p>
+                <h2 className="faq-group__title" id={`faq-heading-${category.id}`}>
                   {category.label}
-                  <span className="faq-category__count">{category.items.length}</span>
-                </h3>
-                <div className="faq-accordion">
-                  {category.items.map((item) => (
-                    <FaqAccordionItem key={item.id} item={item} searchTokens={searchTokens} />
-                  ))}
-                </div>
+                </h2>
+                {category.items.map((item) => (
+                  <FaqItem key={item.id} item={item} searchTokens={searchTokens} />
+                ))}
               </section>
             ))
-          )}
-        </div>
+          : null}
       </div>
-    </section>
+    </div>
   );
 }

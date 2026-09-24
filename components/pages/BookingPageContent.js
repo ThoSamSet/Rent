@@ -1,42 +1,42 @@
 import Link from 'next/link';
 import BookingForm from '@/components/booking/BookingForm';
 import BookingMobileBar from '@/components/booking/BookingMobileBar';
+import BookingRuntime from '@/components/booking/BookingRuntime';
 import BookingSocialButtons from '@/components/booking/BookingSocialButtons';
 import BookingSummary from '@/components/booking/BookingSummary';
 import BookingWizardNav from '@/components/booking/BookingWizardNav';
 import BookingWizardProgress from '@/components/booking/BookingWizardProgress';
-import HeroSlideshow from '@/components/home/HeroSlideshow';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
-import { BOOKING_EXPLORE_TILES, BOOKING_INTRO } from '@/lib/booking/content';
-import { HERO_SLIDES } from '@/lib/hero/slides';
-import { IMAGE_DIMS } from '@/lib/image-sizes';
+import Continue from '@/components/mag/Continue';
+import Cover from '@/components/mag/Cover';
+import Emph, { plain } from '@/components/mag/Emph';
+import { BOOKING_CLOSING, BOOKING_COVER } from '@/lib/booking/content';
+import { pickContinue } from '@/lib/site/continue';
+import { OPEN_DAYS, folioFor } from '@/lib/site/issue';
 
 export default function BookingPageContent() {
   return (
-    <main className="home-editorial booking-page">
-      <section className="home-hero" aria-label="Đặt lịch camping Camp Nhà Thỏ">
-        <HeroSlideshow slides={HERO_SLIDES.booking} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">{BOOKING_INTRO.label}</p>
-          <h1 className="home-hero__title">{BOOKING_INTRO.title}</h1>
-          <p className="home-hero__subtitle">{BOOKING_INTRO.subtitle}</p>
-          <div className="about-hero__actions">
-            <Link href="/schedule" className="btn-outline">
-              Xem lịch trống
-            </Link>
-            <Link href="/pricing" className="btn-outline">
-              Xem bảng giá
-            </Link>
-          </div>
-        </div>
-      </section>
+    <main className="booking-page">
+      <Cover
+        label="Đặt lịch camping với Camp Nhà Thỏ"
+        folio={folioFor('Đặt lịch')}
+        kicker={BOOKING_COVER.kicker}
+        title={BOOKING_COVER.title}
+        deck={BOOKING_COVER.deck}
+        image={{ src: '/images/hero-camping.webp', alt: 'Trại camping dựng sẵn chờ khách' }}
+        caption={`Còn ${OPEN_DAYS} ngày trống`}
+        lines={[
+          { href: '#form', label: 'Form đặt lịch' },
+          { href: '#lien-he', label: 'Gửi tin nhắn' },
+        ]}
+      />
 
-      <section className="booking-section home-section" aria-label="Form đặt lịch">
-        <div className="container">
+      <section className="booking-section mag-section tone-paper" id="form" aria-label="Form đặt lịch">
+        <div className="wrap">
           <BookingWizardProgress />
           <div className="booking-layout">
             <div className="booking-form-col">
               <BookingForm />
+              <BookingRuntime />
               <BookingWizardNav />
             </div>
             <BookingSummary />
@@ -46,41 +46,27 @@ export default function BookingPageContent() {
 
       <BookingMobileBar />
 
-      <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
-        {BOOKING_EXPLORE_TILES.map((tile) => (
-          <Link
-            key={tile.href}
-            href={tile.href}
-            className={`home-faq${tile.fullWidth ? ' about-explore__full' : ''}`}
-          >
-            <div className="home-faq__media">
-              <ResponsiveImage
-                src={tile.image}
-                alt={tile.imageAlt}
-                width={IMAGE_DIMS.faqTile.width}
-                height={IMAGE_DIMS.faqTile.height}
-              />
-            </div>
-            <div className="home-faq__copy">
-              <p className="home-section__label">{tile.label}</p>
-              <h2 className="home-section__title">{tile.title}</h2>
-            </div>
-          </Link>
-        ))}
+      <section id="lien-he" className="cta-band mag-section tone-dusk" aria-label={plain(BOOKING_CLOSING.title)}>
+        <div className="cta-band__glow" aria-hidden="true" />
+        <div className="wrap">
+          <h2 className="cta-band__title">
+            <Emph text={BOOKING_CLOSING.title} />
+          </h2>
+          <p className="cta-band__text">{BOOKING_CLOSING.text}</p>
+          <div className="actions">
+            <BookingSocialButtons variant="contact" />
+          </div>
+          <p className="cta-band__text">
+            Còn điều gì băn khoăn?{' '}
+            <Link href="/faq" className="text-link">
+              Có thể đã có câu trả lời ở đây
+            </Link>
+            .
+          </p>
+        </div>
       </section>
 
-      <section id="lien-he" className="about-cta home-section" data-reveal>
-        <h2 className="home-section__title">Bước cuối: Gửi tin nhắn</h2>
-        <p className="about-cta__tagline">
-          Dán mẫu tin nhắn vừa copy vào inbox — tụi mình phản hồi sớm nhất có thể.
-        </p>
-        <div className="about-cta__actions">
-          <BookingSocialButtons variant="contact" />
-        </div>
-        <p className="about-cta__secondary">
-          Có thắc mắc? Xem <Link href="/faq">FAQ</Link>.
-        </p>
-      </section>
+      <Continue items={pickContinue(['schedule', 'pricing', 'faq'])} />
     </main>
   );
 }

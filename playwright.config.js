@@ -28,11 +28,12 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium-desktop',
-      use: { ...devices['Desktop Chrome'] },
+      // PW_CHANNEL=chrome runs against the locally installed Chrome instead of the bundled Chromium.
+      use: { ...devices['Desktop Chrome'], channel: process.env.PW_CHANNEL },
     },
     {
       name: 'chromium-mobile',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'], channel: process.env.PW_CHANNEL },
     },
   ],
   webServer: {

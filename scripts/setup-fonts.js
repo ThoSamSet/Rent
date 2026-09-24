@@ -7,7 +7,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const pkgFiles = path.join(root, 'node_modules/@fontsource/be-vietnam-pro/files');
-const fontsDir = path.join(root, 'fonts');
+const fontsDir = path.join(root, 'public', 'fonts');
 
 const FONT_FILES = [
   'be-vietnam-pro-vietnamese-400-normal.woff2',
@@ -123,8 +123,7 @@ function main() {
     fs.copyFileSync(from, to);
   }
 
-  fs.writeFileSync(path.join(fontsDir, 'be-vietnam-pro.css'), FONT_CSS);
-  console.log(`✅ Fonts — ${FONT_FILES.length} file woff2 + be-vietnam-pro.css`);
+  console.log(`✅ Fonts — ${FONT_FILES.length} file woff2 trong public/fonts`);
 }
 
 main();

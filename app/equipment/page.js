@@ -2,9 +2,9 @@ import EquipmentPageContent from '@/components/pages/EquipmentPageContent';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Dụng cụ Camping - Lều, Bếp, Đèn, Máy ảnh',
+  title: 'Dụng cụ — lều, bếp, đèn, túi ngủ có sẵn',
   description:
-    'Danh sách dụng cụ camping tại Camp Nhà Thỏ: lều, bếp, đèn, túi ngủ, máy ảnh Fujifilm X-T5, Nintendo Switch. Bạn chỉ mang đồ cá nhân.',
+    'Lều 2 room, túi ngủ, bếp, đèn, lò sưởi, máy ảnh Fujifilm X-T5, Nintendo Switch — có sẵn trong mọi plan. Bạn chỉ mang đồ cá nhân.',
   path: '/equipment',
   image: '/images/equipment-hero.webp',
 });

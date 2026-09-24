@@ -1,86 +1,46 @@
 import Link from 'next/link';
 import BlogArticleBody from '@/components/blog/BlogArticleBody';
-import BlogHeroSlideshow from '@/components/blog/BlogHeroSlideshow';
-import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts';
-import ResponsiveImage from '@/components/media/ResponsiveImage';
-import { getBlogPost, getOtherPosts } from '@/lib/blog/content';
-import { IMAGE_DIMS } from '@/lib/image-sizes';
+import Continue from '@/components/mag/Continue';
+import CtaBand from '@/components/mag/CtaBand';
+import Photo from '@/components/mag/Photo';
+import { BLOG_POSTS, getBlogPost, getOtherPosts } from '@/lib/blog/content';
 
 /** @param {{ slug: string }} props */
 export default function BlogArticlePageContent({ slug }) {
   const post = getBlogPost(slug);
   if (!post) return null;
 
-  return (
-    <main className="home-editorial">
-      <section className="home-hero" aria-label={post.title}>
-        <BlogHeroSlideshow slides={post.heroSlides} />
-        <div className="home-hero__overlay">
-          <p className="home-hero__label">Blog</p>
-          <h1 className="home-hero__title home-hero__title--blog">{post.title}</h1>
-        </div>
-      </section>
+  const number = String(BLOG_POSTS.findIndex((item) => item.slug === slug) + 1).padStart(2, '0');
+  const hero = post.heroSlides[0];
 
-      <article className="blog-article home-section" data-reveal>
-        <BlogArticleBody html={post.bodyHtml} />
+  return (
+    <main>
+      <article className="article tone-paper">
+        <header className="article__head wrap">
+          <p className="article__folio">
+            <Link href="/blog">Blog</Link>
+            <span>Bài {number}</span>
+          </p>
+          <h1 className="article__title">{post.title}</h1>
+          <p className="article__dek">{post.excerpt}</p>
+        </header>
+        <Photo className="article__hero" src={hero.src} alt={hero.alt} caption={hero.alt} priority />
+        <div className="wrap">
+          <BlogArticleBody html={post.bodyHtml} />
+        </div>
       </article>
 
-      <BlogRelatedPosts posts={getOtherPosts(slug)} />
-
-      <section className="home-bottom about-explore" data-reveal aria-label="Tìm hiểu thêm">
-        <Link href="/schedule" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/subBanner-lich-trinh.webp"
-              alt="Lịch trình camping — kiểm tra lịch trống sắp tới"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Lịch trình</p>
-            <h2 className="home-section__title">Kiểm tra lịch trống sắp tới</h2>
-          </div>
-        </Link>
-        <Link href="/faq" className="home-faq">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/subBanner-faq.webp"
-              alt="Câu hỏi thường gặp"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">FAQ</p>
-            <h2 className="home-section__title">Câu hỏi thường gặp</h2>
-          </div>
-        </Link>
-        <Link href="/pricing" className="home-faq about-explore__full">
-          <div className="home-faq__media">
-            <ResponsiveImage
-              src="/images/chi-phi-1.webp"
-              alt="Chi phí và plan camping"
-              width={IMAGE_DIMS.faqTile.width}
-              height={IMAGE_DIMS.faqTile.height}
-            />
-          </div>
-          <div className="home-faq__copy">
-            <p className="home-section__label">Chi phí</p>
-            <h2 className="home-section__title">Bảng giá &amp; plan</h2>
-          </div>
-        </Link>
-      </section>
-
-      <section className="about-cta home-section" data-reveal>
-        <h2 className="home-section__title">Sẵn sàng cho chuyến đi của bạn?</h2>
-        <p className="about-cta__tagline">Nhắn TikTok hoặc Facebook — không cần cọc, xác nhận qua inbox.</p>
-        <div className="about-cta__actions">
-          <Link href="/dat-lich" className="btn-hero hue-cta hue-cta--dusk">
-            Đặt lịch
-          </Link>
-        </div>
-      </section>
+      <Continue
+        title="Đọc thêm"
+        items={getOtherPosts(slug).map((other) => ({
+          href: other.href,
+          meta: 'Blog',
+          title: other.title,
+          image: other.cardImage,
+          alt: other.cardAlt,
+        }))}
+      />
+      <CtaBand title="Sẵn sàng cho chuyến đầu tiên?" text="Không cần có đồ, không cần cọc. Chỉ cần chọn ngày." />
     </main>
   );
 }

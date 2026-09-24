@@ -1,43 +1,19 @@
 import { SCHEDULE_LEGEND_ITEMS } from '@/lib/schedule/content';
+import { SCHEDULE_MONTHS } from '@/lib/schedule/months';
 
-function LegendDescription({ item }) {
-  if (item.swatchClass === 'legend-available') {
-    return (
-      <>
-        <strong>{item.label}</strong> = còn slot — <strong>Chạm để đặt</strong> hoặc nhắn inbox
-      </>
-    );
-  }
-
-  return (
-    <>
-      <strong>{item.label}</strong> — {item.description}
-    </>
-  );
-}
+const PRESENT = new Set(SCHEDULE_MONTHS.flatMap((month) => month.rows.flat().flatMap((cell) => cell.className.split(' '))));
 
 export default function ScheduleLegend() {
   return (
-    <section className="about-block schedule-legend-block home-section" data-reveal aria-label="Chú thích lịch trình">
-      <div className="about-block__header">
-        <p className="home-section__label">Hướng dẫn</p>
-        <h2 className="home-section__title">Chú thích lịch</h2>
-      </div>
-
-      <div className="schedule-legend" aria-label="Chú thích lịch trình">
-        <ul className="schedule-legend-list">
-          {SCHEDULE_LEGEND_ITEMS.map((item) => (
-            <li key={item.swatchClass}>
-              <span className={`legend-swatch ${item.swatchClass}`} aria-hidden="true">
-                {item.swatchLabel}
-              </span>
-              <span>
-                <LegendDescription item={item} />
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <ul className="cal-legend" aria-label="Chú thích lịch">
+      {SCHEDULE_LEGEND_ITEMS.filter((item) => PRESENT.has(item.match)).map((item) => (
+        <li key={item.match}>
+          <span className={`cal-legend__swatch cal-legend__swatch--${item.swatch}`} aria-hidden="true">
+            {item.label}
+          </span>
+          <span>{item.description}</span>
+        </li>
+      ))}
+    </ul>
   );
 }

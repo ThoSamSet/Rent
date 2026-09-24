@@ -9,26 +9,12 @@ export default function BookingSocialButtons({ variant = 'send', className = '' 
 
   return (
     <div className={`social-buttons ${className}`.trim()}>
-      <a
-        href={tiktok.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="social-btn social-btn-tiktok"
-      >
-        <span className="social-btn-icon" aria-hidden="true">
-          <TikTokIcon />
-        </span>
+      <a href={tiktok.href} target="_blank" rel="noopener noreferrer" className="btn btn--line social-btn">
+        <TikTokIcon />
         <span>{tiktokLabel}</span>
       </a>
-      <a
-        href={facebook.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="social-btn social-btn-facebook"
-      >
-        <span className="social-btn-icon" aria-hidden="true">
-          <FacebookIcon />
-        </span>
+      <a href={facebook.href} target="_blank" rel="noopener noreferrer" className="btn btn--line social-btn">
+        <FacebookIcon />
         <span>{facebookLabel}</span>
       </a>
     </div>

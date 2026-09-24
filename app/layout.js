@@ -1,11 +1,19 @@
-import '@/styles/site/index.css';
-import '@/styles/motion.css';
-import '@/styles/ux.css';
-import '@/styles/components/hue-cta.css';
 import './globals.css';
-import { beVietnamPro } from '@/lib/fonts';
+import '@/styles/mag/tokens.css';
+import '@/styles/mag/base.css';
+import '@/styles/mag/chrome.css';
+import '@/styles/mag/blocks.css';
+import '@/styles/mag/pages.css';
+import '@/styles/mag/schedule.css';
+import '@/styles/mag/faq.css';
+import '@/styles/mag/article.css';
+import '@/styles/mag/booking.css';
+import '@/styles/mag/art.css';
+import { beVietnamPro, fraunces } from '@/lib/fonts';
 import ClientProviders from '@/components/ux/ClientProviders';
-import SiteHeader from '@/components/SiteHeader';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import Masthead from '@/components/mag/Masthead';
+import Colophon from '@/components/mag/Colophon';
 
 export const metadata = {
   metadataBase: new URL('https://campnhatho.com'),
@@ -13,7 +21,7 @@ export const metadata = {
     default: 'Camp Nhà Thỏ',
     template: '%s | Camp Nhà Thỏ',
   },
-  description: 'Dịch vụ share và cho thuê đồ cắm trại tại Phú Sĩ, Nhật Bản.',
+  description: 'Share đồ camping, đưa đón và setup trại quanh Kanto, Nhật Bản.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -30,12 +38,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi" className={beVietnamPro.variable} data-scroll-behavior="smooth">
-      <body className={beVietnamPro.className}>
+    <html lang="vi" className={`${beVietnamPro.variable} ${fraunces.variable}`}>
+      <body>
         <ClientProviders>
-          <SiteHeader />
-          {children}
+          <Masthead />
+          <div className="site-main" id="noi-dung">
+            {children}
+          </div>
+          <Colophon />
         </ClientProviders>
+        <GoogleAnalytics />
       </body>
     </html>
   );

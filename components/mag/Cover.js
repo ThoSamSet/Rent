@@ -14,6 +14,7 @@ import Photo from '@/components/mag/Photo';
  *   lines?: { href: string; label: string }[];
  *   tone?: 'paper' | 'ink' | 'dusk';
  *   short?: boolean;
+ *   bleed?: boolean;
  *   children?: import('react').ReactNode;
  * }} props
  */
@@ -28,10 +29,19 @@ export default function Cover({
   lines,
   tone = 'paper',
   short = true,
+  bleed = false,
   children,
 }) {
+  const media = (
+    <Photo className="cover__media" src={image?.src} alt={image?.alt} caption={caption} priority />
+  );
+
   return (
-    <section className={`cover tone-${tone}${short ? ' cover--short' : ''}`} aria-label={label}>
+    <section
+      className={`cover tone-${tone}${short ? ' cover--short' : ''}${bleed ? ' cover--bleed' : ''}`}
+      aria-label={label}
+    >
+      {bleed ? media : null}
       <header className="cover__folio">
         {folio.map((item) => (
           <span key={item}>{item}</span>
@@ -55,7 +65,7 @@ export default function Cover({
           ) : null}
           {children}
         </div>
-        <Photo className="cover__media" src={image?.src} alt={image?.alt} caption={caption} priority />
+        {bleed ? null : media}
       </div>
       {lines?.length ? (
         <nav className="cover__lines" aria-label="Trong trang này">

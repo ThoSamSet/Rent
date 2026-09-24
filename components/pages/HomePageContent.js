@@ -43,7 +43,8 @@ export default function HomePageContent() {
         title={HOME_COVER.title}
         deck={HOME_COVER.deck}
         image={HOME_COVER.image}
-        caption="Một buổi tối ở trại"
+        caption="Đồng cỏ trên cao nguyên"
+        bleed
         short={false}
         lines={[
           { href: '#muc-luc', label: 'Mục lục' },

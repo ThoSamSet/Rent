@@ -232,6 +232,54 @@
     margin: clamp(16px, 3vw, 36px) var(--gutter) clamp(16px, 3vw, 36px) 0;
 }
 
+/* Cover, full-bleed: the photo fills the whole cover and the type sits over it */
+.cover--bleed {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.cover--bleed > .cover__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    min-height: 0;
+    margin: 0;
+}
+
+/* Paper wash from the left so the type keeps its colours over the photo */
+.cover--bleed > .cover__media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(244, 237, 224, 0.9) 0%, rgba(244, 237, 224, 0.72) 34%, rgba(244, 237, 224, 0) 68%),
+        linear-gradient(180deg, rgba(244, 237, 224, 0.55) 0%, rgba(244, 237, 224, 0) 18%, rgba(244, 237, 224, 0) 82%, rgba(244, 237, 224, 0.6) 100%);
+    pointer-events: none;
+}
+
+.cover--bleed > .cover__media > .caption {
+    left: auto;
+    right: 28px;
+    bottom: 64px;
+}
+
+.cover--bleed .cover__folio,
+.cover--bleed .cover__stage,
+.cover--bleed .cover__lines {
+    position: relative;
+    z-index: 1;
+}
+
+.cover--bleed .cover__stage {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.cover--bleed .cover__type {
+    max-width: 760px;
+}
+
 /* Section head */
 .section-head {
     display: grid;
@@ -728,6 +776,22 @@ a.ledger__row:focus-visible .ledger__label {
 
     .cover__folio span:nth-child(3) {
         display: none;
+    }
+
+    .cover--bleed > .cover__media > img {
+        height: 48%;
+        object-position: 68% 50%;
+    }
+
+    .cover--bleed > .cover__media::before {
+        background: linear-gradient(180deg, rgba(244, 237, 224, 0.4) 0%, rgba(244, 237, 224, 0) 14%, rgba(244, 237, 224, 0) 32%, var(--snow) 46%);
+    }
+
+    .cover--bleed > .cover__media > .caption {
+        right: auto;
+        left: 14px;
+        bottom: auto;
+        top: 56px;
     }
 
     .contents__media,

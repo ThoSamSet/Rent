@@ -57,7 +57,7 @@ export default function FaqSection() {
             id="faq-search-input"
             type="search"
             className="faq-search__input"
-            placeholder="vd: đặt cọc, WiFi, đồ ăn"
+            placeholder="vd: đặt cọc, củi, đồ ăn"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             autoComplete="off"

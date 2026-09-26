@@ -101,7 +101,7 @@ export default function AboutPageContent() {
 
       <section className="mag-section tone-ink" aria-label="Hai cách đi">
         <div className="wrap">
-          <SectionHead kicker="Hai cách đi" title="Tự đi, hay *đi cùng tụi mình*" />
+          <SectionHead kicker="Hai cách đi" title="Tự túc, hay *đi cùng tụi mình*" />
           <div className="two-ways">
             {[ABOUT_TWO_WAYS.alone, ABOUT_TWO_WAYS.withUs].map((way, index) => (
               <div key={way.title} className={`two-ways__col${index === 1 ? ' two-ways__col--us' : ''}`}>

@@ -5,16 +5,19 @@
 
 :root {
     --mast-h: 76px;
+    --tangerine: #ff6d1f;
+    --tangerine-deep: #b8480f;
+    --on-tangerine: #222222;
     --glass-radius: 22px;
-    --glass-light: rgba(255, 255, 255, 0.55);
-    --glass-dark: rgba(28, 28, 30, 0.52);
-    --glass-edge-light: rgba(255, 255, 255, 0.7);
+    --glass-light: rgba(250, 243, 225, 0.55);
+    --glass-dark: rgba(34, 34, 34, 0.55);
+    --glass-edge-light: rgba(250, 243, 225, 0.75);
     --glass-edge-dark: rgba(255, 255, 255, 0.18);
     --glass-blur: blur(22px) saturate(180%);
     --glass-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.28);
 }
 
-/* Liquid glass: frosted fill, a bright rim on top and a soft shadow underneath */
+/* Liquid glass: frosted linen fill, a bright rim on top and a soft shadow underneath */
 .glass,
 .masthead__bar,
 .btn--line,
@@ -63,7 +66,7 @@ h3 em,
     font-style: normal;
     font-weight: inherit;
     font-variation-settings: normal;
-    color: var(--muted);
+    color: var(--accent);
 }
 
 .kicker,
@@ -100,14 +103,15 @@ h3 em,
 
 .essay--drop::first-letter {
     margin: 0;
+    color: inherit;
     font-size: inherit;
     font-style: normal;
     line-height: inherit;
 }
 
 ::selection {
-    background: var(--ink);
-    color: var(--snow);
+    background: var(--tangerine);
+    color: var(--on-tangerine);
 }
 
 /* Surfaces: flat, no warm glows */
@@ -199,13 +203,13 @@ h3 em,
 }
 
 .btn--solid {
-    background: var(--fg, var(--ink));
-    color: var(--bg, var(--snow));
-    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+    background: var(--tangerine);
+    color: var(--on-tangerine);
+    box-shadow: 0 8px 24px -12px rgba(255, 109, 31, 0.8);
 }
 
 .btn--solid:hover {
-    background: color-mix(in srgb, var(--fg, var(--ink)) 82%, var(--bg, var(--snow)));
+    background: #ff8445;
 }
 
 .btn--line {
@@ -214,7 +218,7 @@ h3 em,
 
 .btn--line:hover {
     border-color: var(--glass-edge-light);
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(250, 243, 225, 0.85);
 }
 
 .tone-ink .btn--line:hover,
@@ -261,14 +265,14 @@ h3 em,
 .masthead__nav a {
     padding: 6px 10px;
     border-radius: 999px;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(250, 243, 225, 0.72);
     transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .masthead__nav a:hover,
 .masthead__nav a[aria-current='page'] {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.12);
+    color: var(--snow);
+    background: rgba(250, 243, 225, 0.12);
 }
 
 .masthead__nav a[aria-current='page']::after {
@@ -286,25 +290,26 @@ h3 em,
 }
 
 .masthead__cta {
-    background: #fff;
-    color: #0a0a0a;
+    background: var(--tangerine);
+    color: var(--on-tangerine);
+    box-shadow: none;
 }
 
 .masthead__cta:hover {
-    background: #e5e5ea;
+    background: #ff8445;
 }
 
 .masthead__menu {
     border-color: rgba(255, 255, 255, 0.22);
     background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    color: var(--snow);
 }
 
 /* Menu panel: the page blurs behind it */
 .site-index {
     inset: 0;
     padding-top: calc(var(--mast-h) + 32px);
-    background: rgba(10, 10, 10, 0.72);
+    background: rgba(34, 34, 34, 0.74);
     -webkit-backdrop-filter: blur(30px) saturate(160%);
     backdrop-filter: blur(30px) saturate(160%);
     pointer-events: auto;
@@ -321,8 +326,8 @@ h3 em,
 }
 
 .site-index__cta {
-    background: #fff;
-    color: #0a0a0a;
+    background: var(--tangerine);
+    color: var(--on-tangerine);
 }
 
 /* Home cover: photo fills the screen, a white wash from the lower left carries the type */
@@ -332,8 +337,8 @@ h3 em,
 
 .cover--bleed > .cover__media::before {
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.55) 26%, rgba(255, 255, 255, 0) 50%),
-        linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 30%);
+        linear-gradient(90deg, rgba(250, 243, 225, 0.88) 0%, rgba(250, 243, 225, 0.58) 26%, rgba(250, 243, 225, 0) 50%),
+        linear-gradient(0deg, rgba(250, 243, 225, 0.5) 0%, rgba(250, 243, 225, 0) 30%);
 }
 
 .cover--bleed .cover__stage {
@@ -355,7 +360,7 @@ h3 em,
     max-width: 36ch;
     margin-top: 16px;
     font-size: 1rem;
-    color: #3a3a3c;
+    color: #4a443a;
 }
 
 .cover--bleed .actions {
@@ -390,33 +395,53 @@ h3 em,
     --rule: rgba(255, 255, 255, 0.18);
 }
 
-/* Schedule: orange = open, grey = sale, so both read on white */
+/* Schedule: tangerine = open, black = sale */
 .cal td.is-available,
 .cal-legend__swatch--available {
-    background: #c1652f;
-    border-color: #c1652f;
-    color: #fff;
+    background: var(--tangerine);
+    border-color: var(--tangerine);
+    color: var(--on-tangerine);
+}
+
+.cal td.is-available .cal__day,
+.cal td.is-available .cal__holiday {
+    color: var(--on-tangerine);
 }
 
 .cal td.is-sale,
 .cal-legend__swatch--sale {
-    background: #8e8e93;
-    border-color: #8e8e93;
-    color: #fff;
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--snow);
 }
 
 .cal td.is-sale .cal__day,
 .cal td.is-sale .cal__holiday {
-    color: #fff;
+    color: var(--snow);
 }
 
 .cal td.is-bookable:hover,
 .cal td.is-bookable:focus-visible {
-    background: #a8531f;
+    background: #ff8445;
+}
+
+/* Orange text on light paper uses a deeper tangerine so it stays readable */
+.cal td.is-holiday .cal__day,
+.cal__holiday,
+.cal-legend__swatch--holiday {
+    color: var(--tangerine-deep);
+    border-color: var(--tangerine-deep);
+}
+
+.cal td.is-available.is-holiday .cal__day,
+.cal td.is-available .cal__holiday,
+.cal td.is-sale.is-holiday .cal__day,
+.cal td.is-sale .cal__holiday {
+    color: inherit;
 }
 
 mark.faq-match {
-    background: #e5e5ea;
+    background: rgba(255, 109, 31, 0.25);
 }
 
 @media (max-width: 860px) {
@@ -438,7 +463,7 @@ mark.faq-match {
     }
 
     .cover--bleed > .cover__media::before {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.7) 56%, var(--snow) 66%);
+        background: linear-gradient(180deg, rgba(250, 243, 225, 0) 38%, rgba(250, 243, 225, 0.7) 56%, var(--snow) 66%);
     }
 
     .cover--bleed .cover__title {
@@ -468,11 +493,11 @@ mark.faq-match {
     .glass,
     .btn--line,
     .chip {
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(250, 243, 225, 0.92);
     }
 
     .masthead__bar {
-        background: rgba(28, 28, 30, 0.94);
+        background: rgba(34, 34, 34, 0.94);
     }
 }
 

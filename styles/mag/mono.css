@@ -390,7 +390,14 @@ h3 em,
     --rule: rgba(255, 255, 255, 0.18);
 }
 
-/* Schedule: black = open, grey = sale, so both read on white */
+/* Schedule: orange = open, grey = sale, so both read on white */
+.cal td.is-available,
+.cal-legend__swatch--available {
+    background: #c1652f;
+    border-color: #c1652f;
+    color: #fff;
+}
+
 .cal td.is-sale,
 .cal-legend__swatch--sale {
     background: #8e8e93;
@@ -405,7 +412,7 @@ h3 em,
 
 .cal td.is-bookable:hover,
 .cal td.is-bookable:focus-visible {
-    background: #3a3a3c;
+    background: #a8531f;
 }
 
 mark.faq-match {

@@ -18,8 +18,7 @@
 .glass,
 .masthead__bar,
 .btn--line,
-.chip,
-.cover--bleed .cover__type {
+.chip {
     position: relative;
     background: var(--glass-light);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -326,33 +325,41 @@ h3 em,
     color: #0a0a0a;
 }
 
-/* Home cover: photo fills the screen, the type sits on a glass card */
+/* Home cover: photo fills the screen, a white wash from the lower left carries the type */
 .cover--bleed .cover__lines {
     display: none;
 }
 
 .cover--bleed > .cover__media::before {
-    display: none;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.55) 26%, rgba(255, 255, 255, 0) 50%),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 30%);
 }
 
 .cover--bleed .cover__stage {
     align-items: end;
-    padding: clamp(20px, 4vw, 48px) var(--gutter);
+    padding: 0 var(--gutter) clamp(28px, 5vw, 64px);
 }
 
 .cover--bleed .cover__type {
-    max-width: 620px;
-    padding: clamp(24px, 3.4vw, 44px);
-    border-radius: 32px;
+    max-width: 460px;
+    padding: 0;
 }
 
 .cover--bleed .cover__title {
-    font-size: clamp(2.8rem, 6.4vw, 5.6rem);
-    line-height: 0.95;
+    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+    line-height: 1;
 }
 
 .cover--bleed .cover__deck {
+    max-width: 36ch;
+    margin-top: 16px;
+    font-size: 1rem;
     color: #3a3a3c;
+}
+
+.cover--bleed .actions {
+    margin-top: 22px;
 }
 
 .cover--bleed > .cover__media > .caption {
@@ -416,24 +423,23 @@ mark.faq-match {
     }
 
     .cover--bleed .cover__stage {
-        padding: 0 12px 12px;
+        padding: 0 var(--gutter) 28px;
     }
 
     .cover--bleed > .cover__media > img {
-        height: 58%;
+        height: 66%;
     }
 
     .cover--bleed > .cover__media::before {
-        display: block;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.6) 56%, var(--snow) 64%);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.7) 56%, var(--snow) 66%);
     }
 
-    .cover--bleed .cover__type {
-        border-radius: 26px;
+    .cover--bleed .cover__title {
+        font-size: 2.4rem;
     }
 
     .cover--bleed > .cover__media > .caption {
-        top: 20px;
+        top: calc(var(--mast-h) + 4px);
     }
 }
 
@@ -454,8 +460,7 @@ mark.faq-match {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass,
     .btn--line,
-    .chip,
-    .cover--bleed .cover__type {
+    .chip {
         background: rgba(255, 255, 255, 0.92);
     }
 

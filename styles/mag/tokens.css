@@ -28,7 +28,7 @@
 }
 
 .tone-ink {
-    --bg: var(--ink);
+    --bg: #1a1a1a;
     --fg: var(--snow);
     --muted: var(--fog);
     --accent: var(--alpenglow);
@@ -39,12 +39,12 @@
 }
 
 .tone-paper {
-    --bg: var(--snow);
-    --fg: var(--ink);
-    --muted: #6f675a;
-    --accent: #b8480f;
-    --rule: rgba(0, 0, 0, 0.16);
-    --surface: #f5e7c6;
+    --bg: var(--ink);
+    --fg: var(--snow);
+    --muted: var(--fog);
+    --accent: var(--alpenglow);
+    --rule: rgba(250, 243, 225, 0.14);
+    --surface: #2e2c29;
     background: var(--bg);
     color: var(--fg);
 }

@@ -18,7 +18,7 @@ module.exports = {
         fog: '#9aa4b8',
       },
       fontFamily: {
-        display: ['var(--font-fraunces)', 'var(--font-be-vietnam-pro)', 'Georgia', 'serif'],
+        display: ['var(--font-be-vietnam-pro)', '-apple-system', 'sans-serif'],
         sans: ['var(--font-be-vietnam-pro)', 'sans-serif'],
       },
     },

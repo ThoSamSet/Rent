@@ -9,7 +9,8 @@ import '@/styles/mag/faq.css';
 import '@/styles/mag/article.css';
 import '@/styles/mag/booking.css';
 import '@/styles/mag/art.css';
-import { beVietnamPro, fraunces } from '@/lib/fonts';
+import '@/styles/mag/mono.css';
+import { beVietnamPro } from '@/lib/fonts';
 import ClientProviders from '@/components/ux/ClientProviders';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Masthead from '@/components/mag/Masthead';
@@ -38,7 +39,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi" className={`${beVietnamPro.variable} ${fraunces.variable}`}>
+    <html lang="vi" className={beVietnamPro.variable}>
       <body>
         <ClientProviders>
           <Masthead />

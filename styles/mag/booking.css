@@ -280,7 +280,7 @@
     --fg: var(--snow);
     --muted: var(--fog);
     --accent: var(--alpenglow);
-    --rule: rgba(244, 237, 224, 0.18);
+    --rule: rgba(255, 255, 255, 0.18);
 }
 
 .booking-summary--desktop-only {
@@ -349,7 +349,7 @@
     margin-top: 12px;
     padding: 14px;
     overflow: auto;
-    background: rgba(244, 237, 224, 0.06);
+    background: rgba(255, 255, 255, 0.06);
     font-family: var(--font-body);
     font-size: 0.875rem;
     line-height: 1.6;
@@ -426,7 +426,7 @@
     padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom, 0px));
     background: var(--ink);
     color: var(--snow);
-    border-top: 1px solid rgba(244, 237, 224, 0.16);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .booking-mobile-bar[hidden] {
@@ -466,7 +466,7 @@
 .booking-mobile-sheet__backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(14, 20, 32, 0.6);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .booking-mobile-sheet__panel {

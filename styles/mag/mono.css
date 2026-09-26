@@ -1,0 +1,471 @@
+/*
+ * Mono layer — black and white, liquid glass, fewer ornaments.
+ * Loaded last: it quiets the magazine layer underneath instead of rewriting it.
+ */
+
+:root {
+    --mast-h: 76px;
+    --glass-radius: 22px;
+    --glass-light: rgba(255, 255, 255, 0.55);
+    --glass-dark: rgba(28, 28, 30, 0.52);
+    --glass-edge-light: rgba(255, 255, 255, 0.7);
+    --glass-edge-dark: rgba(255, 255, 255, 0.18);
+    --glass-blur: blur(22px) saturate(180%);
+    --glass-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.28);
+}
+
+/* Liquid glass: frosted fill, a bright rim on top and a soft shadow underneath */
+.glass,
+.masthead__bar,
+.btn--line,
+.chip,
+.cover--bleed .cover__type {
+    position: relative;
+    background: var(--glass-light);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-edge-light);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+        var(--glass-shadow);
+}
+
+.tone-ink .btn--line,
+.tone-dusk .btn--line,
+.tone-ink .chip,
+.tone-dusk .chip,
+.hours .btn--line {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--glass-edge-dark);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+        0 10px 40px -16px rgba(0, 0, 0, 0.6);
+}
+
+/* Type: one sans family, tight headings, emphasis by weight and grey instead of italic colour */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 600;
+    font-variation-settings: normal;
+    letter-spacing: -0.03em;
+}
+
+h1 em,
+h2 em,
+h3 em,
+.pullquote em,
+.cover__deck em {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: inherit;
+    font-variation-settings: normal;
+    color: var(--muted);
+}
+
+.kicker,
+.caption,
+.cover__lines,
+.spread__more,
+.continue__meta,
+.pullquote cite,
+.values,
+.price-mark span,
+.ledger__no,
+.ledger__value,
+.step__no,
+.story__no,
+.site-index__no,
+.hour__time,
+.letter__greeting,
+.letter__signature {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-variation-settings: normal;
+}
+
+.kicker {
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+}
+
+.kicker::before {
+    display: none;
+}
+
+.essay--drop::first-letter {
+    margin: 0;
+    font-size: inherit;
+    font-style: normal;
+    line-height: inherit;
+}
+
+::selection {
+    background: var(--ink);
+    color: var(--snow);
+}
+
+/* Surfaces: flat, no warm glows */
+.tone-paper,
+.tone-ink {
+    background: var(--bg);
+}
+
+/* Fewer ornaments: no grain, no hand-drawn marks, no print mats */
+.grain,
+.ornament,
+.letter__ornament,
+.cta-band__ornament,
+.cta-band__glow,
+.contents__watermark,
+.hours__foot .ornament,
+.cover__folio {
+    display: none;
+}
+
+.spread__media::after,
+.contents__media::after,
+.cover__media::after {
+    display: none;
+}
+
+/* Content slides under the floating bar, so the glass has something to blur */
+.site-main {
+    padding-top: 0;
+}
+
+.cover {
+    min-height: 100svh;
+    padding-top: var(--mast-h);
+}
+
+.cover--short {
+    min-height: min(84svh, 820px);
+}
+
+.cover--bleed {
+    padding-top: 0;
+}
+
+.cover--bleed .cover__stage {
+    padding-top: calc(var(--mast-h) + 24px);
+}
+
+.article__head {
+    padding-top: calc(var(--mast-h) + clamp(32px, 5vw, 72px));
+}
+
+/* Photos: rounded, like cards; the big side photos float inside their column */
+.spread__media,
+.contents__media {
+    margin: 12px;
+}
+
+.letter__signature {
+    transform: none;
+    font-weight: 600;
+}
+
+/* Photos: rounded, like cards */
+.spread__media,
+.contents__media,
+.mosaic__photo,
+.menu__photo,
+.pillar__photo,
+.site-card__photo,
+.story__photo,
+.cover:not(.cover--bleed) .cover__media {
+    border-radius: var(--glass-radius);
+}
+
+/* Buttons: pills. Solid follows the section's text colour so it works on black and on white */
+.btn {
+    min-height: 46px;
+    padding: 0 24px;
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn--solid {
+    background: var(--fg, var(--ink));
+    color: var(--bg, var(--snow));
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+}
+
+.btn--solid:hover {
+    background: color-mix(in srgb, var(--fg, var(--ink)) 82%, var(--bg, var(--snow)));
+}
+
+.btn--line {
+    color: var(--fg);
+}
+
+.btn--line:hover {
+    border-color: var(--glass-edge-light);
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.tone-ink .btn--line:hover,
+.tone-dusk .btn--line:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.chip {
+    border-radius: 999px;
+}
+
+.chip.is-active,
+.chip[aria-pressed='true'] {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
+/* Masthead: a floating glass bar */
+.masthead {
+    padding: 10px var(--gutter) 0;
+    pointer-events: none;
+}
+
+.masthead__bar {
+    height: 56px;
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 0 10px 0 18px;
+    border-radius: 999px;
+    background: var(--glass-dark);
+    border-color: var(--glass-edge-dark);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+        0 12px 40px -14px rgba(0, 0, 0, 0.55);
+    pointer-events: auto;
+}
+
+.masthead__logo-img {
+    height: 40px;
+}
+
+.masthead__nav a {
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.72);
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.masthead__nav a:hover,
+.masthead__nav a[aria-current='page'] {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.masthead__nav a[aria-current='page']::after {
+    display: none;
+}
+
+.masthead__nav {
+    gap: 2px;
+}
+
+.masthead__cta,
+.masthead__menu {
+    min-height: 38px;
+    border-radius: 999px;
+}
+
+.masthead__cta {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+.masthead__cta:hover {
+    background: #e5e5ea;
+}
+
+.masthead__menu {
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+/* Menu panel: the page blurs behind it */
+.site-index {
+    inset: 0;
+    padding-top: calc(var(--mast-h) + 32px);
+    background: rgba(10, 10, 10, 0.72);
+    -webkit-backdrop-filter: blur(30px) saturate(160%);
+    backdrop-filter: blur(30px) saturate(160%);
+    pointer-events: auto;
+}
+
+.site-index__label {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.site-index__list a:hover .site-index__label,
+.site-index__list a[aria-current='page'] .site-index__label {
+    color: var(--fog);
+}
+
+.site-index__cta {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+/* Home cover: photo fills the screen, the type sits on a glass card */
+.cover--bleed .cover__lines {
+    display: none;
+}
+
+.cover--bleed > .cover__media::before {
+    display: none;
+}
+
+.cover--bleed .cover__stage {
+    align-items: end;
+    padding: clamp(20px, 4vw, 48px) var(--gutter);
+}
+
+.cover--bleed .cover__type {
+    max-width: 620px;
+    padding: clamp(24px, 3.4vw, 44px);
+    border-radius: 32px;
+}
+
+.cover--bleed .cover__title {
+    font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+    line-height: 0.95;
+}
+
+.cover--bleed .cover__deck {
+    color: #3a3a3c;
+}
+
+.cover--bleed > .cover__media > .caption {
+    bottom: 20px;
+}
+
+/* Hours: plain black, white markers */
+.hour::before {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
+}
+
+/* Glass cards where the layout already draws a panel */
+.two-ways__col,
+.two-ways__col--us,
+.booking-plan-card,
+.booking-summary,
+.booking-promo-banner,
+.site-card {
+    border-radius: var(--glass-radius);
+}
+
+.two-ways__col--us {
+    background: var(--ink);
+    color: var(--snow);
+    --fg: var(--snow);
+    --muted: var(--fog);
+    --accent: var(--snow);
+    --rule: rgba(255, 255, 255, 0.18);
+}
+
+/* Schedule: black = open, grey = sale, so both read on white */
+.cal td.is-sale,
+.cal-legend__swatch--sale {
+    background: #8e8e93;
+    border-color: #8e8e93;
+    color: #fff;
+}
+
+.cal td.is-sale .cal__day,
+.cal td.is-sale .cal__holiday {
+    color: #fff;
+}
+
+.cal td.is-bookable:hover,
+.cal td.is-bookable:focus-visible {
+    background: #3a3a3c;
+}
+
+mark.faq-match {
+    background: #e5e5ea;
+}
+
+@media (max-width: 860px) {
+    .cover:not(.cover--bleed) .cover__media {
+        margin: 12px 12px 0;
+    }
+
+    .spread__media,
+    .contents__media {
+        margin: 12px 12px 0;
+    }
+
+    .cover--bleed .cover__stage {
+        padding: 0 12px 12px;
+    }
+
+    .cover--bleed > .cover__media > img {
+        height: 58%;
+    }
+
+    .cover--bleed > .cover__media::before {
+        display: block;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.6) 56%, var(--snow) 64%);
+    }
+
+    .cover--bleed .cover__type {
+        border-radius: 26px;
+    }
+
+    .cover--bleed > .cover__media > .caption {
+        top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .masthead {
+        padding: 8px 10px 0;
+    }
+
+    .masthead__bar {
+        padding: 0 6px 0 12px;
+    }
+
+    .masthead__logo-img {
+        height: 36px;
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass,
+    .btn--line,
+    .chip,
+    .cover--bleed .cover__type {
+        background: rgba(255, 255, 255, 0.92);
+    }
+
+    .masthead__bar {
+        background: rgba(28, 28, 30, 0.94);
+    }
+}
+
+/* Gallery: a little air around the tiles */
+.mosaic {
+    gap: 8px;
+    padding: 0 12px;
+}

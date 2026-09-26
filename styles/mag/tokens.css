@@ -1,13 +1,13 @@
 :root {
-    --ink: #0e1420;
-    --ink-soft: #161d2c;
-    --dusk: #28304a;
-    --alpenglow: #e8a06b;
-    --ember: #c1652f;
-    --snow: #f4ede0;
-    --fog: #9aa4b8;
+    --ink: #0a0a0a;
+    --ink-soft: #1c1c1e;
+    --dusk: #2c2c2e;
+    --alpenglow: #ffffff;
+    --ember: #0a0a0a;
+    --snow: #ffffff;
+    --fog: #a1a1a6;
 
-    --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+    --font-display: var(--font-be-vietnam-pro), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-body: var(--font-be-vietnam-pro), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     --step--2: 0.6875rem;
@@ -23,8 +23,8 @@
     --gutter: clamp(18px, 4.5vw, 56px);
     --wide: 1320px;
     --measure: 62ch;
-    --space-section: clamp(56px, 9vw, 128px);
-    --radius: 3px;
+    --space-section: clamp(48px, 7vw, 96px);
+    --radius: 14px;
 }
 
 .tone-ink {
@@ -32,7 +32,7 @@
     --fg: var(--snow);
     --muted: var(--fog);
     --accent: var(--alpenglow);
-    --rule: rgba(244, 237, 224, 0.18);
+    --rule: rgba(255, 255, 255, 0.18);
     --surface: var(--ink-soft);
     background: var(--bg);
     color: var(--fg);
@@ -41,10 +41,10 @@
 .tone-paper {
     --bg: var(--snow);
     --fg: var(--ink);
-    --muted: var(--dusk);
+    --muted: #6e6e73;
     --accent: var(--ember);
-    --rule: rgba(14, 20, 32, 0.16);
-    --surface: #ebe2d1;
+    --rule: rgba(0, 0, 0, 0.16);
+    --surface: #f5f5f7;
     background: var(--bg);
     color: var(--fg);
 }
@@ -52,10 +52,10 @@
 .tone-dusk {
     --bg: var(--dusk);
     --fg: var(--snow);
-    --muted: #b9c0d0;
+    --muted: #aeaeb2;
     --accent: var(--alpenglow);
-    --rule: rgba(244, 237, 224, 0.2);
-    --surface: #222941;
+    --rule: rgba(255, 255, 255, 0.2);
+    --surface: #3a3a3c;
     background: var(--bg);
     color: var(--fg);
 }

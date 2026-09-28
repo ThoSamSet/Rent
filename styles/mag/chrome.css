@@ -240,6 +240,12 @@ html.site-index-open {
 .colophon__social svg {
     width: 18px;
     height: 18px;
+    color: var(--tangerine, var(--accent));
+    transition: color 0.2s ease;
+}
+
+.colophon__social a:hover svg {
+    color: var(--fg);
 }
 
 .colophon__legal {

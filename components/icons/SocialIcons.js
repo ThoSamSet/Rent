@@ -1,6 +1,7 @@
 function iconProps(props) {
   return {
     viewBox: '0 0 24 24',
+    fill: 'currentColor',
     role: 'img',
     focusable: 'false',
     'aria-hidden': 'true',

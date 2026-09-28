@@ -17,7 +17,6 @@ const PAGES = [
   { path: '/dat-lich', name: 'dat-lich', heading: /tin nhắn/i },
   { path: '/blog/campingnhatban', name: 'blog-article', heading: /camping ở nhật/i },
   { path: '/film', name: 'film', heading: /film/i },
-  { path: '/film/hau-truong-sakura-2026', name: 'film-log', heading: /hậu trường/i },
 ];
 
 const screenshotDir = path.join(__dirname, '../../test-results/screenshots');

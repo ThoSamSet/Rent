@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NavLabel from '@/components/mag/NavLabel';
 import { NAV_LINKS } from '@/lib/constants';
 import { SOCIAL_LINKS } from '@/lib/social';
 import { SOCIAL_ICONS } from '@/components/icons/SocialIcons';
@@ -24,7 +25,9 @@ export default function Colophon() {
           <ul className="colophon__links">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
+                <Link href={link.href}>
+                  <NavLabel link={link} />
+                </Link>
               </li>
             ))}
           </ul>

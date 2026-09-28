@@ -285,3 +285,14 @@ html.site-index-open {
         grid-column: 1 / -1;
     }
 }
+
+/* Film wordmark — sized in em so its lettering sits at the cap height of the
+   text around it (the tall //. rises above); the bottom 10% is the p descender. */
+.film-logo {
+    display: inline-block;
+    height: 2.5em;
+    width: auto;
+    aspect-ratio: 1419 / 283;
+    vertical-align: -0.26em;
+    overflow: visible;
+}

@@ -1,10 +1,13 @@
+import FilmLogo from '@/components/brand/FilmLogo';
 import { FILM_PHOTOS, FILM_TITLE } from '@/lib/film/content';
 
 export default function FilmPageContent() {
   return (
     <main className="film tone-paper">
       <div className="wrap">
-        <h1 className="film__title">{FILM_TITLE}</h1>
+        <h1 className="film__title">
+          <FilmLogo title={FILM_TITLE} />
+        </h1>
         <ul className="film-grid">
           {FILM_PHOTOS.map((photo, index) => (
             <li key={photo.src} className="film-grid__item">

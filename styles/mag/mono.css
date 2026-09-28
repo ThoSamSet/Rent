@@ -343,7 +343,7 @@ h3 em,
 
 .cover--bleed .cover__stage {
     align-items: end;
-    padding: 0 var(--gutter) clamp(28px, 5vw, 64px);
+    padding: calc(var(--mast-h) + 16px) var(--gutter) clamp(28px, 5vw, 64px);
 }
 
 .cover--bleed .cover__type {
@@ -451,7 +451,7 @@ mark.faq-match {
     }
 
     .cover--bleed .cover__stage {
-        padding: 0 var(--gutter) 28px;
+        padding: calc(var(--mast-h) + 12px) var(--gutter) 28px;
     }
 
     .cover--bleed > .cover__media > img {
@@ -468,6 +468,50 @@ mark.faq-match {
 
     .cover--bleed > .cover__media > .caption {
         top: calc(var(--mast-h) + 4px);
+    }
+}
+
+/* Phone held sideways: too short for the stacked photo-over-type layout, so the photo
+   fills the cover again, the wash comes from the left and the type sits beside it */
+@media (orientation: landscape) and (max-height: 500px) {
+    .cover--bleed .cover__stage {
+        padding: calc(var(--mast-h) + 12px) var(--gutter) 20px;
+    }
+
+    .cover--bleed .cover__type {
+        max-width: min(460px, 60%);
+    }
+
+    .cover--bleed > .cover__media > img {
+        height: 100%;
+        object-position: 60% 50%;
+    }
+
+    .cover--bleed > .cover__media::before {
+        background:
+            linear-gradient(90deg, rgba(34, 34, 34, 0.9) 0%, rgba(34, 34, 34, 0.7) 40%, rgba(34, 34, 34, 0) 75%),
+            linear-gradient(0deg, rgba(34, 34, 34, 0.6) 0%, rgba(34, 34, 34, 0) 40%);
+    }
+
+    .cover--bleed .cover__title {
+        font-size: clamp(1.8rem, 7svh, 2.4rem);
+    }
+
+    .cover--bleed .cover__deck {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+
+    .cover--bleed .actions {
+        margin-top: 14px;
+    }
+
+    .cover--bleed > .cover__media > .caption {
+        top: auto;
+        left: auto;
+        right: 20px;
+        bottom: 16px;
     }
 }
 

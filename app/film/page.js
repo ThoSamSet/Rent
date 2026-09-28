@@ -1,13 +1,12 @@
 import FilmPageContent from '@/components/pages/FilmPageContent';
-import { FILM_COVER } from '@/lib/film/content';
+import { FILM_PHOTOS, FILM_TITLE } from '@/lib/film/content';
 import { buildPageMetadata } from '@/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Film — album ảnh và hậu trường',
-  description:
-    'Album ảnh theo mùa và nhật ký hậu trường của kênh YouTube Camp Nhà Thỏ.',
+  title: FILM_TITLE,
+  description: 'Những khoảnh khắc Camp Nhà Thỏ giữ lại sau mỗi chuyến đi — ảnh và chú thích.',
   path: '/film',
-  image: FILM_COVER.image.src,
+  image: FILM_PHOTOS[0].src,
 });
 
 export default function FilmPage() {

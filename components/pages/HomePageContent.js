@@ -16,7 +16,7 @@ import { EQUIPMENT_CATEGORIES } from '@/lib/equipment/content';
 import { GALLERY, HOME_COVER, HOME_HOURS, HOME_LETTER, HOME_NOTICES, HOME_SPREAD } from '@/lib/home/content';
 import { OPTION_CATEGORIES } from '@/lib/options/content';
 import { PRICING_PLANS } from '@/lib/pricing/content';
-import { ALBUM_COUNT, FAQ_COUNT, OPEN_DAYS, POST_COUNT, SCHEDULE_RANGE, SITE_COUNT, UPDATED_LABEL } from '@/lib/site/issue';
+import { FAQ_COUNT, OPEN_DAYS, PHOTO_COUNT, POST_COUNT, SCHEDULE_RANGE, SITE_COUNT, UPDATED_LABEL } from '@/lib/site/issue';
 
 const OPEN_OPTIONS = OPTION_CATEGORIES.filter((category) => category.status === 'open')
   .map((category) => category.title.toLowerCase())
@@ -31,7 +31,7 @@ const INDEX_VALUES = {
   '/schedule': `còn ${OPEN_DAYS} ngày`,
   '/faq': `${FAQ_COUNT} câu hỏi`,
   '/blog': `${POST_COUNT} bài ghi chép`,
-  '/film': `${ALBUM_COUNT} album ảnh`,
+  '/film': `${PHOTO_COUNT} khoảnh khắc`,
 };
 
 export default function HomePageContent() {

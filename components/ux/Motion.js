@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useLayoutEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -9,6 +9,12 @@ import { SplitText } from 'gsap/SplitText';
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+const MOTION_OK = '(prefers-reduced-motion: no-preference)';
+/** Wide enough for the hours to sit in one row, so the section can hold still while they play. */
+const PIN_HOURS = '(min-width: 1024px)';
+/** Buttons only follow a real mouse. */
+const FINE_POINTER = '(hover: hover) and (pointer: fine)';
 
 /** Hero pieces hidden by styles/mag/motion.css until the intro plays. */
 const COVER_INTRO = '.cover__title > span, .cover__type > .kicker, .cover__deck, .cover__type > .actions, .cover__folio, .cover__lines';
@@ -22,7 +28,6 @@ const REVEAL = [
   '.letter__signature',
   '.ledger > li',
   '.story',
-  '.hour',
   '.cta-band .wrap > *',
 ].join(', ');
 
@@ -52,8 +57,9 @@ function coverIntro(cover) {
   gsap.to(cover.querySelector('.cover__type'), { y: -80, opacity: 0.15, ease: 'none', scrollTrigger: scroll });
 }
 
-function reveals() {
-  const targets = gsap.utils.toArray(REVEAL).filter((el) => !el.closest('.cover'));
+function reveals(pinHours) {
+  const selector = pinHours ? REVEAL : `${REVEAL}, .hour`;
+  const targets = gsap.utils.toArray(selector).filter((el) => !el.closest('.cover'));
   if (!targets.length) {
     return;
   }
@@ -112,21 +118,51 @@ function letter() {
   );
 }
 
-function hours() {
+function hours(pin) {
   gsap.utils.toArray('.hours').forEach((section) => {
     const sky = section.querySelector('.hours__sky');
-    if (sky) {
-      gsap.fromTo(
-        sky,
-        { yPercent: -6, scale: 1.14 },
-        {
-          yPercent: 6,
-          scale: 1.14,
-          ease: 'none',
-          scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: true },
-        },
-      );
+    const items = section.querySelectorAll('.hour');
+
+    if (!pin) {
+      if (sky) {
+        gsap.fromTo(
+          sky,
+          { yPercent: -6, scale: 1.14 },
+          {
+            yPercent: 6,
+            scale: 1.14,
+            ease: 'none',
+            scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: true },
+          },
+        );
+      }
+      return;
     }
+
+    // Hold the night on screen and let the hours play out one by one, like a short film.
+    // A section taller than the window pins by its bottom edge so the hours stay in view.
+    const timeline = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: section,
+        start: () => (section.offsetHeight > window.innerHeight ? 'bottom bottom' : 'top top'),
+        end: () => `+=${items.length * window.innerHeight * 0.35}`,
+        pin: true,
+        scrub: 0.6,
+        invalidateOnRefresh: true,
+      },
+    });
+    if (sky) {
+      timeline.fromTo(sky, { xPercent: -4, scale: 1.12 }, { xPercent: 4, scale: 1.12, duration: items.length }, 0);
+    }
+    items.forEach((item, index) => {
+      timeline.fromTo(
+        item,
+        { opacity: 0, y: 40, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' },
+        index,
+      );
+    });
   });
 }
 
@@ -161,19 +197,129 @@ function ctaGlow() {
   });
 }
 
+/** Buttons lean toward the cursor while it is over them and spring back when it leaves. */
+function magneticButtons() {
+  let active = null;
+
+  const release = (button) => {
+    gsap.to(button, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
+  };
+
+  const onMove = (event) => {
+    const button = event.target instanceof Element ? event.target.closest('.btn') : null;
+    if (active && active !== button) {
+      release(active);
+    }
+    active = button;
+    if (!button) {
+      return;
+    }
+    const box = button.getBoundingClientRect();
+    gsap.to(button, {
+      x: (event.clientX - (box.left + box.width / 2)) * 0.3,
+      y: (event.clientY - (box.top + box.height / 2)) * 0.4,
+      duration: 0.4,
+      ease: 'power3.out',
+      overwrite: 'auto',
+    });
+  };
+
+  const onLeave = () => {
+    if (active) {
+      release(active);
+      active = null;
+    }
+  };
+
+  document.addEventListener('pointermove', onMove, { passive: true });
+  document.documentElement.addEventListener('pointerleave', onLeave);
+  return () => {
+    document.removeEventListener('pointermove', onMove);
+    document.documentElement.removeEventListener('pointerleave', onLeave);
+    if (active) {
+      gsap.set(active, { clearProps: 'transform' });
+    }
+  };
+}
+
+/** The internal link a click should fade out for, if any. */
+function pageLink(event) {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return null;
+  }
+  const anchor = event.target instanceof Element ? event.target.closest('a[href]') : null;
+  if (!anchor || (anchor.target && anchor.target !== '_self') || anchor.hasAttribute('download')) {
+    return null;
+  }
+  const url = new URL(anchor.href, window.location.href);
+  if (url.origin !== window.location.origin || url.pathname === window.location.pathname) {
+    return null;
+  }
+  return url;
+}
+
 /**
  * Apple-style motion over the existing magazine markup: a cover intro, scroll reveals,
- * parallax photos and a letter that lights up word by word. Readers who ask for reduced
- * motion get the static page.
+ * parallax photos, a letter that lights up word by word, a pinned night at camp, magnetic
+ * buttons and a fade between pages. Readers who ask for reduced motion get the static page.
  */
 export default function Motion() {
   const pathname = usePathname();
+  const router = useRouter();
+  const firstPage = useRef(true);
+
+  // Page change: fade the old page out before the router moves on.
+  useEffect(() => {
+    const onClick = (event) => {
+      if (!window.matchMedia(MOTION_OK).matches) {
+        return;
+      }
+      const url = pageLink(event);
+      const main = document.querySelector('.site-main');
+      if (!url || !main) {
+        return;
+      }
+      event.preventDefault();
+      gsap.to(main, {
+        opacity: 0,
+        duration: 0.25,
+        ease: 'power1.in',
+        overwrite: true,
+        onComplete: () => router.push(url.pathname + url.search + url.hash),
+      });
+    };
+    // Capture runs before next/link, which then leaves the prevented click alone.
+    window.addEventListener('click', onClick, true);
+    return () => window.removeEventListener('click', onClick, true);
+  }, [router]);
+
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+    mm.add(`${MOTION_OK} and ${FINE_POINTER}`, magneticButtons);
+    return () => mm.revert();
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     const root = document.documentElement;
+    const main = document.querySelector('.site-main');
     const mm = gsap.matchMedia();
 
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // ...and fade the new one in. The first page has the cover intro instead.
+    if (firstPage.current) {
+      firstPage.current = false;
+    } else if (main) {
+      if (window.matchMedia(MOTION_OK).matches) {
+        gsap.fromTo(main, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out', overwrite: true, clearProps: 'opacity' });
+      } else {
+        gsap.set(main, { clearProps: 'opacity' });
+      }
+    }
+
+    mm.add({ motion: MOTION_OK, pinHours: PIN_HOURS }, (context) => {
+      const { motion, pinHours } = context.conditions;
+      if (!motion) {
+        return;
+      }
       const cover = document.querySelector('.site-main .cover');
       if (cover) {
         gsap.set(cover.querySelectorAll(COVER_INTRO), { opacity: 0 });
@@ -183,10 +329,10 @@ export default function Motion() {
       if (cover) {
         coverIntro(cover);
       }
-      reveals();
+      reveals(pinHours);
       photos();
       letter();
-      hours();
+      hours(pinHours);
       ornaments();
       ctaGlow();
     });

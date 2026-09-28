@@ -40,3 +40,10 @@ html.motion:not(.gsap-on) .cover__lines {
         opacity: 1;
     }
 }
+
+/* GSAP moves the buttons toward the cursor; a CSS transform transition would drag behind it */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .gsap-on .btn {
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+}

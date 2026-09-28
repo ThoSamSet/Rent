@@ -30,9 +30,16 @@ function pick(selector, scope = document) {
   return gsap.utils.toArray(scope.querySelectorAll(selector)).filter((el) => !el.closest('.cover'));
 }
 
+/**
+ * Plays once as its trigger scrolls in, without `once: true`: that option kills the trigger the
+ * moment it fires, and a trigger that fires while ScrollTrigger is still measuring the others
+ * (a page opened part way down) shrinks the list under it and crashes the refresh.
+ */
+const PLAY_ONCE = { start: IN_VIEW, toggleActions: 'play none none none' };
+
 /** A paused timeline that plays once when `trigger` scrolls into view. */
 function onEnter(trigger, vars = {}) {
-  return gsap.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger, start: IN_VIEW, once: true }, ...vars });
+  return gsap.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger, ...PLAY_ONCE }, ...vars });
 }
 
 /**
@@ -103,7 +110,7 @@ function headings() {
             duration: 1.1,
             ease: 'power4.out',
             stagger: 0.12,
-            scrollTrigger: { trigger: heading, start: IN_VIEW, once: true },
+            scrollTrigger: { trigger: heading, ...PLAY_ONCE },
           },
         ),
     });
@@ -180,7 +187,7 @@ function contentsAndSpreads() {
 function gallery() {
   pick('.mosaic').forEach((mosaic) => {
     const items = mosaic.querySelectorAll('.mosaic__item');
-    onEnter(mosaic, { scrollTrigger: { trigger: mosaic, start: 'top 80%', once: true } }).fromTo(
+    onEnter(mosaic, { scrollTrigger: { trigger: mosaic, ...PLAY_ONCE, start: 'top 80%' } }).fromTo(
       items,
       { opacity: 0, scale: 0.82, clipPath: 'inset(8% 8% 8% 8% round 24px)' },
       { opacity: 1, scale: 1, clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1.2, ease: 'expo.out', stagger: { each: 0.1, grid: 'auto', from: 'start' }, clearProps: 'clipPath' },
@@ -267,7 +274,7 @@ function ctaBand() {
               duration: 0.9,
               ease: 'power3.out',
               stagger: { each: 0.018, from: 'center' },
-              scrollTrigger: { trigger: title, start: IN_VIEW, once: true },
+              scrollTrigger: { trigger: title, ...PLAY_ONCE },
             },
           ),
       });
@@ -444,6 +451,38 @@ function pageLink(event) {
   return url;
 }
 
+/** Set up every effect on the current page, pinned sections first. */
+function build(pinHours, restore) {
+  const cover = document.querySelector('.site-main .cover');
+  if (cover) {
+    gsap.set(cover.querySelectorAll(COVER_INTRO), { opacity: 0 });
+  }
+  document.documentElement.classList.add('gsap-on');
+
+  if (cover) {
+    coverIntro(cover);
+  }
+  // The pinned night adds scroll length, so it goes first: everything below it must
+  // measure its start with that length included, or it plays while still off screen.
+  hours(pinHours);
+
+  headings();
+  kickers();
+  prose();
+  letter();
+  contentsAndSpreads();
+  ledgers(restore);
+  gallery();
+  stories(restore);
+  steps();
+  continueCards();
+  siteCards();
+  ctaBand();
+  ornaments();
+  ctaGlow();
+  ScrollTrigger.sort();
+}
+
 /**
  * Apple-style motion over the existing magazine markup. Each kind of block has its own move:
  * headings flip up by line, photos open like curtains, prices count up, the gallery floats at
@@ -454,6 +493,15 @@ export default function Motion() {
   const pathname = usePathname();
   const router = useRouter();
   const firstPage = useRef(true);
+  const backForward = useRef(false);
+
+  useEffect(() => {
+    const onPopState = () => {
+      backForward.current = true;
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   // Page change: fade the old page out before the router moves on.
   useEffect(() => {
@@ -491,14 +539,24 @@ export default function Motion() {
     const main = document.querySelector('.site-main');
     const mm = gsap.matchMedia();
 
-    // ...and fade the new one in. The first page has the cover intro instead.
     if (firstPage.current) {
+      // The first page has the cover intro instead of a fade.
       firstPage.current = false;
-    } else if (main) {
-      if (window.matchMedia(MOTION_OK).matches) {
-        gsap.fromTo(main, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out', overwrite: true, clearProps: 'opacity' });
-      } else {
-        gsap.set(main, { clearProps: 'opacity' });
+    } else {
+      // A new page opens at the top (ScrollManager does the same, but only after this runs):
+      // measure the triggers there rather than at the old page's scroll position.
+      if (!backForward.current && !window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+      backForward.current = false;
+
+      // ...and fade the new page in.
+      if (main) {
+        if (window.matchMedia(MOTION_OK).matches) {
+          gsap.fromTo(main, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out', overwrite: true, clearProps: 'opacity' });
+        } else {
+          gsap.set(main, { clearProps: 'opacity' });
+        }
       }
     }
 
@@ -507,36 +565,17 @@ export default function Motion() {
       if (!motion) {
         return;
       }
-      const cover = document.querySelector('.site-main .cover');
-      if (cover) {
-        gsap.set(cover.querySelectorAll(COVER_INTRO), { opacity: 0 });
-      }
-      root.classList.add('gsap-on');
-
-      if (cover) {
-        coverIntro(cover);
-      }
-      // The pinned night adds scroll length, so it goes first: everything below it must
-      // measure its start with that length included, or it plays while still off screen.
-      hours(pinHours);
-
       const restore = [];
-      headings();
-      kickers();
-      prose();
-      letter();
-      contentsAndSpreads();
-      ledgers(restore);
-      gallery();
-      stories(restore);
-      steps();
-      continueCards();
-      siteCards();
-      ctaBand();
-      ornaments();
-      ctaGlow();
-      ScrollTrigger.sort();
-
+      try {
+        build(pinHours, restore);
+      } catch (error) {
+        // Motion is decoration: if it fails, show the page as it is rather than an error screen.
+        console.error('Motion:', error);
+        queueMicrotask(() => {
+          mm.revert();
+          root.classList.remove('motion', 'gsap-on');
+        });
+      }
       return () => restore.forEach((undo) => undo?.());
     });
 

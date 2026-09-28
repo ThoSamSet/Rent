@@ -398,8 +398,8 @@ function magneticButtons() {
   };
 
   const onMove = (event) => {
-    // Page buttons only: in the masthead the buttons sit too close, and a pulled one would cover its neighbour.
-    const button = event.target instanceof Element ? event.target.closest('.btn:not(.masthead .btn, .site-index .btn)') : null;
+    // Not the buttons in the open index panel; the masthead's booking button leans less, so it stays clear of the menu button beside it.
+    const button = event.target instanceof Element ? event.target.closest('.btn:not(.site-index .btn)') : null;
     if (active && active !== button) {
       release(active);
     }
@@ -408,9 +408,10 @@ function magneticButtons() {
       return;
     }
     const box = button.getBoundingClientRect();
+    const pull = button.closest('.masthead') ? 0.5 : 1;
     gsap.to(button, {
-      x: (event.clientX - (box.left + box.width / 2)) * 0.3,
-      y: (event.clientY - (box.top + box.height / 2)) * 0.4,
+      x: (event.clientX - (box.left + box.width / 2)) * 0.3 * pull,
+      y: (event.clientY - (box.top + box.height / 2)) * 0.4 * pull,
       duration: 0.4,
       ease: 'power3.out',
       overwrite: 'auto',

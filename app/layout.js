@@ -10,6 +10,7 @@ import '@/styles/mag/article.css';
 import '@/styles/mag/booking.css';
 import '@/styles/mag/art.css';
 import '@/styles/mag/mono.css';
+import '@/styles/mag/motion.css';
 import { beVietnamPro } from '@/lib/fonts';
 import ClientProviders from '@/components/ux/ClientProviders';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -37,9 +38,16 @@ export const metadata = {
   },
 };
 
+/** Mark the page for motion before first paint so the cover does not flash before its intro. */
+const MOTION_FLAG =
+  "if(window.matchMedia('(prefers-reduced-motion: no-preference)').matches)document.documentElement.classList.add('motion')";
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi" className={beVietnamPro.variable}>
+    <html lang="vi" className={beVietnamPro.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_FLAG }} />
+      </head>
       <body>
         <ClientProviders>
           <Masthead />

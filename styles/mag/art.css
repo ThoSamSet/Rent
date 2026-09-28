@@ -414,10 +414,10 @@ h3 em,
     color: var(--accent);
 }
 
-/* Motion, only where the browser can tie it to scroll and the reader allows it */
+/* Motion, only where the browser can tie it to scroll and the reader allows it; GSAP takes over once it runs */
 @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-        .ornament path {
+        html:not(.gsap-on) .ornament path {
             stroke-dasharray: 420;
             stroke-dashoffset: 420;
             animation: ornament-draw linear both;
@@ -425,14 +425,14 @@ h3 em,
             animation-range: entry 0% cover 45%;
         }
 
-        .spread__media > img,
-        .mosaic__photo > img {
+        html:not(.gsap-on) .spread__media > img,
+        html:not(.gsap-on) .mosaic__photo > img {
             animation: photo-reveal linear both;
             animation-timeline: view();
             animation-range: entry 0% cover 35%;
         }
 
-        .hour {
+        html:not(.gsap-on) .hour {
             animation: hour-rise linear both;
             animation-timeline: view();
             animation-range: entry 0% cover 30%;

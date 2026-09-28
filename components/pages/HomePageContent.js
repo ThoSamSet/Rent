@@ -11,13 +11,12 @@ import SectionHead from '@/components/mag/SectionHead';
 import Spread from '@/components/mag/Spread';
 import StoryList from '@/components/mag/StoryList';
 import { BLOG_POSTS } from '@/lib/blog/content';
-import NavLabel from '@/components/mag/NavLabel';
 import { NAV_LINKS } from '@/lib/constants';
 import { EQUIPMENT_CATEGORIES } from '@/lib/equipment/content';
 import { GALLERY, HOME_COVER, HOME_HOURS, HOME_LETTER, HOME_NOTICES, HOME_SPREAD } from '@/lib/home/content';
 import { OPTION_CATEGORIES } from '@/lib/options/content';
 import { PRICING_PLANS } from '@/lib/pricing/content';
-import { FAQ_COUNT, OPEN_DAYS, PHOTO_COUNT, POST_COUNT, SCHEDULE_RANGE, SITE_COUNT, UPDATED_LABEL } from '@/lib/site/issue';
+import { FAQ_COUNT, OPEN_DAYS, POST_COUNT, SCHEDULE_RANGE, SITE_COUNT, UPDATED_LABEL } from '@/lib/site/issue';
 
 const OPEN_OPTIONS = OPTION_CATEGORIES.filter((category) => category.status === 'open')
   .map((category) => category.title.toLowerCase())
@@ -32,7 +31,6 @@ const INDEX_VALUES = {
   '/schedule': `còn ${OPEN_DAYS} ngày`,
   '/faq': `${FAQ_COUNT} câu hỏi`,
   '/blog': `${POST_COUNT} bài ghi chép`,
-  '/film': `${PHOTO_COUNT} khoảnh khắc`,
 };
 
 export default function HomePageContent() {
@@ -74,7 +72,7 @@ export default function HomePageContent() {
         title="Trước khi *lên đường*"
         image={{ src: '/images/about-hero.webp', alt: 'Núi Phú Sĩ nhìn qua mặt hồ' }}
         caption="Phú Sĩ soi bóng xuống hồ"
-        entries={NAV_LINKS.map((link) => ({ href: link.href, label: <NavLabel link={link} />, value: INDEX_VALUES[link.href] }))}
+        entries={NAV_LINKS.map((link) => ({ href: link.href, label: link.label, value: INDEX_VALUES[link.href] }))}
       />
 
       <Spread

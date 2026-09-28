@@ -19,20 +19,49 @@ const FINE_POINTER = '(hover: hover) and (pointer: fine)';
 /** Hero pieces hidden by styles/mag/motion.css until the intro plays. */
 const COVER_INTRO = '.cover__title > span, .cover__type > .kicker, .cover__deck, .cover__type > .actions, .cover__folio, .cover__lines';
 
-/** Blocks that fade up as they scroll into view. */
-const REVEAL = [
-  '.section-head',
-  '.spread__page > *',
-  '.contents__sheet > *',
-  '.letter__greeting',
-  '.letter__signature',
-  '.ledger > li',
-  '.story',
-  '.cta-band .wrap > *',
-].join(', ');
+/** Where a block starts to play as it scrolls in. */
+const IN_VIEW = 'top 85%';
 
-/** Photos that open up and drift as the page moves past them. */
-const PHOTOS = '.spread__media, .contents__media, .mosaic__photo, .story__photo';
+/** Parallax travel (yPercent) for the gallery, column by column, so the photos drift at different depths. */
+const MOSAIC_DEPTH = [-10, 6, -4, 8, -6, 4];
+
+/** Elements under `scope` that match `selector`, leaving the cover to its own intro. */
+function pick(selector, scope = document) {
+  return gsap.utils.toArray(scope.querySelectorAll(selector)).filter((el) => !el.closest('.cover'));
+}
+
+/** A paused timeline that plays once when `trigger` scrolls into view. */
+function onEnter(trigger, vars = {}) {
+  return gsap.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger, start: IN_VIEW, once: true }, ...vars });
+}
+
+/**
+ * Count the first number in a text-only element up from zero, keeping the words around it
+ * ("từ 3.7 man", "02"). Returns a function that puts the original text back.
+ */
+function countUp(el, timeline, position) {
+  if (el.childElementCount) {
+    return null;
+  }
+  const original = (el.dataset.countText ??= el.textContent);
+  const match = original.match(/\d+(?:\.\d+)?/);
+  if (!match) {
+    return null;
+  }
+  const target = parseFloat(match[0]);
+  const decimals = match[0].split('.')[1]?.length ?? 0;
+  const width = match[0].length;
+  const render = (value) => {
+    const number = decimals ? value.toFixed(decimals) : String(Math.round(value)).padStart(width, '0');
+    el.textContent = original.slice(0, match.index) + number + original.slice(match.index + match[0].length);
+  };
+  const counter = { value: 0 };
+  timeline.to(counter, { value: target, duration: 1.2, ease: 'power2.out', onStart: () => render(0), onUpdate: () => render(counter.value), onComplete: () => { el.textContent = original; } }, position);
+  render(0);
+  return () => {
+    el.textContent = original;
+  };
+}
 
 function coverIntro(cover) {
   const lines = cover.querySelectorAll('.cover__title > span');
@@ -57,45 +86,195 @@ function coverIntro(cover) {
   gsap.to(cover.querySelector('.cover__type'), { y: -80, opacity: 0.15, ease: 'none', scrollTrigger: scroll });
 }
 
-function reveals(pinHours) {
-  const selector = pinHours ? REVEAL : `${REVEAL}, .hour`;
-  const targets = gsap.utils.toArray(selector).filter((el) => !el.closest('.cover'));
-  if (!targets.length) {
-    return;
-  }
-  gsap.set(targets, { opacity: 0, y: 32 });
-  ScrollTrigger.batch(targets, {
-    start: 'top 90%',
-    once: true,
-    onEnter: (batch) =>
-      gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, overwrite: true }),
+/** Headings flip up line by line, like a title card. */
+function headings() {
+  pick('.section-head > :is(h2, h3), .contents__title, .spread__title, .hours__title, .region__title').forEach((heading) => {
+    SplitText.create(heading, {
+      type: 'lines',
+      autoSplit: true,
+      onSplit: (self) =>
+        gsap.fromTo(
+          self.lines,
+          { opacity: 0, yPercent: 80, rotationX: -50, transformOrigin: '50% 0%', transformPerspective: 800 },
+          {
+            opacity: 1,
+            yPercent: 0,
+            rotationX: 0,
+            duration: 1.1,
+            ease: 'power4.out',
+            stagger: 0.12,
+            scrollTrigger: { trigger: heading, start: IN_VIEW, once: true },
+          },
+        ),
+    });
   });
 }
 
-function photos() {
-  gsap.utils.toArray(PHOTOS).forEach((figure) => {
-    gsap.fromTo(
-      figure,
-      { clipPath: 'inset(10% 6% 10% 6%)' },
-      {
-        clipPath: 'inset(0% 0% 0% 0%)',
-        ease: 'none',
-        scrollTrigger: { trigger: figure, start: 'top 95%', end: 'top 45%', scrub: true },
-      },
+/** Kickers arrive with their letters drawn in from wide tracking. */
+function kickers() {
+  pick('.kicker').forEach((kicker) => {
+    onEnter(kicker).fromTo(
+      kicker,
+      { opacity: 0, letterSpacing: '0.45em' },
+      { opacity: 1, letterSpacing: getComputedStyle(kicker).letterSpacing, duration: 1.2, ease: 'power2.out', clearProps: 'letterSpacing' },
     );
+  });
+}
 
-    const img = figure.querySelector(':scope > img');
-    if (img) {
-      gsap.fromTo(
-        img,
-        { yPercent: -6, scale: 1.14 },
-        {
-          yPercent: 6,
-          scale: 1.14,
-          ease: 'none',
-          scrollTrigger: { trigger: figure, start: 'top bottom', end: 'bottom top', scrub: true },
-        },
-      );
+/** Running text comes into focus. */
+function prose() {
+  pick('.section-head > .lead, .hours__head > .lead, .essay, .region__blurb, .spread__more, .letter__greeting, .cta-band__text').forEach((text) => {
+    onEnter(text).fromTo(text, { opacity: 0, y: 20, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, clearProps: 'filter' });
+  });
+  pick('.letter__signature').forEach((signature) => {
+    onEnter(signature).fromTo(signature, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'power2.inOut' });
+  });
+}
+
+/** Photos drift slower than the page. */
+function parallax(img, travel = 6) {
+  gsap.fromTo(
+    img,
+    { yPercent: -travel },
+    { yPercent: travel, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } },
+  );
+}
+
+/** A photo opens like a curtain from one side while the picture settles inside it. */
+function curtain(figure, from, timeline = onEnter(figure), position = 0) {
+  const img = figure.querySelector(':scope > img');
+  const closed = { left: 'inset(0% 0% 0% 100%)', right: 'inset(0% 100% 0% 0%)', bottom: 'inset(100% 0% 0% 0%)' }[from];
+  timeline.fromTo(figure, { clipPath: closed }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'power4.inOut' }, position);
+  if (img) {
+    gsap.set(img, { scale: 1.14 });
+    timeline.from(img, { scale: 1.4, duration: 1.8, ease: 'power3.out' }, position);
+    parallax(img);
+  }
+  return timeline;
+}
+
+/** Ledgers: prices wipe in and count up, notices slide from the left, indexes from the right. */
+function ledgers(restore) {
+  pick('.ledger').forEach((ledger) => {
+    const rows = ledger.querySelectorAll(':scope > li');
+    const timeline = onEnter(ledger);
+    if (ledger.classList.contains('ledger--wide')) {
+      timeline.fromTo(rows, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'power3.inOut', stagger: 0.15 });
+      ledger.querySelectorAll('.ledger__value').forEach((value, index) => restore.push(countUp(value, timeline, 0.35 + index * 0.15)));
+    } else if (ledger.classList.contains('ledger--plain')) {
+      timeline
+        .fromTo(rows, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.9, stagger: 0.1 })
+        .fromTo(ledger.querySelectorAll('.ledger__value, .ledger__detail'), { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.1 }, 0.4);
+    } else {
+      timeline.fromTo(rows, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.06 });
+    }
+  });
+}
+
+function contentsAndSpreads() {
+  pick('.contents__media').forEach((figure) => curtain(figure, 'right'));
+  pick('.spread__media').forEach((figure) => curtain(figure, 'bottom'));
+}
+
+/** The gallery pops in across the grid, then each photo floats at its own depth. */
+function gallery() {
+  pick('.mosaic').forEach((mosaic) => {
+    const items = mosaic.querySelectorAll('.mosaic__item');
+    onEnter(mosaic, { scrollTrigger: { trigger: mosaic, start: 'top 80%', once: true } }).fromTo(
+      items,
+      { opacity: 0, scale: 0.82, clipPath: 'inset(8% 8% 8% 8% round 24px)' },
+      { opacity: 1, scale: 1, clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1.2, ease: 'expo.out', stagger: { each: 0.1, grid: 'auto', from: 'start' }, clearProps: 'clipPath' },
+    );
+    items.forEach((item, index) => {
+      const img = item.querySelector('.mosaic__photo > img');
+      if (img) {
+        gsap.set(img, { scale: 1.2 });
+        parallax(img, MOSAIC_DEPTH[index % MOSAIC_DEPTH.length]);
+      }
+    });
+  });
+}
+
+/** Blog: the lead story zooms out of its photo, the others slide in with their numbers counting. */
+function stories(restore) {
+  pick('.stories').forEach((list) => {
+    const lead = list.querySelector('.story--lead');
+    if (lead) {
+      const img = lead.querySelector('.story__photo > img');
+      if (img) {
+        onEnter(lead).fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.6, ease: 'power3.out' });
+      }
+      // The words sit low on the card, so they wait for their own entrance.
+      const text = lead.querySelector('.story__text');
+      if (text) {
+        onEnter(text).fromTo(text.children, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 });
+      }
+    }
+    const rows = list.querySelectorAll('.stories__rest > li');
+    if (rows.length) {
+      const timeline = onEnter(rows[0]);
+      timeline.fromTo(rows, { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.9, stagger: 0.12 });
+      list.querySelectorAll('.story__no').forEach((no, index) => restore.push(countUp(no, timeline, index * 0.12)));
+    }
+  });
+}
+
+/** Steps: each number pops, then its words follow. */
+function steps() {
+  pick('.step').forEach((step) => {
+    onEnter(step)
+      .fromTo(step.querySelector('.step__no'), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(2.2)' })
+      .fromTo(step.querySelectorAll('.step__title, .step__text, .step__link'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08 }, 0.2);
+  });
+}
+
+/** "Read next" cards tip forward into place. */
+function continueCards() {
+  pick('.continue__list').forEach((list) => {
+    onEnter(list).fromTo(
+      list.querySelectorAll('.continue__item'),
+      { opacity: 0, y: 60, rotationX: 18, transformOrigin: '50% 100%', transformPerspective: 900 },
+      { opacity: 1, y: 0, rotationX: 0, duration: 1.1, ease: 'power3.out', stagger: 0.12 },
+    );
+  });
+}
+
+/** Campsites open like curtains, alternating sides region by region. */
+function siteCards() {
+  pick('.region').forEach((region, regionIndex) => {
+    region.querySelectorAll('.site-card__photo').forEach((figure, index) => {
+      curtain(figure, (regionIndex + index) % 2 ? 'left' : 'right');
+    });
+  });
+}
+
+/** The closing line assembles letter by letter out of a blur; the buttons pop in after it. */
+function ctaBand() {
+  pick('.cta-band').forEach((band) => {
+    const title = band.querySelector('.cta-band__title');
+    if (title) {
+      SplitText.create(title, {
+        type: 'words, chars',
+        autoSplit: true,
+        onSplit: (self) =>
+          gsap.fromTo(
+            self.chars,
+            { opacity: 0, scale: 1.6, filter: 'blur(12px)' },
+            {
+              opacity: 1,
+              scale: 1,
+              filter: 'blur(0px)',
+              duration: 0.9,
+              ease: 'power3.out',
+              stagger: { each: 0.018, from: 'center' },
+              scrollTrigger: { trigger: title, start: IN_VIEW, once: true },
+            },
+          ),
+      });
+    }
+    const buttons = band.querySelectorAll('.actions .btn');
+    if (buttons.length) {
+      onEnter(buttons[0]).fromTo(buttons, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(2)', stagger: 0.1, delay: 0.5 });
     }
   });
 }
@@ -136,6 +315,11 @@ function hours(pin) {
           },
         );
       }
+      onEnter(section.querySelector('.hours__list')).fromTo(
+        items,
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.9, stagger: 0.12 },
+      );
       return;
     }
 
@@ -149,6 +333,7 @@ function hours(pin) {
         end: () => `+=${items.length * window.innerHeight * 0.35}`,
         pin: true,
         scrub: 0.6,
+        refreshPriority: 1,
         invalidateOnRefresh: true,
       },
     });
@@ -206,7 +391,8 @@ function magneticButtons() {
   };
 
   const onMove = (event) => {
-    const button = event.target instanceof Element ? event.target.closest('.btn') : null;
+    // Page buttons only: in the masthead the buttons sit too close, and a pulled one would cover its neighbour.
+    const button = event.target instanceof Element ? event.target.closest('.btn:not(.masthead .btn, .site-index .btn)') : null;
     if (active && active !== button) {
       release(active);
     }
@@ -259,9 +445,10 @@ function pageLink(event) {
 }
 
 /**
- * Apple-style motion over the existing magazine markup: a cover intro, scroll reveals,
- * parallax photos, a letter that lights up word by word, a pinned night at camp, magnetic
- * buttons and a fade between pages. Readers who ask for reduced motion get the static page.
+ * Apple-style motion over the existing magazine markup. Each kind of block has its own move:
+ * headings flip up by line, photos open like curtains, prices count up, the gallery floats at
+ * different depths, the closing line assembles letter by letter. Plus a cover intro, a letter
+ * that lights up word by word, a pinned night at camp, magnetic buttons and a page fade. Readers who ask for reduced motion get the static page.
  */
 export default function Motion() {
   const pathname = usePathname();
@@ -329,19 +516,54 @@ export default function Motion() {
       if (cover) {
         coverIntro(cover);
       }
-      reveals(pinHours);
-      photos();
-      letter();
+      // The pinned night adds scroll length, so it goes first: everything below it must
+      // measure its start with that length included, or it plays while still off screen.
       hours(pinHours);
+
+      const restore = [];
+      headings();
+      kickers();
+      prose();
+      letter();
+      contentsAndSpreads();
+      ledgers(restore);
+      gallery();
+      stories(restore);
+      steps();
+      continueCards();
+      siteCards();
+      ctaBand();
       ornaments();
       ctaGlow();
+      ScrollTrigger.sort();
+
+      return () => restore.forEach((undo) => undo?.());
     });
 
-    const onLoad = () => ScrollTrigger.refresh();
-    window.addEventListener('load', onLoad);
+    // Fonts, late images and filters move things around after the first measure; re-measure.
+    let timer;
+    const refresh = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => ScrollTrigger.refresh(), 200);
+    };
+    let lastHeight = main?.offsetHeight ?? 0;
+    const observer = new ResizeObserver(() => {
+      const height = main?.offsetHeight ?? 0;
+      if (height !== lastHeight) {
+        lastHeight = height;
+        refresh();
+      }
+    });
+    if (main) {
+      observer.observe(main);
+    }
+    document.fonts?.ready.then(refresh);
+    window.addEventListener('load', refresh);
 
     return () => {
-      window.removeEventListener('load', onLoad);
+      clearTimeout(timer);
+      observer.disconnect();
+      window.removeEventListener('load', refresh);
       mm.revert();
     };
   }, [pathname]);

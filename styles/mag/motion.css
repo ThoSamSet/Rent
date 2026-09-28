@@ -17,6 +17,12 @@ html.motion:not(.gsap-on) .cover__lines {
     }
 }
 
+/* Rows wait off to the side before they slide in; keep that from widening the page (on phones a
+   wider page zooms the whole layout out and pushes the masthead's menu button off screen) */
+.gsap-on .site-main {
+    overflow-x: clip;
+}
+
 /* Each title line becomes its own block so it can move; the <br> between lines is then redundant */
 .gsap-on .cover__title > span {
     display: block;
@@ -43,7 +49,7 @@ html.motion:not(.gsap-on) .cover__lines {
 
 /* GSAP moves the buttons toward the cursor; a CSS transform transition would drag behind it */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .gsap-on .btn {
+    .gsap-on .btn:not(.masthead .btn, .site-index .btn) {
         transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
 }

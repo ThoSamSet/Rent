@@ -14,7 +14,7 @@ export default function FilmPageContent() {
                   alt={photo.alt}
                   loading={index < 2 ? 'eager' : 'lazy'}
                   decoding="async"
-                  width="1200"
+                  width="1600"
                   height="900"
                 />
                 <figcaption>{photo.caption}</figcaption>

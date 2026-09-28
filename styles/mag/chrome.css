@@ -44,6 +44,7 @@
     padding: 6px 0;
     color: var(--fog);
     text-decoration: none;
+    white-space: nowrap;
     transition: color 0.2s ease;
 }
 
@@ -156,7 +157,7 @@ html.site-index-open {
     margin-top: 28px;
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1240px) {
     .masthead__nav {
         display: flex;
     }
@@ -266,7 +267,8 @@ html.site-index-open {
     color: var(--fg);
 }
 
-.colophon__legal {
+/* Scoped so the later `.wrap { margin: 0 auto }` in blocks.css doesn't reset margin-top. */
+.colophon .colophon__legal {
     margin-top: clamp(40px, 6vw, 72px);
     padding-top: 18px;
     border-top: 1px solid var(--rule);

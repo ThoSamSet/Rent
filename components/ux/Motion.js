@@ -202,6 +202,36 @@ function gallery() {
   });
 }
 
+/** Film page: the wordmark draws in, then the stills pop in like the gallery and float, captions rising after. */
+function film() {
+  pick('.film__title').forEach((title) => {
+    onEnter(title).fromTo(title, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'power2.inOut', clearProps: 'clipPath' });
+  });
+  pick('.film-grid').forEach((grid) => {
+    const items = grid.querySelectorAll('.film-grid__item');
+    items.forEach((item, index) => {
+      const timeline = onEnter(item, { scrollTrigger: { trigger: item, ...PLAY_ONCE, start: 'top 90%' } });
+      // Rows of three start together; stagger them left to right like the gallery grid.
+      const delay = (index < 2 ? index : (index - 2) % 3) * 0.1;
+      timeline.fromTo(
+        item,
+        { opacity: 0, scale: 0.82, clipPath: 'inset(8% 8% 8% 8% round 24px)' },
+        { opacity: 1, scale: 1, clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1.2, ease: 'expo.out', clearProps: 'clipPath' },
+        delay,
+      );
+      const caption = item.querySelector('figcaption');
+      if (caption) {
+        timeline.fromTo(caption, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.8, clearProps: 'transform' }, delay + 0.5);
+      }
+      const img = item.querySelector('img');
+      if (img) {
+        gsap.set(img, { scale: 1.2 });
+        parallax(img, MOSAIC_DEPTH[index % MOSAIC_DEPTH.length]);
+      }
+    });
+  });
+}
+
 /** Blog: the lead story zooms out of its photo, the others slide in with their numbers counting. */
 function stories(restore) {
   pick('.stories').forEach((list) => {
@@ -474,6 +504,7 @@ function build(pinHours, restore) {
   contentsAndSpreads();
   ledgers(restore);
   gallery();
+  film();
   stories(restore);
   steps();
   continueCards();

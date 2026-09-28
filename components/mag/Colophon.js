@@ -14,7 +14,7 @@ export default function Colophon() {
             </span>
             <span className="colophon__brand">Camp Nhà Thỏ</span>
           </p>
-          <p className="colophon__line">Share đồ camping, đi riêng từng nhóm, quanh Kanto.<br />Hẹn gặp bạn bên lửa.</p>
+          <p className="colophon__line">Share đồ camping, đi riêng từng nhóm, quanh Kanto.<br />Hẹn gặp bạn bên bếp lửa.</p>
           <Link href="/dat-lich" className="btn btn--solid colophon__cta">
             Đặt lịch
           </Link>

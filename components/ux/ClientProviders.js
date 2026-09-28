@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import Motion from '@/components/ux/Motion';
 import ScrollManager from '@/components/ux/ScrollManager';
 import ServiceWorkerRegister from '@/components/ux/ServiceWorkerRegister';
 
-/** Global client UX: scroll restoration and smooth in-page hash links. */
+/** Global client UX: scroll restoration, smooth in-page hash links and scroll motion. */
 export default function ClientProviders({ children }) {
   useEffect(() => {
     const onHashClick = (event) => {
@@ -42,6 +43,7 @@ export default function ClientProviders({ children }) {
   return (
     <>
       <ScrollManager />
+      <Motion />
       <ServiceWorkerRegister />
       {children}
     </>

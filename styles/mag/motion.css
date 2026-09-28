@@ -1,0 +1,42 @@
+/* Motion — GSAP drives it (components/ux/Motion.js); these rules only keep the first paint clean */
+
+/* Hold the cover back until the intro plays, with a failsafe if the script never runs */
+html.motion:not(.gsap-on) .cover__title > span,
+html.motion:not(.gsap-on) .cover__type > .kicker,
+html.motion:not(.gsap-on) .cover__deck,
+html.motion:not(.gsap-on) .cover__type > .actions,
+html.motion:not(.gsap-on) .cover__folio,
+html.motion:not(.gsap-on) .cover__lines {
+    opacity: 0;
+    animation: motion-failsafe 0.6s ease 2.5s forwards;
+}
+
+@keyframes motion-failsafe {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Each title line becomes its own block so it can move; the <br> between lines is then redundant */
+.gsap-on .cover__title > span {
+    display: block;
+}
+
+.gsap-on .cover__title > span > br {
+    display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .gsap-on .hours__sky::after {
+        animation: stars-twinkle 4s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes stars-twinkle {
+    from {
+        opacity: 0.45;
+    }
+    to {
+        opacity: 1;
+    }
+}

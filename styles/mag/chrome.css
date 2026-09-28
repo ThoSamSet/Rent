@@ -201,10 +201,28 @@ html.site-index-open {
     gap: 40px;
 }
 
+/* Brand wordmark, measured off the logo file: Urbanist Bold, the "//." 3.08x the name */
 .colophon__name {
-    font-family: var(--font-display);
-    font-size: var(--step-3);
-    line-height: 0.95;
+    display: flex;
+    align-items: baseline;
+    gap: 0.53em;
+    font-family: var(--font-urbanist), var(--font-display);
+    font-size: clamp(1.5rem, 1.1rem + 1.2vw, 1.875rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.colophon__mark {
+    font-size: 3.08em;
+    line-height: 1;
+}
+
+/* In the logo the name sits a touch below the baseline of the "//." */
+.colophon__brand {
+    position: relative;
+    top: 0.066em;
 }
 
 .colophon__line {

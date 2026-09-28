@@ -8,7 +8,12 @@ export default function Colophon() {
     <footer className="colophon tone-ink">
       <div className="wrap colophon__grid">
         <div>
-          <p className="colophon__name">Camp Nhà Thỏ</p>
+          <p className="colophon__name">
+            <span className="colophon__mark" aria-hidden="true">
+              //.
+            </span>
+            <span className="colophon__brand">Camp Nhà Thỏ</span>
+          </p>
           <p className="colophon__line">Share đồ camping, đi riêng từng nhóm, quanh Kanto.<br />Hẹn gặp bạn bên lửa.</p>
           <Link href="/dat-lich" className="btn btn--solid colophon__cta">
             Đặt lịch

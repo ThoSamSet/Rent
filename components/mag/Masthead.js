@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import NavLabel from '@/components/mag/NavLabel';
 import { NAV_LINKS } from '@/lib/constants';
 
 function normalizePath(path) {
@@ -78,7 +79,7 @@ export default function Masthead() {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link key={link.href} href={link.href} aria-current={active ? 'page' : undefined}>
-                {link.label}
+                <NavLabel link={link} />
               </Link>
             );
           })}
@@ -114,7 +115,9 @@ export default function Masthead() {
             <li key={link.href}>
               <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}>
                 <span className="site-index__no">{String(index + 1).padStart(2, '0')}</span>
-                <span className="site-index__label">{link.label}</span>
+                <span className="site-index__label">
+                  <NavLabel link={link} />
+                </span>
               </Link>
             </li>
           ))}

@@ -720,6 +720,12 @@
         grid-column: span 4;
         grid-row: span 2;
     }
+
+    /* Avoid a hole in the last row when the photo count doesn't fill a group of 5 */
+    .film-grid__item:nth-child(10n + 4):last-child,
+    .film-grid__item:nth-child(10n + 9):last-child {
+        grid-column: span 8;
+    }
 }
 
 /* Film: click a photo to enlarge it uncropped; the rest shrink into a thumbnail strip */

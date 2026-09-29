@@ -1,3 +1,4 @@
+import FilmGrid from '@/components/film/FilmGrid';
 import FilmLogo from '@/components/brand/FilmLogo';
 import { FILM_PHOTOS, FILM_TITLE } from '@/lib/film/content';
 
@@ -8,23 +9,7 @@ export default function FilmPageContent() {
         <h1 className="film__title">
           <FilmLogo title={FILM_TITLE} />
         </h1>
-        <ul className="film-grid">
-          {FILM_PHOTOS.map((photo, index) => (
-            <li key={photo.src} className="film-grid__item">
-              <figure>
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading={index < 2 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  width="1600"
-                  height="900"
-                />
-                <figcaption>{photo.caption}</figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
+        <FilmGrid photos={FILM_PHOTOS} />
       </div>
     </main>
   );

@@ -9,7 +9,7 @@ import Photo from '@/components/mag/Photo';
  *   kicker?: string;
  *   title: string[];
  *   deck?: string;
- *   image?: { src: string; alt: string };
+ *   image?: { src: string; alt: string; position?: string };
  *   caption?: string;
  *   lines?: { href: string; label: string }[];
  *   tone?: 'paper' | 'ink' | 'dusk';
@@ -33,7 +33,7 @@ export default function Cover({
   children,
 }) {
   const media = (
-    <Photo className="cover__media" src={image?.src} alt={image?.alt} caption={caption} priority />
+    <Photo className="cover__media" src={image?.src} alt={image?.alt} position={image?.position} caption={caption} priority />
   );
 
   return (

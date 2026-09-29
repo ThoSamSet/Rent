@@ -11,7 +11,7 @@ export default function Continue({ items, title = 'Đọc tiếp nhé' }) {
           {items.map((item) => (
             <li key={item.href}>
               <Link href={item.href} className="continue__item">
-                <img src={item.image} alt={item.alt} loading="lazy" decoding="async" width="800" height="600" />
+                <img src={item.image} alt={item.alt} style={item.position ? { objectPosition: item.position } : undefined} loading="lazy" decoding="async" width="800" height="600" />
                 <span className="continue__meta">{item.meta}</span>
                 <span className="continue__title">{item.title}</span>
               </Link>

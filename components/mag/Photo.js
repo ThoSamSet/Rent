@@ -2,7 +2,7 @@ import Grain from '@/components/Grain';
 
 /**
  * Full-bleed photo frame: cover-fit image, film grain, optional caption.
- * @param {{ src?: string; alt?: string; caption?: string; captionVertical?: boolean; className?: string; priority?: boolean; grain?: number; children?: import('react').ReactNode }} props
+ * @param {{ src?: string; alt?: string; caption?: string; captionVertical?: boolean; position?: string; className?: string; priority?: boolean; grain?: number; children?: import('react').ReactNode }} props
  */
 export default function Photo({
   src,
@@ -12,6 +12,7 @@ export default function Photo({
   className = '',
   priority = false,
   grain = 0.34,
+  position,
   children,
 }) {
   return (
@@ -24,6 +25,7 @@ export default function Photo({
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
+          style={position ? { objectPosition: position } : undefined}
           width="1200"
           height="900"
         />

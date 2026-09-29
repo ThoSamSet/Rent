@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   description:
     'Xem các ngày còn chỗ trong những tháng tới và chạm để mở form đặt lịch với ngày điền sẵn. Không cần cọc.',
   path: '/schedule',
-  image: '/images/subBanner-lich-trinh.webp',
+  image: '/images/lich-trong.webp',
 });
 
 export default function SchedulePage() {

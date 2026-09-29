@@ -18,8 +18,8 @@ export default function SchedulePageContent() {
         kicker={SCHEDULE_COVER.kicker}
         title={SCHEDULE_COVER.title}
         deck={SCHEDULE_COVER.deck}
-        image={{ src: '/images/subBanner-lich-trinh.webp', alt: 'Ba tượng thỏ nhỏ trên bàn gỗ ở trại' }}
-        caption={`Ba chú thỏ canh lịch · còn ${OPEN_DAYS} ngày`}
+        image={{ src: '/images/lich-trong.webp', alt: 'Cô gái đứng tựa hàng rào gỗ nhìn ra thung lũng và dãy núi lúc bình minh', position: '50% 76%' }}
+        caption={`Bình minh trên đèo · còn ${OPEN_DAYS} ngày`}
         lines={[
           { href: '#lich', label: `Lịch ${SCHEDULE_RANGE.toLowerCase()}` },
           { href: '#cach-dat', label: 'Cách đặt' },

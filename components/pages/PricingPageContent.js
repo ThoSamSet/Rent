@@ -52,7 +52,7 @@ export default function PricingPageContent() {
         kicker={PRICING_COVER.kicker}
         title={PRICING_COVER.title}
         deck={PRICING_COVER.deck}
-        image={ src: '/images/chi-phi.webp', alt: 'Cô gái đội mũ đứng trên đồi cỏ rộng nhìn về phía xa', position: '67% 60%' }
+        image={{ src: '/images/chi-phi.webp', alt: 'Cô gái đội mũ đứng trên đồi cỏ rộng nhìn về phía xa', position: '67% 60%' }}
         caption="Đồi cỏ mở, đi thong thả"
         lines={PRICING_PLANS.map((plan) => ({ href: `#${plan.id}`, label: `${plan.name} · từ ${plan.priceFrom} man` }))}
       />

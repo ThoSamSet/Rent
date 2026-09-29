@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   description:
     'Hạt Dẻ từ 3.7 man, Hạt Bí từ 4.7 man, Hạt Nho từ 5.7 man. Bảng giá theo số người cho điểm đón Tokyo, Saitama, Kanagawa.',
   path: '/pricing',
-  image: '/images/chi-phi-1.webp',
+  image: '/images/chi-phi.webp',
 });
 
 export default function PricingPage() {

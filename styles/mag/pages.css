@@ -810,3 +810,15 @@
         display: none;
     }
 }
+
+/* Home gallery heading: the Camp Nhà Thỏ Film wordmark instead of a text title */
+.section-head__logo {
+    margin: 0;
+    line-height: 0;
+}
+
+.section-head__logo .film-logo {
+    display: block;
+    width: clamp(220px, 34vw, 440px);
+    height: auto;
+}

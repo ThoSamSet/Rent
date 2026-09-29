@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FilmLogo from '@/components/brand/FilmLogo';
 import Contents from '@/components/mag/Contents';
 import Cover from '@/components/mag/Cover';
 import CtaBand from '@/components/mag/CtaBand';
@@ -125,7 +126,12 @@ export default function HomePageContent() {
 
       <section className="mag-section tone-ink" id="gallery" aria-label="Ảnh chụp ở trại">
         <div className="wrap">
-          <SectionHead kicker="Ảnh chụp ở trại" title="Một đêm, *sáu khung hình*" />
+          <header className="section-head">
+            <p className="kicker">Ảnh chụp ở trại</p>
+            <h2 className="section-head__logo">
+              <FilmLogo title="Camp Nhà Thỏ Film" />
+            </h2>
+          </header>
         </div>
         <RandomMosaic pool={FILM_PHOTOS} fallback={GALLERY} count={6} label="Ảnh camping của Camp Nhà Thỏ" />
       </section>

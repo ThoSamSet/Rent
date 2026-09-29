@@ -6,13 +6,14 @@ import Emph from '@/components/mag/Emph';
 import Hours from '@/components/mag/Hours';
 import Ledger from '@/components/mag/Ledger';
 import Letter from '@/components/mag/Letter';
-import Mosaic from '@/components/mag/Mosaic';
+import RandomMosaic from '@/components/mag/RandomMosaic';
 import SectionHead from '@/components/mag/SectionHead';
 import Spread from '@/components/mag/Spread';
 import StoryList from '@/components/mag/StoryList';
 import { BLOG_POSTS } from '@/lib/blog/content';
 import { NAV_LINKS } from '@/lib/constants';
 import { EQUIPMENT_CATEGORIES } from '@/lib/equipment/content';
+import { FILM_PHOTOS } from '@/lib/film/content';
 import { GALLERY, HOME_COVER, HOME_HOURS, HOME_LETTER, HOME_NOTICES, HOME_SPREAD } from '@/lib/home/content';
 import { OPTION_CATEGORIES } from '@/lib/options/content';
 import { PRICING_PLANS } from '@/lib/pricing/content';
@@ -126,7 +127,7 @@ export default function HomePageContent() {
         <div className="wrap">
           <SectionHead kicker="Ảnh chụp ở trại" title="Một đêm, *sáu khung hình*" />
         </div>
-        <Mosaic items={GALLERY} label="Ảnh camping của Camp Nhà Thỏ" />
+        <RandomMosaic pool={FILM_PHOTOS} fallback={GALLERY} count={6} label="Ảnh camping của Camp Nhà Thỏ" />
       </section>
 
       <section className="mag-section tone-paper" id="blog" aria-label="Blog">

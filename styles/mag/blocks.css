@@ -572,6 +572,7 @@ a.ledger__row:focus-visible .ledger__label {
     color: var(--snow);
     text-decoration: none;
     overflow: hidden;
+    isolation: isolate;
     background: var(--dusk);
 }
 
@@ -587,7 +588,8 @@ a.ledger__row:focus-visible .ledger__label {
 .continue__item::after {
     content: '';
     position: absolute;
-    inset: 0;
+    /* Bleed 1px past the edges so the scaled photo never peeks out as a bright seam */
+    inset: -1px;
     z-index: 1;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.78) 100%);
 }

@@ -271,7 +271,7 @@ function continueCards() {
     onEnter(list).fromTo(
       list.querySelectorAll('.continue__item'),
       { opacity: 0, y: 60, rotationX: 18, transformOrigin: '50% 100%', transformPerspective: 900 },
-      { opacity: 1, y: 0, rotationX: 0, duration: 1.1, ease: 'power3.out', stagger: 0.12 },
+      { opacity: 1, y: 0, rotationX: 0, duration: 1.1, ease: 'power3.out', stagger: 0.12, clearProps: 'transform,opacity' },
     );
   });
 }

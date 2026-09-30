@@ -572,6 +572,8 @@ a.ledger__row:focus-visible .ledger__label {
     color: var(--snow);
     text-decoration: none;
     overflow: hidden;
+    /* overflow alone lets the scaled photo's anti-aliased edge leak 1px out of the tile on GPU layers */
+    clip-path: inset(0);
     isolation: isolate;
     background: var(--dusk);
 }

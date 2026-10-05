@@ -4,6 +4,7 @@ import CtaBand from '@/components/mag/CtaBand';
 import SectionHead from '@/components/mag/SectionHead';
 import Steps from '@/components/mag/Steps';
 import ScheduleCalendar from '@/components/schedule/ScheduleCalendar';
+import UpdatedKicker from '@/components/schedule/UpdatedKicker';
 import ScheduleLegend from '@/components/schedule/ScheduleLegend';
 import { SCHEDULE_BOOKING_STEPS, SCHEDULE_COVER, SCHEDULE_NOTE } from '@/lib/schedule/content';
 import { pickContinue } from '@/lib/site/continue';
@@ -29,7 +30,7 @@ export default function SchedulePageContent() {
       <section className="mag-section tone-paper" id="lich" aria-label="Lịch theo tháng">
         <div className="wrap">
           <div className="cal-intro">
-            <SectionHead kicker={UPDATED_LABEL} title="Lịch *từng tháng*" lead={SCHEDULE_NOTE} />
+            <SectionHead kicker={<UpdatedKicker fallback={UPDATED_LABEL} />} title="Lịch *từng tháng*" lead={SCHEDULE_NOTE} />
             <ScheduleLegend />
           </div>
           <ScheduleCalendar />

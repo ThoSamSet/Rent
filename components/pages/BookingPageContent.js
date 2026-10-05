@@ -11,6 +11,7 @@ import Cover from '@/components/mag/Cover';
 import Emph, { plain } from '@/components/mag/Emph';
 import { BOOKING_CLOSING, BOOKING_COVER } from '@/lib/booking/content';
 import { pickContinue } from '@/lib/site/continue';
+import OpenDays from '@/components/schedule/OpenDays';
 import { OPEN_DAYS, folioFor } from '@/lib/site/issue';
 
 export default function BookingPageContent() {
@@ -23,7 +24,7 @@ export default function BookingPageContent() {
         title={BOOKING_COVER.title}
         deck={BOOKING_COVER.deck}
         image={{ src: '/images/hero-camping.webp', alt: 'Trại camping dựng sẵn chờ khách' }}
-        caption={`Còn ${OPEN_DAYS} ngày trống`}
+        caption={<>Còn <OpenDays fallback={OPEN_DAYS} /> ngày trống</>}
         lines={[
           { href: '#form', label: 'Form đặt lịch' },
           { href: '#lien-he', label: 'Gửi tin nhắn' },

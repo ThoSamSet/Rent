@@ -18,6 +18,8 @@ import { FILM_PHOTOS } from '@/lib/film/content';
 import { GALLERY, HOME_COVER, HOME_HOURS, HOME_LETTER, HOME_NOTICES, HOME_SPREAD } from '@/lib/home/content';
 import { OPTION_CATEGORIES } from '@/lib/options/content';
 import { PRICING_PLANS } from '@/lib/pricing/content';
+import OpenDays from '@/components/schedule/OpenDays';
+import UpdatedKicker from '@/components/schedule/UpdatedKicker';
 import { FAQ_COUNT, OPEN_DAYS, POST_COUNT, SCHEDULE_RANGE, SITE_COUNT, UPDATED_LABEL } from '@/lib/site/issue';
 
 const OPEN_OPTIONS = OPTION_CATEGORIES.filter((category) => category.status === 'open')
@@ -30,7 +32,7 @@ const INDEX_VALUES = {
   '/options': OPEN_OPTIONS,
   '/equipment': `${EQUIPMENT_CATEGORIES.length} nhóm đồ, đủ cả`,
   '/locations': `${SITE_COUNT} bãi, từ núi ra biển`,
-  '/schedule': `còn ${OPEN_DAYS} ngày`,
+  '/schedule': <>còn <OpenDays fallback={OPEN_DAYS} /> ngày</>,
   '/faq': `${FAQ_COUNT} câu hỏi`,
   '/blog': `${POST_COUNT} bài ghi chép`,
 };
@@ -40,7 +42,7 @@ export default function HomePageContent() {
     <main>
       <Cover
         label="Camp Nhà Thỏ — trang bìa"
-        folio={['Camp Nhà Thỏ', `Lịch mở · ${SCHEDULE_RANGE}`, UPDATED_LABEL]}
+        folio={['Camp Nhà Thỏ', `Lịch mở · ${SCHEDULE_RANGE}`, <UpdatedKicker key="updated" fallback={UPDATED_LABEL} />]}
         kicker={HOME_COVER.kicker}
         title={HOME_COVER.title}
         deck={HOME_COVER.deck}

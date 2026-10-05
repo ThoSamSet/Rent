@@ -3,6 +3,7 @@ import Cover from '@/components/mag/Cover';
 import CtaBand from '@/components/mag/CtaBand';
 import SectionHead from '@/components/mag/SectionHead';
 import Steps from '@/components/mag/Steps';
+import OpenDays from '@/components/schedule/OpenDays';
 import ScheduleCalendar from '@/components/schedule/ScheduleCalendar';
 import UpdatedKicker from '@/components/schedule/UpdatedKicker';
 import ScheduleLegend from '@/components/schedule/ScheduleLegend';
@@ -20,7 +21,7 @@ export default function SchedulePageContent() {
         title={SCHEDULE_COVER.title}
         deck={SCHEDULE_COVER.deck}
         image={{ src: '/images/lich-trong.webp', alt: 'Cô gái đứng tựa hàng rào gỗ nhìn ra thung lũng và dãy núi lúc bình minh', position: '50% 76%' }}
-        caption={`Bình minh trên đèo · còn ${OPEN_DAYS} ngày`}
+        caption={<>Bình minh trên đèo · còn <OpenDays fallback={OPEN_DAYS} /> ngày</>}
         lines={[
           { href: '#lich', label: `Lịch ${SCHEDULE_RANGE.toLowerCase()}` },
           { href: '#cach-dat', label: 'Cách đặt' },

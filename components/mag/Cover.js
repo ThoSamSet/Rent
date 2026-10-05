@@ -44,7 +44,7 @@ export default function Cover({
       {bleed ? media : null}
       <header className="cover__folio">
         {folio.map((item) => (
-          <span key={item}>{item}</span>
+          <span key={typeof item === 'string' ? item : 'node'}>{item}</span>
         ))}
       </header>
       <div className="cover__stage">

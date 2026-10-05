@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { SCHEDULE_MONTHS } from '@/lib/schedule/months';
 
@@ -28,12 +29,30 @@ function resolveDate(day, month, year, outside) {
   return `${targetYear}-${isoMonth}-${isoDay}`;
 }
 
-function countOpen(month) {
-  return month.rows.flat().filter((cell) => cell.className.split(' ').includes('is-available')).length;
+function todayIso() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+function isOpen(cell, month, today) {
+  if (!cell.className.split(' ').includes('is-available')) return false;
+  const outside = cell.className.split(' ').includes('is-outside-month');
+  return !today || resolveDate(cell.day, month.month, month.year, outside) >= today;
+}
+
+function countOpen(month, today) {
+  return month.rows.flat().filter((cell) => isOpen(cell, month, today)).length;
 }
 
 export default function ScheduleCalendar() {
   const router = useRouter();
+  const [today, setToday] = useState(null);
+
+  useEffect(() => {
+    setToday(todayIso());
+  }, []);
 
   function openBooking(iso) {
     router.push(`/dat-lich?ngay=${encodeURIComponent(iso)}`);
@@ -48,7 +67,7 @@ export default function ScheduleCalendar() {
               {month.title}
             </h2>
             <p className="cal-month__count">
-              <span>{countOpen(month)}</span> ngày còn chỗ
+              <span>{countOpen(month, today)}</span> ngày còn chỗ
             </p>
           </header>
           <div className="cal-scroll">
@@ -67,14 +86,20 @@ export default function ScheduleCalendar() {
                   <tr key={`${month.title}-${rowIndex}`}>
                     {row.map((cell) => {
                       const classes = cell.className.split(' ');
-                      const bookable = classes.includes('is-available');
-                      const closed = classes.includes('is-empty');
                       const outside = classes.includes('is-outside-month');
-                      const iso = bookable ? resolveDate(cell.day, month.month, month.year, outside) : null;
+                      const available = classes.includes('is-available');
+                      const cellIso = resolveDate(cell.day, month.month, month.year, outside);
+                      const past = Boolean(today) && !outside && cellIso < today;
+                      const bookable = available && !past;
+                      const closed = classes.includes('is-empty') || (available && past);
+                      const iso = bookable ? cellIso : null;
+                      const className = past
+                        ? `${cell.className.replace('is-available', 'is-empty')} is-past`
+                        : `${cell.className}${bookable ? ' is-bookable' : ''}`;
                       return (
                         <td
                           key={`${month.title}-${rowIndex}-${cell.day}-${cell.className}`}
-                          className={`${cell.className}${bookable ? ' is-bookable' : ''}`}
+                          className={className}
                           role={bookable ? 'button' : undefined}
                           tabIndex={bookable ? 0 : undefined}
                           aria-label={bookable ? `Đặt lịch ngày ${iso}` : undefined}

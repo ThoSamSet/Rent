@@ -240,8 +240,3 @@
         letter-spacing: 0.06em;
     }
 }
-
-.cal td.is-past .cal__day {
-    text-decoration: line-through;
-    color: color-mix(in srgb, var(--fg) 40%, transparent);
-}

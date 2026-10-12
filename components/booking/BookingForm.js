@@ -52,7 +52,6 @@ export default function BookingForm() {
             <div className="booking-field">
               <label htmlFor="duration">Thời gian</label>
               <select id="duration" name="duration" defaultValue="2d1n">
-                <option value="day">Đi trong ngày</option>
                 <option value="2d1n">2 ngày 1 đêm</option>
               </select>
             </div>

@@ -56,7 +56,8 @@ function sendFile(res, filePath, stat) {
   stream.pipe(res);
 }
 
-function resolveFilePath(urlPath) {
+function resolveFilePath(rawUrl) {
+  const urlPath = rawUrl.split('?')[0];
   if (urlPath === '/') {
     return safePath('/index.html');
   }

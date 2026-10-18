@@ -46,6 +46,7 @@ export default function BookingForm() {
             <p className="booking-hint">
               Hoặc chạm một ngày còn chỗ trên <Link href="/schedule">lịch trống</Link>.
             </p>
+            <p id="startDateNotice" className="booking-warning" role="status" hidden />
           </div>
 
           <div className="booking-field-row">

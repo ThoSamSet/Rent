@@ -31,6 +31,25 @@ test.describe('đặt lịch — từ lịch trống đến tin nhắn', () => {
     await expect(page.locator('#messagePreview')).toContainText('3');
   });
 
+  test('chọn chủ nhật khi thứ 2 không làm việc thì lùi về thứ 7 và báo lý do', async ({ page }) => {
+    await page.goto('/dat-lich?ngay=2026-11-29', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#startDate')).toHaveValue('28/11/2026');
+    const notice = page.locator('#startDateNotice');
+    await expect(notice).toBeVisible();
+    await expect(notice).toContainText('29/11/2026');
+    await expect(notice).toContainText('30/11/2026');
+
+    await page.locator('#startDate').fill('20/12/2026');
+    await page.locator('#startDate').blur();
+    await expect(page.locator('#startDate')).toHaveValue('19/12/2026');
+    await expect(notice).toBeVisible();
+
+    await page.locator('#startDate').fill('12/12/2026');
+    await page.locator('#startDate').blur();
+    await expect(page.locator('#startDate')).toHaveValue('12/12/2026');
+    await expect(notice).toBeHidden();
+  });
+
   test('Hạt Dẻ ẩn khu vực đón', async ({ page }) => {
     await page.goto('/dat-lich', { waitUntil: 'domcontentloaded' });
     await page.locator('#startDate').fill('14/11/2026');

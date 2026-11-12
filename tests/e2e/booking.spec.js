@@ -44,9 +44,9 @@ test.describe('đặt lịch — từ lịch trống đến tin nhắn', () => {
     await expect(page.locator('#startDate')).toHaveValue('19/12/2026');
     await expect(notice).toBeVisible();
 
-    await page.locator('#startDate').fill('12/12/2026');
+    await page.locator('#startDate').fill('26/12/2026');
     await page.locator('#startDate').blur();
-    await expect(page.locator('#startDate')).toHaveValue('12/12/2026');
+    await expect(page.locator('#startDate')).toHaveValue('26/12/2026');
     await expect(notice).toBeHidden();
   });
 
